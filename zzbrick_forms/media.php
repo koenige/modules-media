@@ -55,7 +55,7 @@ if ($path) {
 
 $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
-require $zz_conf['form_scripts'].'/media.php';
+require __DIR__.'/../zzbrick_tables/media.php';
 
 if ($path AND $view === 'tree') {
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';
@@ -146,11 +146,11 @@ if ($view === 'gallery') {
 	// Files
 	$zz['fields'][14]['path'] = array(
 		'root' => $zz_setting['media_folder'], 
-		'webroot' => '/files',
+		'webroot' => $zz_setting['files_path'],
 		'string1' => '/',
 		'field1' => 'filename',
 		'string2' => '.',
-		'string3' => '80',
+		'string3' => $zz_setting['media_sizes']['min']['path'],
 		'string4' => '.',
 		'extension' => 'thumb_extension',
 		'webstring1' => '?v=',
