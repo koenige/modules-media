@@ -13,23 +13,30 @@
 
 
 /* media module */
-#zzform .data .medium a, #zzform .data .folder a
-					{ display: block; border: 3px solid; }
+#zzform .data .medium a, #zzform .data .folder a,
+#zzform .data .medium img, #zzform .data .folder img
+					{ display: block; border: 3px solid; 
+					border-color: transparent; }
+#zzform .data .medium a img, #zzform .data .folder a img
+					{ display: inline; border: none; }
 #zzform .medium p a, #zzform .folder p a
 					{ border-color: #CCC; }
-#zzform p.published a, #zzform td.published a
+#zzform p.published a:link, #zzform td.published a:link
+#zzform p.published a:visited, #zzform td.published a:visited, 
+#zzform .data .published img
 					{ border-color: #ADC90E; }
-#zzform p.unpublished a, #zzform td.unpublished a
+#zzform p.unpublished a:link, #zzform td.unpublished a:link
+#zzform p.unpublished a:visited, #zzform td.unpublished a:visited,
+#zzform .data .unpublished img
 					{ border-color: #CCC; }
-#zzform .data p.folder a, #zzform td.folder img
-					{ border-color: transparent; }
-#zzform .data .medium a:hover, #zzform .data .folder a:hover
+#zzform .data .medium a:link:hover, #zzform .data .folder a:link:hover,
+#zzform .data .medium a:visited:hover, #zzform .data .folder a:visited:hover
 					{  border-color: yellow; }
 #zzform .stretch40 img
 					{ max-width: 40px; max-height: 40px; }
 #zzform .stretch40 a
 					{ width: 40px; height: 40px; }
-#zzform ul.data p.bildunterschrift
+#zzform ul.data p.legend
 					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; }
 
 #zzform img.icon	{ padding: 0 5px; }
