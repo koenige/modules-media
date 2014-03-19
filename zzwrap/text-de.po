@@ -1,0 +1,149 @@
+# media module
+# Translations
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2012-2014 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: Zugzwang Project – Media Module\n"
+"POT-Creation-Date: \n"
+"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"PO-Revision-Date: \n"
+"X-Generator: Poedit 1.6.4\n"
+"Language: de\n"
+
+#: custom/zzbrick_tables/media.php
+msgid "File"
+msgstr "Datei"
+
+#: custom/zzbrick_tables/media.php
+msgid "Folder"
+msgstr "Ordner"
+
+#: custom/zzbrick_tables/media.php
+msgid "Medium"
+msgstr "Medium"
+
+#: custom/zzbrick_tables/media.php
+msgid "Thumbnail"
+msgstr "Vorschau"
+
+#: custom/zzbrick_tables/media.php
+msgid "Published?"
+msgstr "Öffentlich?"
+
+#: custom/zzbrick_tables/media.php
+msgid "Title"
+msgstr "Titel"
+
+#: custom/zzbrick_tables/media.php
+msgid "Description"
+msgstr "Beschreibung"
+
+#: custom/zzbrick_tables/media.php
+msgid "Seq."
+msgstr "Folge"
+
+#: custom/zzbrick_tables/media.php
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+#: custom/zzbrick_tables/media.php
+msgid "Filetype"
+msgstr "Dateityp"
+
+#: custom/zzbrick_tables/media.php
+msgid "Filesize"
+msgstr "Dateigröße"
+
+#: custom/zzbrick_tables/media.php
+msgid "MD5"
+msgstr "MD5"
+
+#: custom/zzbrick_tables/media.php
+msgid "Version"
+msgstr "Version"
+
+#: custom/zzbrick_tables/media.php
+msgid "Updated"
+msgstr "Stand"
+
+#: custom/zzbrick_tables/media.php
+msgid ""
+"Coloured border: medium is published; gray border: medium is not published."
+msgstr ""
+"Farbiger Rahmen: Medium ist veröffentlicht; grauer Rahmen: Medium ist nicht "
+"veröffentlicht."
+
+#: custom/zzbrick_tables/media.php
+msgid "Media Pool"
+msgstr "Medienpool"
+
+#: custom/zzbrick_tables/media.php
+msgid "The filename will be used as a default if nothing is entered."
+msgstr "Der Dateiname wird verwendet, falls nichts eingegeben wird."
+
+#: custom/zzbrick_tables/media.php
+msgid "yes"
+msgstr "ja"
+
+#: custom/zzbrick_tables/media.php
+msgid "no"
+msgstr "nein"
+
+#: custom/zzbrick_tables/media.php
+msgid "good for photos"
+msgstr "passend für Photos"
+
+#: custom/zzbrick_tables/media.php
+msgid "good for drawings & texts / transparency"
+msgstr "passend für Zeichnungen und Text, Transparenz"
+
+#: custom/zzbrick_tables/media.php
+msgid "good for drawings & texts / transparency (deprecated)"
+msgstr "passend für Zeichnungen und Text, Transparenz (veraltet)"
+
+#: custom/zzbrick_tables/media.php
+msgid "at"
+msgstr "um"
+
+#: custom/zzbrick_tables/media.php
+msgid "h"
+msgstr "Uhr"
+
+#: custom/zzbrick_tables/media.php
+msgid ""
+"Digital photography: If nothing is entered, date and time will be read from "
+"file."
+msgstr ""
+"Digitalphotos: Falls nichts eingegeben wird, werden Datum und Zeit aus der "
+"Datei ausgelesen."
+
+#: custom/zzbrick_tables/media.php
+msgid "Source"
+msgstr "Quelle"
+
+#: custom/zzbrick_tables/media.php
+msgid ""
+"If it's not a medium created by yourself, who created it, where did you find "
+"it?"
+msgstr "Falls es kein selbst erstelltes Medium ist: Urheberrechtsvermerk"
+
+#: custom/zzbrick_tables/media.php
+msgid "Display as Table"
+msgstr "Darstellung als Tabelle"
+
+#: custom/zzbrick_tables/media.php
+msgid "Display as Gallery"
+msgstr "Darstellung als Galerie"
