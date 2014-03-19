@@ -31,12 +31,12 @@ function mod_media_medium($params) {
 
 	if (!$params) return false;
 	$filename = '/'.implode('/', $params);
-	$filetype = substr($filename, strrpos($filename, '.')+1);
-	$identifier = substr($filename, 0, strrpos($filename, '.'));
+	$filetype = substr($filename, strrpos($filename, '.') + 1);
+	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
 	foreach ($zz_setting['media_sizes'] as $size) {
-		if (substr($identifier, - (strlen($size) + 1)) === '.'.$size) {
-			$identifier = substr($identifier, 0, - strlen($size) - 1);
+		if (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
+			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
 			break;
 		}
 	}
