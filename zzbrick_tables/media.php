@@ -14,17 +14,12 @@
 
 $zz['table'] = '/*_PREFIX_*/media';
 
+// @todo put into language module
 $language_code = $zz_conf['language'];
 $possible_codes = array('en', 'fr', 'de');
 if (!in_array($language_code, $possible_codes)) {
 	$language_code = $possible_codes[0];
 }
-
-$media_sizes['small'] = array('width' => 80, 'height' => 80, 'action' => 'crop', 'path' => '80');
-$media_sizes['min'] = array('width' => 120, 'height' => 120, 'action' => 'crop', 'path' => '120');
-$media_sizes['med'] = array('width' => 240, 'height' => 240, 'action' => 'thumbnail', 'path' => '240');
-$media_sizes['max'] = array('width' => 640, 'height' => 640, 'action' => 'thumbnail', 'path' => '640');
-$media_sizes['big'] = array('width' => 800, 'height' => 800, 'action' => 'thumbnail', 'path' => '800');
 
 $zz['fields'][1]['title'] = 'ID';
 $zz['fields'][1]['field_name'] = 'medium_id';
@@ -43,11 +38,7 @@ $zz['fields'][8]['sql_ignore'] = 'filename';
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['show_hierarchy'] = 'main_medium_id';
 $zz['fields'][8]['show_hierarchy_same_table'] = true;
-if (!empty($zz['where']['main_medium_id'])) {
-	$zz['fields'][8]['type'] = 'hidden';
-	$zz['fields'][8]['class'] = 'hidden';
-	$zz['fields'][8]['value'] = $zz['where']['main_medium_id'];
-}
+$zz['fields'][8]['if']['where']['hide_in_form'] = true;
 
 $zz['fields'][14]['title'] = 'Medium';
 $zz['fields'][14]['field_name'] = 'image';
@@ -59,7 +50,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 }
 $zz['fields'][14]['unless'][2]['link'] =  array(
 	'root' => $zz_setting['media_folder'], 
-	'webroot' => '/files',
+	'webroot' => $zz_setting['files_path'],
 	'string1' => '/',
 	'field1' => 'filename',
 	'string2' => '.',
@@ -71,11 +62,11 @@ $zz['fields'][14]['unless'][2]['link'] =  array(
 );
 $zz['fields'][14]['path'] = array(
 	'root' => $zz_setting['media_folder'], 
-	'webroot' => '/files',
+	'webroot' => $zz_setting['files_path'],
 	'string1' => '/',
 	'field1' => 'filename',
 	'string2' => '.',
-	'string3' => $media_sizes['min']['path'],
+	'string3' => $zz_setting['media_sizes']['min']['path'],
 	'string4' => '.',
 	'extension' => 'thumb_extension',
 	'webstring1' => '?v=',
@@ -96,7 +87,7 @@ $zz['fields'][14]['image'][0]['path']['extension'] = 'master_extension';
 $zz['fields'][14]['image'][0]['required'] = true;
 
 $i = 1;
-foreach ($media_sizes as $title => $size) {
+foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['title'] = $title;
 	$zz['fields'][14]['image'][$i]['path'] = $zz['fields'][14]['path'];
 	$zz['fields'][14]['image'][$i]['path']['string3'] = $size['path'];
@@ -110,10 +101,10 @@ foreach ($media_sizes as $title => $size) {
 
 $zz['fields'][14]['if'][2]['type'] = 'image';
 $zz['fields'][14]['if'][2]['path'] = array (
-	'string1' => '/_layout/media/folder-'.$media_sizes['min']['path'].'.png',
+	'string1' => '/_layout/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png',
 	'ignore_record' => true
 );
-$zz['fields'][14]['if'][2]['default_image'] = '/_layout/media/folder-'.$media_sizes['min']['path'].'.png';
+$zz['fields'][14]['if'][2]['default_image'] = '/_layout/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
 $zz['fields'][14]['if'][2]['class'] = 'folder';
 
 $zz['fields'][16]['title'] = 'Thumbnail';
@@ -161,7 +152,7 @@ $zz['fields'][2]['field_name'] = 'title';
 $zz['fields'][2]['upload_field'] = 14;
 $zz['fields'][2]['upload_value'] = 'title';
 $zz['fields'][2]['unless'][2]['explanation'] = wrap_text('The filename will be used as a default if nothing is entered.');
-$zz['fields'][2]['class'] = 'bildunterschrift';
+$zz['fields'][2]['class'] = 'legend';
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
