@@ -52,6 +52,7 @@ $zz['fields'][5]['title'] = 'Count';
 $zz['fields'][5]['field_name'] = 'count_files';
 $zz['fields'][5]['type'] = 'display';
 $zz['fields'][5]['class'] = 'number';
+$zz['fields'][5]['exclude_from_search'] = true;
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/filetypes.*
 		, (SELECT COUNT(medium_id) FROM /*_PREFIX_*/media
