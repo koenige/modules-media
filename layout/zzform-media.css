@@ -21,12 +21,12 @@
 					{ display: inline; border: none; }
 #zzform .medium p a, #zzform .folder p a
 					{ border-color: #CCC; }
-#zzform p.published a:link, #zzform td.published a:link
-#zzform p.published a:visited, #zzform td.published a:visited, 
+#zzform .data .published a:link,
+#zzform .data .published a:visited,
 #zzform .data .published img
 					{ border-color: #ADC90E; }
-#zzform p.unpublished a:link, #zzform td.unpublished a:link
-#zzform p.unpublished a:visited, #zzform td.unpublished a:visited,
+#zzform .data .unpublished a:link,
+#zzform .data .unpublished a:visited,
 #zzform .data .unpublished img
 					{ border-color: #CCC; }
 #zzform .data .medium a:link:hover, #zzform .data .folder a:link:hover,
