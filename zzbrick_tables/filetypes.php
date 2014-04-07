@@ -23,11 +23,13 @@ $zz['fields'][6]['field_name'] = 'filetype';
 $zz['fields'][6]['type'] = 'text';
 $zz['fields'][6]['list_prefix'] = '<strong>';
 $zz['fields'][6]['list_suffix'] = '</strong>';
+$zz['fields'][6]['class'] = 'block480a';
 
 $zz['fields'][4]['title'] = 'Description';
 $zz['fields'][4]['field_name'] = 'filetype_description';
 $zz['fields'][4]['list_append_next'] = true;
 $zz['fields'][4]['list_suffix'] = '<br>';
+$zz['fields'][4]['class'] = 'block480';
 
 $zz['fields'][2]['title'] = 'MIME Content Type';
 $zz['fields'][2]['field_name'] = 'mime_content_type';
@@ -47,12 +49,14 @@ $zz['fields'][7]['type'] = 'text';
 $zz['fields'][7]['prefix'] = '.';
 $zz['fields'][7]['list_prefix'] = '.';
 $zz['fields'][7]['null_string'] = true;
+$zz['fields'][7]['class'] = 'hidden480';
 
 $zz['fields'][5]['title'] = 'Count';
 $zz['fields'][5]['field_name'] = 'count_files';
 $zz['fields'][5]['type'] = 'display';
 $zz['fields'][5]['class'] = 'number';
 $zz['fields'][5]['exclude_from_search'] = true;
+$zz['fields'][5]['class'] = 'hidden480';
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/filetypes.*
 		, (SELECT COUNT(medium_id) FROM /*_PREFIX_*/media
