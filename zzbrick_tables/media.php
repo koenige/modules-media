@@ -313,7 +313,6 @@ $zz_conf['limit'] = 42;
 if (empty($brick['local_settings']['no_publish'])) {
 	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
-$zz_conf['delete'] = true;
 $zz_conf['list_display'] = 'ul';
 
 $zz_conf['add'] = array();
