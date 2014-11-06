@@ -177,6 +177,14 @@ if ($view === 'gallery') {
 	$zz['fields'][3]['list_prefix'] = '<div style="font-size: 90%;">';
 	$zz['fields'][3]['list_suffix'] = '</div>';
 
+	// Filetype
+	$zz['fields'][15]['hide_in_list'] = false;
+	$zz['fields'][15]['list_append_next'] = true;
+	$zz['fields'][15]['list_suffix'] = ', ';
+
+	// Filesize
+	$zz['fields'][26]['hide_in_list'] = false;
+
 	$zz_conf['list_display'] = 'table';
 
 	// Hierarchy ...
