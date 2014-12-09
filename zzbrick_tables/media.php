@@ -151,7 +151,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 $zz['fields'][2]['field_name'] = 'title';
 $zz['fields'][2]['upload_field'] = 14;
 $zz['fields'][2]['upload_value'] = 'title';
-$zz['fields'][2]['unless'][2]['explanation'] = wrap_text('The filename will be used as a default if nothing is entered.');
+$zz['fields'][2]['unless'][2]['explanation'] = 'The filename will be used as a default if nothing is entered.';
 $zz['fields'][2]['class'] = 'legend';
 
 $zz['fields'][3]['field_name'] = 'description';
