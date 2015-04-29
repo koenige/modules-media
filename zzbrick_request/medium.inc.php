@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -40,7 +40,7 @@ function mod_media_medium($params) {
 			break;
 		}
 	}
-	$sql = 'SELECT medium_id
+	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 		FROM /*_PREFIX_*/media media
 		LEFT JOIN /*_PREFIX_*/filetypes filetypes
 			ON filetypes.filetype_id = media.thumb_filetype_id
@@ -50,8 +50,12 @@ function mod_media_medium($params) {
 
 	// Check access rights
 	$file = wrap_db_fetch($sql);
+	if (!$file) return false;
 	// If no public access, require login
-	if (!$file) require_once $zz_setting['core'].'/auth.inc.php';
+	if (!$file['published']) {
+		require_once $zz_setting['core'].'/auth.inc.php';
+		wrap_auth(1);
+	}
 
 	$file['name'] = $zz_setting['media_folder'].$filename;
 	// Check if file exists
