@@ -28,10 +28,18 @@
 function mod_media_medium($params) {
 	global $zz_conf;
 	global $zz_setting;
+	global $zz_page;
 
 	if (!$params) return false;
 	$filename = '/'.implode('/', $params);
 	$filetype = substr($filename, strrpos($filename, '.') + 1);
+	// sometimes, browsers coming from search engines interpret ? wrong as %3F
+	if ($redirect = strpos($filetype, '%3Fv=')) {
+		$filetype = substr($filetype, 0, $redirect);
+		$filename = substr($filename, 0, strpos($filename, '%3Fv='));
+		$new_url = explode('%3Fv=', $zz_page['url']['full']['path']);
+		$new_url = implode('?v=', $new_url);
+	}
 	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
 	foreach ($zz_setting['media_sizes'] as $size) {
@@ -60,6 +68,9 @@ function mod_media_medium($params) {
 	$file['name'] = $zz_setting['media_folder'].$filename;
 	// Check if file exists
 	if (!file_exists($file['name'])) return false;
+	if ($redirect) {
+		return brick_format('%%% redirect '.$new_url.' %%%');
+	}
 	$file['etag'] = md5_file($file['name']);
 	return wrap_file_send($file);
 }
