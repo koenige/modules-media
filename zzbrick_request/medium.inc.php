@@ -42,7 +42,9 @@ function mod_media_medium($params) {
 	}
 	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
-	foreach ($zz_setting['media_sizes'] as $size) {
+	$media_sizes = $zz_setting['media_sizes'];
+	$media_sizes['master'] = array('path' => 'master'); 
+	foreach ($media_sizes as $size) {
 		if (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
 			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
 			break;
@@ -50,11 +52,13 @@ function mod_media_medium($params) {
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 		FROM /*_PREFIX_*/media media
+		LEFT JOIN /*_PREFIX_*/filetypes thumb_filetypes
+			ON thumb_filetypes.filetype_id = media.thumb_filetype_id
 		LEFT JOIN /*_PREFIX_*/filetypes filetypes
-			ON filetypes.filetype_id = media.thumb_filetype_id
+			ON filetypes.filetype_id = media.filetype_id
 		WHERE filename = "%s"
-		AND filetype = "%s"';
-	$sql = sprintf($sql, wrap_db_escape($identifier), wrap_db_escape($filetype));
+		AND (thumb_filetypes.filetype = "%s" OR filetypes.filetype = "%s")';
+	$sql = sprintf($sql, wrap_db_escape($identifier), wrap_db_escape($filetype), wrap_db_escape($filetype));
 
 	// Check access rights
 	$file = wrap_db_fetch($sql);
