@@ -257,6 +257,7 @@ $zz['fields'][34]['hide_in_list'] = true;
 $zz['fields'][34]['upload_field'] = 14;
 $zz['fields'][34]['upload_value'] = 'md5';
 $zz['fields'][34]['dont_show_missing'] = true;
+$zz['fields'][34]['exclude_from_search'] = true;
 $zz['fields'][34]['if']['add']['hide_in_form'] = true;
 $zz['fields'][34]['if'][2] = false;
 
