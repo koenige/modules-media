@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2014 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2015 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -130,6 +130,7 @@ $zz['fields'][16]['concat_fields'] = ' – ';
 $zz['fields'][16]['display_field'] = 'thumb_extension';
 $zz['fields'][16]['default'] = 1; // image/jpeg
 $zz['fields'][16]['hide_in_list'] = true;
+$zz['fields'][16]['hide_novalue'] = false;
 $zz['fields'][16]['search'] = 't_mime.extension';
 $zz['fields'][16]['separator'] = true;
 $zz['fields'][16]['if'][2] = false;
