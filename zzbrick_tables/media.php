@@ -135,6 +135,7 @@ $zz['fields'][16]['search'] = 't_mime.extension';
 $zz['fields'][16]['separator'] = true;
 $zz['fields'][16]['if'][2] = false;
 $zz['fields'][16]['show_values_as_list'] = true;
+$zz['fields'][16]['character_set'] = 'latin1';
 
 $zz['fields'][9]['title'] = 'Published?';
 $zz['fields'][9]['title_tab'] = 'WWW?';
@@ -180,6 +181,7 @@ if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_al
 		WHERE website = "yes"
 		ORDER BY language_%s', $language_code, $language_code);
 	$zz['fields'][24]['display_field'] = sprintf('language_%s', $language_code);
+	$zz['fields'][24]['exclude_from_search'] = true;
 }
 
 $zz['fields'][4]['field_name'] = 'date';
@@ -239,6 +241,7 @@ $zz['fields'][15]['suffix'] = ', ';
 $zz['fields'][15]['if']['add']['hide_in_form'] = true;
 $zz['fields'][15]['if'][2]['append_next'] = false;
 $zz['fields'][15]['if'][2]['hide_in_form'] = true;
+$zz['fields'][15]['character_set'] = 'latin1';
 
 $zz['fields'][26]['title'] = 'Filesize';
 $zz['fields'][26]['field_name'] = 'filesize';
