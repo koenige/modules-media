@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2014 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2015 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -89,7 +89,7 @@ $variants[1]['link'] = '-/';
 
 if ($view === 'gallery') {
 	if (!empty($zz['where']['main_medium_id'])) {
-		$zz['explanation'] = $folder['description'];
+		$zz['explanation'] = markdown($folder['description']);
 		$base_path = str_repeat('../', substr_count($path, '/') + 1);
 		$base_link = str_repeat('../', substr_count($link, '/'));
 		$variants[1]['link'] = $base_link.$variants[1]['link'];
