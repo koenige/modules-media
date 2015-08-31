@@ -193,6 +193,7 @@ $zz['fields'][4]['list_prefix'] = '<em>';
 $zz['fields'][4]['list_suffix'] = '</em>';
 $zz['fields'][4]['append_next'] = true;
 $zz['fields'][4]['if'][2]['hide_in_form'] = true;
+$zz['fields'][4]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][5]['field_name'] = 'time';
 $zz['fields'][5]['type'] = 'time';
@@ -242,6 +243,7 @@ $zz['fields'][15]['if']['add']['hide_in_form'] = true;
 $zz['fields'][15]['if'][2]['append_next'] = false;
 $zz['fields'][15]['if'][2]['hide_in_form'] = true;
 $zz['fields'][15]['character_set'] = 'latin1';
+$zz['fields'][15]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][26]['title'] = 'Filesize';
 $zz['fields'][26]['field_name'] = 'filesize';
@@ -253,7 +255,8 @@ $zz['fields'][26]['upload_value'] = 'size';
 $zz['fields'][26]['hide_in_list'] = true;
 $zz['fields'][26]['dont_show_missing'] = true;
 $zz['fields'][26]['if']['add']['hide_in_form'] = true;
-$zz['fields'][26]['if'][2] = false;
+$zz['fields'][26]['if'][2]['hide_in_form'] = true;
+$zz['fields'][26]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][34]['title'] = 'MD5';
 $zz['fields'][34]['field_name'] = 'md5_hash';
