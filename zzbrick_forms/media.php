@@ -168,7 +168,8 @@ if ($view === 'gallery') {
 
 	// Sequence
 	if (!empty($zz['fields'][33])) {
-		$zz['fields'][33]['hide_in_list'] = true;
+		$zz['fields'][33]['list_append_next'] = false;
+		$zz['fields'][33]['list_suffix'] = '';
 	}
 
 	// Description
@@ -178,12 +179,14 @@ if ($view === 'gallery') {
 	$zz['fields'][3]['list_suffix'] = '</div>';
 
 	// Filetype
+	$zz['fields'][15]['title_tab'] = 'Type';
 	$zz['fields'][15]['hide_in_list'] = false;
-	$zz['fields'][15]['list_append_next'] = true;
-	$zz['fields'][15]['list_suffix'] = ', ';
+	$zz['fields'][15]['list_append_next'] = false;
 
 	// Filesize
 	$zz['fields'][26]['hide_in_list'] = false;
+	$zz['fields'][26]['list_format'] = 'wrap_bytes';
+	$zz['fields'][26]['list_unit'] = '';
 
 	$zz_conf['list_display'] = 'table';
 
