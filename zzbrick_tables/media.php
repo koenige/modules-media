@@ -155,6 +155,7 @@ $zz['fields'][2]['upload_field'] = 14;
 $zz['fields'][2]['upload_value'] = 'title';
 $zz['fields'][2]['unless'][2]['explanation'] = 'The filename will be used as a default if nothing is entered.';
 $zz['fields'][2]['class'] = 'legend';
+$zz['fields'][2]['class'] = 'block480a';
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
@@ -169,6 +170,7 @@ if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['type'] = 'number';
 	$zz['fields'][33]['list_append_next'] = true;
 	$zz['fields'][33]['list_suffix'] = ' &#8211; ';
+	$zz['fields'][33]['class'] = 'hidden480';
 }
 
 if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_allowed']) > 1) {
@@ -194,6 +196,7 @@ $zz['fields'][4]['list_suffix'] = '</em>';
 $zz['fields'][4]['append_next'] = true;
 $zz['fields'][4]['if'][2]['hide_in_form'] = true;
 $zz['fields'][4]['hide_in_list_if_empty'] = true;
+$zz['fields'][4]['class'] = 'hidden480';
 
 $zz['fields'][5]['field_name'] = 'time';
 $zz['fields'][5]['type'] = 'time';
@@ -244,6 +247,7 @@ $zz['fields'][15]['if'][2]['append_next'] = false;
 $zz['fields'][15]['if'][2]['hide_in_form'] = true;
 $zz['fields'][15]['character_set'] = 'latin1';
 $zz['fields'][15]['hide_in_list_if_empty'] = true;
+$zz['fields'][15]['class'] = 'block480a';
 
 $zz['fields'][26]['title'] = 'Filesize';
 $zz['fields'][26]['field_name'] = 'filesize';
@@ -257,6 +261,7 @@ $zz['fields'][26]['dont_show_missing'] = true;
 $zz['fields'][26]['if']['add']['hide_in_form'] = true;
 $zz['fields'][26]['if'][2]['hide_in_form'] = true;
 $zz['fields'][26]['hide_in_list_if_empty'] = true;
+$zz['fields'][26]['class'] = 'block480';
 
 $zz['fields'][34]['title'] = 'MD5';
 $zz['fields'][34]['field_name'] = 'md5_hash';
