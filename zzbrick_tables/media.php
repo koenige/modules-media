@@ -325,6 +325,7 @@ $zz_conf['max_select'] = 100;
 $zz_conf['limit'] = 42;
 
 if (empty($brick['local_settings']['no_publish'])) {
+	if (!isset($zz_conf['footer_text'])) $zz_conf['footer_text'] = '';
 	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
 $zz_conf['list_display'] = 'ul';
