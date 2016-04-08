@@ -162,7 +162,12 @@ $zz['fields'][3]['type'] = 'memo';
 $zz['fields'][3]['format'] = 'markdown';
 $zz['fields'][3]['hide_in_list'] = true;
 
+// additional fields
 $zz['fields'][6] = false; // media_categories
+$zz['fields'][41] = false;
+$zz['fields'][42] = false;
+$zz['fields'][43] = false;
+$zz['fields'][44] = false;
 
 if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['title_tab'] = 'Seq.';
