@@ -39,4 +39,4 @@
 #zzform ul.data p.legend
 					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; }
 
-#zzform img.icon	{ padding: 0 5px; }
+#zzform img.icon	{ padding: 0 5px; vertical-align: middle; }
