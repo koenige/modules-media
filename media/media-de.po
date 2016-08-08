@@ -136,7 +136,7 @@ msgstr "Quelle"
 
 #: custom/zzbrick_tables/media.php
 msgid ""
-"If it's not a medium created by yourself, who created it, where did you find "
+"If it’s not a medium created by yourself, who created it, where did you find "
 "it?"
 msgstr "Falls es kein selbst erstelltes Medium ist: Urheberrechtsvermerk"
 
