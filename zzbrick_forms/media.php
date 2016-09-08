@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2015 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2016 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -48,7 +48,7 @@ if ($path) {
 	$sql = sprintf($sql, $path);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
-	if ($view !== 'tree') {
+	if ($view !== 'tree' AND empty($_GET['q'])) {
 		$zz['where']['main_medium_id'] = $folder['medium_id'];
 	}
 }
@@ -94,7 +94,11 @@ if ($view === 'gallery') {
 		$base_link = str_repeat('../', substr_count($link, '/'));
 		$variants[1]['link'] = $base_link.$variants[1]['link'];
 	} else {
-		$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
+		if (empty($_GET['q'])) {
+			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
+		} else {
+			$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', $zz_setting['filetype_ids']['folder']);
+		}
 		$base_path = '';
 	}
 } else {
@@ -139,6 +143,8 @@ if ($view === 'gallery') {
 	} else {
 		$zz['title'] .= 'TOP</small>';
 	}
+	
+	$zz_conf['search_form_always'] = true;
 } else {
 	$zz_conf['breadcrumbs'][] = array(
 		'linktext' => '<strong>'.wrap_text('Filetree').'</strong>'
