@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2015 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2016 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -72,7 +72,7 @@ $zz['fields'][14]['path'] = array(
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
 );
-$zz['fields'][14]['default_image'] = '/_layout/media/no-preview.png';
+$zz['fields'][14]['default_image'] = $zz_setting['layout_path'].'/media/no-preview.png';
 $zz['fields'][14]['input_filetypes'] = array_keys(wrap_db_fetch('SELECT filetype 
 FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
 
@@ -101,10 +101,10 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 
 $zz['fields'][14]['if'][2]['type'] = 'image';
 $zz['fields'][14]['if'][2]['path'] = array (
-	'string1' => '/_layout/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png',
+	'string1' => $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png',
 	'ignore_record' => true
 );
-$zz['fields'][14]['if'][2]['default_image'] = '/_layout/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
+$zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
 $zz['fields'][14]['if'][2]['class'] = 'folder';
 
 $zz['fields'][16]['title'] = 'Thumbnail';

@@ -77,12 +77,12 @@ if (!empty($brick['local_settings']['title'])) {
 	}
 }
 
-$variants[0]['img'] = '/_layout/media/list-ul.png';
+$variants[0]['img'] = $zz_setting['layout_path'].'/media/list-ul.png';
 $variants[0]['alt'] = wrap_text('Display as Gallery');
 $variants[0]['title'] = wrap_text('Display as Gallery');
 $variants[0]['link'] = '';
 
-$variants[1]['img'] = '/_layout/media/list-table.png';
+$variants[1]['img'] = $zz_setting['layout_path'].'/media/list-table.png';
 $variants[1]['alt'] = wrap_text('Display as Table');
 $variants[1]['title'] = wrap_text('Display as Table');
 $variants[1]['link'] = '-/';
@@ -162,7 +162,7 @@ if ($view === 'gallery') {
 		'webstring1' => '?v=',
 		'webfield1' => 'version'
 	);
-	$zz['fields'][14]['if'][2]['default_image'] = '/_layout/media/folder-120.png';
+	$zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-120.png';
 	if (!empty($zz['fields'][14]['if'][2]['class']))
 		$zz['fields'][14]['if'][2]['class'] .= ' stretch40';
 	if (!empty($zz['fields'][14]['class']))
