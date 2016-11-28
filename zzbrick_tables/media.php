@@ -335,13 +335,12 @@ if (empty($brick['local_settings']['no_publish'])) {
 }
 $zz_conf['list_display'] = 'ul';
 
-$zz_conf['add'] = array();
-$zz_conf['add'][] = array(
+$zz['add'][] = array(
 	'type' => wrap_text('File'),
 	'field_name' => 'filetype_id',
 	'value' => ''
 );
-$zz_conf['add'][] = array(
+$zz['add'][] = array(
 	'type' => wrap_text('Folder'),
 	'field_name' => 'filetype_id',
 	'value' => $zz_setting['filetype_ids']['folder']
