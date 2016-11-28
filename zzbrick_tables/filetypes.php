@@ -36,12 +36,12 @@ $zz['fields'][2]['field_name'] = 'mime_content_type';
 $zz['fields'][2]['type'] = 'text';
 $zz['fields'][2]['list_append_next'] = true;
 $zz['fields'][2]['list_append_show_title'] = true; 
-$zz['fields'][2]['list_prefix'] = '<em>'; 
+$zz['fields'][2]['list_prefix'] = '<em>';
 
 $zz['fields'][3]['title'] = 'MIME Subtype';
 $zz['fields'][3]['field_name'] = 'mime_subtype';
 $zz['fields'][3]['list_prefix'] = '/';
-$zz['fields'][3]['list_suffix'] = '</em>'; 
+$zz['fields'][3]['list_suffix'] = '</em>';
 
 $zz['fields'][7]['title_tab'] = 'Ext.';
 $zz['fields'][7]['field_name'] = 'extension';
