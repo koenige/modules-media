@@ -94,7 +94,7 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['width'] = $size['width'];
 	$zz['fields'][14]['image'][$i]['height'] = $size['height'];
 	$zz['fields'][14]['image'][$i]['action'] = $size['action'];
-	$zz['fields'][14]['image'][$i]['source'] = 0;
+	$zz['fields'][14]['image'][$i]['source'] = !empty($size['source']) ? $size['source'] : 0;
 	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36];
 	if ($size['action'] === 'crop') {
 		$zz['fields'][14]['image'][$i]['options'] = [36];
