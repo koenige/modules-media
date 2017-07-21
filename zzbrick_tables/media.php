@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2016 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -16,7 +16,7 @@ $zz['table'] = '/*_PREFIX_*/media';
 
 // @todo put into language module
 $language_code = $zz_conf['language'];
-$possible_codes = array('en', 'fr', 'de');
+$possible_codes = ['en', 'fr', 'de'];
 if (!in_array($language_code, $possible_codes)) {
 	$language_code = $possible_codes[0];
 }
@@ -48,7 +48,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 	$zz['fields'][14]['class'] = 'medium published';
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
-$zz['fields'][14]['unless'][2]['link'] =  array(
+$zz['fields'][14]['unless'][2]['link'] = [
 	'root' => $zz_setting['media_folder'], 
 	'webroot' => $zz_setting['files_path'],
 	'string1' => '/',
@@ -59,8 +59,8 @@ $zz['fields'][14]['unless'][2]['link'] =  array(
 	'extension' => 'master_extension',
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
-);
-$zz['fields'][14]['path'] = array(
+];
+$zz['fields'][14]['path'] = [
 	'root' => $zz_setting['media_folder'], 
 	'webroot' => $zz_setting['files_path'],
 	'string1' => '/',
@@ -71,7 +71,7 @@ $zz['fields'][14]['path'] = array(
 	'extension' => 'thumb_extension',
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
-);
+];
 $zz['fields'][14]['default_image'] = $zz_setting['layout_path'].'/media/no-preview.png';
 $zz['fields'][14]['input_filetypes'] = array_keys(wrap_db_fetch('SELECT filetype 
 FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
@@ -95,15 +95,18 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['height'] = $size['height'];
 	$zz['fields'][14]['image'][$i]['action'] = $size['action'];
 	$zz['fields'][14]['image'][$i]['source'] = 0;
-	$zz['fields'][14]['image'][$i]['recreate_on_change'] = array(16);
+	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36];
+	if ($size['action'] === 'crop') {
+		$zz['fields'][14]['image'][$i]['options'] = [36];
+	}
 	$i++;
 }
 
 $zz['fields'][14]['if'][2]['type'] = 'image';
-$zz['fields'][14]['if'][2]['path'] = array (
+$zz['fields'][14]['if'][2]['path'] = [
 	'string1' => $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png',
 	'ignore_record' => true
-);
+];
 $zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
 $zz['fields'][14]['if'][2]['class'] = 'folder';
 
@@ -141,7 +144,7 @@ $zz['fields'][9]['title'] = 'Published?';
 $zz['fields'][9]['title_tab'] = 'WWW?';
 $zz['fields'][9]['field_name'] = 'published';
 $zz['fields'][9]['type'] = 'select';
-$zz['fields'][9]['enum'] = array('yes', 'no');
+$zz['fields'][9]['enum'] = ['yes', 'no'];
 $zz['fields'][9]['hide_in_list'] = true;
 if (empty($brick['local_settings']['no_publish'])) {
 	$zz['fields'][9]['default'] = 'yes';
@@ -168,6 +171,27 @@ $zz['fields'][41] = false;
 $zz['fields'][42] = false;
 $zz['fields'][43] = false;
 $zz['fields'][44] = false;
+
+$crop = false;
+foreach ($zz_setting['media_sizes'] as $size) {
+	if ($size['action'] === 'crop') $crop = true;
+}
+if ($crop) {
+	$zz['fields'][36]['field_name'] = 'clipping';
+	$zz['fields'][36]['explanation'] = 'Position of clipping of cropped image';
+	$zz['fields'][36]['type'] = 'select';
+	$zz['fields'][36]['enum'] = ['center', 'top', 'right', 'bottom', 'left'];
+	$zz['fields'][36]['default'] = 'center';
+	$zz['fields'][36]['hide_in_list'] = true;
+	$zz['fields'][36]['if'][2]['hide_in_form'] = true;
+	$zz['fields'][36]['options'] = [
+		'center' => ['action' => 'crop_center'],
+		'top' => ['action' => 'crop_top'],
+		'right' => ['action' => 'crop_right'],
+		'bottom' => ['action' => 'crop_bottom'],
+		'left' => ['action' => 'crop_left']
+	];
+}
 
 if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['title_tab'] = 'Seq.';
@@ -226,7 +250,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 
 $zz['fields'][10]['field_name'] = 'filename';
 $zz['fields'][10]['type'] = 'identifier';
-$zz['fields'][10]['fields'] = array('main_medium_id[filename]', 'title');
+$zz['fields'][10]['fields'] = ['main_medium_id[filename]', 'title'];
 $zz['fields'][10]['class'] = 'hidden';
 $zz['fields'][10]['hide_in_list'] = true;
 $zz['fields'][10]['conf_identifier']['concat'] = '/';	
@@ -335,15 +359,15 @@ if (empty($brick['local_settings']['no_publish'])) {
 }
 $zz_conf['list_display'] = 'ul';
 
-$zz['add'][] = array(
+$zz['add'][] = [
 	'type' => wrap_text('File'),
 	'field_name' => 'filetype_id',
 	'value' => ''
-);
-$zz['add'][] = array(
+];
+$zz['add'][] = [
 	'type' => wrap_text('Folder'),
 	'field_name' => 'filetype_id',
 	'value' => $zz_setting['filetype_ids']['folder']
-);
+];
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
