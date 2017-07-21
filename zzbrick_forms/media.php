@@ -194,6 +194,10 @@ if ($view === 'gallery') {
 	$zz['fields'][26]['list_format'] = 'wrap_bytes';
 	$zz['fields'][26]['list_unit'] = '';
 
+	// Pixel size
+	$zz['fields'][37]['hide_in_list'] = false;
+	$zz['fields'][38]['hide_in_list'] = false;
+
 	$zz_conf['list_display'] = 'table';
 
 	// Hierarchy ...

@@ -303,6 +303,53 @@ $zz['fields'][34]['exclude_from_search'] = true;
 $zz['fields'][34]['if']['add']['hide_in_form'] = true;
 $zz['fields'][34]['if'][2] = false;
 
+$zz['fields'][37]['title_append'] = 'Size';
+$zz['fields'][37]['title_tab'] = 'Size';
+$zz['fields'][37]['title'] = 'Width';
+$zz['fields'][37]['field_name'] = 'width_px';
+$zz['fields'][37]['type'] = 'hidden';
+$zz['fields'][37]['type_detail'] = 'number';
+$zz['fields'][37]['unit'] = 'px';
+$zz['fields'][37]['upload_field'] = 14;
+// values for RAW images are not correct in upload[width]
+$zz['fields'][37]['upload_value'] = array(
+	'exiftool[SubIFD1][ImageWidth][val]',
+	'exiftool[IFD0][ImageWidth][val]',
+	'exiftool[File][ImageWidth][val]',
+	'exif[ImageWidth]',
+	'exif[COMPUTED][Width]',
+	'upload[width]'
+);
+$zz['fields'][37]['if'][81]['upload_value'] = 'modified[width]';
+$zz['fields'][37]['suffix'] = ' × ';
+$zz['fields'][37]['list_suffix'] = ' × ';
+$zz['fields'][37]['append_next'] = true;
+$zz['fields'][37]['dont_show_missing'] = true;
+$zz['fields'][37]['if']['add']['hide_in_form'] = true;
+$zz['fields'][37]['if'][2]['hide_in_form'] = true;
+$zz['fields'][37]['hide_in_list'] = true;
+$zz['fields'][37]['list_append_next'] = true;
+
+$zz['fields'][38]['title'] = 'Height';
+$zz['fields'][38]['field_name'] = 'height_px';
+$zz['fields'][38]['type'] = 'hidden';
+$zz['fields'][38]['type_detail'] = 'number';
+$zz['fields'][38]['unit'] = 'px';
+$zz['fields'][38]['upload_field'] = 14;
+$zz['fields'][38]['dont_show_missing'] = true;
+// values for RAW images are not correct in upload[height]
+$zz['fields'][38]['upload_value'] = array(
+	'exiftool[SubIFD1][ImageHeight][val]',
+	'exiftool[IFD0][ImageHeight][val]',
+	'exiftool[File][ImageHeight][val]',
+	'exif[ImageLength]',
+	'exif[COMPUTED][Height]',
+	'upload[height]'
+);
+$zz['fields'][38]['if']['add']['hide_in_form'] = true;
+$zz['fields'][38]['if'][2]['hide_in_form'] = true;
+$zz['fields'][38]['hide_in_list'] = true;
+
 $zz['fields'][35]['field_name'] = 'version';
 $zz['fields'][35]['type'] = 'hidden';
 $zz['fields'][35]['hide_in_list'] = true;

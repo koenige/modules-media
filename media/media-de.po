@@ -175,3 +175,11 @@ msgstr "unten"
 #: zzbrick_tables/media.php
 msgid "right"
 msgstr "rechts"
+
+#: zzbrick_tables/media.php
+msgid "Width"
+msgstr "Breite"
+
+#: zzbrick_tables/media.php
+msgid "Height"
+msgstr "Höhe"
