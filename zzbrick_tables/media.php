@@ -239,10 +239,12 @@ $zz['fields'][5]['if'][2] = false;
 
 if (empty($brick['local_settings']['no_publish'])) {
 	$zz['fields'][19]['field_name'] = 'source';
+	$zz['fields'][19]['type'] = 'text';
 	$zz['fields'][19]['hide_in_list'] = true;
 	$zz['fields'][19]['explanation'] = 'If it’s not a medium created by yourself, who created it, where did you find it?';
 	$zz['fields'][19]['if'][2] = false;
 	$zz['fields'][19]['separator'] = true;
+	$zz['fields'][19]['sql'] = 'SELECT DISTINCT source, source FROM media ORDER BY source';
 	$zz['fields'][19]['if']['add']['separator'] = false;
 } else {
 	$zz['fields'][5]['separator'] = true;
