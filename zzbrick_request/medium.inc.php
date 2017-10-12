@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -43,7 +43,7 @@ function mod_media_medium($params) {
 	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
 	$media_sizes = $zz_setting['media_sizes'];
-	$media_sizes['master'] = array('path' => 'master'); 
+	$media_sizes['master'] = ['path' => 'master']; 
 	foreach ($media_sizes as $size) {
 		if (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
 			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
@@ -76,5 +76,8 @@ function mod_media_medium($params) {
 		return brick_format('%%% redirect '.$new_url.' %%%');
 	}
 	$file['etag'] = md5_file($file['name']);
+	if (!empty($_GET['v'])) {
+		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
+	}
 	return wrap_file_send($file);
 }
