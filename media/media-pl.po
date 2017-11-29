@@ -1,0 +1,190 @@
+# media module
+# Translations, template
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2012-2014, 2017 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Zugzwang Project – Media Module\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: zzbrick_tables/media.php
+msgid "File"
+msgstr "Plik"
+
+#: zzbrick_tables/media.php
+msgid "Folder"
+msgstr "Folder"
+
+#: zzbrick_tables/media.php
+msgid "Medium"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: zzbrick_tables/media.php
+msgid "Published?"
+msgstr "Opublikowany?"
+
+#: zzbrick_tables/media.php
+msgid "Title"
+msgstr "Tytuł"
+
+#: zzbrick_tables/media.php
+msgid "Description"
+msgstr "Opis"
+
+#: zzbrick_tables/media.php
+msgid "Seq."
+msgstr "Nr"
+
+#: zzbrick_tables/media.php
+msgid "Sequence"
+msgstr "Sekwencja"
+
+#: zzbrick_tables/media.php
+msgid "Filetype"
+msgstr "Typ pliku"
+
+#: zzbrick_tables/media.php
+msgid "Filesize"
+msgstr "Wielkość Pliku"
+
+#: zzbrick_tables/media.php
+msgid "MD5"
+msgstr "MD5"
+
+#: zzbrick_tables/media.php
+msgid "Version"
+msgstr "Wersja"
+
+#: zzbrick_tables/media.php
+msgid "Updated"
+msgstr "Zaktualizowano"
+
+#: zzbrick_tables/media.php
+msgid ""
+"Coloured border: medium is published; gray border: medium is not published."
+msgstr ""
+"Ramkach: medium jest opublikowane; szare obramowanie: medium nie jest "
+"publikowana."
+
+#: zzbrick_tables/media.php
+msgid "Media Pool"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "The filename will be used as a default if nothing is entered."
+msgstr "Bez podania innej nazwy użyta będzie nazwa pliku."
+
+#: zzbrick_tables/media.php
+msgid "yes"
+msgstr "tak"
+
+#: zzbrick_tables/media.php
+msgid "no"
+msgstr "nie"
+
+#: zzbrick_tables/media.php
+msgid "good for photos"
+msgstr "dobre dla zdjęć"
+
+#: zzbrick_tables/media.php
+msgid "good for drawings & texts / transparency"
+msgstr "dobre dla rysunków & teksty / przezroczystości"
+
+#: zzbrick_tables/media.php
+msgid "good for drawings & texts / transparency (deprecated)"
+msgstr "dobre dla rysunków & teksty / przezroczystość (przestarzałe)"
+
+#: zzbrick_tables/media.php
+msgid "Time"
+msgstr "Godzina"
+
+#: zzbrick_tables/media.php
+msgid "at"
+msgstr "o"
+
+#: zzbrick_tables/media.php
+msgid "h"
+msgstr "h"
+
+#: zzbrick_tables/media.php
+msgid ""
+"Digital photography: If nothing is entered, date and time will be read from "
+"file."
+msgstr ""
+"Fotografia cyfrowa: Jeżeli dane nie zostają wprowadzone to w miare "
+"mozliwości zostaną odczytane ze zdjęcia."
+
+#: zzbrick_tables/media.php
+msgid "Source"
+msgstr "Źródło"
+
+#: zzbrick_tables/media.php
+msgid ""
+"If it’s not a medium created by yourself, who created it, where did you find "
+"it?"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Display as Table"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Display as Gallery"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Clipping"
+msgstr "Obcinanie"
+
+#: zzbrick_tables/media.php
+msgid "Position of clipping of cropped image"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "center"
+msgstr "do środka"
+
+#: zzbrick_tables/media.php
+msgid "top"
+msgstr "na górze"
+
+#: zzbrick_tables/media.php
+msgid "left"
+msgstr "do lewej"
+
+#: zzbrick_tables/media.php
+msgid "bottom"
+msgstr "na dole"
+
+#: zzbrick_tables/media.php
+msgid "right"
+msgstr "do prawej"
+
+#: zzbrick_tables/media.php
+msgid "Width"
+msgstr "Szerokość"
+
+#: zzbrick_tables/media.php
+msgid "Height"
+msgstr "Wysokość"
