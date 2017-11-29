@@ -42,7 +42,7 @@ msgstr "Miniatura"
 
 #: zzbrick_tables/media.php
 msgid "Published?"
-msgstr "Opublikowany?"
+msgstr "Opublikowano?"
 
 #: zzbrick_tables/media.php
 msgid "Title"
