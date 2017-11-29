@@ -183,3 +183,7 @@ msgstr ""
 #: zzbrick_tables/media.php
 msgid "Height"
 msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr ""

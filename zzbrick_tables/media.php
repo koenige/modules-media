@@ -142,7 +142,7 @@ $zz['fields'][16]['show_values_as_list'] = true;
 $zz['fields'][16]['character_set'] = 'latin1';
 
 $zz['fields'][9]['title'] = 'Published?';
-$zz['fields'][9]['title_tab'] = 'WWW?';
+$zz['fields'][9]['title_tab'] = '<abbr title="Publish on Website?">Web?</abbr>';
 $zz['fields'][9]['field_name'] = 'published';
 $zz['fields'][9]['type'] = 'select';
 $zz['fields'][9]['enum'] = ['yes', 'no'];

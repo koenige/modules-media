@@ -187,3 +187,7 @@ msgstr "Breite"
 #: zzbrick_tables/media.php
 msgid "Height"
 msgstr "Höhe"
+
+#: zzbrick_tables/media.php
+msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
