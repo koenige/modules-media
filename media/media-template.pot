@@ -113,6 +113,10 @@ msgid "good for drawings & texts / transparency (deprecated)"
 msgstr ""
 
 #: zzbrick_tables/media.php
+msgid "Time"
+msgstr ""
+
+#: zzbrick_tables/media.php
 msgid "at"
 msgstr ""
 
