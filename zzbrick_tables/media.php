@@ -158,8 +158,7 @@ $zz['fields'][2]['field_name'] = 'title';
 $zz['fields'][2]['upload_field'] = 14;
 $zz['fields'][2]['upload_value'] = 'title';
 $zz['fields'][2]['unless'][2]['explanation'] = 'The filename will be used as a default if nothing is entered.';
-$zz['fields'][2]['class'] = 'legend';
-$zz['fields'][2]['class'] = 'block480a';
+$zz['fields'][2]['class'] = 'legend block480a';
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
@@ -256,8 +255,8 @@ $zz['fields'][10]['type'] = 'identifier';
 $zz['fields'][10]['fields'] = ['main_medium_id[filename]', 'title'];
 $zz['fields'][10]['class'] = 'hidden';
 $zz['fields'][10]['hide_in_list'] = true;
-$zz['fields'][10]['conf_identifier']['concat'] = '/';	
-$zz['fields'][10]['conf_identifier']['exists'] = '-';	
+$zz['fields'][10]['conf_identifier']['concat'] = '/';
+$zz['fields'][10]['conf_identifier']['exists'] = '-';
 
 $zz['fields'][15]['title'] = 'Filetype';
 $zz['fields'][15]['title_append'] = 'File';
