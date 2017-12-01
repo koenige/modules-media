@@ -55,7 +55,11 @@ if ($path) {
 
 $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
-require __DIR__.'/../zzbrick_tables/media.php';
+if (file_exists($file = $zz_conf['form_scripts'].'/media.php')) {
+	require $file;
+} else {
+	require __DIR__.'/../zzbrick_tables/media.php';
+}
 
 if ($path AND $view === 'tree') {
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';
