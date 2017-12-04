@@ -127,19 +127,30 @@ if ($view === 'gallery') {
 			$folder['filename'] = substr($folder['filename'], strlen($brick['vars'][0]) + 1);
 		}
 		$folder['filename'] = explode('/', $folder['filename']);
+		$bcs = [];
+		$bpath = '';
+		foreach ($folder['filename'] as $index => $path) {
+			$bpath = $bpath.($bpath ? '/' : '').$path;
+			$bcs[] = wrap_db_escape($bpath);
+		}
+		$sql = 'SELECT filename, title FROM media WHERE filename IN ("%s")';
+		$sql = sprintf($sql, implode('","', $bcs));
+		$btitles = wrap_db_fetch($sql, 'filename', 'key/value');
+		$bpath = '';
 		foreach ($folder['filename'] as $index => $path) {
 			if (!$path) continue;
+			$bpath = $bpath.($bpath ? '/' : '').$path;
 			if ($index < count($folder['filename']) - 1) {
 				$url = str_repeat('../', count($folder['filename']) - $index - 1);
 				$zz_conf['breadcrumbs'][] = array(
-					'linktext' => $path,
+					'linktext' => wrap_html_escape($btitles[$bpath]),
 					'url' => $url
 				);
-				$zz['title'] .= '<a href="'.$url.'">'.$path.'</a> / ';
+				$zz['title'] .= '<a href="'.$url.'">'.wrap_html_escape($btitles[$bpath]).'</a> / ';
 			} else {
-				$zz_conf['breadcrumbs'][] = array(
-					'linktext' => '<strong>'.$path.'</strong>'
-				);
+				$zz_conf['breadcrumbs'][] = [
+					'linktext' => '<strong>'.wrap_html_escape($btitles[$bpath]).'</strong>'
+				];
 				$zz['title'] .= $path;
 			}
 		}	
