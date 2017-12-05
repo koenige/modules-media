@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017 Gustaf Mossakowski
+# @copyright Copyright © 2017 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -150,8 +150,16 @@ msgid "Display as Table"
 msgstr ""
 
 #: zzbrick_tables/media.php
+msgid "Table"
+msgstr "Tabela"
+
+#: zzbrick_tables/media.php
 msgid "Display as Gallery"
 msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Gallery"
+msgstr "Galeria"
 
 #: zzbrick_tables/media.php
 msgid "Clipping"
@@ -188,3 +196,11 @@ msgstr "Szerokość"
 #: zzbrick_tables/media.php
 msgid "Height"
 msgstr "Wysokość"
+
+#: zzbrick_tables/media.php
+msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Language"
+msgstr "Język"

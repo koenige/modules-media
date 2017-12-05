@@ -145,7 +145,15 @@ msgid "Display as Table"
 msgstr ""
 
 #: zzbrick_tables/media.php
+msgid "Table"
+msgstr ""
+
+#: zzbrick_tables/media.php
 msgid "Display as Gallery"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Gallery"
 msgstr ""
 
 #: zzbrick_tables/media.php
@@ -186,4 +194,8 @@ msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid "Language"
 msgstr ""
