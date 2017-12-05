@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2016 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -15,6 +15,7 @@
 $view = 'gallery';
 $path = false;
 $base_breadcrumb = false;
+$suffixlink = '';
 
 if (isset($brick['vars'][1])) {
 	if (empty($brick['vars'][1])) {
@@ -31,12 +32,18 @@ if (isset($brick['vars'][1])) {
 	}
 	$top = false;
 } elseif (!empty($brick['vars'][0])) {
-	if ($brick['vars'][0] === '-') {
+	if (substr($brick['vars'][0], - 2) === '/-') {
+		$view = 'tree';
+		$path = substr($brick['vars'][0], 0, -2);
+		$link = '/'.$path;
+		$top = true;
+		$suffixlink = '-/';
+	} elseif ($brick['vars'][0] === '-') {
 		$view = 'tree';
 		$link = '';
 	} else {
 		$path = $brick['vars'][0];
-		$link = '/'.$brick['vars'][0];
+		$link = '/'.$path;
 		$top = true;
 	}
 }
@@ -75,19 +82,19 @@ if ($path AND $view === 'tree') {
 if (!empty($brick['local_settings']['title'])) {
 	$zz['title'] = wrap_text($brick['local_settings']['title']);
 	if ($base_breadcrumb) {
-		$zz_conf['breadcrumbs'][] = array(
+		$zz_conf['breadcrumbs'][] = [
 			'linktext' => $zz['title']
-		);
+		];
 	}
 }
 
 $variants[0]['img'] = $zz_setting['layout_path'].'/media/list-ul.png';
-$variants[0]['alt'] = wrap_text('Display as Gallery');
+$variants[0]['alt'] = wrap_text('Gallery');
 $variants[0]['title'] = wrap_text('Display as Gallery');
 $variants[0]['link'] = '';
 
 $variants[1]['img'] = $zz_setting['layout_path'].'/media/list-table.png';
-$variants[1]['alt'] = wrap_text('Display as Table');
+$variants[1]['alt'] = wrap_text('Table');
 $variants[1]['title'] = wrap_text('Display as Table');
 $variants[1]['link'] = '-/';
 
@@ -96,7 +103,6 @@ if ($view === 'gallery') {
 		$zz['explanation'] = markdown($folder['description']);
 		$base_path = str_repeat('../', substr_count($path, '/') + 1);
 		$base_link = str_repeat('../', substr_count($link, '/'));
-		$variants[1]['link'] = $base_link.$variants[1]['link'];
 	} else {
 		if (empty($_GET['q'])) {
 			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
@@ -108,65 +114,71 @@ if ($view === 'gallery') {
 } else {
 	$variants[0]['link'] = '../';
 	$variants[1]['link'] = '';
+	$base_path = str_repeat('../', substr_count($path, '/') + 2).'-/';
 }
 
 $zz['title'] .= mod_media_switch_links($variants);
 
+if ($view === 'tree') {
+	$zz_conf['breadcrumbs'][] = [
+		'linktext' => (!$path ? '<strong>' : '').wrap_text('Filetree').(!$path ? '</strong>' : ''),
+		'url' => ($path ? str_repeat('../', substr_count($path, '/')).'../../-/' : '')
+	];
+}
+
+$zz['title'] .= '<br><small>';
+if ($path) {
+	if ($top) {
+		$zz['title'] .= '<a href="'.$base_path.'">TOP</a> / ';
+	} else {
+		$folder['filename'] = substr($folder['filename'], strlen($brick['vars'][0]) + 1);
+	}
+	$folder['filename'] = explode('/', $folder['filename']);
+	$bcs = [];
+	$bpath = '';
+	foreach ($folder['filename'] as $index => $path) {
+		$bpath = $bpath.($bpath ? '/' : '').$path;
+		$bcs[] = wrap_db_escape($bpath);
+	}
+	$sql = 'SELECT filename, title FROM media WHERE filename IN ("%s")';
+	$sql = sprintf($sql, implode('","', $bcs));
+	$btitles = wrap_db_fetch($sql, 'filename', 'key/value');
+	$bpath = '';
+	foreach ($folder['filename'] as $index => $path) {
+		if (!$path) continue;
+		$bpath = $bpath.($bpath ? '/' : '').$path;
+		if ($index < count($folder['filename']) - 1) {
+			$url = str_repeat('../', count($folder['filename']) - $index - 1);
+			if ($suffixlink) $url = '../'.$url.$suffixlink;
+			$zz_conf['breadcrumbs'][] = [
+				'linktext' => wrap_html_escape($btitles[$bpath]),
+				'url' => $url
+			];
+			$zz['title'] .= '<a href="'.$url.'">'.wrap_html_escape($btitles[$bpath]).'</a> / ';
+		} else {
+			$zz_conf['breadcrumbs'][] = [
+				'linktext' => '<strong>'.wrap_html_escape($btitles[$bpath]).'</strong>'
+			];
+			$zz['title'] .= $path;
+		}
+	}
+	$zz['title'] .= '</small>';
+} else {
+	$zz['title'] .= 'TOP</small>';
+}
+
 if ($view === 'gallery') {
-	$zz['fields'][14]['if'][2]['link'] = array(
+	$zz['fields'][14]['if'][2]['link'] = [
 		'string1' => $base_path,
 		'field1' => 'filename',
 		'string2' => '/'
-	);
-
-	$zz['title'] .= '<br><small>';
-	if (!empty($zz['where']['main_medium_id'])) {
-		if ($top) {
-			$zz['title'] .= '<a href="'.$base_path.'">TOP</a> / ';
-		} else {
-			$folder['filename'] = substr($folder['filename'], strlen($brick['vars'][0]) + 1);
-		}
-		$folder['filename'] = explode('/', $folder['filename']);
-		$bcs = [];
-		$bpath = '';
-		foreach ($folder['filename'] as $index => $path) {
-			$bpath = $bpath.($bpath ? '/' : '').$path;
-			$bcs[] = wrap_db_escape($bpath);
-		}
-		$sql = 'SELECT filename, title FROM media WHERE filename IN ("%s")';
-		$sql = sprintf($sql, implode('","', $bcs));
-		$btitles = wrap_db_fetch($sql, 'filename', 'key/value');
-		$bpath = '';
-		foreach ($folder['filename'] as $index => $path) {
-			if (!$path) continue;
-			$bpath = $bpath.($bpath ? '/' : '').$path;
-			if ($index < count($folder['filename']) - 1) {
-				$url = str_repeat('../', count($folder['filename']) - $index - 1);
-				$zz_conf['breadcrumbs'][] = array(
-					'linktext' => wrap_html_escape($btitles[$bpath]),
-					'url' => $url
-				);
-				$zz['title'] .= '<a href="'.$url.'">'.wrap_html_escape($btitles[$bpath]).'</a> / ';
-			} else {
-				$zz_conf['breadcrumbs'][] = [
-					'linktext' => '<strong>'.wrap_html_escape($btitles[$bpath]).'</strong>'
-				];
-				$zz['title'] .= $path;
-			}
-		}	
-		$zz['title'] .= '</small>';
-	} else {
-		$zz['title'] .= 'TOP</small>';
-	}
+	];
 	
 	$zz_conf['search_form_always'] = true;
 } else {
-	$zz_conf['breadcrumbs'][] = array(
-		'linktext' => '<strong>'.wrap_text('Filetree').'</strong>'
-	);
 	// Files
-	$zz['fields'][14]['path'] = array(
-		'root' => $zz_setting['media_folder'], 
+	$zz['fields'][14]['path'] = [
+		'root' => $zz_setting['media_folder'],
 		'webroot' => $zz_setting['files_path'],
 		'string1' => '/',
 		'field1' => 'filename',
@@ -176,7 +188,7 @@ if ($view === 'gallery') {
 		'extension' => 'thumb_extension',
 		'webstring1' => '?v=',
 		'webfield1' => 'version'
-	);
+	];
 	$zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-120.png';
 	if (!empty($zz['fields'][14]['if'][2]['class']))
 		$zz['fields'][14]['if'][2]['class'] .= ' stretch40';
