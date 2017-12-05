@@ -200,6 +200,7 @@ if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['list_append_next'] = true;
 	$zz['fields'][33]['list_suffix'] = ' &#8211; ';
 	$zz['fields'][33]['class'] = 'hidden480';
+	$zz['fields'][33]['hide_in_list_if_empty'] = true;
 }
 
 if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_allowed']) > 1) {
