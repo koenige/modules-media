@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014 Gustaf Mossakowski
+ * @copyright Copyright © 2014, 2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -15,7 +15,7 @@
 /* media module */
 #zzform .data .medium a, #zzform .data .folder a,
 #zzform .data .medium img, #zzform .data .folder img
-					{ display: block; border: 3px solid; 
+					{ display: inline-block; border: 3px solid; 
 					border-color: transparent; }
 #zzform .data .medium a img, #zzform .data .folder a img
 					{ display: inline; border: none; }
@@ -35,7 +35,7 @@
 #zzform .stretch40 img
 					{ max-width: 40px; max-height: 40px; }
 #zzform .stretch40 a
-					{ width: 40px; height: 40px; }
+					{ max-width: 40px; max-height: 40px;}
 #zzform ul.data p.legend
 					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; }
 
