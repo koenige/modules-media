@@ -28,13 +28,12 @@ $zz['fields'][1]['type'] = 'id';
 $zz['fields'][8]['title'] = 'Folder';
 $zz['fields'][8]['field_name'] = 'main_medium_id';
 $zz['fields'][8]['type'] = 'select';
-$zz['fields'][8]['sql'] = 'SELECT medium_id, title, filename, main_medium_id
+$zz['fields'][8]['sql'] = 'SELECT medium_id, filename, main_medium_id
 	FROM /*_PREFIX_*/media
 	LEFT JOIN /*_PREFIX_*/filetypes USING (filetype_id)
 	WHERE filetype = "folder"
 	ORDER BY ISNULL(/*_PREFIX_*/media.sequence),
 	/*_PREFIX_*/media.sequence, /*_PREFIX_*/media.date, time, title ASC';
-$zz['fields'][8]['sql_ignore'] = 'filename';
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['show_hierarchy'] = 'main_medium_id';
 $zz['fields'][8]['show_hierarchy_same_table'] = true;
