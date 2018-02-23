@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2017 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -34,6 +34,7 @@ $zz['fields'][8]['sql'] = 'SELECT medium_id, filename, main_medium_id
 	WHERE filetype = "folder"
 	ORDER BY ISNULL(/*_PREFIX_*/media.sequence),
 	/*_PREFIX_*/media.sequence, /*_PREFIX_*/media.date, time, title ASC';
+$zz['fields'][8]['key_field_name'] = 'medium_id';
 $zz['fields'][8]['hide_in_list'] = true;
 $zz['fields'][8]['show_hierarchy'] = 'main_medium_id';
 $zz['fields'][8]['show_hierarchy_same_table'] = true;
@@ -112,6 +113,7 @@ $zz['fields'][14]['if'][2]['class'] = 'folder';
 
 $zz['fields'][16]['title'] = 'Thumbnail';
 $zz['fields'][16]['field_name'] = 'thumb_filetype_id';
+$zz['fields'][16]['key_field_name'] = 'filetype_id';
 $zz['fields'][16]['type'] = 'select';
 $zz['fields'][16]['sql'] = sprintf('SELECT filetype_id, UCASE(filetype)
 		, (CASE mime_subtype
