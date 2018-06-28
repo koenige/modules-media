@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2018 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -32,10 +32,10 @@ function mod_media_medium($params) {
 
 	if (!$params) return false;
 	$filename = '/'.implode('/', $params);
-	$filetype = substr($filename, strrpos($filename, '.') + 1);
+	$extension = substr($filename, strrpos($filename, '.') + 1);
 	// sometimes, browsers coming from search engines interpret ? wrong as %3F
-	if ($redirect = strpos($filetype, '%3Fv=')) {
-		$filetype = substr($filetype, 0, $redirect);
+	if ($redirect = strpos($extension, '%3Fv=')) {
+		$extension = substr($extension, 0, $redirect);
 		$filename = substr($filename, 0, strpos($filename, '%3Fv='));
 		$new_url = explode('%3Fv=', $zz_page['url']['full']['path']);
 		$new_url = implode('?v=', $new_url);
@@ -57,8 +57,8 @@ function mod_media_medium($params) {
 		LEFT JOIN /*_PREFIX_*/filetypes filetypes
 			ON filetypes.filetype_id = media.filetype_id
 		WHERE filename = "%s"
-		AND (thumb_filetypes.filetype = "%s" OR filetypes.filetype = "%s")';
-	$sql = sprintf($sql, wrap_db_escape($identifier), wrap_db_escape($filetype), wrap_db_escape($filetype));
+		AND (thumb_filetypes.extension = "%s" OR filetypes.extension = "%s")';
+	$sql = sprintf($sql, wrap_db_escape($identifier), wrap_db_escape($extension), wrap_db_escape($extension));
 
 	// Check access rights
 	$file = wrap_db_fetch($sql);
