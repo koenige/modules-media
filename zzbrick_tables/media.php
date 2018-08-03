@@ -315,15 +315,15 @@ $zz['fields'][37]['type'] = 'hidden';
 $zz['fields'][37]['type_detail'] = 'number';
 $zz['fields'][37]['unit'] = 'px';
 $zz['fields'][37]['upload_field'] = 14;
-// values for RAW images are not correct in upload[width]
-$zz['fields'][37]['upload_value'] = array(
+// values for RAW or edited images are not correct in upload[width], exif[ImageWidth]
+$zz['fields'][37]['upload_value'] = [
 	'exiftool[SubIFD1][ImageWidth][val]',
 	'exiftool[IFD0][ImageWidth][val]',
 	'exiftool[File][ImageWidth][val]',
-	'exif[ImageWidth]',
 	'exif[COMPUTED][Width]',
+	'exif[ImageWidth]',
 	'upload[width]'
-);
+];
 $zz['fields'][37]['if'][81]['upload_value'] = 'modified[width]';
 $zz['fields'][37]['suffix'] = ' × ';
 $zz['fields'][37]['list_suffix'] = ' × ';
@@ -341,15 +341,15 @@ $zz['fields'][38]['type_detail'] = 'number';
 $zz['fields'][38]['unit'] = 'px';
 $zz['fields'][38]['upload_field'] = 14;
 $zz['fields'][38]['dont_show_missing'] = true;
-// values for RAW images are not correct in upload[height]
-$zz['fields'][38]['upload_value'] = array(
+// values for RAW or edited images are not correct in upload[height], exif[ImageLength]
+$zz['fields'][38]['upload_value'] = [
 	'exiftool[SubIFD1][ImageHeight][val]',
 	'exiftool[IFD0][ImageHeight][val]',
 	'exiftool[File][ImageHeight][val]',
-	'exif[ImageLength]',
 	'exif[COMPUTED][Height]',
+	'exif[ImageLength]',
 	'upload[height]'
-);
+];
 $zz['fields'][38]['if']['add']['hide_in_form'] = true;
 $zz['fields'][38]['if'][2]['hide_in_form'] = true;
 $zz['fields'][38]['hide_in_list'] = true;
