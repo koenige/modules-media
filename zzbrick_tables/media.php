@@ -94,6 +94,7 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['width'] = !empty($size['width']) ? $size['width'] : false;
 	$zz['fields'][14]['image'][$i]['height'] = !empty($size['height']) ? $size['height'] : false;
 	$zz['fields'][14]['image'][$i]['action'] = $size['action'];
+	$zz['fields'][14]['image'][$i]['no_action_unless_thumb_extension'] = true;
 	$zz['fields'][14]['image'][$i]['source'] = !empty($size['source']) ? $size['source'] : 0;
 	$zz['fields'][14]['image'][$i]['use_modified_source'] = !empty($size['source']) ? true : false;
 	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36];
