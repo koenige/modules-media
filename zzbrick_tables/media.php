@@ -333,6 +333,7 @@ $zz['fields'][37]['dont_show_missing'] = true;
 $zz['fields'][37]['if']['add']['hide_in_form'] = true;
 $zz['fields'][37]['if'][2]['hide_in_form'] = true;
 $zz['fields'][37]['hide_in_list'] = true;
+$zz['fields'][37]['hide_in_list_if_empty'] = true;
 $zz['fields'][37]['list_append_next'] = true;
 
 $zz['fields'][38]['title'] = 'Height';
@@ -354,6 +355,7 @@ $zz['fields'][38]['upload_value'] = [
 $zz['fields'][38]['if']['add']['hide_in_form'] = true;
 $zz['fields'][38]['if'][2]['hide_in_form'] = true;
 $zz['fields'][38]['hide_in_list'] = true;
+$zz['fields'][38]['hide_in_list_if_empty'] = true;
 
 $zz['fields'][35]['field_name'] = 'version';
 $zz['fields'][35]['type'] = 'hidden';
