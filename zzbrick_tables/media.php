@@ -49,7 +49,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
 $zz['fields'][14]['unless'][2]['link'] = [
-	'root' => $zz_setting['media_folder'], 
+	'root' => $zz_setting['media_folder'],
 	'webroot' => $zz_setting['files_path'],
 	'string1' => '/',
 	'field1' => 'filename',
@@ -203,6 +203,8 @@ if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['list_suffix'] = ' &#8211; ';
 	$zz['fields'][33]['class'] = 'hidden480';
 	$zz['fields'][33]['hide_in_list_if_empty'] = true;
+	
+	$zz['fields'][31] = [];
 }
 
 if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_allowed']) > 1) {
