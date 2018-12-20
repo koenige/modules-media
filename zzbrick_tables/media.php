@@ -260,7 +260,7 @@ $zz['fields'][10]['type'] = 'identifier';
 $zz['fields'][10]['fields'] = ['main_medium_id[filename]', 'title'];
 $zz['fields'][10]['class'] = 'hidden';
 $zz['fields'][10]['hide_in_list'] = true;
-$zz['fields'][10]['conf_identifier']['concat'] = '/';
+$zz['fields'][10]['conf_identifier']['concat'] = ['/'];
 $zz['fields'][10]['conf_identifier']['exists'] = '-';
 
 $zz['fields'][15]['title'] = 'Filetype';
