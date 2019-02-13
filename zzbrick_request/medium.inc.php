@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2018 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -43,14 +43,17 @@ function mod_media_medium($params) {
 	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
 	$media_sizes = $zz_setting['media_sizes'];
-	$media_sizes['master'] = ['path' => 'master']; 
+	$media_sizes['master'] = ['path' => 'master'];
+	$media_size = '';
 	foreach ($media_sizes as $size) {
 		if (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
 			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
+			$media_size = $size['path'];
 			break;
 		}
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
+			, title AS send_as
 		FROM /*_PREFIX_*/media media
 		LEFT JOIN /*_PREFIX_*/filetypes thumb_filetypes
 			ON thumb_filetypes.filetype_id = media.thumb_filetype_id
@@ -71,7 +74,12 @@ function mod_media_medium($params) {
 
 	$file['name'] = $zz_setting['media_folder'].$filename;
 	// Check if file exists
-	if (!file_exists($file['name'])) return false;
+	if (!file_exists($file['name'])) {
+		if ($media_size) return false;
+		$pos = strrpos($file['name'], '.');
+		$file['name'] = substr($file['name'], 0, $pos).'.master'.substr($file['name'], $pos);
+		if (!file_exists($file['name'])) return false;
+	}
 	if ($redirect) {
 		return brick_format('%%% redirect '.$new_url.' %%%');
 	}
