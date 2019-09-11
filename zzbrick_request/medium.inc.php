@@ -52,6 +52,15 @@ function mod_media_medium($params) {
 			break;
 		}
 	}
+	$variants = wrap_get_setting('media_file_variants');
+	if (!empty($variants)) {
+		foreach ($variants as $variant) {
+			if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
+				$identifier = substr($identifier, 0, - strlen($variant) - 1);
+				break;
+			}
+		}
+	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 			, title AS send_as
 		FROM /*_PREFIX_*/media media
