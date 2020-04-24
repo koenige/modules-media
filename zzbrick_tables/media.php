@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -210,7 +210,7 @@ if (empty($brick['local_settings']['no_sequence'])) {
 if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_allowed']) > 1) {
 	$zz['fields'][24]['field_name'] = 'language_id';
 	$zz['fields'][24]['type'] = 'select';
-	$zz['fields'][24]['default'] = $zz_setting['language_ids'][$zz_conf['language']];
+	$zz['fields'][24]['default'] = wrap_language_id($zz_conf['language']);
 	$zz['fields'][24]['hide_in_list'] = true;
 	$zz['fields'][24]['sql'] = sprintf('SELECT language_id, language_%s
 		FROM /*_PREFIX_*/languages
