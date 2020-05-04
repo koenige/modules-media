@@ -427,3 +427,9 @@ $zz['add'][] = [
 ];
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
+
+$zz['set_redirect'][] = [
+	'old' => $zz_setting['files_path'].'/%s*',
+	'new' => $zz_setting['files_path'].'/%s*',
+	'field_name' => 'filename'
+];
