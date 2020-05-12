@@ -59,7 +59,7 @@ $zz['fields'][5]['exclude_from_search'] = true;
 $zz['fields'][5]['class'] = 'hidden480';
 
 $zz['sql'] = 'SELECT /*_PREFIX_*/filetypes.*
-		, (SELECT COUNT(medium_id) FROM /*_PREFIX_*/media
+		, (SELECT COUNT(*) FROM /*_PREFIX_*/media
 			WHERE /*_PREFIX_*/media.filetype_id = /*_PREFIX_*/filetypes.filetype_id)
 			AS count_files
 	FROM /*_PREFIX_*/filetypes';
