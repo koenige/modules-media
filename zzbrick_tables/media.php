@@ -398,7 +398,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 
 $zz['conditions'][2]['scope'] = 'record';
 $zz['conditions'][2]['where'] = sprintf('o_mime.filetype_id = %d',
-	$zz_setting['filetype_ids']['folder']);
+	wrap_filetype_id('folder'));
 $zz['conditions'][2]['add']['sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes o_mime
 	WHERE filetype_id = ';
@@ -423,7 +423,7 @@ $zz['add'][] = [
 $zz['add'][] = [
 	'type' => wrap_text('Folder'),
 	'field_name' => 'filetype_id',
-	'value' => $zz_setting['filetype_ids']['folder']
+	'value' => wrap_filetype_id('folder')
 ];
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
