@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2019 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -31,8 +31,10 @@ function mod_media_medium($params) {
 	global $zz_page;
 
 	if (!$params) return false;
-	$filename = '/'.implode('/', $params);
-	$extension = substr($filename, strrpos($filename, '.') + 1);
+	$filename = $identifier = implode('/', $params);
+	$identifier = explode('.', $identifier);
+	$extension = count($identifier) > 1 ? array_pop($identifier) : '';
+	$identifier = implode('.', $identifier);
 	// sometimes, browsers coming from search engines interpret ? wrong as %3F
 	if ($redirect = strpos($extension, '%3Fv=')) {
 		$extension = substr($extension, 0, $redirect);
@@ -40,7 +42,6 @@ function mod_media_medium($params) {
 		$new_url = explode('%3Fv=', $zz_page['url']['full']['path']);
 		$new_url = implode('?v=', $new_url);
 	}
-	$identifier = substr($filename, 1, strrpos($filename, '.') - 1);
 
 	$media_sizes = $zz_setting['media_sizes'];
 	$media_sizes['master'] = ['path' => 'master'];
@@ -81,7 +82,7 @@ function mod_media_medium($params) {
 		wrap_auth(1);
 	}
 
-	$file['name'] = $zz_setting['media_folder'].$filename;
+	$file['name'] = $zz_setting['media_folder'].'/'.$filename;
 	// Check if file exists
 	if (!file_exists($file['name'])) {
 		if ($media_size) return false;
