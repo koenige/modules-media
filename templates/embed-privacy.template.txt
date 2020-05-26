@@ -1,0 +1,31 @@
+# media module
+# HTML template for privacy policies of embedded content
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+%%% condition if no_embeds %%%
+<p>%%% text There is currently no embedded content. %%%</p>
+
+%%% condition else %%%
+<p>%%% text Here, you can decide whether you’d like to have embedded content displayed inline on our website or not: %%%</p>
+
+<fieldset class="privacysettings">
+<ul>
+%%% loop start %%%
+<li><p><label for="embed_%%% item type %%%"><input type="checkbox"%%% condition if selected %%% checked="checked" %%% condition endif %%% id="embed_%%% item type %%%" data-embed="%%% item type strtolower %%%">
+<strong>%%% item type %%%</strong>
+</label></p>
+%%% condition if YouTube %%%
+<p>%%% text "Watch a YouTube-Video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Google. %%% <a href="https://policies.google.com/privacy">%%% text Google’s Privacy Policy %%%</a>.</p>
+%%% condition endif %%%
+</li>
+%%% loop end %%%
+</ul>
+<p><a href="javascript:changePrivacySettings();">%%% text Change privacy settings %%%</a></p>
+</fieldset>
+
