@@ -11,7 +11,7 @@
 <div class="embed-privacy">
 <h2><a href="javascript:setPrivacyCookie('%%% item filetype %%%');">
 %%% text Yes, I’d like this content to be embedded directly on this website. %%%</a>
-%%% text I read the <a href="/privacy/" target="_new">Privacy Policy.</a> %%%</h2>
+%%% text I accept the <a href="/privacy/" target="_new">Privacy Policy.</a> %%%</h2>
 
 <p>%%% text Watch it on the original website: %%% <a href="%%% item url %%%">%%% item send_as %%%</a></p>
 </div>
