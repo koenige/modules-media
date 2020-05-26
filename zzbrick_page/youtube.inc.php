@@ -54,7 +54,7 @@ function page_youtube_add_video($video) {
 	$url = sprintf($zz_setting['youtube_url'], $video);
 	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url);
 	if ($status !== 200) {
-		wrap_error(sprintf('YouTube Video %s was not found.', $video));
+		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
 		return '';
 	}
 
