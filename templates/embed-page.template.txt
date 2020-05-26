@@ -1,0 +1,33 @@
+# media module
+# HTML page template for embedded content, placeholder if content is not displayed
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+<!DOCTYPE html>
+<html lang="%%% page lang %%%">
+<head>
+	<title>%%% page pagetitle %%%</title>
+	<meta http-equiv="content-type" content="text/html; charset=%%% setting character_set %%%">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/favicon.ico" type="image/x-ico">
+	<link rel="stylesheet" type="text/css" href="%%% setting layout_path %%%/embed.css" media="all">
+	<script type="text/javascript" src="%%% setting behaviour_path %%%/media/embed.js"></script>
+	<style type="text/css">
+
+html, body	{ margin: 0; padding: 0; width: 100%; height: 100%; }
+html		{ display: table; }
+body		{ display: table-row; }
+main		{ display: table-cell; vertical-align: middle; }
+
+	</style>
+</head>
+<body>
+<main>
+%%% page text %%%
+</main>
+</html>

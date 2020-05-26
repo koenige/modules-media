@@ -64,6 +64,8 @@ function mod_media_medium($params) {
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 			, title AS send_as
+			, filetypes.filetype
+			, filetypes.filetype_description
 		FROM /*_PREFIX_*/media media
 		LEFT JOIN /*_PREFIX_*/filetypes thumb_filetypes
 			ON thumb_filetypes.filetype_id = media.thumb_filetype_id
@@ -82,6 +84,28 @@ function mod_media_medium($params) {
 		wrap_auth(1);
 	}
 
+	// is it an embedded medium?
+	if (!empty($zz_setting['embed'])) {
+		$embeds = [];
+		foreach ($zz_setting['embed'] as $key => $value)
+			$embeds[strtolower($key)] = $value;
+		if (array_key_exists($file['filetype'], $embeds)) {
+			$code = explode('/', $identifier);
+			$code = array_pop($code);
+			$url = sprintf($embeds[$file['filetype']], $code);
+			if (!empty($_GET['inactive'])) {
+				$file['url'] = $url;
+				$page['query_strings'] = ['inactive'];
+				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
+				$page['template'] = 'embed';
+				$page['url_ending'] = 'none';
+				$page['text'] = wrap_template('embed', $file);
+				return $page;
+			} else {
+				return brick_format('%%% redirect '.$url.' %%%');
+			}
+		}
+	}
 	$file['name'] = $zz_setting['media_folder'].'/'.$filename;
 	// Check if file exists
 	if (!file_exists($file['name'])) {
