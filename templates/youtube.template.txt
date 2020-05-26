@@ -1,0 +1,22 @@
+# media module
+# HTML template for YouTube videos
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/default
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+# List of fields:
+# medium_id, title, description, source, filename, width_px, height_px,
+# parameters, youtube_id
+#
+<div class="embed youtube" data-id="%%% item youtube_id %%%">
+<div class="container">
+<iframe src="/files/youtube/%%% item youtube_id %%%?inactive=1" width="%%% item width_px %%%" height="%%% item height_px %%%"
+frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<p class="video_title"><strong><a href="https://www.youtube.com/watch?v=%%% item youtube_id %%%">%%% item title %%%</a></strong></p>
+<p class="video_description"><em>%%% item description %%%</em></p>
+</div>
+
