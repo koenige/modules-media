@@ -368,6 +368,11 @@ $zz['fields'][35]['dont_show_missing'] = true;
 $zz['fields'][35]['if']['add']['hide_in_form'] = true;
 $zz['fields'][35]['if'][2] = false;
 
+$zz['fields'][40]['field_name'] = 'parameters';
+$zz['fields'][40]['type'] = 'parameter';
+$zz['fields'][40]['hide_in_list'] = true;
+$zz['fields'][40]['hide_in_form'] = true;
+
 $zz['fields'][20]['title'] = 'Updated';
 $zz['fields'][20]['field_name'] = 'last_update';
 $zz['fields'][20]['type'] = 'timestamp';
