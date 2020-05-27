@@ -26,13 +26,13 @@ function page_youtube(&$params, $page) {
 
 	$sql = 'SELECT medium_id
 			, title, description, source, width_px, height_px, parameters
-			, filename, SUBSTRING_INDEX(filename, "/", -1) AS youtube_id
+			, filename, SUBSTRING_INDEX(filename, "/", -1) AS embed_id
 		FROM media
 		WHERE filetype_id = %d
 		AND filename = "%s/%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('youtube')
-		, substr($zz_setting['embed_path']['youtube'], 1)
+		, substr($zz_setting['embed_path_youtube'], 1)
 		, wrap_db_escape($video)
 	);
 	$medium = wrap_db_fetch($sql);
@@ -59,7 +59,7 @@ function page_youtube_add_video($video) {
 	}
 
 	// get opengraph metadata
-	preg_match_all('/<meta property="(.+?)" content="(.+?)">/', $data, $matches);
+	preg_match_all('/<meta property=["\'](.+?)["\'] content=["\'](.+?)["\']>/', $data, $matches);
 	foreach ($matches[1] as $index => $key) {
 		if (!empty($meta[$key])) {
 			if (!is_array($meta[$key])) $meta[$key] = [$meta[$key]];
@@ -79,7 +79,7 @@ function page_youtube_add_video($video) {
 		AND filename = "%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('folder')
-		, substr($zz_setting['embed_path']['youtube'], 1)
+		, substr($zz_setting['embed_path_youtube'], 1)
 	);
 	$values['GET']['add']['filetype_id'] = wrap_filetype_id('youtube');
 	$values['POST']['main_medium_id'] = wrap_db_fetch($sql, '', 'single value');
@@ -87,7 +87,7 @@ function page_youtube_add_video($video) {
 	$values['POST']['description'] = $meta['og:title'];
 	$values['POST']['source'] = 'YouTube';
 	$values['POST']['published'] = 'yes';
-	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['embed_path']['youtube'], 1), $video);
+	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['embed_path_youtube'], 1), $video);
 	$values['POST']['width_px'] = $meta['og:image:width'];
 	$values['POST']['height_px'] = $meta['og:image:height'];
 	$values['POST']['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'

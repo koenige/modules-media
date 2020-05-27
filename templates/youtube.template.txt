@@ -10,12 +10,11 @@
 #
 # List of fields:
 # medium_id, title, description, source, filename, width_px, height_px,
-# parameters, youtube_id
+# parameters, embed_id
 #
-<div class="embed youtube" data-id="%%% item youtube_id %%%">
+<div class="embed youtube" data-id="%%% item embed_id %%%">
 <div class="container">
-<iframe src="/files/youtube/%%% item youtube_id %%%?inactive=1" width="%%% item width_px %%%" height="%%% item height_px %%%"
-frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-<p class="video_title"><strong><a href="https://www.youtube.com/watch?v=%%% item youtube_id %%%">%%% item description %%%</a></strong> %%% item source " (%s)" %%%</p>
+<iframe src="%%% setting files_path %%%%%% setting embed_path_youtube %%%/%%% item embed_id %%%?inactive=1" width="%%% item width_px %%%" height="%%% item height_px %%%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<p class="video_title"><strong><a href="https://www.youtube.com/watch?v=%%% item embed_id %%%">%%% item description %%%</a></strong> %%% item source " (%s)" %%%</p>
 </div>
 
