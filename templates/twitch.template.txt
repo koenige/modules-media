@@ -1,0 +1,20 @@
+# media module
+# HTML template for Twitch videos
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/default
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+# List of fields:
+# medium_id, title, description, source, filename, width_px, height_px,
+# parameters, embed_id
+#
+<div class="embed youtube" data-id="%%% item embed_id %%%">
+<div class="container">
+<iframe src="%%% setting files_path %%%%%% setting embed_path_twitch %%%/%%% item embed_id %%%?inactive=1" width="%%% item width_px %%%" height="%%% item height_px %%%"
+frameborder="0" scrolling="no" allowfullscreen></iframe></div>
+<p class="video_title"><strong><a href="https://player.twitch.tv/?video=%%% item embed_id %%%&autoplay=false">%%% item description %%%</a></strong> %%% item source " (%s)" %%%</p>
+</div>
