@@ -13,15 +13,18 @@
 
 
 if (!empty($zz_setting['embed'])) {
-	foreach (array_keys($zz_setting['embed']) as $embed) {
+	$zz_setting['youtube_url'] = 'https://www.youtube.com/watch?v=%s';
+
+	foreach ($zz_setting['embed'] as $embed => $url) {
 		$embed = strtolower($embed);
 		$zz_setting['brick_types_translated'][$embed] = 'page';
 		$zz_setting['brick_page_shortcuts'][] = $embed;
 
-		$zz_setting['embed_path'][$embed] = '/'.$embed;
+		$zz_setting['embed_path_'.$embed] = '/'.$embed;
+		$zz_setting[$embed.'_embed_url'] = $url;
+		if (empty($zz_setting[$embed.'_url']))
+			$zz_setting[$embed.'_url'] = $url;
 	}
 
-	$zz_setting['youtube_url'] = 'https://www.youtube.com/watch?v=%s';
-	$zz_setting['youtube_embed_url'] = 'https://www.youtube-nocookie.com/embed/%s';
 }
 
