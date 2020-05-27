@@ -32,7 +32,7 @@ function page_youtube(&$params, $page) {
 		AND filename = "%s/%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('youtube')
-		, substr($zz_setting['youtube_path'], 1)
+		, substr($zz_setting['embed_path']['youtube'], 1)
 		, wrap_db_escape($video)
 	);
 	$medium = wrap_db_fetch($sql);
@@ -79,22 +79,23 @@ function page_youtube_add_video($video) {
 		AND filename = "%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('folder')
-		, substr($zz_setting['youtube_path'], 1)
+		, substr($zz_setting['embed_path']['youtube'], 1)
 	);
+	$values['GET']['add']['filetype_id'] = wrap_filetype_id('youtube');
 	$values['POST']['main_medium_id'] = wrap_db_fetch($sql, '', 'single value');
-	$values['POST']['title'] = $meta['og:title'];
-	$values['POST']['description'] = $meta['og:description'];
+	$values['POST']['title'] = $video;
+	$values['POST']['description'] = $meta['og:title'];
 	$values['POST']['source'] = 'YouTube';
 	$values['POST']['published'] = 'yes';
-	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['youtube_path'], 1), $video);
-	$values['POST']['filetype_id'] = wrap_filetype_id('youtube');
+	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['embed_path']['youtube'], 1), $video);
 	$values['POST']['width_px'] = $meta['og:image:width'];
 	$values['POST']['height_px'] = $meta['og:image:height'];
-	$values['POST']['parameters'] = sprintf('og:image=%s&og:video:tag=%s'
+	$values['POST']['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'
 		, $meta['og:image']
 		, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
+		, $meta['og:description']
 	);
-	$ops = zzform_multi('../zzbrick_forms/nofilemedia', $values);
+	$ops = zzform_multi('media', $values);
 	if (!$ops['id']) {
 		wrap_error(sprintf('Could not add YouTube Video %s.', $video));
 	}
