@@ -77,6 +77,7 @@ $zz['fields'][14]['input_filetypes'] = array_keys(wrap_db_fetch('SELECT filetype
 FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
 
 $zz['fields'][14]['if'][2]['hide_in_form'] = true;
+$zz['fields'][14]['if'][3]['hide_in_form'] = true;
 
 // Master file
 $zz['fields'][14]['image'][0]['title'] = 'master';
@@ -112,6 +113,13 @@ $zz['fields'][14]['if'][2]['path'] = [
 $zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
 $zz['fields'][14]['if'][2]['class'] = 'folder';
 
+$zz['fields'][14]['if'][3]['type'] = 'image';
+$zz['fields'][14]['if'][3]['path'] = [
+	'string1' => $zz_setting['layout_path'].'/media/embed-'.$zz_setting['media_sizes']['min']['path'].'.png',
+	'ignore_record' => true
+];
+$zz['fields'][14]['if'][3]['default_image'] = $zz_setting['layout_path'].'/media/embed-'.$zz_setting['media_sizes']['min']['path'].'.png';
+
 $zz['fields'][16]['title'] = 'Thumbnail';
 $zz['fields'][16]['field_name'] = 'thumb_filetype_id';
 $zz['fields'][16]['key_field_name'] = 'filetype_id';
@@ -140,6 +148,7 @@ $zz['fields'][16]['hide_novalue'] = false;
 $zz['fields'][16]['search'] = 't_mime.extension';
 $zz['fields'][16]['separator'] = true;
 $zz['fields'][16]['if'][2] = false;
+$zz['fields'][16]['if'][3] = false;
 $zz['fields'][16]['show_values_as_list'] = true;
 $zz['fields'][16]['character_set'] = 'latin1';
 
@@ -155,12 +164,16 @@ if (empty($brick['local_settings']['no_publish'])) {
 	$zz['fields'][9]['value'] = 'no';
 	$zz['fields'][9]['hide_in_form'] = true;
 }
+$zz['fields'][9]['if'][3] = false;
 
 $zz['fields'][2]['field_name'] = 'title';
 $zz['fields'][2]['upload_field'] = 14;
 $zz['fields'][2]['upload_value'] = 'title';
-$zz['fields'][2]['unless'][2]['explanation'] = 'The filename will be used as a default if nothing is entered.';
+$zz['fields'][2]['explanation'] = 'The filename will be used as a default if nothing is entered.';
+$zz['fields'][2]['if'][2]['explanation'] = '';
+$zz['fields'][2]['if'][3]['explanation'] = '';
 $zz['fields'][2]['class'] = 'legend block480a';
+$zz['fields'][2]['if'][3]['title'] = 'Code';
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
@@ -186,6 +199,7 @@ if ($crop) {
 	$zz['fields'][36]['default'] = 'center';
 	$zz['fields'][36]['hide_in_list'] = true;
 	$zz['fields'][36]['if'][2]['hide_in_form'] = true;
+	$zz['fields'][36]['if'][3]['hide_in_form'] = true;
 	$zz['fields'][36]['options'] = [
 		'center' => ['action' => 'crop_center'],
 		'top' => ['action' => 'crop_top'],
@@ -200,9 +214,10 @@ if (empty($brick['local_settings']['no_sequence'])) {
 	$zz['fields'][33]['field_name'] = 'sequence';
 	$zz['fields'][33]['type'] = 'number';
 	$zz['fields'][33]['list_append_next'] = true;
-	$zz['fields'][33]['list_suffix'] = ' &#8211; ';
+	$zz['fields'][33]['list_suffix'] = ' – ';
 	$zz['fields'][33]['class'] = 'hidden480';
 	$zz['fields'][33]['hide_in_list_if_empty'] = true;
+	$zz['fields'][33]['if'][3] = false;
 	
 	$zz['fields'][31] = [];
 }
@@ -262,6 +277,8 @@ $zz['fields'][10]['class'] = 'hidden';
 $zz['fields'][10]['hide_in_list'] = true;
 $zz['fields'][10]['conf_identifier']['concat'] = ['/'];
 $zz['fields'][10]['conf_identifier']['exists'] = '-';
+$zz['fields'][10]['if'][3]['conf_identifier']['lowercase'] = false;
+$zz['fields'][10]['if'][3]['conf_identifier']['replace'] = ['_' => '_'];
 
 $zz['fields'][15]['title'] = 'Filetype';
 $zz['fields'][15]['title_append'] = 'File';
@@ -296,6 +313,7 @@ $zz['fields'][26]['hide_in_list'] = true;
 $zz['fields'][26]['dont_show_missing'] = true;
 $zz['fields'][26]['if']['add']['hide_in_form'] = true;
 $zz['fields'][26]['if'][2]['hide_in_form'] = true;
+$zz['fields'][26]['if'][3]['hide_in_form'] = true;
 $zz['fields'][26]['hide_in_list_if_empty'] = true;
 $zz['fields'][26]['class'] = 'block480';
 
@@ -309,6 +327,7 @@ $zz['fields'][34]['dont_show_missing'] = true;
 $zz['fields'][34]['exclude_from_search'] = true;
 $zz['fields'][34]['if']['add']['hide_in_form'] = true;
 $zz['fields'][34]['if'][2] = false;
+$zz['fields'][34]['if'][3] = false;
 
 $zz['fields'][37]['title_append'] = 'Size';
 $zz['fields'][37]['title_tab'] = 'Size';
@@ -337,6 +356,7 @@ $zz['fields'][37]['if'][2]['hide_in_form'] = true;
 $zz['fields'][37]['hide_in_list'] = true;
 $zz['fields'][37]['hide_in_list_if_empty'] = true;
 $zz['fields'][37]['list_append_next'] = true;
+$zz['fields'][37]['if'][3]['type'] = 'number';
 
 $zz['fields'][38]['title'] = 'Height';
 $zz['fields'][38]['field_name'] = 'height_px';
@@ -358,6 +378,7 @@ $zz['fields'][38]['if']['add']['hide_in_form'] = true;
 $zz['fields'][38]['if'][2]['hide_in_form'] = true;
 $zz['fields'][38]['hide_in_list'] = true;
 $zz['fields'][38]['hide_in_list_if_empty'] = true;
+$zz['fields'][38]['if'][3]['type'] = 'number';
 
 $zz['fields'][35]['field_name'] = 'version';
 $zz['fields'][35]['type'] = 'hidden';
@@ -367,11 +388,13 @@ $zz['fields'][35]['upload_value'] = 'increment_on_change';
 $zz['fields'][35]['dont_show_missing'] = true;
 $zz['fields'][35]['if']['add']['hide_in_form'] = true;
 $zz['fields'][35]['if'][2] = false;
+$zz['fields'][35]['if'][3] = false;
 
 $zz['fields'][40]['field_name'] = 'parameters';
 $zz['fields'][40]['type'] = 'parameter';
 $zz['fields'][40]['hide_in_list'] = true;
 $zz['fields'][40]['hide_in_form'] = true;
+$zz['fields'][40]['if'][3]['hide_in_form'] = false;
 
 $zz['fields'][20]['title'] = 'Updated';
 $zz['fields'][20]['field_name'] = 'last_update';
@@ -409,6 +432,14 @@ $zz['conditions'][2]['add']['sql'] = 'SELECT filetype_id
 	WHERE filetype_id = ';
 $zz['conditions'][2]['add']['key_field_name'] = 'filetype_id';
 
+$zz['conditions'][3]['scope'] = 'record';
+$zz['conditions'][3]['where'] = sprintf('o_mime.extension = "" AND o_mime.filetype_id != %d',
+	wrap_filetype_id('folder'));
+$zz['conditions'][3]['add']['sql'] = 'SELECT filetype_id
+	FROM /*_PREFIX_*/filetypes o_mime
+	WHERE filetype_id = ';
+$zz['conditions'][3]['add']['key_field_name'] = 'filetype_id';
+
 $zz['title'] = wrap_text('Media Pool');
 
 $zz_conf['max_select'] = 100;
@@ -430,6 +461,15 @@ $zz['add'][] = [
 	'field_name' => 'filetype_id',
 	'value' => wrap_filetype_id('folder')
 ];
+if (!empty($zz_setting['embed'])) {
+	foreach (array_keys($zz_setting['embed']) as $embed) {
+		$zz['add'][] = [
+			'type' => $embed,
+			'field_name' => 'filetype_id',
+			'value' => wrap_filetype_id(strtolower($embed))
+		];
+	}
+}
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 
