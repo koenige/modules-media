@@ -5,7 +5,7 @@
 # http://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2020 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -198,4 +198,52 @@ msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "Language"
+msgstr ""
+
+#: templates/embed.template.txt
+msgid "Yes, I’d like this content to be embedded directly on this website."
+msgstr ""
+
+#: templates/embed.template.txt
+msgid "Watch it on the original website:"
+msgstr ""
+
+#: templates/embed.template.txt
+msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Change privacy settings"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "There is currently no embedded content."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Here, you can decide whether you’d like to have embedded content displayed inline on our website or not:"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Watch a YouTube video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Some personal data (e. g. your IP address) is transmitted to Google."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Google’s Privacy Policy"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Watch a Twitch video on our website."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Some personal data (e. g. your IP address) is transmitted to Twitch, tracking and other cookies may be set."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Twitch’s Privacy Policy"
 msgstr ""

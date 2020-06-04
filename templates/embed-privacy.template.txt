@@ -21,9 +21,9 @@
 <strong>%%% item type %%%</strong>
 </label></p>
 %%% condition if YouTube %%%
-<p>%%% text "Watch a YouTube-Video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Google. %%% <a href="https://policies.google.com/privacy">%%% text Google’s Privacy Policy %%%</a>.</p>
+<p>%%% text "Watch a YouTube video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Google. %%% <a href="https://policies.google.com/privacy">%%% text Google’s Privacy Policy %%%</a>.</p>
 %%% condition elseif Twitch %%%
-<p>%%% text "Watch a Twitch-Video on our website." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Twitch, tracking and other cookies may be set. %%% <a href="https://www.twitch.tv/p/legal/privacy-notice/">%%% text Twitch’s Privacy Policy %%%</a>.</p>
+<p>%%% text "Watch a Twitch video on our website." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Twitch, tracking and other cookies may be set. %%% <a href="https://www.twitch.tv/p/legal/privacy-notice/">%%% text Twitch’s Privacy Policy %%%</a>.</p>
 
 %%% condition endif %%%
 

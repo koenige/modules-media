@@ -203,3 +203,67 @@ msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
 #: zzbrick_tables/media.php
 msgid "Language"
 msgstr "Sprache"
+
+#: templates/embed.template.txt
+msgid "Yes, I’d like this content to be embedded directly on this website."
+msgstr ""
+"Ja, ich möchte, dass dieser Inhalt direkt auf dieser Website angezeigt wird."
+
+#: templates/embed.template.txt
+msgid "Watch it on the original website:"
+msgstr "Ansehen auf der Original-Website:"
+
+#: templates/embed.template.txt
+msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
+msgstr ""
+"Ich akzeptiere die <a href='%s' target='_new'>Datenschutzerklärung.</a>"
+
+#: templates/embed-privacy.template.txt
+msgid "Change privacy settings"
+msgstr "Datenschutzeinstellungen ändern"
+
+#: templates/embed-privacy.template.txt
+msgid "There is currently no embedded content."
+msgstr "Derzeit sind keine Inhalte eingebettet."
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Here, you can decide whether you’d like to have embedded content displayed "
+"inline on our website or not:"
+msgstr ""
+"Hier können Sie entscheiden, ob eingebettete Inhalte direkt auf unserer "
+"Website angezeigt werden sollen oder nicht:"
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Watch a YouTube video in privacy-enhanced mode on our website (no tracking "
+"cookies will be sent to Google)."
+msgstr ""
+"Sehen Sie sich auf unserer Website ein YouTube-Video im erweiterten "
+"Datenschutzmodus an (es werden keine Tracking-Cookies an Google gesendet)."
+
+#: templates/embed-privacy.template.txt
+msgid "Some personal data (e. g. your IP address) is transmitted to Google."
+msgstr ""
+"Einige personenbezogene Daten (z. B. Ihre IP-Adresse) werden an Google "
+"übertragen."
+
+#: templates/embed-privacy.template.txt
+msgid "Google’s Privacy Policy"
+msgstr "Googles Datenschutzerklärung"
+
+#: templates/embed-privacy.template.txt
+msgid "Watch a Twitch video on our website."
+msgstr "Sehen Sie sich ein Twitch-Video auf unserer Website an."
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Some personal data (e. g. your IP address) is transmitted to Twitch, "
+"tracking and other cookies may be set."
+msgstr ""
+"Einige persönliche Daten (z. B. Ihre IP-Adresse) werden an Twitch "
+"übertragen. Tracking- und andere Cookies können gesetzt werden."
+
+#: templates/embed-privacy.template.txt
+msgid "Twitch’s Privacy Policy"
+msgstr "Twitchs Datenschutzrichtlinie"
