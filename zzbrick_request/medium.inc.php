@@ -95,6 +95,7 @@ function mod_media_medium($params) {
 			$url = sprintf($embeds[$file['filetype']], $code);
 			if (!empty($_GET['inactive'])) {
 				$file['url'] = $url;
+				$file['privacy_policy_url'] = $zz_setting['privacy_policy_url'];
 				$page['query_strings'] = ['inactive'];
 				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
 				$page['template'] = 'embed';
