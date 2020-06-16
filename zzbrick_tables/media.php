@@ -175,11 +175,13 @@ $zz['fields'][2]['if'][3]['explanation'] = '';
 $zz['fields'][2]['class'] = 'legend block480a';
 $zz['fields'][2]['if'][3]['title'] = 'Code';
 $zz['fields'][2]['if'][3]['type'] = 'write_once';
+$zz['fields'][2]['typo_cleanup'] = true;
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
 $zz['fields'][3]['format'] = 'markdown';
 $zz['fields'][3]['hide_in_list'] = true;
+$zz['fields'][3]['typo_cleanup'] = true;
 
 // additional fields
 $zz['fields'][6] = false; // media_categories
