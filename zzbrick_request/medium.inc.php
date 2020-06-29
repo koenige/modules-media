@@ -64,6 +64,7 @@ function mod_media_medium($params) {
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 			, title AS send_as
+			, description
 			, filetypes.filetype
 			, filetypes.filetype_description
 		FROM /*_PREFIX_*/media media
