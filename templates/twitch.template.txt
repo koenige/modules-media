@@ -16,5 +16,5 @@
 <div class="container">
 <iframe src="%%% setting files_path %%%%%% setting embed_path_twitch %%%/%%% item embed_id %%%?inactive=1" width="%%% item width_px %%%" height="%%% item height_px %%%"
 frameborder="0" scrolling="no" allowfullscreen></iframe></div>
-<p class="video_title"><strong><a href="https://player.twitch.tv/?video=%%% item embed_id %%%&autoplay=false">%%% item description %%%</a></strong> %%% item source " (%s)" %%%</p>
+<p class="video_title"><strong><a href="https://player.twitch.tv/?video=%%% item embed_id %%%&autoplay=false">%%% item description %%%</a></strong> %%% item source " <span class='source'>(%s)</span>" %%%</p>
 </div>
