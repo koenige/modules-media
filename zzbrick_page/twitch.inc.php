@@ -81,5 +81,6 @@ function page_twitch_add_video($video) {
 		wrap_error(sprintf('Could not add Twitch Video %s.', $video));
 	}
 	$values['POST']['medium_id'] = $ops['id'];
+	$values['POST']['embed_id'] = $video;
 	return $values['POST'];
 }
