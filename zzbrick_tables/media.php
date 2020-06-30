@@ -474,6 +474,8 @@ if (!empty($zz_setting['embed'])) {
 	}
 }
 
+$zz['if'][3]['hooks']['before_insert'][] = 'mod_media_hook_embed';
+
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 
 $zz['set_redirect'][] = [
