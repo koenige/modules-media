@@ -53,19 +53,21 @@ function page_youtube_add_video($video) {
 
 	$url = sprintf($zz_setting['youtube_url'], $video);
 	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url);
-	if ($status !== 200) {
+	if (!in_array($status, 200, 419)) {
 		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
 		return '';
 	}
 
 	// get opengraph metadata
-	preg_match_all('/<meta property=["\'](.+?)["\'] content=["\'](.+?)["\']>/', $data, $matches);
-	foreach ($matches[1] as $index => $key) {
-		if (!empty($meta[$key])) {
-			if (!is_array($meta[$key])) $meta[$key] = [$meta[$key]];
-			$meta[$key][] = $matches[2][$index];
-		} else {
-			$meta[$key] = $matches[2][$index];
+	if ($status === 200) {
+		preg_match_all('/<meta property=["\'](.+?)["\'] content=["\'](.+?)["\']>/', $data, $matches);
+		foreach ($matches[1] as $index => $key) {
+			if (!empty($meta[$key])) {
+				if (!is_array($meta[$key])) $meta[$key] = [$meta[$key]];
+				$meta[$key][] = $matches[2][$index];
+			} else {
+				$meta[$key] = $matches[2][$index];
+			}
 		}
 	}
 
@@ -84,17 +86,21 @@ function page_youtube_add_video($video) {
 	$values['GET']['add']['filetype_id'] = wrap_filetype_id('youtube');
 	$values['POST']['main_medium_id'] = wrap_db_fetch($sql, '', 'single value');
 	$values['POST']['title'] = $video;
-	$values['POST']['description'] = $meta['og:title'];
+	if (!empty($meta['og:title']))
+		$values['POST']['description'] = $meta['og:title'];
 	$values['POST']['source'] = 'YouTube';
 	$values['POST']['published'] = 'yes';
 	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['embed_path_youtube'], 1), $video);
-	$values['POST']['width_px'] = $meta['og:image:width'];
-	$values['POST']['height_px'] = $meta['og:image:height'];
-	$values['POST']['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'
-		, $meta['og:image']
-		, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
-		, $meta['og:description']
-	);
+	if (!empty($meta['og:image:width']))
+		$values['POST']['width_px'] = $meta['og:image:width'];
+	if (!empty($meta['og:image:height']))
+		$values['POST']['height_px'] = $meta['og:image:height'];
+	if (!empty($meta['og:image']))
+		$values['POST']['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'
+			, $meta['og:image']
+			, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
+			, $meta['og:description']
+		);
 	$ops = zzform_multi('media', $values);
 	if (!$ops['id']) {
 		wrap_error(sprintf('Could not add YouTube Video %s.', $video));
