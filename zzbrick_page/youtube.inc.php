@@ -46,30 +46,12 @@ function page_youtube(&$params, $page) {
 }
 
 function page_youtube_add_video($video) {
-	global $zz_setting;
 	global $zz_conf;
-	require_once $zz_setting['core'].'/syndication.inc.php';
+	global $zz_setting;
 	require_once $zz_conf['dir'].'/zzform.php';
 
-	$url = sprintf($zz_setting['youtube_url'], $video);
-	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url);
-	if (!in_array($status, 200, 419)) {
-		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
-		return '';
-	}
-
-	// get opengraph metadata
-	if ($status === 200) {
-		preg_match_all('/<meta property=["\'](.+?)["\'] content=["\'](.+?)["\']>/', $data, $matches);
-		foreach ($matches[1] as $index => $key) {
-			if (!empty($meta[$key])) {
-				if (!is_array($meta[$key])) $meta[$key] = [$meta[$key]];
-				$meta[$key][] = $matches[2][$index];
-			} else {
-				$meta[$key] = $matches[2][$index];
-			}
-		}
-	}
+	$meta = mod_media_get_embed_youtube($video);
+	if (!$meta) return false;
 
 	// add medium
 	if (!empty($_SESSION['user']))
