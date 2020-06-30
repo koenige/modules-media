@@ -217,6 +217,10 @@ msgid "Change privacy settings"
 msgstr ""
 
 #: templates/embed-privacy.template.txt
+msgid "Your settings were saved"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
 msgid "There is currently no embedded content."
 msgstr ""
 

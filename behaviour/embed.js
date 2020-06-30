@@ -66,5 +66,27 @@ function changePrivacySettings() {
 	if (value) {
 		value = value.substring(1);
 	}
+	var button = document.getElementById('changePrivacySettings');
+	button.value = button.getAttribute('data-set');
+	button.setAttribute('disabled', true);
 	setCookie('privacy', value, true);
 }
+
+function enablePrivacySettings() {
+	var button = document.getElementById('changePrivacySettings');
+	if (button.getAttribute('disabled', true)) {
+		button.removeAttribute('disabled');
+		button.value = button.getAttribute('data-default');
+	}
+}
+
+function initPrivacySettings() {
+	var fieldset = document.getElementsByClassName('privacysettings');
+	var settings = fieldset[0].getElementsByTagName('input');
+
+	for (i = 0; i < settings.length; i++) {
+		settings[i].addEventListener('change', enablePrivacySettings);
+	}
+}
+
+window.addEventListener('load', initPrivacySettings);

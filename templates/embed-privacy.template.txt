@@ -30,6 +30,6 @@
 </li>
 %%% loop end %%%
 </ul>
-<p><a href="javascript:changePrivacySettings();">%%% text Change privacy settings %%%</a></p>
+<p><input type="submit" onclick="javascript:changePrivacySettings();" value="%%% text Change privacy settings %%%" id="changePrivacySettings" data-default="%%% text Change privacy settings %%%" data-set="%%% text Your settings were saved %%%"></p>
 </fieldset>
 
