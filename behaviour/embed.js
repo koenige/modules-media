@@ -18,7 +18,6 @@ function setCookie(cookieName, value, overwrite) {
 		if (existingCookieValue) value = existingCookieValue + ',' + value;
 	}
 	var cookie = cookieName + "=" + encodeURIComponent(value);
-	cookie += '; domain=%%% setting hostname %%%';
 	cookie += '; max-age=' + 60*60*24*365;
 	cookie += '; path=/; secure; samesite=strict';
 	document.cookie = cookie;
