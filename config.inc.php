@@ -26,5 +26,4 @@ if (!empty($zz_setting['embed'])) {
 		if (empty($zz_setting[$embed.'_url']))
 			$zz_setting[$embed.'_url'] = $url;
 	}
-
 }

@@ -39,7 +39,6 @@ function mod_media_hook_embed($ops) {
 						, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
 						, $meta['og:description']
 					);
-
 			}
 		}
 	}
