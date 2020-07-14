@@ -21,7 +21,7 @@ if (!empty($zz_setting['embed'])) {
 		$zz_setting['brick_page_shortcuts'][] = $embed;
 
 		if (empty($zz_setting['embed_path_'.$embed]))
-			$zz_setting['embed_path_'.$embed] = '/'.$embed;
+			$zz_setting['embed_path_'.$embed] = $embed;
 		$zz_setting[$embed.'_embed_url'] = $url;
 		if (empty($zz_setting[$embed.'_url']))
 			$zz_setting[$embed.'_url'] = $url;

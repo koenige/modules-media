@@ -32,7 +32,7 @@ function page_youtube(&$params, $page) {
 		AND filename = "%s/%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('youtube')
-		, substr($zz_setting['embed_path_youtube'], 1)
+		, $zz_setting['embed_path_youtube']
 		, wrap_db_escape($video)
 	);
 	$medium = wrap_db_fetch($sql);
@@ -63,7 +63,7 @@ function page_youtube_add_video($video) {
 		AND filename = "%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('folder')
-		, substr($zz_setting['embed_path_youtube'], 1)
+		, $zz_setting['embed_path_youtube']
 	);
 	$values['GET']['add']['filetype_id'] = wrap_filetype_id('youtube');
 	$values['POST']['main_medium_id'] = wrap_db_fetch($sql, '', 'single value');
@@ -72,7 +72,7 @@ function page_youtube_add_video($video) {
 		$values['POST']['description'] = $meta['og:title'];
 	$values['POST']['source'] = 'YouTube';
 	$values['POST']['published'] = 'yes';
-	$values['POST']['filename'] = sprintf('%s/%s', substr($zz_setting['embed_path_youtube'], 1), $video);
+	$values['POST']['filename'] = sprintf('%s/%s', $zz_setting['embed_path_youtube'], $video);
 	if (!empty($meta['og:image:width']))
 		$values['POST']['width_px'] = $meta['og:image:width'];
 	if (!empty($meta['og:image:height']))
