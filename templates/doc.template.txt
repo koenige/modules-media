@@ -1,0 +1,17 @@
+# media module
+# HTML template for link to document
+#
+# Part of »Zugzwang Project«
+# http://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2020 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+# List of fields:
+# medium_id, sequence, title, description, source, filename, version,
+# thumb_extension, date, extension, mime_content_type, filetype, filesize,
+# filetype_description, width_px, height_px, orientation, filecategory,
+# filecategory_links, custom_title
+#
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
