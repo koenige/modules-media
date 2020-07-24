@@ -125,7 +125,7 @@ msgstr "o"
 
 #: zzbrick_tables/media.php
 msgid "h"
-msgstr "h"
+msgstr " "
 
 #: zzbrick_tables/media.php
 msgid ""
