@@ -44,7 +44,7 @@ function mod_media_get_embed_youtube($video) {
 		}
 		if (empty($meta)) $status = 404;
 	}
-	if (!in_array($status, [200, 419])) {
+	if (!in_array($status, [200, 429])) {
 		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
 		return '';
 	}
