@@ -41,7 +41,8 @@ INSERT INTO `filetypes` (`filetype_id`, `filetype`, `mime_content_type`, `mime_s
 (17,	'css',	'text',	'css',	'Cascading Stylesheets',	'css'),
 (18,	'js',	'application',	'javascript',	'JavaScript',	'js'),
 (19,	'm4v',	'video',	'mp4',	'MPEG v4 Video',	'mp4'),
-(20,	'mp3',	'audio',	'mp3',	'MPEG Audio Stream, Layer III',	'mp3');
+(20,	'mp3',	'audio',	'mp3',	'MPEG Audio Stream, Layer III',	'mp3'),
+(21,	'youtube',	'application',	'octet-stream',	'YouTube Video',	'');
 
 
 CREATE TABLE `media` (
@@ -64,6 +65,7 @@ CREATE TABLE `media` (
   `version` tinyint unsigned DEFAULT NULL,
   `width_px` mediumint unsigned DEFAULT NULL,
   `height_px` mediumint unsigned DEFAULT NULL,
+  `parameters` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`medium_id`),
   KEY `filetype_id` (`filetype_id`),
