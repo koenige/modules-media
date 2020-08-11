@@ -8,11 +8,17 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2012 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
+/**
+ * links for media form
+ *
+ * @param array $variants
+ * @return string
+ */
 function mod_media_switch_links($variants) {
 	$text = '';
 	foreach ($variants as $variant) {
@@ -24,6 +30,12 @@ function mod_media_switch_links($variants) {
 	return $text;
 }
 
+/**
+ * read metadata for youtube movies
+ *
+ * @param string $video
+ * @return array
+ */
 function mod_media_get_embed_youtube($video) {
 	global $zz_setting;
 	require_once $zz_setting['core'].'/syndication.inc.php';
@@ -46,7 +58,7 @@ function mod_media_get_embed_youtube($video) {
 	}
 	if (!in_array($status, [200, 429])) {
 		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
-		return '';
+		return [];
 	}
 
 	$meta['video'] = $video;
