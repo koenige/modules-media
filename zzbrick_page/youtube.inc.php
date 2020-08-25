@@ -4,7 +4,7 @@
  * Zugzwang Project
  * Output YouTube video
  *
- * http://www.zugzwang.org/modules/news
+ * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2020 Gustaf Mossakowski
