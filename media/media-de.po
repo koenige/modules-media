@@ -271,3 +271,7 @@ msgstr ""
 #: templates/embed-privacy.template.txt
 msgid "Twitch’s Privacy Policy"
 msgstr "Twitchs Datenschutzrichtlinie"
+
+#: templates/images.template.txt
+msgid "Image"
+msgstr "Bild"
