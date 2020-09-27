@@ -54,8 +54,6 @@ function page_youtube_add_video($video) {
 	if (!$meta) return false;
 
 	// add medium
-	if (!empty($_SESSION['user']))
-		$zz_conf['user'] = $_SESSION['user'];
 	$values = [];
 	$values['action'] = 'insert';
 	$sql = 'SELECT medium_id FROM media
