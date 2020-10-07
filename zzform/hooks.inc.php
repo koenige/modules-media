@@ -33,12 +33,14 @@ function mod_media_hook_embed($ops) {
 					$change['record_replace'][$index]['width_px'] = $meta['og:image:width'];
 				if (!empty($meta['og:image:height']) AND !$ops['record_new'][$index]['height_px'])
 					$change['record_replace'][$index]['height_px'] = $meta['og:image:height'];
-				if (!empty($meta['og:image']) AND !$change['record_replace'][$index]['parameters'])
+				if (!empty($meta['og:image']) AND empty($change['record_replace'][$index]['parameters'])) {
+					if (empty($meta['og:video:tag'])) $meta['og:video:tag'] = '';
 					$change['record_replace'][$index]['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'
 						, $meta['og:image']
 						, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
 						, $meta['og:description']
 					);
+				}
 			}
 		}
 	}
