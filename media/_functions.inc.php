@@ -14,6 +14,15 @@
 
 
 /**
+ * register mod_media_get() as wrap_get_media() if no custom function exists
+ */
+if (!function_exists('wrap_get_media')) {
+	function wrap_get_media($id, $table = 'webpages', $id_field = 'page') {
+		return mod_media_get($id, $table, $id_field);
+	}
+}
+
+/**
  * Read media from database depending on ID
  *
  * @param int $id ID
