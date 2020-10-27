@@ -97,7 +97,11 @@ function mod_media_medium($params) {
 			if (!empty($_GET['inactive'])) {
 				$file['url'] = $url;
 				$file['privacy_policy_url'] = $zz_setting['privacy_policy_url'];
-				$page['query_strings'] = ['inactive'];
+				$page['query_strings'] = ['inactive', 'lang'];
+				if (!empty($_GET['lang']) AND !empty($zz_setting['languages_allowed'])
+					AND in_array($_GET['lang'], $zz_setting['languages_allowed'])) {
+					$zz_setting['lang'] = $_GET['lang'];
+				}
 				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
 				$page['template'] = 'embed';
 				$page['url_ending'] = 'none';
