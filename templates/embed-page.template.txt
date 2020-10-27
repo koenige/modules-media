@@ -15,7 +15,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=%%% setting character_set %%%">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="/favicon.ico" type="image/x-ico">
-	<link rel="stylesheet" type="text/css" href="%%% setting layout_path %%%/embed.css" media="all">
+	<link rel="stylesheet" type="text/css" href="%%% setting layout_path %%%/%%% setting active_theme "%s/" %%%embed.css" media="all">
 	<script type="text/javascript" src="%%% setting behaviour_path %%%/media/embed.js"></script>
 	<style type="text/css">
 
