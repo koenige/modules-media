@@ -92,12 +92,16 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['title'] = $title;
 	$zz['fields'][14]['image'][$i]['path'] = $zz['fields'][14]['path'];
 	$zz['fields'][14]['image'][$i]['path']['string3'] = $size['path'];
-	$zz['fields'][14]['image'][$i]['width'] = !empty($size['width']) ? $size['width'] : false;
-	$zz['fields'][14]['image'][$i]['height'] = !empty($size['height']) ? $size['height'] : false;
-	$zz['fields'][14]['image'][$i]['action'] = $size['action'];
+	unset($size['path']);
+	$zz['fields'][14]['image'][$i] += $size;
+	if (!isset($zz['fields'][14]['image'][$i]['width']))
+		$zz['fields'][14]['image'][$i]['width'] = false;
+	if (!isset($zz['fields'][14]['image'][$i]['height']))
+		$zz['fields'][14]['image'][$i]['height'] = false;
+	if (!isset($zz['fields'][14]['image'][$i]['source']))
+		$zz['fields'][14]['image'][$i]['source'] = 0;
+	$zz['fields'][14]['image'][$i]['use_modified_source'] = !empty($zz['fields'][14]['image'][$i]['source']) ? true : false;
 	$zz['fields'][14]['image'][$i]['no_action_unless_thumb_extension'] = true;
-	$zz['fields'][14]['image'][$i]['source'] = !empty($size['source']) ? $size['source'] : 0;
-	$zz['fields'][14]['image'][$i]['use_modified_source'] = !empty($size['source']) ? true : false;
 	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36];
 	if ($size['action'] === 'crop') {
 		$zz['fields'][14]['image'][$i]['options'] = [36];
