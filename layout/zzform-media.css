@@ -37,6 +37,7 @@
 #zzform .stretch40 a
 					{ max-width: 40px; max-height: 40px;}
 #zzform ul.data p.legend
-					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; }
+					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; 
+					display: inline-block; }
 
 #zzform img.icon	{ padding: 0 5px; vertical-align: middle; }
