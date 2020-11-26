@@ -162,3 +162,21 @@ function mod_media_get_embed_youtube($video) {
 	$meta[$video]['video'] = $video;
 	return $meta[$video];
 }
+
+/**
+ * get filetypes data from cfg when adding new filetype in table
+ *
+ * @param array $cfg
+ * @return array
+ */
+function mod_media_filetypes_cfg($cfg) {
+	if (empty($cfg)) return [];
+	$mime_type = explode('/', $cfg['mime'][0]);
+	$data = [
+		!empty($cfg['description']) ? wrap_text($cfg['description']) : '',
+		$mime_type[0],
+		$mime_type[1],
+		$cfg['extension'][0]
+	];
+	return $data;
+}
