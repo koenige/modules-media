@@ -21,8 +21,6 @@
  */
 function page_images($params, $page) {
 	if (empty($page['media']['images'])) return '';
-	array_shift($page['media']['images']);
-	if (empty($page['media']['images'])) return '';
 	$text = wrap_template('images', $page['media']['images']);
 	return $text;
 }
