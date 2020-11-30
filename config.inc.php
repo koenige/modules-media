@@ -12,6 +12,9 @@
  */
 
 
+$zz_setting['brick_types_translated']['image'] = 'page';
+$zz_setting['brick_page_shortcuts'][] = 'image';
+
 if (!empty($zz_setting['embed'])) {
 	$zz_setting['youtube_url'] = 'https://www.youtube.com/watch?v=%s';
 
