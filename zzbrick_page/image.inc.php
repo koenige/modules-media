@@ -25,9 +25,12 @@ function page_image(&$params, &$page) {
 
 	if (empty($page)) {
 		$text = '%%% page image '.implode(' ', $params).' %%%';
-	} else {
+	} elseif (!empty($page['media'])) {
 		array_unshift($params, 'image');
 		$text = brick_request_link($page['media'], $params, 'sequence');
+	} else {
+		// if an arror occured on the page
+		$text = '';
 	}
 	$params = []; // no formatting!
 	return $text;
