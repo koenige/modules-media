@@ -44,8 +44,11 @@ function setPrivacyCookie(type) {
 }
 
 function setRedirect() {
+	// ?inactive=1 or ?inactive=1&lang=xx
 	if (window.location.href.substring(window.location.href.length - 11) === '?inactive=1')
 		window.location.href = window.location.href.substring(0, window.location.href.length - 11);
+	else if (window.location.href.substring(window.location.href.length - 19, window.location.href.length -8) === '?inactive=1')
+		window.location.href = window.location.href.substring(0, window.location.href.length - 19, window.location.href.length -8);
 }
 
 function checkPrivacyCookie(type) {
@@ -81,6 +84,7 @@ function enablePrivacySettings() {
 
 function initPrivacySettings() {
 	var fieldset = document.getElementsByClassName('privacysettings');
+	if (!fieldset.length) return;
 	var settings = fieldset[0].getElementsByTagName('input');
 
 	for (i = 0; i < settings.length; i++) {
