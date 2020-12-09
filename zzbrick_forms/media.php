@@ -12,6 +12,8 @@
  */
 
 
+require_once __DIR__.'/../zzbrick_rights/access.inc.php';
+
 $view = 'gallery';
 $path = false;
 $base_breadcrumb = false;
