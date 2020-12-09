@@ -204,6 +204,14 @@ msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
 msgid "Language"
 msgstr "Sprache"
 
+#: zzbrick_tables/media-access.php
+msgid "Media Access Rights"
+msgstr "Zugriffsrechte für Medien"
+
+#: zzbrick_tables/media-access.php
+msgid "Access"
+msgstr "Zugriff"
+
 #: templates/embed.template.txt
 msgid "Yes, I’d like this content to be embedded directly on this website."
 msgstr ""

@@ -200,6 +200,14 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: zzbrick_tables/media-access.php
+msgid "Media Access Rights"
+msgstr ""
+
+#: zzbrick_tables/media-access.php
+msgid "Access"
+msgstr ""
+
 #: templates/embed.template.txt
 msgid "Yes, I’d like this content to be embedded directly on this website."
 msgstr ""

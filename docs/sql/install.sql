@@ -77,3 +77,20 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'languages', 'language_id', (SELECT DATABASE()), 'media', 'medium_id', 'language_id', 'no-delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'filetypes', 'filetype_id', (SELECT DATABASE()), 'media', 'medium_id', 'filetype_id', 'no-delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'filetypes', 'filetype_id', (SELECT DATABASE()), 'media', 'medium_id', 'thumb_filetype_id', 'no-delete');
+
+
+CREATE TABLE `media_access` (
+  `medium_access_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `medium_id` int unsigned DEFAULT NULL,
+  `usergroup_id` int unsigned NOT NULL,
+  `access_category_id` int unsigned NOT NULL,
+  `last_update` timestamp NOT NULL,
+  PRIMARY KEY (`medium_access_id`),
+  UNIQUE KEY `medium_id_usergroup_id` (`medium_id`,`usergroup_id`),
+  KEY `usergroup_id` (`usergroup_id`),
+  KEY `access_category_id` (`access_category_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'medium_id', 'delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'usergroups', 'usergroup_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'usergroup_id', 'no-delete');
+INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'access_category_id', 'no-delete');
