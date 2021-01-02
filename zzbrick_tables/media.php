@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -478,7 +478,7 @@ if (!empty($zz_setting['embed'])) {
 	}
 }
 
-$zz['if'][3]['hooks']['before_insert'][] = 'mod_media_hook_embed';
+$zz['if'][3]['hooks']['before_insert'][] = 'mf_media_hook_embed';
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 

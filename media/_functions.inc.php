@@ -8,17 +8,17 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
 /**
- * register mod_media_get() as wrap_get_media() if no custom function exists
+ * register mf_media_get() as wrap_get_media() if no custom function exists
  */
 if (!function_exists('wrap_get_media')) {
 	function wrap_get_media($id, $table = 'webpages', $id_field = 'page') {
-		return mod_media_get($id, $table, $id_field);
+		return mf_media_get($id, $table, $id_field);
 	}
 }
 
@@ -31,7 +31,7 @@ if (!function_exists('wrap_get_media')) {
  * @return array $media
  *		grouped by images, links
  */
-function mod_media_get($id, $table = 'webpages', $id_field = 'page') {
+function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 	$multiple_ids = false;
 	if (is_array($id)) {
 		$id = implode(',', $id);
@@ -68,11 +68,11 @@ function mod_media_get($id, $table = 'webpages', $id_field = 'page') {
 	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
-		$media = mod_media_prepare($media);
+		$media = mf_media_prepare($media);
 	} else {
 		$media = wrap_db_fetch($sql, [$id_field.'_id', 'filecategory', 'medium_id']);
 		foreach ($media as $table_id => $medialist) {
-			$media[$table_id] = mod_media_prepare($medialist);
+			$media[$table_id] = mf_media_prepare($medialist);
 		}
 	}
 	return $media;
@@ -85,7 +85,7 @@ function mod_media_get($id, $table = 'webpages', $id_field = 'page') {
  * @param array $media
  * @return array
  */
-function mod_media_prepare($media) {
+function mf_media_prepare($media) {
 	foreach ($media as $filecategory => $files) {
 		$media[$filecategory] = wrap_translate($files, 'media');
 		foreach ($files as $medium_id => $medium) {
@@ -115,7 +115,7 @@ function mod_media_prepare($media) {
  * @param array $variants
  * @return string
  */
-function mod_media_switch_links($variants) {
+function mf_media_switch_links($variants) {
 	$text = '';
 	foreach ($variants as $variant) {
 		$link = $variant['link'] ? '<a href="'.$variant['link'].'">' : '';
@@ -132,7 +132,7 @@ function mod_media_switch_links($variants) {
  * @param string $video
  * @return array
  */
-function mod_media_get_embed_youtube($video) {
+function mf_media_get_embed_youtube($video) {
 	global $zz_setting;
 	static $meta;
 	if (!empty($meta[$video])) return $meta[$video];
@@ -169,7 +169,7 @@ function mod_media_get_embed_youtube($video) {
  * @param array $cfg
  * @return array
  */
-function mod_media_filetypes_cfg($cfg) {
+function mf_media_filetypes_cfg($cfg) {
 	if (empty($cfg)) return [];
 	$mime_type = explode('/', $cfg['mime'][0]);
 	$data = [

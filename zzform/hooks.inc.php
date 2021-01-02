@@ -7,18 +7,18 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
-function mod_media_hook_embed($ops) {
+function mf_media_hook_embed($ops) {
 	$change = [];
 	foreach ($ops['planned'] as $index => $table) {
 		if ($table['table'] !== 'media') continue;
 		if ($table['action'] !== 'insert') continue;
 		if ($ops['record_new'][$index]['filetype_id'] === wrap_filetype_id('youtube')) {
-			$meta = mod_media_get_embed_youtube($ops['record_new'][$index]['title']);
+			$meta = mf_media_get_embed_youtube($ops['record_new'][$index]['title']);
 			if (!$meta) {
 				$change['no_validation'] = true;
 				$change['validation_fields'][$index]['title']['class'] = 'error';

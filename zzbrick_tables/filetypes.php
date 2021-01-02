@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2005-2012, 2014, 2016, 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2005-2012, 2014, 2016, 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -26,7 +26,7 @@ $zz['fields'][6]['list_suffix'] = '</strong>';
 $zz['fields'][6]['class'] = 'block480a';
 $zz['fields'][6]['cfg'] = wrap_filetypes();
 $zz['fields'][6]['dependencies'] = [4, 2, 3, 7];
-$zz['fields'][6]['dependencies_function'] = 'mod_media_filetypes_cfg';
+$zz['fields'][6]['dependencies_function'] = 'mf_media_filetypes_cfg';
 
 $zz['fields'][4]['title'] = 'Description';
 $zz['fields'][4]['field_name'] = 'filetype_description';
