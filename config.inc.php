@@ -7,13 +7,15 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
 $zz_setting['brick_types_translated']['image'] = 'page';
 $zz_setting['brick_page_shortcuts'][] = 'image';
+$zz_setting['brick_types_translated']['doc'] = 'page';
+$zz_setting['brick_page_shortcuts'][] = 'doc';
 
 if (!empty($zz_setting['embed'])) {
 	$zz_setting['youtube_url'] = 'https://www.youtube.com/watch?v=%s';
