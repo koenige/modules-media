@@ -45,6 +45,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 			, media.date
 			, filetypes.extension AS extension
 			, filetypes.mime_content_type
+			, filetypes.mime_subtype
 			, filetypes.filetype
 			, filesize
 			, filetypes.filetype_description
@@ -52,7 +53,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 			, IF(height_px > width_px, "portrait", "panorama") AS orientation
 			, CASE filetypes.mime_content_type
 				WHEN "image" THEN "images"
-				WHEN "video" THEN "images"
+				WHEN "video" THEN "videos"
 				ELSE "links" END
 			AS filecategory
 		FROM %s_media
@@ -101,7 +102,7 @@ function mf_media_prepare($media) {
 					= substr($media[$filecategory][$medium_id]['source'], 0, -4);
 			$media[$filecategory][$medium_id]['filecategory_'.$medium['filecategory']] 
 				= $medium['filecategory_'.$medium['filecategory']] = true;
-			if ($medium['filetype'] !== 'pdf') continue;
+			if ($medium['filetype'] !== 'pdf' AND $filecategory !== 'videos') continue;
 			if (!$medium['thumb_extension']) continue;
 			$media['images'][$medium_id] = $medium;
 		}
