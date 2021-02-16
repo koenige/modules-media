@@ -11,10 +11,10 @@
 <div class="image%%% item position " %s" %%%%%% item orientation " %s" %%%"><figure>
 %%% condition if bigger_size_available %%%
 %%% condition unless cid %%%
-<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title strip_tags %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
 %%% condition endif %%%
 %%% condition endif %%%
-<img src="%%% condition if cid %%%cid:%%% item cid %%%%%% condition else %%%%%% setting files_path %%%/%%% item filename %%%.%%% condition if path %%%%%% item path %%%%%% condition else %%%%%% setting media_standard_image_size %%%%%% condition endif %%%.%%% item thumb_extension %%%%%% condition endif %%%" alt="%%% item title wrap_html_escape %%%"%%% condition if path & path_x2 %%%%%% condition unless cid %%%
+<img src="%%% condition if cid %%%cid:%%% item cid %%%%%% condition else %%%%%% setting files_path %%%/%%% item filename %%%.%%% condition if path %%%%%% item path %%%%%% condition else %%%%%% setting media_standard_image_size %%%%%% condition endif %%%.%%% item thumb_extension %%%%%% condition endif %%%" alt="%%% item title markdown_attribute %%%"%%% condition if path & path_x2 %%%%%% condition unless cid %%%
  srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%% 2x"
 %%% condition endif %%%%%% condition endif %%%>
 %%% condition if bigger_size_available %%%
@@ -22,5 +22,5 @@
 </a>
 %%% condition endif %%%
 %%% condition endif %%%
-<figcaption><em>%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% %%% condition if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% condition endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
+<figcaption><em>%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% %%% condition if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% condition endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
 </div>
