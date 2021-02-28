@@ -9,7 +9,7 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="video%%% item position " %s" %%%">
-<video width="%%% item width %%%" height="%%% item height %%%" controls preload="metadata"%%% condition if thumb_extension %%% poster="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"%%% condition endif %%%>
+<video width="%%% item width_px %%%" height="%%% item height_px %%%" controls preload="metadata"%%% condition if thumb_extension %%% poster="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"%%% condition endif %%%>
   <source src="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%" type="%%% item mime_content_type %%%/%%% item mime_subtype %%%">
 </video>
 </div>
