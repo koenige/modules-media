@@ -2,10 +2,10 @@
 # HTML template for link to document
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/media
+# https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020 Gustaf Mossakowski
+# @copyright Copyright © 2020-2021 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 # List of fields:
@@ -14,4 +14,9 @@
 # filetype_description, width_px, height_px, orientation, filecategory,
 # filecategory_links, custom_title
 #
+%%% condition if setting doc_txt_only %%%
+%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% (%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)
+%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%
+%%% condition else %%%
 <a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
+%%% condition endif %%%
