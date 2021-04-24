@@ -204,6 +204,14 @@ msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
 msgid "Language"
 msgstr "Sprache"
 
+#: zzbrick_tables/media.php
+msgid "Alternative text"
+msgstr "Alternativtext"
+
+#: zzbrick_tables/media.php
+msgid "optional content of `alt`-attribute for images, for screen reader software"
+msgstr "optionaler Inhalt des `alt`-Attributs für Bilder, für Screenreader-Software"
+
 #: zzbrick_tables/media-access.php
 msgid "Media Access Rights"
 msgstr "Zugriffsrechte für Medien"

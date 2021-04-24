@@ -37,9 +37,12 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		$id = implode(',', $id);
 		$multiple_ids = true;
 	}
+	$sql = 'SHOW FIELDS FROM media';
+	$fields = wrap_db_fetch($sql, '_dummy_', 'numeric');
+	
 	$sql = 'SELECT %s_id, medium_id, %s_media.sequence
 			, IF(ISNULL(description), media.title, description) AS title
-			, description
+			, description, alternative_text
 			, source, filename, version
 			, thumb_filetypes.extension AS thumb_extension
 			, media.date
@@ -66,6 +69,9 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		AND media.published = "yes"
 		ORDER BY %s_media.sequence, title, filename
 	';
+	if (!in_array('alternative_text', array_column($fields, 'Field'))) {
+		$sql = str_replace(', alternative_text', '', $sql);
+	}
 	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
