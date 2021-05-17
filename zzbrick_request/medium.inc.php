@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2020 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -108,7 +108,7 @@ function mod_media_medium($params) {
 				$page['text'] = wrap_template('embed', $file);
 				return $page;
 			} else {
-				return brick_format('%%% redirect '.$url.' %%%');
+				return wrap_redirect($url);
 			}
 		}
 	}
@@ -121,7 +121,7 @@ function mod_media_medium($params) {
 		if (!file_exists($file['name'])) return false;
 	}
 	if ($redirect) {
-		return brick_format('%%% redirect '.$new_url.' %%%');
+		return wrap_redirect($new_url, 303);
 	}
 	$file['etag'] = md5_file($file['name']);
 	if (!empty($_GET['v'])) {
