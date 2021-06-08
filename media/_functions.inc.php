@@ -100,10 +100,10 @@ function mf_media_prepare($media) {
 				$media[$filecategory][$medium_id]['title'] = $media[$filecategory][$medium_id]['description'];
 			$media[$filecategory][$medium_id]['source']
 				= trim(markdown($medium['source']));
-			if (wrap_substr($media[$filecategory][$medium_id]['source'], '<p>'))
+			if (str_starts_with($media[$filecategory][$medium_id]['source'], '<p>'))
 				$media[$filecategory][$medium_id]['source']
 					= substr($media[$filecategory][$medium_id]['source'], 3);
-			if (wrap_substr($media[$filecategory][$medium_id]['source'], '</p>', 'end'))
+			if (str_ends_with($media[$filecategory][$medium_id]['source'], '</p>'))
 				$media[$filecategory][$medium_id]['source']
 					= substr($media[$filecategory][$medium_id]['source'], 0, -4);
 			$media[$filecategory][$medium_id]['filecategory_'.$medium['filecategory']] 
