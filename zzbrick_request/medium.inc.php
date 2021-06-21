@@ -120,6 +120,7 @@ function mod_media_medium($params) {
 		$file['name'] = substr($file['name'], 0, $pos).'.master'.substr($file['name'], $pos);
 		if (!file_exists($file['name'])) return false;
 	}
+	if (is_dir($file['name'])) return false;
 	if ($redirect) {
 		return wrap_redirect($new_url, 303);
 	}
