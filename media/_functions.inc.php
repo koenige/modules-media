@@ -146,7 +146,8 @@ function mf_media_get_embed_youtube($video) {
 	require_once $zz_setting['core'].'/syndication.inc.php';
 
 	$url = sprintf($zz_setting['youtube_url'], $video);
-	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url);
+	$headers[] = sprintf('Cookie: CONSENT=YES+%s', strtoupper($zz_setting['lang']));
+	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url, $headers);
 
 	// get opengraph metadata
 	if ($status === 200) {
@@ -162,7 +163,7 @@ function mf_media_get_embed_youtube($video) {
 		if (empty($meta[$video])) $status = 404;
 	}
 	if (!in_array($status, [200, 429])) {
-		wrap_error(sprintf('YouTube Video %s was not found. Status: %d', $video, $status));
+		wrap_error(sprintf('YouTube Video %s was not found. Status: %d. Headers: %s. Response: %s', $video, $status, json_encode($headers), json_encode($data)));
 		return [];
 	}
 
