@@ -66,13 +66,14 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE %s_id IN (%s)
-		AND media.published = "yes"
+		%s
 		ORDER BY %s_media.sequence, title, filename
 	';
+	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
 	if (!in_array('alternative_text', array_column($fields, 'Field'))) {
 		$sql = str_replace(', alternative_text', '', $sql);
 	}
-	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $table);
+	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $where, $table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_prepare($media);
