@@ -1,15 +1,18 @@
 /**
- * Zugzwang Project
- * SQL for installation of media module
+ * media module
+ * SQL updates
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2017, 2020-2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
+/* 2017-07-21-1 */	ALTER TABLE `filetypes` CHANGE `filetype` `filetype` varchar(7) COLLATE 'latin1_general_ci' NOT NULL AFTER `filetype_id`, CHANGE `mime_content_type` `mime_content_type` varchar(31) COLLATE 'latin1_general_cs' NOT NULL AFTER `filetype`, CHANGE `mime_subtype` `mime_subtype` varchar(127) COLLATE 'latin1_general_cs' NOT NULL AFTER `mime_content_type`, CHANGE `filetype_description` `filetype_description` varchar(63) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `mime_subtype`, COLLATE 'utf8mb4_unicode_ci';
+/* 2017-07-21-2 */	ALTER TABLE `media` CHANGE `title` `title` varchar(127) COLLATE 'utf8mb4_unicode_ci' NOT NULL AFTER `main_medium_id`, CHANGE `description` `description` text COLLATE 'utf8mb4_unicode_ci' NULL AFTER `title`, CHANGE `source` `source` varchar(255) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `time`, ADD `clipping` enum('center','top','right','bottom','left') COLLATE 'latin1_general_ci' NOT NULL DEFAULT 'center' AFTER `published`, CHANGE `filename` `filename` varchar(255) COLLATE 'latin1_general_cs' NOT NULL AFTER `sequence`, ADD `width_px` mediumint unsigned NULL AFTER `version`, ADD `height_px` mediumint unsigned NULL AFTER `width_px`, COLLATE 'utf8mb4_unicode_ci';
 /* 2020-05-19-1 */	ALTER TABLE `media` ADD `parameters` varchar(255) NULL AFTER `height_px`;
 /* 2020-05-19-2 */	INSERT INTO filetypes (`filetype`, `filetype_description`, `mime_content_type`, `mime_subtype`, `extension`) VALUES ('youtube', 'YouTube Video', 'application', 'octet-stream', '');
 /* 2020-05-26-1 */	ALTER TABLE `media` CHANGE `parameters` `parameters` varchar(750) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `height_px`;
