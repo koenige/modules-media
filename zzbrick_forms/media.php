@@ -109,7 +109,8 @@ if ($view === 'gallery') {
 		$base_path = str_repeat('../', substr_count($path, '/') + 1);
 		$base_link = str_repeat('../', substr_count($link, '/'));
 	} else {
-		if (empty($_GET['q'])) {
+		if (empty($_GET['q']) AND empty($_POST)) {
+			// empty POST for query for thumbnail generation!
 			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
 		} else {
 			$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
