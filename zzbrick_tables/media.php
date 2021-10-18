@@ -189,7 +189,7 @@ $zz['fields'][3]['typo_cleanup'] = true;
 
 $zz['fields'][17]['field_name'] = 'alternative_text';
 $zz['fields'][17]['type'] = 'text';
-$zz['fields'][17]['explanation'] = 'optional content of `alt`-attribute, for screen reader software';
+$zz['fields'][17]['explanation'] = 'optional content of `alt`-attribute for images, for screen reader software';
 $zz['fields'][17]['hide_in_list'] = true;
 
 // additional fields
