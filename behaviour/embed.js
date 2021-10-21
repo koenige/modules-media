@@ -4,7 +4,7 @@
  * for media module
  *
  * Part of »Zugzwang Project«
- * http://www.zugzwang.org/modules/media
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2020 Gustaf Mossakowski

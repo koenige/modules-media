@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * media module
  * Table definition for 'filetypes'
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2005-2012, 2014, 2016, 2020-2021 Gustaf Mossakowski

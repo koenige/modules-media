@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Zugzwang Project
- * configuration for media module
+ * media module
+ * configuration
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2020-2021 Gustaf Mossakowski

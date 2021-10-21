@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * media module
  * Output of files from protected area
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2010-2011, 2014-2015, 2017-2021 Gustaf Mossakowski

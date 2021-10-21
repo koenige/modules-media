@@ -1,11 +1,12 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * media module
  * Common functions
  * Allgemeine Funktionen
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2014-2015, 2020-2021 Gustaf Mossakowski

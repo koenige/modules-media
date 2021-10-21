@@ -1,8 +1,8 @@
-# news module
-# Template for news gallery
+# media module
+# Template for image gallery
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/media
+# https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
 # @copyright Copyright © 2014-2015, 2017, 2019-2021 Gustaf Mossakowski

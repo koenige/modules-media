@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Zugzwang Project
+ * media module
  * Output Twitch video
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2020 Gustaf Mossakowski
