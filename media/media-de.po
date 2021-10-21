@@ -2,10 +2,10 @@
 # Translations
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/media
+# https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2021 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -22,6 +22,42 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.8.12\n"
+
+#: templates/mediuminfo.template.txt
+msgid "Meta data"
+msgstr "Metadaten"
+
+#: templates/mediuminfo.template.txt
+msgid "Date/Time"
+msgstr "Datum/Zeit"
+
+#: templates/mediuminfo.template.txt
+msgid "File info"
+msgstr "Datei-Informationen"
+
+#: templates/mediuminfo.template.txt
+msgid "Hash (MD5)"
+msgstr "Hash (MD5)"
+
+#: templates/mediuminfo.template.txt
+msgid "Extension"
+msgstr "Dateierweiterung"
+
+#: templates/mediuminfo.template.txt
+msgid "Files"
+msgstr "Dateien"
+
+#: templates/mediuminfo.template.txt
+msgid "pixels"
+msgstr "Pixel"
+
+#: templates/mediuminfo.template.txt
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/mediuminfo.template.txt
+msgid "Edit medium"
+msgstr "Medium bearbeiten"
 
 #: zzbrick_tables/media.php
 msgid "File"
@@ -59,11 +95,11 @@ msgstr "Folge"
 msgid "Sequence"
 msgstr "Reihenfolge"
 
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Filetype"
 msgstr "Dateityp"
 
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Filesize"
 msgstr "Dateigröße"
 
@@ -134,7 +170,7 @@ msgstr ""
 "Digitalphotos: Falls nichts eingegeben wird, werden Datum und Zeit aus der "
 "Datei ausgelesen."
 
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Source"
 msgstr "Quelle"
 
@@ -204,13 +240,15 @@ msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
 msgid "Language"
 msgstr "Sprache"
 
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Alternative text"
 msgstr "Alternativtext"
 
 #: zzbrick_tables/media.php
-msgid "optional content of `alt`-attribute for images, for screen reader software"
-msgstr "optionaler Inhalt des `alt`-Attributs für Bilder, für Screenreader-Software"
+msgid ""
+"optional content of `alt`-attribute for images, for screen reader software"
+msgstr ""
+"optionaler Inhalt des `alt`-Attributs für Bilder, für Screenreader-Software"
 
 #: zzbrick_tables/media-access.php
 msgid "Media Access Rights"

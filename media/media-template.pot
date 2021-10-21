@@ -2,10 +2,10 @@
 # Translations, template
 #
 # Part of »Zugzwang Project«
-# http://www.zugzwang.org/modules/media
+# https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017, 2020 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2020-2021 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -22,6 +22,42 @@ msgstr ""
 "PO-Revision-Date: \n"
 "X-Generator: Poedit 1.6.4\n"
 "Language: en\n"
+
+#: templates/mediuminfo.template.txt
+msgid "Meta data"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Date/Time"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "File info"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Hash (MD5)"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Extension"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Files"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "pixels"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Edit"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Edit medium"
+msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "File"
@@ -59,10 +95,12 @@ msgstr ""
 msgid "Sequence"
 msgstr ""
 
+#: templates/mediuminfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filetype"
 msgstr ""
 
+#: templates/mediuminfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filesize"
 msgstr ""
@@ -130,6 +168,7 @@ msgid ""
 "file."
 msgstr ""
 
+#: templates/mediuminfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Source"
 msgstr ""
@@ -200,6 +239,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: templates/mediuminfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Alternative text"
 msgstr ""

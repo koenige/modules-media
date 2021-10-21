@@ -1,0 +1,65 @@
+# media module
+# HTML template for info about medium
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2021 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+<div class="mediuminfo">
+<h1>%%% item title %%%</h1>
+
+%%% condition if preview_image %%%
+<figure class="media_preview_image">
+<img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%">
+</figure>
+%%% condition endif %%%
+
+<h3>%%% text Meta data %%%</h3>
+
+<p>%%% text Date/Time %%%: %%% item date wrap_date %%% %%% item time wrap_time %%%</p>
+
+%%% item description markdown %%%
+%%% condition if source %%%
+<h3>%%% text Source %%%</h3>
+<p>%%% item source %%%</p>
+%%% condition endif %%%
+
+%%% condition if alternative_text %%%
+<h3>%%% text Alternative text %%%</h3>
+<p>%%% item alternative_text %%%</p>
+%%% condition endif %%%
+
+<h3>%%% text File info %%%</h3>
+
+<ul>
+<li>%%% text Filesize %%%: %%% item filesize wrap_bytes %%%</li>
+<li>%%% text Hash (MD5) %%%: %%% item md5_hash %%%</li>
+<li>%%% text Filetype %%%: %%% item filetype_description %%% (%%% text Extension: %%% .%%% item extension %%%)</li>
+</ul>
+
+<h3>%%% text Files %%%</h3>
+
+<ul>
+%%% loop sizes %%%
+<li>%%% condition if file_exists %%%<a href="%%% setting files_path %%%/%%% item filename %%%?v=%%% item version %%%">%%% condition endif %%%
+%%% item action "%s " %%%%%% item type %%%%%% condition if width %%%, %%% item width %%% × %%% item height %%%&nbsp;%%% text pixels %%%%%% condition endif %%%
+%%% condition if file_exists %%%</a>%%% condition endif %%%
+%%% loop end %%%
+</ul>
+
+<h3>%%% text Edit %%%</h3>
+
+<ul>
+<li><a href="%%% item backlink %%%?edit=%%% item medium_id %%%">%%% text Edit medium %%%</a></li>
+</ul>
+
+%%% comment
+// published
+// sequence (link to next/prev in sequence)
+// width_cm, height_cm, material
+%%%
+</div>
+

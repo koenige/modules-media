@@ -1,10 +1,11 @@
 <?php 
 
 /**
- * Zugzwang Project
+ * media module
  * View for 'media' in gallery or list mode, including folders
  *
- * http://www.zugzwang.org/modules/media
+ * Part of »Zugzwang Project«
+ * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
  * @copyright Copyright © 2010-2021 Gustaf Mossakowski
@@ -52,9 +53,13 @@ if (isset($brick['vars'][1])) {
 
 if ($path) {
 	$sql = 'SELECT medium_id, description, filename
+			, IF(filetype_id != %d, 1, NULL) AS is_file
 		FROM /*_PREFIX_*/media
 		WHERE filename = "%s"';
-	$sql = sprintf($sql, $path);
+	$sql = sprintf($sql
+		, wrap_id('filetypes', 'folder')
+		, $path
+	);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
 	if ($view !== 'tree' AND empty($_GET['q'])) {
@@ -173,8 +178,10 @@ if ($path) {
 	$zz['title'] .= 'TOP</small>';
 }
 
+unset($zz['fields'][14]['unless'][2]); // no direct link on image
+
 if ($view === 'gallery') {
-	$zz['fields'][14]['if'][2]['link'] = [
+	$zz['fields'][14]['link'] = [
 		'string1' => $base_path,
 		'field1' => 'filename',
 		'string2' => '/'
@@ -185,6 +192,12 @@ if ($view === 'gallery') {
 		$zz['fields'][33]['hide_in_list'] = true;
 	}
 } else {
+	$zz['fields'][14]['link'] = [
+		'string1' => substr($base_path, 0, -2),
+		'field1' => 'filename',
+		'string2' => '/-/'
+	];
+
 	// Files
 	$zz['fields'][14]['path'] = [
 		'root' => $zz_setting['media_folder'],
@@ -206,7 +219,7 @@ if ($view === 'gallery') {
 	if (!empty($zz['fields'][14]['if'][1]['class']))
 		$zz['fields'][14]['if'][1]['class'] .= ' stretch40';
 
-	$zz['fields'][2]['unless'][2]['link'] = $zz['fields'][14]['unless'][2]['link'];
+	$zz['fields'][2]['link'] = $zz['fields'][14]['link'];
 
 	// Sequence
 	if (!empty($zz['fields'][33])) {
@@ -240,4 +253,13 @@ if ($view === 'gallery') {
 
 	$zz['list']['hierarchy']['mother_id_field_name'] = $zz['fields'][8]['field_name'];
 	$zz['list']['hierarchy']['display_in'] = $zz['fields'][2]['field_name'];
+}
+
+// display image
+if (!empty($folder['is_file'])) {
+	$zz['list']['hide_empty_table'] = true;
+	$zz['request'][] = 'mediuminfo';
+	
+	$zz_conf['add'] = false;
+	$zz_conf['footer_text'] = false;
 }
