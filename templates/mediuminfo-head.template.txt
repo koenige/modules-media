@@ -1,0 +1,12 @@
+# media module
+# HTML template for info about medium, page head
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2021 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+    <script src="%%% setting behaviour_path %%%/croppr/dist/croppr.js"></script>
+    <link rel="stylesheet" href="%%% setting behaviour_path %%%/croppr/dist/croppr.css">

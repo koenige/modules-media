@@ -13,7 +13,7 @@
 
 %%% condition if preview_image %%%
 <figure class="media_preview_image">
-<img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%">
+<img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% condition if crop %%% id="cropper"%%% condition endif %%%>
 </figure>
 %%% condition endif %%%
 
@@ -63,3 +63,12 @@
 %%%
 </div>
 
+%%% condition if crop %%%
+    <script>
+        var croppr = new Croppr('#cropper', {
+            onCropEnd: (data) => { console.log('end', data); },
+            aspectRatio: 1,
+            returnMode: 'ratio'
+        });
+    </script>
+%%% condition endif %%%

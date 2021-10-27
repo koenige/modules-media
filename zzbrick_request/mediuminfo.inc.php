@@ -58,6 +58,7 @@ function mod_media_mediuminfo($params) {
 		'width' => $medium['width_px'],
 		'height' => $medium['height_px']
 	];
+	$medium['crop'] = false;
 	foreach ($zz_setting['media_sizes'] as $type => $size) {
 		$size['type'] = $type;
 		$size['version'] = $medium['version'];
@@ -68,8 +69,11 @@ function mod_media_mediuminfo($params) {
 			$medium['preview_image'] = $size['filename'];
 			$medium['preview_title'] = $size['action'].' '.$type;
 		}
+		if ($size['action'] === 'crop' AND !empty($zz_setting['media_croppr']))
+			$medium['crop'] = true;
 	}
-	
 	$page['text'] = wrap_template('mediuminfo', $medium);
+	if ($medium['crop'])
+		$page['head'] = wrap_template('mediuminfo-head');
 	return $page;
 }
