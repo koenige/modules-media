@@ -66,25 +66,5 @@
 </div>
 
 %%% condition if crop %%%
-<script>
-	var cropButtonActivate = document.getElementById('cropimage_activate');
-	var cropButtonSave = document.getElementById('cropimage_save');
-	var croppr;
-	cropButtonSave.style.display = 'none';
-	cropButtonActivate.addEventListener('click', function() {
-		cropButtonSave.style.display = 'inline-block';
-		this.style.display = 'none';
-		croppr = new Croppr('#cropper', {
-			onCropEnd: (data) => { console.log('end', data); },
-			aspectRatio: 1,
-			returnMode: 'ratio'
-		});
-	});
-	cropButtonSave.addEventListener('click', function() {
-		cropButtonActivate.style.display = 'inline-block';
-		this.style.display = 'none';
-		croppr.destroy();
-	});
-	
-</script>
+<script src="%%% setting behaviour_path %%%/media/croppr.js"></script>
 %%% condition endif %%%
