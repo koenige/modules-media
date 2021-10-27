@@ -14,6 +14,8 @@
 %%% condition if preview_image %%%
 <figure class="media_preview_image">
 <img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% condition if crop %%% id="cropper"%%% condition endif %%%>
+<button id="cropimage_activate">%%% text Crop image (custom) %%%</button>
+<button id="cropimage_save">%%% text Save image section %%%</button>
 </figure>
 %%% condition endif %%%
 
@@ -64,11 +66,25 @@
 </div>
 
 %%% condition if crop %%%
-    <script>
-        var croppr = new Croppr('#cropper', {
-            onCropEnd: (data) => { console.log('end', data); },
-            aspectRatio: 1,
-            returnMode: 'ratio'
-        });
-    </script>
+<script>
+	var cropButtonActivate = document.getElementById('cropimage_activate');
+	var cropButtonSave = document.getElementById('cropimage_save');
+	var croppr;
+	cropButtonSave.style.display = 'none';
+	cropButtonActivate.addEventListener('click', function() {
+		cropButtonSave.style.display = 'inline-block';
+		this.style.display = 'none';
+		croppr = new Croppr('#cropper', {
+			onCropEnd: (data) => { console.log('end', data); },
+			aspectRatio: 1,
+			returnMode: 'ratio'
+		});
+	});
+	cropButtonSave.addEventListener('click', function() {
+		cropButtonActivate.style.display = 'inline-block';
+		this.style.display = 'none';
+		croppr.destroy();
+	});
+	
+</script>
 %%% condition endif %%%

@@ -42,6 +42,10 @@
 
 #zzform img.icon	{ padding: 0 5px; vertical-align: middle; }
 
+#zzform .media_preview_image
+					{ text-align: center; }
+#zzform .media_preview_image button
+					{ margin: .5em; }
 #zzform .media_preview_image img
 					{ max-height: 640px; max-width: 640px; }
 #zzform .mediuminfo	h3
