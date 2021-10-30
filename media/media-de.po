@@ -23,6 +23,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.8.12\n"
 
+#: behaviour/croppr.js
+msgid "Medium was cropped."
+msgstr "Das Medium wurde beschnitten."
+
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
 msgstr "Metadaten"
@@ -58,6 +62,14 @@ msgstr "Bearbeiten"
 #: templates/mediuminfo.template.txt
 msgid "Edit medium"
 msgstr "Medium bearbeiten"
+
+#: templates/mediuminfo.template.txt
+msgid "Crop image (custom)"
+msgstr "Bild zuschneiden (eigene Größe) "
+
+#: templates/mediuminfo.template.txt
+msgid "Save image section"
+msgstr "Bildausschnitt speichern "
 
 #: zzbrick_tables/media.php
 msgid "File"

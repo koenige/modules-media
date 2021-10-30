@@ -15,7 +15,7 @@
 <figure class="media_preview_image">
 <img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% condition if crop %%% id="cropper"%%% condition endif %%%>
 <button id="cropimage_activate">%%% text Crop image (custom) %%%</button>
-<button id="cropimage_save">%%% text Save image section %%%</button>
+<button id="cropimage_save" data-medium_id="%%% item medium_id %%%">%%% text Save image section %%%</button>
 </figure>
 %%% condition endif %%%
 

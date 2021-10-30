@@ -23,6 +23,10 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 "Language: en\n"
 
+#: behaviour/croppr.js
+msgid "Medium was cropped."
+msgstr ""
+
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
 msgstr ""
@@ -57,6 +61,14 @@ msgstr ""
 
 #: templates/mediuminfo.template.txt
 msgid "Edit medium"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Crop image (custom)"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Save image section"
 msgstr ""
 
 #: zzbrick_tables/media.php

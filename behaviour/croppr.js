@@ -26,7 +26,7 @@ cropButtonActivate.addEventListener('click', function() {
 cropButtonSave.addEventListener('click', function() {
 	cropButtonActivate.style.display = 'inline-block';
 	this.style.display = 'none';
-	saveCrop();
+	saveCrop(this.dataset.medium_id);
 	croppr.destroy();
 });
 
@@ -39,17 +39,17 @@ getXmlHttpRequestObject = function() {
 	return xhr;
 };
 
-saveCrop = function() {
+function saveCrop(id) {
 	xhr = getXmlHttpRequestObject();
 	xhr.onreadystatechange = cropEventHandler;
 	xhr.open('POST', window.location.href, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	var returnVal = croppr.getValue('ratio');
-	xhr.send('x=' + returnVal.x + '&y=' + returnVal.y + '&width=' + returnVal.width + '&height=' + returnVal.height);
+	xhr.send('httpRequest=crop&medium_id=' + id + '&x=' + returnVal.x + '&y=' + returnVal.y + '&width=' + returnVal.width + '&height=' + returnVal.height);
 };
 
 function cropEventHandler() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
-		alert('saved');
+		alert('%%% text Medium was cropped. %%%');
 	}
 }
