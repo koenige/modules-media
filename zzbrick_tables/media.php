@@ -105,7 +105,7 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 	$zz['fields'][14]['image'][$i]['no_action_unless_thumb_extension'] = true;
 	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36, 40];
 	if ($size['action'] === 'crop') {
-		$zz['fields'][14]['image'][$i]['options'] = [36];
+		$zz['fields'][14]['image'][$i]['options'] = [36, 40];
 	}
 	$i++;
 }
