@@ -228,6 +228,10 @@ msgid "left"
 msgstr ""
 
 #: zzbrick_tables/media.php
+msgid "custom"
+msgstr ""
+
+#: zzbrick_tables/media.php
 msgid "bottom"
 msgstr ""
 

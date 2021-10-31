@@ -57,7 +57,7 @@ CREATE TABLE `media` (
   `time` time DEFAULT NULL,
   `source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `published` enum('yes','no') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'yes',
-  `clipping` enum('center','top','right','bottom','left') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'center',
+  `clipping` enum('center','top','right','bottom','left','custom') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'center',
   `sequence` smallint unsigned DEFAULT NULL,
   `filename` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `filetype_id` int unsigned NOT NULL,

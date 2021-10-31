@@ -229,6 +229,10 @@ msgid "left"
 msgstr "links"
 
 #: zzbrick_tables/media.php
+msgid "custom"
+msgstr "individuell"
+
+#: zzbrick_tables/media.php
 msgid "bottom"
 msgstr "unten"
 

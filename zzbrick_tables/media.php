@@ -103,7 +103,7 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 		$zz['fields'][14]['image'][$i]['source'] = 0;
 	$zz['fields'][14]['image'][$i]['use_modified_source'] = !empty($zz['fields'][14]['image'][$i]['source']) ? true : false;
 	$zz['fields'][14]['image'][$i]['no_action_unless_thumb_extension'] = true;
-	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36];
+	$zz['fields'][14]['image'][$i]['recreate_on_change'] = [16, 36, 40];
 	if ($size['action'] === 'crop') {
 		$zz['fields'][14]['image'][$i]['options'] = [36];
 	}
@@ -208,7 +208,7 @@ if ($crop) {
 	$zz['fields'][36]['field_name'] = 'clipping';
 	$zz['fields'][36]['explanation'] = 'Position of clipping of cropped image';
 	$zz['fields'][36]['type'] = 'select';
-	$zz['fields'][36]['enum'] = ['center', 'top', 'right', 'bottom', 'left'];
+	$zz['fields'][36]['enum'] = ['center', 'top', 'right', 'bottom', 'left', 'custom'];
 	$zz['fields'][36]['default'] = 'center';
 	$zz['fields'][36]['hide_in_list'] = true;
 	$zz['fields'][36]['if'][2]['hide_in_form'] = true;
@@ -218,8 +218,10 @@ if ($crop) {
 		'top' => ['action' => 'crop_top'],
 		'right' => ['action' => 'crop_right'],
 		'bottom' => ['action' => 'crop_bottom'],
-		'left' => ['action' => 'crop_left']
+		'left' => ['action' => 'crop_left'],
+		'custom' => ['action' => 'crop_custom']
 	];
+	$zz['fields'][36]['dependent_fields'][40]['if_selected'] = 'custom';
 }
 
 if (empty($brick['local_settings']['no_sequence'])) {
@@ -406,8 +408,10 @@ $zz['fields'][35]['if'][3] = false;
 $zz['fields'][40]['field_name'] = 'parameters';
 $zz['fields'][40]['type'] = 'parameter';
 $zz['fields'][40]['hide_in_list'] = true;
-$zz['fields'][40]['hide_in_form'] = true;
 $zz['fields'][40]['if'][3]['hide_in_form'] = false;
+if (!$crop) {
+	$zz['fields'][40]['hide_in_form'] = true;
+}
 
 $zz['fields'][20]['title'] = 'Updated';
 $zz['fields'][20]['field_name'] = 'last_update';

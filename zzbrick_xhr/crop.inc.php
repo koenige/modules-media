@@ -48,6 +48,7 @@ function mod_media_xhr_crop($data) {
 	$values['action'] = 'update';
 	$values['POST']['medium_id'] = $medium['medium_id'];
 	$values['POST']['parameters'] = http_build_query($medium['parameters']);
+	$values['POST']['clipping'] = 'custom';
 	$ops = zzform_multi('media', $values);
 	if (!$ops) {
 		wrap_error(sprintf('Unable to set crop coordinates for medium ID %d', $data['medium_id']), E_USER_ERROR);
