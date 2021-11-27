@@ -26,7 +26,6 @@
 
 <p>%%% text Date/Time %%%: %%% item date wrap_date %%% %%% item time wrap_time %%%</p>
 
-%%% item description markdown %%%
 %%% condition if source %%%
 <h3>%%% text Source %%%</h3>
 <p>%%% item source %%%</p>
