@@ -181,6 +181,7 @@ $zz['fields'][2]['class'] = 'legend block480a';
 $zz['fields'][2]['if'][3]['title'] = 'Code';
 $zz['fields'][2]['if'][3]['type'] = 'write_once';
 $zz['fields'][2]['typo_cleanup'] = true;
+$zz['fields'][2]['typo_remove_double_spaces'] = true;
 
 $zz['fields'][3]['field_name'] = 'description';
 $zz['fields'][3]['type'] = 'memo';
