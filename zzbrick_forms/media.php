@@ -117,10 +117,11 @@ if ($view === 'gallery') {
 		if (empty($_GET['q']) AND empty($_POST)) {
 			// empty POST for query for thumbnail generation!
 			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
+			$base_path = '';
 		} else {
 			$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
+			$base_path = str_repeat('../', substr_count($path, '/') + 1);
 		}
-		$base_path = '';
 	}
 } else {
 	$variants[0]['link'] = '../';
