@@ -193,6 +193,7 @@ $zz['fields'][17]['field_name'] = 'alternative_text';
 $zz['fields'][17]['type'] = 'text';
 $zz['fields'][17]['explanation'] = 'optional content of `alt`-attribute for images, for screen reader software';
 $zz['fields'][17]['hide_in_list'] = true;
+$zz['fields'][17]['if'][2] = false;
 
 // additional fields
 $zz['fields'][6] = false; // media_categories
