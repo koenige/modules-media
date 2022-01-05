@@ -120,13 +120,13 @@ if ($view === 'gallery') {
 			$base_path = '';
 		} else {
 			$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
-			$base_path = str_repeat('../', substr_count($path, '/') + 1);
+			$base_path = $path ? str_repeat('../', substr_count($path, '/') + 1) : '';
 		}
 	}
 } else {
 	$variants[0]['link'] = '../';
 	$variants[1]['link'] = '';
-	$base_path = str_repeat('../', substr_count($path, '/') + 2).'-/';
+	$base_path = str_repeat('../', substr_count($path, '/') + ($path ? 2 : 1)).'-/';
 }
 
 $zz['title'] .= mf_media_switch_links($variants);
