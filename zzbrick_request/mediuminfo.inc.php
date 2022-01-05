@@ -59,18 +59,20 @@ function mod_media_mediuminfo($params) {
 		'height' => $medium['height_px']
 	];
 	$medium['crop'] = false;
-	foreach ($zz_setting['media_sizes'] as $type => $size) {
-		$size['type'] = $type;
-		$size['version'] = $medium['version'];
-		$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
-		$size['file_exists'] = file_exists($zz_setting['media_folder'].'/'.$size['filename']) ? true : false;
-		$medium['sizes'][] = $size;
-		if (empty($medium['preview_image']) AND $size['action'] === 'thumbnail') {
-			$medium['preview_image'] = $size['filename'];
-			$medium['preview_title'] = $size['action'].' '.$type;
+	if ($medium['thumb_filetype']) {
+		foreach ($zz_setting['media_sizes'] as $type => $size) {
+			$size['type'] = $type;
+			$size['version'] = $medium['version'];
+			$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
+			$size['file_exists'] = file_exists($zz_setting['media_folder'].'/'.$size['filename']) ? true : false;
+			$medium['sizes'][] = $size;
+			if (empty($medium['preview_image']) AND $size['action'] === 'thumbnail') {
+				$medium['preview_image'] = $size['filename'];
+				$medium['preview_title'] = $size['action'].' '.$type;
+			}
+			if ($size['action'] === 'crop' AND !empty($zz_setting['media_croppr']))
+				$medium['crop'] = true;
 		}
-		if ($size['action'] === 'crop' AND !empty($zz_setting['media_croppr']))
-			$medium['crop'] = true;
 	}
 	$page['text'] = wrap_template('mediuminfo', $medium);
 	if ($medium['crop'])
