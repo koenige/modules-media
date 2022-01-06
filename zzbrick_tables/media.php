@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -482,6 +482,7 @@ $zz['add'][] = [
 ];
 if (!empty($zz_setting['embed'])) {
 	foreach (array_keys($zz_setting['embed']) as $embed) {
+		if (!wrap_filetype_id(strtolower($embed), 'check')) continue;
 		$zz['add'][] = [
 			'type' => $embed,
 			'field_name' => 'filetype_id',
