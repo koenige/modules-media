@@ -196,11 +196,11 @@ $zz['fields'][17]['hide_in_list'] = true;
 $zz['fields'][17]['if'][2] = false;
 
 // additional fields
-$zz['fields'][6] = false; // media_categories
-$zz['fields'][41] = false;
-$zz['fields'][42] = false;
-$zz['fields'][43] = false;
-$zz['fields'][44] = false;
+$zz['fields'][6] = []; // media_categories
+$zz['fields'][41] = [];
+$zz['fields'][42] = [];
+$zz['fields'][43] = [];
+$zz['fields'][44] = [];
 
 $crop = false;
 foreach ($zz_setting['media_sizes'] as $size) {
