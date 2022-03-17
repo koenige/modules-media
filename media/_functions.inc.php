@@ -241,8 +241,9 @@ function mf_media_opengraph_image($image, $size = '') {
 
 	$og = [];
 	$og['og:image'] = sprintf(
-		'%s/%s.%s.%s?v=%d', $zz_setting['files_path'], $image['filename'],
-		$msize['path'], $image['thumb_extension'], $image['version']
+		'%s%s/%s.%s.%s?v=%d', $zz_setting['host_base'], $zz_setting['files_path']
+		, $image['filename'], $msize['path'], $image['thumb_extension']
+		, $image['version']
 	);
 	$og['og:image:width'] = mf_media_image_size($image, 'width', $size);
 	$og['og:image:height'] = mf_media_image_size($image, 'height', $size);
