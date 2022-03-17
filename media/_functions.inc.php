@@ -9,7 +9,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -189,4 +189,64 @@ function mf_media_filetypes_cfg($cfg) {
 		$cfg['extension'][0]
 	];
 	return $data;
+}
+
+/**
+ * get sizes for thumbnail images depending on image, dimension and size
+ *
+ * @param array $image
+ * @param string $dimension (width, height)
+ * @param string $size (wanted key of setting media_sizes)
+ * @return string
+ */
+function mf_media_image_size($image, $dimension, $size) {
+	global $zz_setting;
+	if (empty($zz_setting['media_sizes'][$size])) return false;
+	$size = $zz_setting['media_sizes'][$size];
+	switch ($dimension) {
+	case 'width':
+		if ($image['orientation'] === 'panorama') return $size['width'];
+		return round($size['height'] / $image['height_px'] * $image['width_px']);
+	case 'height':
+		if ($image['orientation'] === 'landscape') return $size['height'];
+		return round($size['width'] / $image['width_px'] * $image['height_px']);
+	}
+	return '';
+}
+
+/**
+ * get opengraph image tags from given image
+ *
+ * @param array $image
+ * @param string $size (optional; if not found as key, check against path)
+ * @return array
+ */
+function mf_media_opengraph_image($image, $size = '') {
+	global $zz_setting;
+	if (empty($zz_setting['media_sizes'])) return [];
+	if (!$size) {
+		if (empty($zz_setting['media_standard_image_size'])) return [];
+		$size = $zz_setting['media_standard_image_size'];
+	}
+	$msize = [];
+	if (array_key_exists($size, $zz_setting['media_sizes']))
+		$msize = $zz_setting['media_sizes'][$size];
+	else
+		foreach ($zz_setting['media_sizes'] as $key => $media_size) {
+			if ($media_size['path'].'' !== $size.'') continue;
+			$msize = $media_size;
+			$size = $key;
+		}
+	if (!$msize) return [];
+
+	$og = [];
+	$og['og:image'] = sprintf(
+		'%s/%s.%s.%s?v=%d', $zz_setting['files_path'], $image['filename'],
+		$msize['path'], $image['thumb_extension'], $image['version']
+	);
+	$og['og:image:width'] = mf_media_image_size($image, 'width', $size);
+	$og['og:image:height'] = mf_media_image_size($image, 'height', $size);
+	$og['og:image:alt'] = $image['alternative_text']
+		? $image['alternative_text'] : $image['title'];
+	return $og;
 }
