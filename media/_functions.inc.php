@@ -201,6 +201,8 @@ function mf_media_filetypes_cfg($cfg) {
  */
 function mf_media_image_size($image, $dimension, $size) {
 	global $zz_setting;
+	if (!$image['height_px']) return '';
+	if (!$image['width_px']) return '';
 	if (empty($zz_setting['media_sizes'][$size])) return false;
 	$size = $zz_setting['media_sizes'][$size];
 	switch ($dimension) {
