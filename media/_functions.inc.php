@@ -210,7 +210,7 @@ function mf_media_image_size($image, $dimension, $size) {
 		if ($image['orientation'] === 'panorama') return $size['width'];
 		return round($size['height'] / $image['height_px'] * $image['width_px']);
 	case 'height':
-		if ($image['orientation'] === 'landscape') return $size['height'];
+		if ($image['orientation'] === 'portrait') return $size['height'];
 		return round($size['width'] / $image['width_px'] * $image['height_px']);
 	}
 	return '';
