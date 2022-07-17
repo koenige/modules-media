@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -24,7 +24,6 @@
  * @return array
  */
 function mod_media_xhr_crop($data) {
-	global $zz_conf;
 	global $zz_setting;
 	if (!wrap_access('media_edit')) wrap_quit(403);
 	// @todo check access rights to medium_id via media_access
@@ -43,7 +42,6 @@ function mod_media_xhr_crop($data) {
 
 	$medium['parameters']['crop'] = sprintf('%s,%s,%s,%s', $left, $top, $right, $bottom);
 
-	require_once $zz_conf['dir'].'/zzform.php';
 	$values = [];
 	$values['action'] = 'update';
 	$values['POST']['medium_id'] = $medium['medium_id'];

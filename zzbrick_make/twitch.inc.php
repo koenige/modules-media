@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -20,7 +20,6 @@
  */
 function mod_media_make_twitch($params) {
 	global $zz_setting;
-	global $zz_conf;
 	require_once $zz_setting['core'].'/syndication.inc.php';
 
 	$url = sprintf($zz_setting['twitch_url'], $params[0]);
@@ -31,7 +30,6 @@ function mod_media_make_twitch($params) {
 	}
 	
 	// add medium
-	require_once $zz_conf['dir'].'/zzform.php';
 	$values = [];
 	$values['action'] = 'insert';
 	$sql = 'SELECT medium_id FROM media
