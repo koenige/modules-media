@@ -77,10 +77,12 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $where, $table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
+		$media = mf_media_separate_embeds($media);
 		$media = mf_media_prepare($media);
 	} else {
 		$media = wrap_db_fetch($sql, [$id_field.'_id', 'filecategory', 'medium_id']);
 		foreach ($media as $table_id => $medialist) {
+			$medialist = mf_media_separate_embeds($medialist);
 			$media[$table_id] = mf_media_prepare($medialist);
 		}
 	}
@@ -114,6 +116,31 @@ function mf_media_prepare($media) {
 			if (!$medium['thumb_extension']) continue;
 			$media['images'][$medium_id] = $medium;
 		}
+	}
+	return $media;
+}
+
+/**
+ * separate embeds from links
+ *
+ * @param array $media
+ * @return array
+ */
+function mf_media_separate_embeds($media) {
+	global $zz_setting;
+	if (empty($media['links'])) return $media;
+	if (empty($zz_setting['embed'])) return $media;
+
+	$embeds = array_keys($zz_setting['embed']);
+	foreach ($embeds as $index => $embed) {
+		$embeds[$index] = strtolower($embed);
+	}
+
+	foreach ($media['links'] as $medium_id => $medium) {
+		if (!in_array($medium['filetype'], $embeds)) continue;
+		$medium['embed_id'] = basename($medium['filename']);
+		$media['embeds'][$medium_id] = $medium;
+		unset($media['links'][$medium_id]);
 	}
 	return $media;
 }
