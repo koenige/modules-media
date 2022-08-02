@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -48,7 +48,7 @@ function page_topimage($params, &$page) {
 			$image['path_x2'] = $size['path'];
 		}
 	}
-	if (empty($image['position'])) $image['position'] = 'left';
+	if (empty($image['position'])) $image['position'] = wrap_get_setting('media_standard_position');
 
 	$text = wrap_template('image', $image);
 	return $text;
