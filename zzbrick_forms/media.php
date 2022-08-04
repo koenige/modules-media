@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -69,11 +69,7 @@ if ($path) {
 
 $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
-if (file_exists($file = $zz_conf['form_scripts'].'/media.php')) {
-	require $file;
-} else {
-	require __DIR__.'/../zzbrick_tables/media.php';
-}
+$zz = zzform_include_table('media', $brick['local_settings']);
 
 if ($path AND $view === 'tree') {
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';

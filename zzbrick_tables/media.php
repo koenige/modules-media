@@ -45,7 +45,7 @@ $zz['fields'][14]['title'] = 'Medium';
 $zz['fields'][14]['field_name'] = 'image';
 $zz['fields'][14]['type'] = 'upload_image';
 $zz['fields'][14]['class'] = 'medium';
-if (empty($brick['local_settings']['no_publish'])) {
+if (empty($values['no_publish'])) {
 	$zz['fields'][14]['class'] = 'medium published';
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
@@ -163,7 +163,7 @@ $zz['fields'][9]['field_name'] = 'published';
 $zz['fields'][9]['type'] = 'select';
 $zz['fields'][9]['enum'] = ['yes', 'no'];
 $zz['fields'][9]['hide_in_list'] = true;
-if (empty($brick['local_settings']['no_publish'])) {
+if (empty($values['no_publish'])) {
 	$zz['fields'][9]['default'] = 'yes';
 } else {
 	$zz['fields'][9]['value'] = 'no';
@@ -226,7 +226,7 @@ if ($crop) {
 	$zz['fields'][36]['dependent_fields'][40]['if_selected'] = 'custom';
 }
 
-if (empty($brick['local_settings']['no_sequence'])) {
+if (empty($values['no_sequence'])) {
 	$zz['fields'][33]['title_tab'] = 'Seq.';
 	$zz['fields'][33]['field_name'] = 'sequence';
 	$zz['fields'][33]['type'] = 'number';
@@ -273,7 +273,7 @@ $zz['fields'][5]['upload_value'] = 'exif[DateTimeOriginal]';
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['if'][2] = false;
 
-if (empty($brick['local_settings']['no_publish'])) {
+if (empty($values['no_publish'])) {
 	$zz['fields'][19]['field_name'] = 'source';
 	$zz['fields'][19]['type'] = 'text';
 	$zz['fields'][19]['hide_in_list'] = true;
@@ -438,7 +438,7 @@ $zz['sql'] = sprintf('SELECT /*_PREFIX_*/media.*
 $zz['sqlorder'] = ' ORDER BY ISNULL(/*_PREFIX_*/media.sequence),
 	/*_PREFIX_*/media.sequence, /*_PREFIX_*/media.date, time, title ASC';
 
-if (empty($brick['local_settings']['no_publish'])) {
+if (empty($values['no_publish'])) {
 	$zz['conditions'][1]['scope'] = 'record';
 	$zz['conditions'][1]['where'] = '/*_PREFIX_*/media.published = "no"';
 }
@@ -464,7 +464,7 @@ $zz['title'] = wrap_text('Media Pool');
 $zz_conf['max_select'] = 100;
 $zz_conf['limit'] = 42;
 
-if (empty($brick['local_settings']['no_publish'])) {
+if (empty($values['no_publish'])) {
 	if (!isset($zz_conf['footer_text'])) $zz_conf['footer_text'] = '';
 	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
