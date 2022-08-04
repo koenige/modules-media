@@ -129,12 +129,8 @@ function mf_media_prepare($media) {
 function mf_media_separate_embeds($media) {
 	global $zz_setting;
 	if (empty($media['links'])) return $media;
-	if (empty($zz_setting['embed'])) return $media;
-
-	$embeds = array_keys($zz_setting['embed']);
-	foreach ($embeds as $index => $embed) {
-		$embeds[$index] = strtolower($embed);
-	}
+	$embeds = mf_media_embeds();
+	if (!$embeds) return $media;
 
 	foreach ($media['links'] as $medium_id => $medium) {
 		if (!in_array($medium['filetype'], $embeds)) continue;
@@ -143,6 +139,22 @@ function mf_media_separate_embeds($media) {
 		unset($media['links'][$medium_id]);
 	}
 	return $media;
+}
+
+/**
+ * get a list of possible embeds
+ *
+ * @return array
+ */
+function mf_media_embeds() {
+	global $zz_setting;
+	if (empty($zz_setting['embed'])) return [];
+
+	$embeds = array_keys($zz_setting['embed']);
+	foreach ($embeds as $index => $embed) {
+		$embeds[$index] = strtolower($embed);
+	}
+	return $embeds;
 }
 
 /**
