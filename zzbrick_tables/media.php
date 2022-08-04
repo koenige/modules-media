@@ -461,15 +461,6 @@ $zz['conditions'][3]['add']['key_field_name'] = 'filetype_id';
 
 $zz['title'] = wrap_text('Media Pool');
 
-$zz_conf['max_select'] = 100;
-$zz_conf['limit'] = 42;
-
-if (empty($values['no_publish'])) {
-	if (!isset($zz_conf['footer_text'])) $zz_conf['footer_text'] = '';
-	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
-}
-$zz_conf['list_display'] = 'ul';
-
 $zz['add'][] = [
 	'type' => wrap_text('File'),
 	'field_name' => 'filetype_id',
@@ -492,8 +483,6 @@ if (!empty($zz_setting['embed'])) {
 }
 
 $zz['if'][3]['hooks']['before_insert'][] = 'mf_media_hook_embed';
-
-$zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 
 $zz['set_redirect'][] = [
 	'old' => $zz_setting['files_path'].'/%s*',

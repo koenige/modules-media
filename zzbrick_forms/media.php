@@ -71,6 +71,16 @@ $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
 $zz = zzform_include_table('media', $brick['local_settings']);
 
+$zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
+
+$zz_conf['limit'] = 42;
+if (empty($brick['local_settings']['no_publish'])) {
+	if (!isset($zz_conf['footer_text'])) $zz_conf['footer_text'] = '';
+	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
+}
+$zz_conf['list_display'] = 'ul';
+$zz_conf['max_select'] = 100;
+
 if ($path AND $view === 'tree') {
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';
 	$zz['list']['hierarchy']['id'] = $folder['medium_id'];
