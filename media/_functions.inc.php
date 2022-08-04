@@ -280,3 +280,40 @@ function mf_media_opengraph_image($image, $size = '') {
 		? $image['alternative_text'] : $image['title'];
 	return $og;
 }
+
+/**
+ * get single medium from medium_id that’s in the settings
+ * e. g. for default images
+ *
+ * @param string $setting
+ * @return array
+ */
+function mf_media_medium_from_setting($setting) {
+	$medium_id = wrap_get_setting(sprintf('%s_medium_id', $setting));
+	if (!$medium_id) return [];
+
+	$sql = 'SELECT medium_id
+			, IF(ISNULL(description), media.title, description) AS title
+			, description, alternative_text
+			, source, filename, version
+			, thumb_filetypes.extension AS thumb_extension
+			, media.date
+			, filetypes.extension AS extension
+			, filetypes.mime_content_type
+			, filetypes.mime_subtype
+			, filetypes.filetype
+			, filesize
+			, filetypes.filetype_description
+			, width_px, height_px
+			, IF(height_px > width_px, "portrait", "panorama") AS orientation
+		FROM media
+		LEFT JOIN filetypes thumb_filetypes
+			ON media.thumb_filetype_id = thumb_filetypes.filetype_id
+		LEFT JOIN filetypes
+			ON media.filetype_id = filetypes.filetype_id
+		WHERE medium_id = %d
+	';
+	$sql = sprintf($sql, $medium_id);
+	$images = wrap_db_fetch($sql, 'medium_id');
+	return $images;
+}
