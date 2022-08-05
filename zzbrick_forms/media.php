@@ -62,14 +62,14 @@ if ($path) {
 	);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
-	if ($view !== 'tree' AND empty($_GET['q'])) {
-		$zz['where']['main_medium_id'] = $folder['medium_id'];
-	}
 }
 
 $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
 $zz = zzform_include_table('media', $brick['local_settings']);
+if ($path AND $view !== 'tree' AND empty($_GET['q'])) {
+	$zz['where']['main_medium_id'] = $folder['medium_id'];
+}
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 
