@@ -120,8 +120,7 @@ if ($view === 'gallery') {
 		$base_path = str_repeat('../', substr_count($path, '/') + 1);
 		$base_link = str_repeat('../', substr_count($link, '/'));
 	} else {
-		if (empty($_GET['q']) AND empty($_POST)) {
-			// empty POST for query for thumbnail generation!
+		if (empty($_GET['q'])) {
 			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
 			$base_path = '';
 		} else {
