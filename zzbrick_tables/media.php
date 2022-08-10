@@ -223,7 +223,7 @@ if ($crop) {
 		'left' => ['action' => 'crop_left'],
 		'custom' => ['action' => 'crop_custom']
 	];
-	$zz['fields'][36]['dependent_fields'][40]['if_selected'] = 'custom';
+	$zz['fields'][36]['unless'][2]['dependent_fields'][40]['if_selected'] = 'custom';
 }
 
 if (empty($values['no_sequence'])) {
@@ -410,6 +410,7 @@ $zz['fields'][35]['if'][3] = false;
 $zz['fields'][40]['field_name'] = 'parameters';
 $zz['fields'][40]['type'] = 'parameter';
 $zz['fields'][40]['hide_in_list'] = true;
+$zz['fields'][40]['if'][2]['hide_in_form'] = false;
 $zz['fields'][40]['if'][3]['hide_in_form'] = false;
 if (!$crop) {
 	$zz['fields'][40]['hide_in_form'] = true;
