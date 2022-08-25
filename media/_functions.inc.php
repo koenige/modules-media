@@ -324,8 +324,49 @@ function mf_media_medium_from_setting($setting) {
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE medium_id = %d
+		%s
 	';
-	$sql = sprintf($sql, $medium_id);
+	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
+	$sql = sprintf($sql, $medium_id, $where);
+	$images = wrap_db_fetch($sql, 'medium_id');
+	return $images;
+}
+
+/**
+ * get all media from a folder
+ *
+ * @param int $folder
+ * @return array
+ */
+function mf_media_media_from_folder($folder) {
+	$folder_medium_id = !is_numeric($folder) ? wrap_id('folders', $folder) : $folder;
+	if (!$folder_medium_id) return [];
+
+	$sql = 'SELECT medium_id
+			, IF(ISNULL(description), media.title, description) AS title
+			, description, alternative_text
+			, source, filename, version
+			, thumb_filetypes.extension AS thumb_extension
+			, media.date
+			, filetypes.extension AS extension
+			, filetypes.mime_content_type
+			, filetypes.mime_subtype
+			, filetypes.filetype
+			, filesize
+			, filetypes.filetype_description
+			, width_px, height_px
+			, IF(height_px > width_px, "portrait", "panorama") AS orientation
+		FROM media
+		LEFT JOIN filetypes thumb_filetypes
+			ON media.thumb_filetype_id = thumb_filetypes.filetype_id
+		LEFT JOIN filetypes
+			ON media.filetype_id = filetypes.filetype_id
+		WHERE main_medium_id = %d
+		%s
+		ORDER BY sequence, title, filename
+	';
+	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
+	$sql = sprintf($sql, $folder_medium_id, $where);
 	$images = wrap_db_fetch($sql, 'medium_id');
 	return $images;
 }
