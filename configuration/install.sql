@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -72,7 +72,8 @@ CREATE TABLE `media` (
   PRIMARY KEY (`medium_id`),
   KEY `filetype_id` (`filetype_id`),
   KEY `thumb_filetype_id` (`thumb_filetype_id`),
-  KEY `main_medium_id` (`main_medium_id`)
+  KEY `main_medium_id` (`main_medium_id`),
+  KEY `filename` (`filename`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'media', 'medium_id', 'main_medium_id', 'no-delete');

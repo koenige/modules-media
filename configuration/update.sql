@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2017, 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2017, 2020-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -23,3 +23,4 @@
 /* 2020-12-09-4 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'access_category_id', 'no-delete');
 /* 2021-04-24-1 */	ALTER TABLE `media` ADD `alternative_text` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `description`;
 /* 2021-10-31-1 */	ALTER TABLE `media` CHANGE `clipping` `clipping` enum('center','top','bottom','right','left','custom') COLLATE 'latin1_general_ci' NOT NULL DEFAULT 'center' AFTER `published`;
+/* 2022-09-29-1 */	ALTER TABLE `media` ADD INDEX `filename` (`filename`);
