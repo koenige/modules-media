@@ -16,7 +16,7 @@
 require_once __DIR__.'/../zzbrick_rights/access.inc.php';
 
 /* how to display media? */
-$view = 'gallery';
+$view['type'] = 'gallery';
 $path = false;
 $base_breadcrumb = false;
 $suffixlink = '';
@@ -27,7 +27,7 @@ if (isset($brick['vars'][1])) {
 		$link = '';
 		$base_breadcrumb = true;
 	} elseif ($brick['vars'][1] === '-') {
-		$view = 'tree';
+		$view['type'] = 'tree';
 		$path = $brick['vars'][0];
 		$link = '';
 	} else {
@@ -37,13 +37,13 @@ if (isset($brick['vars'][1])) {
 	$top = false;
 } elseif (!empty($brick['vars'][0])) {
 	if (substr($brick['vars'][0], - 2) === '/-') {
-		$view = 'tree';
+		$view['type'] = 'tree';
 		$path = substr($brick['vars'][0], 0, -2);
 		$link = '/'.$path;
 		$top = true;
 		$suffixlink = '-/';
 	} elseif ($brick['vars'][0] === '-') {
-		$view = 'tree';
+		$view['type'] = 'tree';
 		$link = '';
 	} else {
 		$path = $brick['vars'][0];
@@ -69,9 +69,6 @@ $zz_conf['dont_show_title_as_breadcrumb'] = true;
 
 /* include media table definition */
 $zz = zzform_include_table('media', $brick['local_settings']);
-if ($path AND $view !== 'tree' AND empty($_GET['q'])) {
-	$zz['where']['main_medium_id'] = $folder['medium_id'];
-}
 
 $zz_conf['limit'] = 42;
 $zz_conf['list_display'] = 'ul';
@@ -84,15 +81,25 @@ if (empty($brick['local_settings']['no_publish'])) {
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
 
-if ($path AND $view === 'tree') {
+/* modify SQL query */
+if ($view['type'] === 'gallery') {
+	if ($path AND empty($_GET['q']))
+		$zz['where']['main_medium_id'] = $folder['medium_id'];
+	elseif (empty($_GET['q']))
+		$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
+	else
+		$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
+	if (!$path)
+		$zz['fields'][8]['hide_in_form'] = true;
+} elseif ($path) {
+	// $view['type'] = tree
+	$zz['sql'] .= sprintf(' WHERE filename LIKE "%s/%%"', $folder['filename']);
+
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';
 	$zz['list']['hierarchy']['id'] = $folder['medium_id'];
 	$zz['list']['hierarchy']['hide_top_value'] = true;
 	$zz['fields'][8]['show_hierarchy_subtree'] = $folder['medium_id'];
 	$zz['fields'][8]['show_hierarchy_use_top_value_instead_NULL'] = true;
-	$zz['sql'] .= sprintf(' WHERE filename LIKE "%s/%%"', $folder['filename']);
-} elseif (!$path AND $view !== 'tree') {
-	$zz['fields'][8]['hide_in_form'] = true;
 }
 
 /* title */
@@ -110,28 +117,25 @@ $variants[1]['alt'] = wrap_text('Table');
 $variants[1]['title'] = wrap_text('Display as Table');
 $variants[1]['link'] = '-/';
 
-if ($view === 'gallery') {
+if ($view['type'] === 'gallery') {
 	if (!empty($zz['where']['main_medium_id'])) {
-		$base_path = str_repeat('../', substr_count($path, '/') + 1);
-		$base_link = str_repeat('../', substr_count($link, '/'));
+		$view['base_path'] = str_repeat('../', substr_count($path, '/') + 1);
 	} else {
 		if (empty($_GET['q'])) {
-			$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
-			$base_path = '';
+			$view['base_path'] = '';
 		} else {
-			$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
-			$base_path = $path ? str_repeat('../', substr_count($path, '/') + 1) : '';
+			$view['base_path'] = $path ? str_repeat('../', substr_count($path, '/') + 1) : '';
 		}
 	}
 } else {
 	$variants[0]['link'] = '../';
 	$variants[1]['link'] = '';
-	$base_path = str_repeat('../', substr_count($path, '/') + ($path ? 2 : 1)).'-/';
+	$view['base_path'] = str_repeat('../', substr_count($path, '/') + ($path ? 2 : 1)).'-/';
 }
 
 $zz['title'] .= mf_media_switch_links($variants);
 
-if ($view === 'tree') {
+if ($view['type'] === 'tree') {
 	$zz_conf['breadcrumbs'][] = [
 		'linktext' => (!$path ? '<strong>' : '').wrap_text('Filetree').(!$path ? '</strong>' : ''),
 		'url' => ($path ? str_repeat('../', substr_count($path, '/')).'../../-/' : '')
@@ -141,7 +145,7 @@ if ($view === 'tree') {
 $zz['title'] .= '<br><small>';
 if ($path) {
 	if ($top) {
-		$zz['title'] .= '<a href="'.$base_path.'">TOP</a> / ';
+		$zz['title'] .= '<a href="'.$view['base_path'].'">TOP</a> / ';
 	} else {
 		$folder['filename'] = substr($folder['filename'], strlen($brick['vars'][0]) + 1);
 	}
@@ -187,9 +191,9 @@ if (!empty($folder['description'])) {
 /* linking of images and folders */
 unset($zz['fields'][14]['unless'][2]); // no direct link on image
 
-if ($view === 'gallery') {
+if ($view['type'] === 'gallery') {
 	$zz['fields'][14]['link'] = [
-		'string1' => $base_path,
+		'string1' => $view['base_path'],
 		'field1' => 'filename_link',
 		'string2' => '/'
 	];
@@ -200,7 +204,7 @@ if ($view === 'gallery') {
 	}
 } else {
 	$zz['fields'][14]['link'] = [
-		'string1' => substr($base_path, 0, -2),
+		'string1' => substr($view['base_path'], 0, -2),
 		'field1' => 'filename_link',
 		'string2' => '/-/'
 	];
