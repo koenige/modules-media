@@ -63,6 +63,8 @@ if ($path) {
 	);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
+} else {
+	$folder = [];
 }
 
 /* include media table definition */
@@ -81,15 +83,15 @@ $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_s
 
 /* modify SQL query */
 if ($view['type'] === 'gallery') {
-	if ($path AND empty($_GET['q']))
+	if ($folder AND empty($_GET['q']))
 		$zz['where']['main_medium_id'] = $folder['medium_id'];
 	elseif (empty($_GET['q']))
 		$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
 	else
 		$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
-	if (!$path)
+	if (!$folder)
 		$zz['fields'][8]['hide_in_form'] = true;
-} elseif ($path) {
+} elseif ($folder) {
 	// $view['type'] = tree
 	$zz['sql'] .= sprintf(' WHERE filename LIKE "%s/%%"', $folder['filename']);
 
