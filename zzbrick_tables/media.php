@@ -429,13 +429,15 @@ $zz['sql'] = sprintf('SELECT /*_PREFIX_*/media.*
 	, UCASE(o_mime.extension) AS master_extension_ucase
 	, t_mime.extension AS thumb_extension
 	, language_%s
+	, SUBSTRING(filename, %d) AS filename_link
 	FROM /*_PREFIX_*/media
 	LEFT JOIN /*_PREFIX_*/languages USING (language_id)
 	LEFT JOIN /*_PREFIX_*/filetypes AS o_mime
 		ON /*_PREFIX_*/media.filetype_id = o_mime.filetype_id
 	LEFT JOIN /*_PREFIX_*/filetypes AS t_mime
 		ON /*_PREFIX_*/media.thumb_filetype_id = t_mime.filetype_id
-', $language_code);
+', $language_code, $values['filename_cut'] ?? 1
+);
 $zz['sqlorder'] = ' ORDER BY ISNULL(/*_PREFIX_*/media.sequence),
 	/*_PREFIX_*/media.sequence, /*_PREFIX_*/media.date, time, title ASC';
 
