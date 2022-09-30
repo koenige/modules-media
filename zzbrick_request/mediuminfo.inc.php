@@ -21,9 +21,9 @@
  */
 function mod_media_mediuminfo($params) {
 	global $zz_setting;
-	if (count($params) !== 1) return false;
+	if (!count($params)) return false;
 
-	$filename = $params[0];
+	$filename = implode('/', $params);
 	$backlink = '../';
 	if (str_ends_with($filename, '/-')) {
 		$filename = substr($filename, 0, -2);
