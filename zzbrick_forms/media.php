@@ -20,36 +20,6 @@ $view = mf_media_mediapool_view($brick['vars'], $brick['parameter']);
 if ($view['hidden_path'])
 	$brick['local_settings']['filename_cut'] = strlen($view['hidden_path']) + 2;
 
-$path = false;
-$suffixlink = '';
-
-if (isset($brick['vars'][1])) {
-	if (empty($brick['vars'][1])) {
-		$path = $brick['vars'][0];
-		$link = '';
-	} elseif ($brick['vars'][1] === '-') {
-		$path = $brick['vars'][0];
-		$link = '';
-	} else {
-		$path = $brick['vars'][0].'/'.$brick['vars'][1];
-		$link = '/'.$brick['vars'][1];
-	}
-	$top = false;
-} elseif (!empty($brick['vars'][0])) {
-	if (substr($brick['vars'][0], - 2) === '/-') {
-		$path = substr($brick['vars'][0], 0, -2);
-		$link = '/'.$path;
-		$top = true;
-		$suffixlink = '-/';
-	} elseif ($brick['vars'][0] === '-') {
-		$link = '';
-	} else {
-		$path = $brick['vars'][0];
-		$link = '/'.$path;
-		$top = true;
-	}
-}
-
 /* include media table definition */
 $zz = zzform_include_table('media', $brick['local_settings']);
 
@@ -92,73 +62,24 @@ if ($view['type'] === 'gallery') {
 if (!empty($brick['local_settings']['title'])) {
 	$zz['title'] = wrap_text($brick['local_settings']['title']);
 }
+$zz['title'] = mf_media_mediapool_title($zz['title'], $folder, $view);
 
-$variants[0]['img'] = $zz_setting['layout_path'].'/media/list-ul.png';
-$variants[0]['alt'] = wrap_text('Gallery');
-$variants[0]['title'] = wrap_text('Display as Gallery');
-$variants[0]['link'] = '';
-
-$variants[1]['img'] = $zz_setting['layout_path'].'/media/list-table.png';
-$variants[1]['alt'] = wrap_text('Table');
-$variants[1]['title'] = wrap_text('Display as Table');
-$variants[1]['link'] = '-/';
-
-if ($view['type'] === 'tree') {
-	$variants[0]['link'] = '../';
-	$variants[1]['link'] = '';
-}
-
-$zz['title'] .= mf_media_switch_links($variants);
-
-if ($view['type'] === 'tree') {
-	$zz_conf['breadcrumbs'][] = [
-		'linktext' => (!$path ? '<strong>' : '').wrap_text('Filetree').(!$path ? '</strong>' : ''),
-		'url' => ($path ? str_repeat('../', substr_count($path, '/')).'../../-/' : '')
-	];
-}
-
-$zz['title'] .= '<br><small>';
-if ($path) {
-	if ($top) {
-		$zz['title'] .= '<a href="'.$view['base_path'].'">TOP</a> / ';
-	} else {
-		$folder['filename'] = substr($folder['filename'], strlen($brick['vars'][0]) + 1);
-	}
-	$folder['filename'] = explode('/', $folder['filename']);
-	$bcs = [];
-	$bpath = '';
-	foreach ($folder['filename'] as $index => $path) {
-		$bpath = $bpath.($bpath ? '/' : '').$path;
-		$bcs[] = wrap_db_escape($bpath);
-	}
-	$sql = 'SELECT filename, title FROM media WHERE filename IN ("%s")';
-	$sql = sprintf($sql, implode('","', $bcs));
-	$btitles = wrap_db_fetch($sql, 'filename', 'key/value');
-	$bpath = '';
-	foreach ($folder['filename'] as $index => $path) {
-		if (!$path) continue;
-		$bpath = $bpath.($bpath ? '/' : '').$path;
-		if ($index < count($folder['filename']) - 1) {
-			$url = str_repeat('../', count($folder['filename']) - $index - 1);
-			if ($suffixlink) $url = '../'.$url.$suffixlink;
+/* breadcrumbs */
+$zz_conf['dont_show_title_as_breadcrumb'] = true;
+if ($folder) {
+	foreach ($folder['breadcrumbs'] as $index => $folder_path) {
+		if ($index < count($folder['breadcrumbs']) - 1) {
 			$zz_conf['breadcrumbs'][] = [
-				'linktext' => wrap_html_escape($btitles[$bpath]),
-				'url' => $url
+				'linktext' => wrap_html_escape($folder_path['title']),
+				'url' => $folder_path['url']
 			];
-			$zz['title'] .= '<a href="'.$url.'">'.wrap_html_escape($btitles[$bpath]).'</a> / ';
 		} else {
 			$zz_conf['breadcrumbs'][] = [
-				'linktext' => '<strong>'.wrap_html_escape($btitles[$bpath]).'</strong>'
+				'linktext' => '<strong>'.wrap_html_escape($folder_path['title']).'</strong>'
 			];
-			$zz['title'] .= $path;
 		}
 	}
-	$zz['title'] .= '</small>';
-} else {
-	$zz['title'] .= 'TOP</small>';
 }
-
-$zz_conf['dont_show_title_as_breadcrumb'] = true;
 
 /* explanation */
 if (!empty($folder['description'])) {
@@ -279,7 +200,6 @@ function mf_media_mediapool_view($vars, $parameter) {
 	return $view;
 }
 
-
 /**
  * get information about current folder (if it is not top level)
  *
@@ -299,5 +219,86 @@ function mf_media_mediapool_folder($view) {
 	);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
+
+	$folder_paths = explode('/', $folder['filename']);
+
+	$filenames = [];
+	$bpath = '';
+	foreach ($folder_paths as $folder_path) {
+		$bpath = $bpath.($bpath ? '/' : '').$folder_path;
+		$filenames[] = wrap_db_escape($bpath);
+	}
+	$sql = 'SELECT filename, title FROM media WHERE filename IN ("%s")';
+	$sql = sprintf($sql, implode('","', $filenames));
+	$titles = wrap_db_fetch($sql, 'filename', 'key/value');
+
+	$folder['breadcrumbs'] = [];
+	$bpath = '';
+	foreach ($folder_paths as $index => $folder_path) {
+		if (!$folder_path) continue;
+		$bpath = $bpath.($bpath ? '/' : '').$folder_path;
+		$url = str_repeat('../', count($folder_paths) - $index - 1);
+		if ($view['type'] === 'tree') $url = '../'.$url.'-/';
+		$folder['breadcrumbs'][] = [
+			'url' => $url,
+			'title' => $titles[$bpath],
+			'folder_path' => $folder_path
+		];
+	}
+	$folder['titles'] = $folder['breadcrumbs'];
+	// breadcrumbs: remove hidden folders
+	foreach (array_keys($view['hidden_path_parts']) as $index) {
+		unset($folder['breadcrumbs'][$index]);
+		if ($index + 1 < count($view['hidden_path_parts']))
+			unset($folder['titles'][$index]);
+	}
+	$folder['breadcrumbs'] = array_values($folder['breadcrumbs']); // get indices right
+	$folder['titles'] = array_values($folder['titles']); // get indices right
 	return $folder;
+}
+
+/**
+ * create title for mediapool with breadcrumbs
+ *
+ * @param string $title
+ * @param string $folder
+ * @param array $view
+ * @return string
+ */
+function mf_media_mediapool_title($title, $folder, $view) {
+	$variants[0]['img'] = wrap_get_setting('layout_path').'/media/list-ul.png';
+	$variants[0]['alt'] = wrap_text('Gallery');
+	$variants[0]['title'] = wrap_text('Display as Gallery');
+	$variants[0]['link'] = '';
+
+	$variants[1]['img'] = wrap_get_setting('layout_path').'/media/list-table.png';
+	$variants[1]['alt'] = wrap_text('Table');
+	$variants[1]['title'] = wrap_text('Display as Table');
+	$variants[1]['link'] = '-/';
+	
+	if ($view['type'] === 'tree') {
+		$variants[0]['link'] = '../';
+		$variants[1]['link'] = '';
+	}
+	$title .= mf_media_switch_links($variants);
+	$title .= '<br><small>';
+	if (!$folder) {
+		$title .= 'TOP</small>';
+		return $title;
+	}
+	if (!$view['hidden_path'])
+		$title .= '<a href="'.$view['base_path'].'">TOP</a> / ';
+	foreach ($folder['titles'] as $index => $crumb) {
+		if ($index < count($folder['titles']) - 1) {
+			$title .= sprintf('<a href="%s">%s</a> / '
+				, $crumb['url'], wrap_html_escape($crumb['title'])
+			);
+		} elseif ($folder['is_file']) {
+			$title .= $crumb['folder_path'];
+		} else {
+			$title .= wrap_html_escape($crumb['title']);
+		}
+	}
+	$title .= '</small>';
+	return $title;
 }
