@@ -16,7 +16,10 @@
 require_once __DIR__.'/../zzbrick_rights/access.inc.php';
 
 /* how to display media? */
-$view['type'] = 'gallery';
+$view = mf_media_mediapool_view($brick['vars'], $brick['parameter']);
+if ($view['hidden_path'])
+	$brick['local_settings']['filename_cut'] = strlen($view['hidden_path']) + 2;
+
 $path = false;
 $base_breadcrumb = false;
 $suffixlink = '';
@@ -27,7 +30,6 @@ if (isset($brick['vars'][1])) {
 		$link = '';
 		$base_breadcrumb = true;
 	} elseif ($brick['vars'][1] === '-') {
-		$view['type'] = 'tree';
 		$path = $brick['vars'][0];
 		$link = '';
 	} else {
@@ -37,13 +39,11 @@ if (isset($brick['vars'][1])) {
 	$top = false;
 } elseif (!empty($brick['vars'][0])) {
 	if (substr($brick['vars'][0], - 2) === '/-') {
-		$view['type'] = 'tree';
 		$path = substr($brick['vars'][0], 0, -2);
 		$link = '/'.$path;
 		$top = true;
 		$suffixlink = '-/';
 	} elseif ($brick['vars'][0] === '-') {
-		$view['type'] = 'tree';
 		$link = '';
 	} else {
 		$path = $brick['vars'][0];
@@ -64,8 +64,6 @@ if ($path) {
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
 }
-
-$zz_conf['dont_show_title_as_breadcrumb'] = true;
 
 /* include media table definition */
 $zz = zzform_include_table('media', $brick['local_settings']);
@@ -117,20 +115,9 @@ $variants[1]['alt'] = wrap_text('Table');
 $variants[1]['title'] = wrap_text('Display as Table');
 $variants[1]['link'] = '-/';
 
-if ($view['type'] === 'gallery') {
-	if (!empty($zz['where']['main_medium_id'])) {
-		$view['base_path'] = str_repeat('../', substr_count($path, '/') + 1);
-	} else {
-		if (empty($_GET['q'])) {
-			$view['base_path'] = '';
-		} else {
-			$view['base_path'] = $path ? str_repeat('../', substr_count($path, '/') + 1) : '';
-		}
-	}
-} else {
+if ($view['type'] === 'tree') {
 	$variants[0]['link'] = '../';
 	$variants[1]['link'] = '';
-	$view['base_path'] = str_repeat('../', substr_count($path, '/') + ($path ? 2 : 1)).'-/';
 }
 
 $zz['title'] .= mf_media_switch_links($variants);
@@ -183,6 +170,8 @@ if ($path) {
 	$zz['title'] .= 'TOP</small>';
 }
 
+$zz_conf['dont_show_title_as_breadcrumb'] = true;
+
 /* explanation */
 if (!empty($folder['description'])) {
 	$zz['explanation'] = markdown($folder['description']);
@@ -204,7 +193,7 @@ if ($view['type'] === 'gallery') {
 	}
 } else {
 	$zz['fields'][14]['link'] = [
-		'string1' => substr($view['base_path'], 0, -2),
+		'string1' => $view['base_path'],
 		'field1' => 'filename_link',
 		'string2' => '/-/'
 	];
@@ -273,4 +262,31 @@ if (!empty($folder['is_file'])) {
 	
 	$zz_conf['add'] = false;
 	$zz_conf['footer_text'] = false;
+}
+
+/**
+ * check which folder/file is chosen and how to display it
+ *
+ * 2 params: show only a part of the filetree, starting with sub folder
+ * 1 param: show sub folder
+ * 0 params: show top level folders
+ *
+ * @param array $params
+ * @return array
+ */
+function mf_media_mediapool_view($vars, $parameter) {
+	$full_path = implode('/', $vars);
+	$full_path_parts = $full_path ? explode('/', $full_path) : [];
+	// hidden path is 'vars' minus *-'parameter' (if there are some)
+	$view['hidden_path'] = $parameter ? substr($full_path, 0, -strlen($parameter) - 1) : $full_path;
+	$view['hidden_path_parts'] = $view['hidden_path'] ? explode('/', $view['hidden_path']) : [];
+	$view['base_path'] = str_repeat('../', count($full_path_parts) - count($view['hidden_path_parts']));
+	if (end($full_path_parts) === '-') {
+		$view['type'] = 'tree';
+		array_pop($full_path_parts);
+	} else {
+		$view['type'] = 'gallery';
+	}
+	$view['full_path'] = implode('/', $full_path_parts);
+	return $view;
 }
