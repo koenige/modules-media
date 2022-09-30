@@ -21,14 +21,12 @@ if ($view['hidden_path'])
 	$brick['local_settings']['filename_cut'] = strlen($view['hidden_path']) + 2;
 
 $path = false;
-$base_breadcrumb = false;
 $suffixlink = '';
 
 if (isset($brick['vars'][1])) {
 	if (empty($brick['vars'][1])) {
 		$path = $brick['vars'][0];
 		$link = '';
-		$base_breadcrumb = true;
 	} elseif ($brick['vars'][1] === '-') {
 		$path = $brick['vars'][0];
 		$link = '';
@@ -52,21 +50,6 @@ if (isset($brick['vars'][1])) {
 	}
 }
 
-if ($path) {
-	$sql = 'SELECT medium_id, description, filename
-			, IF(filetype_id != %d, 1, NULL) AS is_file
-		FROM /*_PREFIX_*/media
-		WHERE filename = "%s"';
-	$sql = sprintf($sql
-		, wrap_id('filetypes', 'folder')
-		, $path
-	);
-	$folder = wrap_db_fetch($sql);
-	if (!$folder) wrap_quit(404);
-} else {
-	$folder = [];
-}
-
 /* include media table definition */
 $zz = zzform_include_table('media', $brick['local_settings']);
 
@@ -80,6 +63,9 @@ if (empty($brick['local_settings']['no_publish'])) {
 }
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
+
+/* get information about folder if it is not top level */
+$folder = mf_media_mediapool_folder($view);
 
 /* modify SQL query */
 if ($view['type'] === 'gallery') {
@@ -291,4 +277,27 @@ function mf_media_mediapool_view($vars, $parameter) {
 	}
 	$view['full_path'] = implode('/', $full_path_parts);
 	return $view;
+}
+
+
+/**
+ * get information about current folder (if it is not top level)
+ *
+ * @param array $view
+ * @return array
+ */
+function mf_media_mediapool_folder($view) {
+	if (!$view['full_path']) return [];
+
+	$sql = 'SELECT medium_id, description, filename
+			, IF(filetype_id != %d, 1, NULL) AS is_file
+		FROM /*_PREFIX_*/media
+		WHERE filename = "%s"';
+	$sql = sprintf($sql
+		, wrap_id('filetypes', 'folder')
+		, $view['full_path']
+	);
+	$folder = wrap_db_fetch($sql);
+	if (!$folder) wrap_quit(404);
+	return $folder;
 }
