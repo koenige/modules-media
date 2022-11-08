@@ -33,6 +33,7 @@ if (!function_exists('wrap_get_media')) {
  *		grouped by images, links
  */
 function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
+	if (!wrap_get_setting('mod_media_install_date')) return [];
 	$multiple_ids = false;
 	if (is_array($id)) {
 		$id = implode(',', $id);
