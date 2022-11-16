@@ -39,12 +39,31 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		$id = implode(',', $id);
 		$multiple_ids = true;
 	}
-	$sql = 'SHOW FIELDS FROM media';
-	$fields = wrap_db_fetch($sql, '_dummy_', 'numeric');
+
+	// fields that do not always exist
+	$extra_fields = [];
+	$files = wrap_collect_files('configuration/media.sql', 'modules/custom');
+	$field_key = sprintf('%s_media__fields', $table);
+	foreach ($files as $file) {
+		$queries = wrap_sql_file($file);
+		foreach ($queries as $key => $line) {
+			if ($key !== $field_key) continue;
+			$extra_fields = array_merge($extra_fields, $line);
+		}
+	}
+	if (!$extra_fields) {
+		// @deprecated, takes extra SQL query
+		$sql = 'SHOW FIELDS FROM media';
+		$fields = wrap_db_fetch($sql, '_dummy_', 'numeric');
+		if (in_array('alternative_text', array_column($fields, 'Field'))) {
+			$extra_fields[] = 'alternative_text';
+		}
+	}
+	$extra_fields = $extra_fields ? ','.implode(', ', $extra_fields) : '';
 	
 	$sql = 'SELECT %s_id, medium_id, %s_media.sequence
 			, IF(ISNULL(description), media.title, description) AS title
-			, description, alternative_text
+			, description
 			, source, filename, version
 			, thumb_filetypes.extension AS thumb_extension
 			, media.date
@@ -61,6 +80,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 				WHEN "video" THEN "videos"
 				ELSE "links" END
 			AS filecategory
+			%s
 		FROM %s_media
 		LEFT JOIN media USING (medium_id)
 		LEFT JOIN filetypes thumb_filetypes
@@ -72,18 +92,17 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		ORDER BY %s_media.sequence, title, filename
 	';
 	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
-	if (!in_array('alternative_text', array_column($fields, 'Field'))) {
-		$sql = str_replace(', alternative_text', '', $sql);
-	}
-	$sql = sprintf($sql, $id_field, $table, $table, $id_field, $id, $where, $table);
+	$sql = sprintf($sql, $id_field, $table, $extra_fields, $table, $id_field, $id, $where, $table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
+		$media = mf_media_separate_overview($media);
 		$media = mf_media_prepare($media);
 	} else {
 		$media = wrap_db_fetch($sql, [$id_field.'_id', 'filecategory', 'medium_id']);
 		foreach ($media as $table_id => $medialist) {
 			$medialist = mf_media_separate_embeds($medialist);
+			$medialist = mf_media_separate_overview($medialist);
 			$media[$table_id] = mf_media_prepare($medialist);
 		}
 	}
@@ -156,6 +175,35 @@ function mf_media_embeds() {
 		$embeds[$index] = strtolower($embed);
 	}
 	return $embeds;
+}
+
+/**
+ * set 'images_detail', 'images_overview'
+ * check if an image is marked with `overview_medium`
+ * or just use first image
+ *
+ * @param array $media
+ * @return array
+ */
+function mf_media_separate_overview($media) {
+	if (empty($media['images'])) return $media;
+	
+	$media['images_detail'] = $media['images'];
+	// is there an image marked overview?
+	foreach ($media['images'] as $medium_id => $medium) {
+		if (empty($medium['overview_medium'])) continue;
+		$media['images_overview'][$medium_id] = $medium;
+		unset($media['images_detail'][$medium_id]);
+	}
+	// if not, just take first image
+	if (empty($media['images_overview'])) {
+		foreach ($media['images'] as $medium_id => $medium) {
+			$media['images_overview'][$medium_id] = $medium;
+			unset($media['images_detail'][$medium_id]);
+			break;
+		}
+	}
+	return $media;
 }
 
 /**
