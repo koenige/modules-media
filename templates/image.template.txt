@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018-2021 Gustaf Mossakowski
+# @copyright Copyright © 2018-2022 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="image%%% item position " %s" %%%%%% item orientation " %s" %%%"><figure>
@@ -14,8 +14,8 @@
 <a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
 %%% condition endif %%%
 %%% condition endif %%%
-<img itemprop="image" src="%%% condition if cid %%%cid:%%% item cid %%%%%% condition else %%%%%% setting files_path %%%/%%% item filename %%%.%%% condition if path %%%%%% item path %%%%%% condition else %%%%%% setting media_standard_image_size %%%%%% condition endif %%%.%%% item thumb_extension %%%%%% condition endif %%%" alt="%%% condition if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% condition else %%%%%% item title markdown_attribute %%%%%% condition endif %%%"%%% condition if path & path_x2 %%%%%% condition unless cid %%%
- srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%% 2x"
+<img itemprop="image" src="%%% condition if cid %%%cid:%%% item cid %%%%%% condition else %%%%%% setting files_path %%%/%%% item filename %%%.%%% condition if path %%%%%% item path "%s." %%%%%% condition else %%%%%% setting media_standard_image_size "%s." %%%%%% condition endif %%%%%% item thumb_extension %%%%%% condition endif %%%?v=%%% item version %%%" alt="%%% condition if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% condition else %%%%%% item title markdown_attribute %%%%%% condition endif %%%"%%% condition if path & path_x2 %%%%%% condition unless cid %%%
+ srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x"
 %%% condition endif %%%%%% condition endif %%%>
 %%% condition if bigger_size_available %%%
 %%% condition unless cid %%%
