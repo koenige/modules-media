@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2022 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -20,14 +20,10 @@
  *		[0]: Type
  *		[1]...: folder
  *		[n]: filename .tn.typ
- * @global array $zz_conf
- *		'prefix'
  * @global array $zz_setting
- *		'media_folder', 'media_sizes', 'core'
  * @return void (file will be sent)
  */
 function mod_media_medium($params) {
-	global $zz_conf;
 	global $zz_setting;
 	global $zz_page;
 
@@ -44,7 +40,7 @@ function mod_media_medium($params) {
 		$new_url = implode('?v=', $new_url);
 	}
 
-	$media_sizes = $zz_setting['media_sizes'];
+	$media_sizes = wrap_get_setting('media_sizes');
 	$media_sizes['master'] = ['path' => 'master'];
 	$media_size = '';
 	foreach ($media_sizes as $size) {
@@ -55,12 +51,10 @@ function mod_media_medium($params) {
 		}
 	}
 	$variants = wrap_get_setting('media_file_variants');
-	if (!empty($variants)) {
-		foreach ($variants as $variant) {
-			if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
-				$identifier = substr($identifier, 0, - strlen($variant) - 1);
-				break;
-			}
+	foreach ($variants as $variant) {
+		if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
+			$identifier = substr($identifier, 0, - strlen($variant) - 1);
+			break;
 		}
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
@@ -113,7 +107,7 @@ function mod_media_medium($params) {
 			}
 		}
 	}
-	$file['name'] = $zz_setting['media_folder'].'/'.$filename;
+	$file['name'] = sprintf('%s/%s', wrap_get_setting('media_folder'), $filename);
 	// Check if file exists
 	if (!file_exists($file['name'])) {
 		if ($media_size) return false;
