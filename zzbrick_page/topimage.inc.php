@@ -22,6 +22,8 @@
  */
 function page_topimage($params, &$page) {
 	global $zz_setting;
+	if (array_key_exists('media_topimage', $zz_setting) AND !$zz_setting['media_topimage'])
+		return '';
 	// different image for error pages, if set
 	if ($page['status'] !== 200
 		AND $page_id = wrap_get_setting('media_topimage_error_page_id')
