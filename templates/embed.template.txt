@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020 Gustaf Mossakowski
+# @copyright Copyright © 2020, 2022 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="embed-privacy">
@@ -15,4 +15,4 @@
 
 <p>%%% text Watch it on the original website: %%% <a href="%%% item url %%%">%%% item description %%%</a></p>
 </div>
-<script type="text/javascript">checkPrivacyCookie('%%% item filetype %%%');</script>
+<script>checkPrivacyCookie('%%% item filetype %%%');</script>
