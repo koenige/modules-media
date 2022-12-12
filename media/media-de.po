@@ -44,8 +44,8 @@ msgid "Hash (MD5)"
 msgstr "Hash (MD5)"
 
 #: templates/mediuminfo.template.txt
-msgid "Extension"
-msgstr "Dateierweiterung"
+msgid "Extension:"
+msgstr "Dateierweiterung:"
 
 #: templates/mediuminfo.template.txt
 msgid "Files"
@@ -70,6 +70,18 @@ msgstr "Bild zuschneiden (eigene Größe) "
 #: templates/mediuminfo.template.txt
 msgid "Save image section"
 msgstr "Bildausschnitt speichern "
+
+#: templates/mediuminfo.template.txt
+msgid "Original file"
+msgstr "Originaldatei"
+
+#: templates/mediuminfo.template.txt
+msgid "Thumbnail file"
+msgstr "Vorschau"
+
+#: templates/mediuminfo.template.txt
+msgid "Crop file"
+msgstr "Zugeschnittene Vorschau"
 
 #: zzbrick_tables/media.php
 msgid "File"

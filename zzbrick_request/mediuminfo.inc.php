@@ -51,7 +51,7 @@ function mod_media_mediuminfo($params) {
 	$medium['sizes'] = [];
 	$master_filename = sprintf('%s.master.%s', $medium['filename'], $medium['extension']);
 	$medium['sizes'][] = [
-		'type' => 'master',
+		'type' => wrap_text('Original file'),
 		'version' => $medium['version'],
 		'filename' => $master_filename,
 		'file_exists' => file_exists($zz_setting['media_folder'].'/'.$master_filename) ? true : false,
@@ -61,7 +61,7 @@ function mod_media_mediuminfo($params) {
 	$medium['crop'] = false;
 	if ($medium['thumb_filetype']) {
 		foreach ($zz_setting['media_sizes'] as $type => $size) {
-			$size['type'] = $type;
+			$size['type'] = wrap_text(ucfirst($size['action']).' file').', '.$type;
 			$size['version'] = $medium['version'];
 			$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
 			$size['file_exists'] = file_exists($zz_setting['media_folder'].'/'.$size['filename']) ? true : false;

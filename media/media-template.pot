@@ -44,7 +44,7 @@ msgid "Hash (MD5)"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
-msgid "Extension"
+msgid "Extension:"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
@@ -69,6 +69,18 @@ msgstr ""
 
 #: templates/mediuminfo.template.txt
 msgid "Save image section"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Original file"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Thumbnail file"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Crop file"
 msgstr ""
 
 #: zzbrick_tables/media.php
