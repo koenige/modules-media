@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020-2021 Gustaf Mossakowski
+# @copyright Copyright © 2020-2022 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 # List of fields:
@@ -18,5 +18,5 @@
 %%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% (%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)
 %%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%
 %%% condition else %%%
-<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title %%%%%% condition endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title markdown_inline %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
 %%% condition endif %%%
