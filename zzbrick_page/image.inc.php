@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -21,8 +21,7 @@
  * @return string $text
  */
 function page_image(&$params, &$page) {
-	global $zz_setting;
-	require_once $zz_setting['lib'].'/zzbrick/request.inc.php';
+	wrap_include_files('request', 'zzbrick');
 
 	if (empty($page['status'])) {
 		$text = '%%% page image '.implode(' ', $params).' %%%';
