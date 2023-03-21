@@ -20,11 +20,9 @@
  *		[0]: Type
  *		[1]...: folder
  *		[n]: filename .tn.typ
- * @global array $zz_setting
  * @return void (file will be sent)
  */
 function mod_media_medium($params) {
-	global $zz_setting;
 	global $zz_page;
 
 	if (!$params) return false;
@@ -40,7 +38,7 @@ function mod_media_medium($params) {
 		$new_url = implode('?v=', $new_url);
 	}
 
-	$media_sizes = wrap_get_setting('media_sizes');
+	$media_sizes = wrap_setting('media_sizes');
 	$media_sizes['master'] = ['path' => 'master'];
 	$media_size = '';
 	foreach ($media_sizes as $size) {
@@ -50,7 +48,7 @@ function mod_media_medium($params) {
 			break;
 		}
 	}
-	$variants = wrap_get_setting('media_file_variants');
+	$variants = wrap_setting('media_file_variants');
 	foreach ($variants as $variant) {
 		if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
 			$identifier = substr($identifier, 0, - strlen($variant) - 1);
@@ -76,14 +74,14 @@ function mod_media_medium($params) {
 	if (!$file) return false;
 	// If no public access, require login
 	if (!$file['published']) {
-		require_once $zz_setting['core'].'/auth.inc.php';
+		require_once wrap_setting('core').'/auth.inc.php';
 		wrap_auth(1);
 	}
 
 	// is it an embedded medium?
-	if (!empty($zz_setting['embed'])) {
+	if (wrap_setting('embed')) {
 		$embeds = [];
-		foreach ($zz_setting['embed'] as $key => $value)
+		foreach (wrap_setting('embed') as $key => $value)
 			$embeds[strtolower($key)] = $value;
 		if (array_key_exists($file['filetype'], $embeds)) {
 			$code = explode('/', $identifier);
@@ -92,11 +90,11 @@ function mod_media_medium($params) {
 			if (!empty($_GET['inactive'])) {
 				if ($_GET['inactive'].'' !== '1') return false;
 				$file['url'] = $url;
-				$file['privacy_policy_url'] = $zz_setting['privacy_policy_url'];
+				$file['privacy_policy_url'] = wrap_setting('privacy_policy_url');
 				$page['query_strings'] = ['inactive', 'lang'];
-				if (!empty($_GET['lang']) AND !empty($zz_setting['languages_allowed'])
-					AND in_array($_GET['lang'], $zz_setting['languages_allowed'])) {
-					$zz_setting['lang'] = $_GET['lang'];
+				if (!empty($_GET['lang']) AND wrap_setting('languages_allowed')
+					AND in_array($_GET['lang'], wrap_setting('languages_allowed'))) {
+					wrap_setting('lang', $_GET['lang']);
 				}
 				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
 				$page['template'] = 'embed';
@@ -108,7 +106,7 @@ function mod_media_medium($params) {
 			}
 		}
 	}
-	$file['name'] = sprintf('%s/%s', wrap_get_setting('media_folder'), $filename);
+	$file['name'] = sprintf('%s/%s', wrap_setting('media_folder'), $filename);
 	// Check if file exists
 	if (!file_exists($file['name'])) {
 		if ($media_size) return false;

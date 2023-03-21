@@ -8,31 +8,29 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
-$zz_setting['brick_types_translated']['image'] = 'page';
-$zz_setting['brick_page_shortcuts'][] = 'image';
-$zz_setting['brick_types_translated']['doc'] = 'page';
-$zz_setting['brick_page_shortcuts'][] = 'doc';
-$zz_setting['brick_types_translated']['video'] = 'page';
-$zz_setting['brick_page_shortcuts'][] = 'video';
+wrap_setting('brick_types_translated[image]', 'page');
+wrap_setting_add('brick_page_shortcuts', 'image');
+wrap_setting('brick_types_translated[doc]', 'page');
+wrap_setting_add('brick_page_shortcuts', 'doc');
+wrap_setting('brick_types_translated[video]', 'page');
+wrap_setting_add('brick_page_shortcuts', 'video');
 
-if (!empty($zz_setting['embed'])) {
-	$zz_setting['youtube_url'] = 'https://www.youtube.com/watch?v=%s';
-
-	foreach ($zz_setting['embed'] as $embed => $url) {
+if ($embeds = wrap_setting('embed')) {
+	foreach ($embeds as $embed => $url) {
 		if ($url === 'true') continue;
 		$embed = strtolower($embed);
-		$zz_setting['brick_types_translated'][$embed] = 'page';
-		$zz_setting['brick_page_shortcuts'][] = $embed;
+		wrap_setting('brick_types_translated['.$embed.']', 'page');
+		wrap_setting_add('brick_page_shortcuts', $embed);
 
-		if (empty($zz_setting['embed_path_'.$embed]))
-			$zz_setting['embed_path_'.$embed] = $embed;
-		$zz_setting[$embed.'_embed_url'] = $url;
-		if (empty($zz_setting[$embed.'_url']))
-			$zz_setting[$embed.'_url'] = $url;
+		if (!wrap_setting('embed_path_'.$embed))
+			wrap_setting('embed_path_'.$embed, $embed);
+		wrap_setting($embed.'_embed_url', $url);
+		if (!wrap_setting($embed.'_url'))
+			wrap_setting($embed.'_url', $url);
 	}
 }

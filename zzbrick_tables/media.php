@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -16,11 +16,10 @@
 $zz['table'] = '/*_PREFIX_*/media';
 
 // @todo put into language module
-$language_code = $zz_setting['lang'];
-$possible_codes = ['en', 'fr', 'de'];
-if (!in_array($language_code, $possible_codes)) {
+$language_code = wrap_setting('lang');
+$possible_codes = wrap_setting('language_translations');
+if (!in_array($language_code, $possible_codes))
 	$language_code = $possible_codes[0];
-}
 
 $zz['fields'][1]['title'] = 'ID';
 $zz['fields'][1]['field_name'] = 'medium_id';
@@ -50,8 +49,8 @@ if (empty($values['no_publish'])) {
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
 $zz['fields'][14]['unless'][2]['link'] = [
-	'root' => $zz_setting['media_folder'],
-	'webroot' => $zz_setting['files_path'],
+	'root' => wrap_setting('media_folder'),
+	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
 	'field1' => 'filename',
 	'string2' => '.',
@@ -62,18 +61,18 @@ $zz['fields'][14]['unless'][2]['link'] = [
 	'webfield1' => 'version'
 ];
 $zz['fields'][14]['path'] = [
-	'root' => $zz_setting['media_folder'], 
-	'webroot' => $zz_setting['files_path'],
+	'root' => wrap_setting('media_folder'), 
+	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
 	'field1' => 'filename',
 	'string2' => '.',
-	'string3' => $zz_setting['media_sizes']['min']['path'],
+	'string3' => wrap_setting('media_sizes[min][path]'),
 	'string4' => '.',
 	'extension' => 'thumb_extension',
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
 ];
-$zz['fields'][14]['default_image'] = $zz_setting['layout_path'].'/media/no-preview.png';
+$zz['fields'][14]['default_image'] = wrap_setting('layout_path').'/media/no-preview.png';
 $zz['fields'][14]['input_filetypes'] = array_keys(wrap_db_fetch('SELECT filetype 
 FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
 
@@ -89,7 +88,7 @@ $zz['fields'][14]['image'][0]['path']['extension'] = 'master_extension';
 $zz['fields'][14]['image'][0]['required'] = true;
 
 $i = 1;
-foreach ($zz_setting['media_sizes'] as $title => $size) {
+foreach (wrap_setting('media_sizes') as $title => $size) {
 	$zz['fields'][14]['image'][$i]['title'] = $title;
 	$zz['fields'][14]['image'][$i]['path'] = $zz['fields'][14]['path'];
 	$zz['fields'][14]['image'][$i]['path']['string3'] = $size['path'];
@@ -112,18 +111,18 @@ foreach ($zz_setting['media_sizes'] as $title => $size) {
 
 $zz['fields'][14]['if'][2]['type'] = 'image';
 $zz['fields'][14]['if'][2]['path'] = [
-	'string1' => $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png',
+	'string1' => wrap_setting('layout_path').'/media/folder-'.wrap_setting('media_sizes[min][path]').'.png',
 	'ignore_record' => true
 ];
-$zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-'.$zz_setting['media_sizes']['min']['path'].'.png';
+$zz['fields'][14]['if'][2]['default_image'] = wrap_setting('layout_path').'/media/folder-'.wrap_setting('media_sizes[min][path]').'.png';
 $zz['fields'][14]['if'][2]['class'] = 'folder';
 
 $zz['fields'][14]['if'][3]['type'] = 'image';
 $zz['fields'][14]['if'][3]['path'] = [
-	'string1' => $zz_setting['layout_path'].'/media/embed-'.$zz_setting['media_sizes']['min']['path'].'.png',
+	'string1' => wrap_setting('layout_path').'/media/embed-'.wrap_setting('media_sizes[min][path]').'.png',
 	'ignore_record' => true
 ];
-$zz['fields'][14]['if'][3]['default_image'] = $zz_setting['layout_path'].'/media/embed-'.$zz_setting['media_sizes']['min']['path'].'.png';
+$zz['fields'][14]['if'][3]['default_image'] = wrap_setting('layout_path').'/media/embed-'.wrap_setting('media_sizes[min][path]').'.png';
 
 $zz['fields'][16]['title'] = 'Thumbnail';
 $zz['fields'][16]['field_name'] = 'thumb_filetype_id';
@@ -203,7 +202,7 @@ $zz['fields'][43] = [];
 $zz['fields'][44] = [];
 
 $crop = false;
-foreach ($zz_setting['media_sizes'] as $size) {
+foreach (wrap_setting('media_sizes') as $size) {
 	if ($size['action'] === 'crop') $crop = true;
 }
 if ($crop) {
@@ -239,10 +238,10 @@ if (empty($values['no_sequence'])) {
 	$zz['fields'][31] = [];
 }
 
-if (!empty($zz_setting['languages_allowed']) AND count($zz_setting['languages_allowed']) > 1) {
+if (count(wrap_setting('languages_allowed')) > 1) {
 	$zz['fields'][24]['field_name'] = 'language_id';
 	$zz['fields'][24]['type'] = 'select';
-	$zz['fields'][24]['default'] = wrap_language_id($zz_setting['lang']);
+	$zz['fields'][24]['default'] = wrap_language_id(wrap_setting('lang'));
 	$zz['fields'][24]['hide_in_list'] = true;
 	$zz['fields'][24]['sql'] = sprintf('SELECT language_id, language_%s
 		FROM /*_PREFIX_*/languages
@@ -474,8 +473,8 @@ $zz['add'][] = [
 	'field_name' => 'filetype_id',
 	'value' => wrap_filetype_id('folder')
 ];
-if (!empty($zz_setting['embed'])) {
-	foreach (array_keys($zz_setting['embed']) as $embed) {
+if (wrap_setting('embed')) {
+	foreach (array_keys(wrap_setting('embed')) as $embed) {
 		if (!wrap_filetype_id(strtolower($embed), 'check')) continue;
 		$zz['add'][] = [
 			'type' => $embed,
@@ -488,7 +487,7 @@ if (!empty($zz_setting['embed'])) {
 $zz['if'][3]['hooks']['before_insert'][] = 'mf_media_hook_embed';
 
 $zz['set_redirect'][] = [
-	'old' => $zz_setting['files_path'].'/%s*',
-	'new' => $zz_setting['files_path'].'/%s*',
+	'old' => wrap_setting('files_path').'/%s*',
+	'new' => wrap_setting('files_path').'/%s*',
 	'field_name' => 'filename'
 ];

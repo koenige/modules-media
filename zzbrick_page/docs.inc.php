@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -37,10 +37,9 @@ function page_docs(&$params, $page) {
  */
 function page_docs_remove_used($links) {
 	global $zz_page;
-	global $zz_setting;
 	$remove = [];
 	$texts = [];
-	$ignore_langs = [$zz_setting['lang']];
+	$ignore_langs = [wrap_setting('lang')];
 	
 	// original language
 	$texts[] = $zz_page['db']['content'];
@@ -49,8 +48,8 @@ function page_docs_remove_used($links) {
 		$texts[] = $zz_page['db']['wrap_source_content']['content'];
 		$ignore_langs[] = $zz_page['db']['wrap_source_language']['content'];
 	}
-	if (!empty($zz_setting['languages_allowed'])) {
-		foreach ($zz_setting['languages_allowed'] as $lang) {
+	if ($languages = wrap_setting('languages_allowed')) {
+		foreach ($languages as $lang) {
 			if (in_array($lang, $ignore_langs)) continue;
 			$translation = wrap_translate($zz_page['db'], 'webpages', 'page_id', true, $lang);
 			$texts[] = $translation['content'];

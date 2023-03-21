@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -19,7 +19,6 @@
  * @param array $params
  */
 function page_twitch(&$params, $page) {
-	global $zz_setting;
 	if (count($params) !== 1) {
 		return '';
 	}
@@ -33,7 +32,7 @@ function page_twitch(&$params, $page) {
 		AND filename = "%s/%s"';
 	$sql = sprintf($sql
 		, wrap_filetype_id('twitch')
-		, $zz_setting['embed_path_twitch']
+		, wrap_setting('embed_path_twitch')
 		, wrap_db_escape($video)
 	);
 	$medium = wrap_db_fetch($sql);

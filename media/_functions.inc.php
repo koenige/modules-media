@@ -9,7 +9,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -33,7 +33,7 @@ if (!function_exists('wrap_get_media')) {
  *		grouped by images, links
  */
 function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
-	if (!wrap_get_setting('mod_media_install_date')) return [];
+	if (!wrap_setting('mod_media_install_date')) return [];
 	$multiple_ids = false;
 	if (is_array($id)) {
 		$id = implode(',', $id);
@@ -147,7 +147,6 @@ function mf_media_prepare($media) {
  * @return array
  */
 function mf_media_separate_embeds($media) {
-	global $zz_setting;
 	if (empty($media['links'])) return $media;
 	$embeds = mf_media_embeds();
 	if (!$embeds) return $media;
@@ -167,10 +166,9 @@ function mf_media_separate_embeds($media) {
  * @return array
  */
 function mf_media_embeds() {
-	global $zz_setting;
-	if (empty($zz_setting['embed'])) return [];
+	if (!$embeds = wrap_setting('embed')) return [];
 
-	$embeds = array_keys($zz_setting['embed']);
+	$embeds = array_keys($embeds);
 	foreach ($embeds as $index => $embed) {
 		$embeds[$index] = strtolower($embed);
 	}
@@ -230,13 +228,12 @@ function mf_media_switch_links($variants) {
  * @return array
  */
 function mf_media_get_embed_youtube($video) {
-	global $zz_setting;
 	static $meta;
 	if (!empty($meta[$video])) return $meta[$video];
-	require_once $zz_setting['core'].'/syndication.inc.php';
+	require_once wrap_setting('core').'/syndication.inc.php';
 
-	$url = sprintf($zz_setting['youtube_url'], $video);
-	$headers[] = sprintf('Cookie: CONSENT=YES+%s', strtoupper($zz_setting['lang']));
+	$url = sprintf(wrap_setting('youtube_url'), $video);
+	$headers[] = sprintf('Cookie: CONSENT=YES+%s', strtoupper(wrap_setting('lang')));
 	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url, $headers);
 
 	// get opengraph metadata
@@ -288,11 +285,9 @@ function mf_media_filetypes_cfg($cfg) {
  * @return string
  */
 function mf_media_image_size($image, $dimension, $size) {
-	global $zz_setting;
 	if (!$image['height_px']) return '';
 	if (!$image['width_px']) return '';
-	if (empty($zz_setting['media_sizes'][$size])) return false;
-	$size = $zz_setting['media_sizes'][$size];
+	if (!$size = wrap_setting('media_sizes['.$size.']')) return false;
 	switch ($dimension) {
 	case 'width':
 		if ($image['orientation'] === 'panorama') return $size['width'];
@@ -312,17 +307,16 @@ function mf_media_image_size($image, $dimension, $size) {
  * @return array
  */
 function mf_media_opengraph_image($image, $size = '') {
-	global $zz_setting;
-	if (empty($zz_setting['media_sizes'])) return [];
+	if (!$media_sizes = wrap_setting('media_sizes')) return [];
 	if (!$size) {
-		if (empty($zz_setting['media_standard_image_size'])) return [];
-		$size = $zz_setting['media_standard_image_size'];
+		$size = wrap_setting('media_standard_image_size');
+		if (!$size) return [];
 	}
 	$msize = [];
-	if (array_key_exists($size, $zz_setting['media_sizes']))
-		$msize = $zz_setting['media_sizes'][$size];
+	if (array_key_exists($size, $media_sizes))
+		$msize = $media_sizes[$size];
 	else
-		foreach ($zz_setting['media_sizes'] as $key => $media_size) {
+		foreach ($media_sizes as $key => $media_size) {
 			if ($media_size['path'].'' !== $size.'') continue;
 			$msize = $media_size;
 			$size = $key;
@@ -331,7 +325,7 @@ function mf_media_opengraph_image($image, $size = '') {
 
 	$og = [];
 	$og['og:image'] = sprintf(
-		'%s%s/%s.%s.%s?v=%d', $zz_setting['host_base'], $zz_setting['files_path']
+		'%s%s/%s.%s.%s?v=%d', wrap_setting('host_base'), wrap_setting('files_path')
 		, $image['filename'], $msize['path'], $image['thumb_extension']
 		, $image['version']
 	);
@@ -350,7 +344,7 @@ function mf_media_opengraph_image($image, $size = '') {
  * @return array
  */
 function mf_media_medium_from_setting($setting) {
-	$medium_id = wrap_get_setting(sprintf('%s_medium_id', $setting));
+	$medium_id = wrap_setting(sprintf('%s_medium_id', $setting));
 	if (!$medium_id) return [];
 
 	$sql = 'SELECT medium_id

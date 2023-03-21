@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -32,7 +32,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
 
-$zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.$zz_setting['layout_path'].'/media/zzform-media.css">'."\n";
+$zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.wrap_setting('layout_path').'/media/zzform-media.css">'."\n";
 
 /* get information about folder if it is not top level */
 $folder = mf_media_mediapool_folder($view);
@@ -109,18 +109,18 @@ if ($view['type'] === 'gallery') {
 
 	// Files
 	$zz['fields'][14]['path'] = [
-		'root' => $zz_setting['media_folder'],
-		'webroot' => $zz_setting['files_path'],
+		'root' => wrap_setting('media_folder'),
+		'webroot' => wrap_setting('files_path'),
 		'string1' => '/',
 		'field1' => 'filename',
 		'string2' => '.',
-		'string3' => $zz_setting['media_sizes']['min']['path'],
+		'string3' => wrap_setting('media_sizes[min][path]'),
 		'string4' => '.',
 		'extension' => 'thumb_extension',
 		'webstring1' => '?v=',
 		'webfield1' => 'version'
 	];
-	$zz['fields'][14]['if'][2]['default_image'] = $zz_setting['layout_path'].'/media/folder-120.png';
+	$zz['fields'][14]['if'][2]['default_image'] = wrap_setting('layout_path').'/media/folder-120.png';
 	if (!empty($zz['fields'][14]['if'][2]['class']))
 		$zz['fields'][14]['if'][2]['class'] .= ' stretch40';
 	if (!empty($zz['fields'][14]['class']))
@@ -266,12 +266,12 @@ function mf_media_mediapool_folder($view) {
  * @return string
  */
 function mf_media_mediapool_title($title, $folder, $view) {
-	$variants[0]['img'] = wrap_get_setting('layout_path').'/media/list-ul.png';
+	$variants[0]['img'] = wrap_setting('layout_path').'/media/list-ul.png';
 	$variants[0]['alt'] = wrap_text('Gallery');
 	$variants[0]['title'] = wrap_text('Display as Gallery');
 	$variants[0]['link'] = '';
 
-	$variants[1]['img'] = wrap_get_setting('layout_path').'/media/list-table.png';
+	$variants[1]['img'] = wrap_setting('layout_path').'/media/list-table.png';
 	$variants[1]['alt'] = wrap_text('Table');
 	$variants[1]['title'] = wrap_text('Display as Table');
 	$variants[1]['link'] = '-/';

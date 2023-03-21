@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -24,7 +24,6 @@
  * @return array
  */
 function mod_media_xhr_crop($data) {
-	global $zz_setting;
 	if (!wrap_access('media_edit')) wrap_quit(403);
 	// @todo check access rights to medium_id via media_access
 	if (empty($data['medium_id'])) wrap_quit(404);

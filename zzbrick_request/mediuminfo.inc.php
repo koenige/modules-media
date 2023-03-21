@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -20,7 +20,6 @@
  * @return array
  */
 function mod_media_mediuminfo($params) {
-	global $zz_setting;
 	if (!count($params)) return false;
 
 	$filename = implode('/', $params);
@@ -54,23 +53,23 @@ function mod_media_mediuminfo($params) {
 		'type' => wrap_text('Original file'),
 		'version' => $medium['version'],
 		'filename' => $master_filename,
-		'file_exists' => file_exists($zz_setting['media_folder'].'/'.$master_filename) ? true : false,
+		'file_exists' => file_exists(wrap_setting('media_folder').'/'.$master_filename) ? true : false,
 		'width' => $medium['width_px'],
 		'height' => $medium['height_px']
 	];
 	$medium['crop'] = false;
 	if ($medium['thumb_filetype']) {
-		foreach ($zz_setting['media_sizes'] as $type => $size) {
+		foreach (wrap_setting('media_sizes') as $type => $size) {
 			$size['type'] = wrap_text(ucfirst($size['action']).' file').', '.$type;
 			$size['version'] = $medium['version'];
 			$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
-			$size['file_exists'] = file_exists($zz_setting['media_folder'].'/'.$size['filename']) ? true : false;
+			$size['file_exists'] = file_exists(wrap_setting('media_folder').'/'.$size['filename']) ? true : false;
 			$medium['sizes'][] = $size;
 			if (empty($medium['preview_image']) AND $size['action'] === 'thumbnail') {
 				$medium['preview_image'] = $size['filename'];
 				$medium['preview_title'] = $size['action'].' '.$type;
 			}
-			if ($size['action'] === 'crop' AND !empty($zz_setting['media_croppr']))
+			if ($size['action'] === 'crop' AND wrap_setting('media_croppr'))
 				$medium['crop'] = true;
 		}
 	}
