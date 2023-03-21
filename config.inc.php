@@ -13,18 +13,18 @@
  */
 
 
-wrap_setting('brick_types_translated[image]', 'page');
+wrap_setting_add('brick_types_translated', ['image' => 'page']);
 wrap_setting_add('brick_page_shortcuts', 'image');
-wrap_setting('brick_types_translated[doc]', 'page');
+wrap_setting_add('brick_types_translated', ['doc' => 'page']);
 wrap_setting_add('brick_page_shortcuts', 'doc');
-wrap_setting('brick_types_translated[video]', 'page');
+wrap_setting_add('brick_types_translated', ['video' => 'page']);
 wrap_setting_add('brick_page_shortcuts', 'video');
 
 if ($embeds = wrap_setting('embed')) {
 	foreach ($embeds as $embed => $url) {
 		if ($url === 'true') continue;
 		$embed = strtolower($embed);
-		wrap_setting('brick_types_translated['.$embed.']', 'page');
+		wrap_setting_add('brick_types_translated', [$embed => 'page']);
 		wrap_setting_add('brick_page_shortcuts', $embed);
 
 		if (!wrap_setting('embed_path_'.$embed))
