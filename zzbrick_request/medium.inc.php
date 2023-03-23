@@ -119,6 +119,8 @@ function mod_media_medium($params) {
 		return wrap_redirect($new_url, 303);
 	}
 	$file['etag'] = md5_file($file['name']);
+	if ($media_size)
+		$file['send_as'] .= ' '.$media_size;
 	if (!empty($_GET['v'])) {
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
 	}
