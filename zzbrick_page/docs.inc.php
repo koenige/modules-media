@@ -62,7 +62,7 @@ function page_docs_remove_used($links) {
 			if (!($index & 1)) continue;
 			$block = trim($block);
 			$block = explode(' ', $block);
-			if (!in_array($block[0], ['doc', 'link'])) continue;
+			if (!in_array($block[0], ['doc', 'link', 'download'])) continue;
 			$remove[] = $block[1];
 		}
 	}
