@@ -21,7 +21,7 @@ if ($view['hidden_path'])
 	$brick['local_settings']['filename_cut'] = strlen($view['hidden_path']) + 2;
 
 /* include media table definition */
-$zz = zzform_include_table('media', $brick['local_settings']);
+$zz = zzform_include('media', $brick['local_settings']);
 
 $zz_conf['limit'] = 42;
 $zz_conf['list_display'] = 'ul';
