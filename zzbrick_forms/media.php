@@ -69,13 +69,13 @@ $zz['page']['dont_show_title_as_breadcrumb'] = true;
 if ($folder) {
 	foreach ($folder['breadcrumbs'] as $index => $folder_path) {
 		if ($index < count($folder['breadcrumbs']) - 1) {
-			$zz_conf['breadcrumbs'][] = [
-				'linktext' => wrap_html_escape($folder_path['title']),
-				'url' => $folder_path['url']
+			$zz['page']['breadcrumbs'][] = [
+				'title' => wrap_html_escape($folder_path['title']),
+				'url_path' => $folder_path['url']
 			];
 		} else {
-			$zz_conf['breadcrumbs'][] = [
-				'linktext' => '<strong>'.wrap_html_escape($folder_path['title']).'</strong>'
+			$zz['page']['breadcrumbs'][] = [
+				'title' => wrap_html_escape($folder_path['title'])
 			];
 		}
 	}
