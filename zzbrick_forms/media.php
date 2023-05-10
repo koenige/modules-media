@@ -65,7 +65,7 @@ if (!empty($brick['local_settings']['title'])) {
 $zz['title'] = mf_media_mediapool_title($zz['title'], $folder, $view);
 
 /* breadcrumbs */
-$zz_conf['dont_show_title_as_breadcrumb'] = true;
+$zz['page']['dont_show_title_as_breadcrumb'] = true;
 if ($folder) {
 	foreach ($folder['breadcrumbs'] as $index => $folder_path) {
 		if ($index < count($folder['breadcrumbs']) - 1) {
