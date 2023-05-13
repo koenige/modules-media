@@ -51,6 +51,26 @@ msgstr ""
 msgid "Back to folder <strong>%s</strong>"
 msgstr ""
 
+#: templates/folderinfo.template.txt
+msgid "%d files were imported in the background."
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "Import?"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "Filename"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "Import %d files"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "You can import %d files into this folder."
+msgstr ""
+
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
 msgstr ""
@@ -144,13 +164,13 @@ msgid "Sequence"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
-#: templates/mediumfolder.template.txt
+#: templates/folderinfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filetype"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
-#: templates/mediumfolder.template.txt
+#: templates/folderinfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filesize"
 msgstr ""

@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2017, 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2017, 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -24,3 +24,4 @@
 /* 2021-04-24-1 */	ALTER TABLE `media` ADD `alternative_text` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `description`;
 /* 2021-10-31-1 */	ALTER TABLE `media` CHANGE `clipping` `clipping` enum('center','top','bottom','right','left','custom') COLLATE 'latin1_general_ci' NOT NULL DEFAULT 'center' AFTER `published`;
 /* 2022-09-29-1 */	ALTER TABLE `media` ADD INDEX `filename` (`filename`);
+/* 2023-05-13-1 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_records=2', NULL, NOW());

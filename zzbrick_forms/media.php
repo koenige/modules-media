@@ -171,6 +171,8 @@ if (!empty($folder['is_file'])) {
 	
 	$zz_conf['add'] = false;
 	$zz_conf['footer_text'] = false;
+} else {
+	$zz['request'][] = 'folderinfo';
 }
 
 /**

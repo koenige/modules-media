@@ -6,11 +6,12 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2022 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2023 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 
+-- filetypes --
 CREATE TABLE `filetypes` (
   `filetype_id` int unsigned NOT NULL AUTO_INCREMENT,
   `filetype` varchar(7) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -46,6 +47,7 @@ INSERT INTO `filetypes` (`filetype_id`, `filetype`, `mime_content_type`, `mime_s
 (21,	'youtube',	'application',	'octet-stream',	'YouTube Video',	'');
 
 
+-- media --
 CREATE TABLE `media` (
   `medium_id` int unsigned NOT NULL AUTO_INCREMENT,
   `main_medium_id` int unsigned DEFAULT NULL,
@@ -82,6 +84,7 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'filetypes', 'filetype_id', (SELECT DATABASE()), 'media', 'medium_id', 'thumb_filetype_id', 'no-delete');
 
 
+-- media_access --
 CREATE TABLE `media_access` (
   `medium_access_id` int unsigned NOT NULL AUTO_INCREMENT,
   `medium_id` int unsigned DEFAULT NULL,
@@ -97,3 +100,7 @@ CREATE TABLE `media_access` (
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'media', 'medium_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'medium_id', 'delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'usergroups', 'usergroup_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'usergroup_id', 'no-delete');
 INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'media_access', 'medium_access_id', 'access_category_id', 'no-delete');
+
+
+-- jobmanager --
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_records=2', NULL, NOW());

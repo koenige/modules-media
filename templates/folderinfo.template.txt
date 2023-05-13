@@ -1,0 +1,47 @@
+# media module
+# HTML template for info about folder
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2023 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+%%% condition if imported %%%
+<p>%%% text "%d files were imported in the background." imported %%%</p>
+%%% condition if import %%%
+<div class="folderinfo">
+
+<form method="POST" action="">
+<table class="data">
+<thead>
+<tr>
+<th>%%% text Import? %%%</th>
+<th>%%% text Filename %%%</th>
+<th>%%% text Filetype %%%</th>
+<th>%%% text Filesize %%%</th>
+</tr>
+</thead>
+<tbody>
+%%% loop files %%%
+<tr class="%%% loopposition uneven un %%%even">
+<td><input type="checkbox" name="%%% item sha1 %%%" checked></td>
+<td>%%% item filename %%%</td>
+<td>%%% item extension strtoupper %%%</td>
+<td>%%% item filesize wrap_bytes %%%</td>
+</tr>
+%%% loop end %%%
+</tbody>
+</table>
+
+<p><input type="submit" name="zz_import" value="%%% text "Import %d files" import_count %%%"></p>
+</form>
+</div>
+%%% condition elseif import_count %%%
+<div class="folderinfo">
+<p><a href="?import">%%% text "You can import %d files into this folder." import_count %%%</a></p>
+</div>
+%%% condition else %%%
+&nbsp;
+%%% condition endif %%%
