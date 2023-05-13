@@ -45,6 +45,7 @@ function mod_media_folderinfo_import_files($folder) {
 	if (!is_dir($import)) return [];
 	$import .= '/'.$folder;
 	if (!is_dir($import)) return [];
+	if (!wrap_path('media_import', $folder)) return [];
 	
 	$files = scandir($import);
 	foreach ($files as $index => $file)

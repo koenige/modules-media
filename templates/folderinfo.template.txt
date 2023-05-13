@@ -10,7 +10,7 @@
 #
 %%% condition if imported %%%
 <p>%%% text "%d files were imported in the background." imported %%%</p>
-%%% condition if import %%%
+%%% condition elseif import %%%
 <div class="folderinfo">
 
 <form method="POST" action="">
