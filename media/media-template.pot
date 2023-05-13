@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017, 2020-2021 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2020-2021, 2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -25,6 +25,30 @@ msgstr ""
 
 #: behaviour/croppr.js
 msgid "Medium was cropped."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "A thumbnail was created for medium ID %d."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Failed to create thumbnail for medium ID %d."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Import of file %s into folder %s was successful."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Failed to import file %s into folder %s."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Import file %s into folder %s"
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Back to folder <strong>%s</strong>"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
@@ -120,11 +144,13 @@ msgid "Sequence"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
+#: templates/mediumfolder.template.txt
 #: zzbrick_tables/media.php
 msgid "Filetype"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
+#: templates/mediumfolder.template.txt
 #: zzbrick_tables/media.php
 msgid "Filesize"
 msgstr ""

@@ -27,6 +27,31 @@ msgstr ""
 msgid "Medium was cropped."
 msgstr "Das Medium wurde beschnitten."
 
+#: templates/fileimport.template.txt
+msgid "A thumbnail was created for medium ID %d."
+msgstr "Für das Medium mit der ID %d wurde ein Vorschaubild erstellt."
+
+#: templates/fileimport.template.txt
+msgid "Failed to create thumbnail for medium ID %d."
+msgstr ""
+"Es konnte kein Vorschaubild für das Medium mit der ID %d erstellt werden."
+
+#: templates/fileimport.template.txt
+msgid "Import of file %s into folder %s was successful."
+msgstr "Der Import der Datei %s in den Ordner %s war erfolgreich."
+
+#: templates/fileimport.template.txt
+msgid "Failed to import file %s into folder %s."
+msgstr "Die Datei %s konnte nicht in den Ordner %s importiert werden."
+
+#: templates/fileimport.template.txt
+msgid "Import file %s into folder %s"
+msgstr "Datei %s in den Ordner %s importieren"
+
+#: templates/fileimport.template.txt
+msgid "Back to folder <strong>%s</strong>"
+msgstr "Zurück zum Ordner <strong>%s</strong>"
+
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
 msgstr "Metadaten"
@@ -119,11 +144,13 @@ msgstr "Folge"
 msgid "Sequence"
 msgstr "Reihenfolge"
 
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt templates/mediumfolder.template.txt
+#: zzbrick_tables/media.php
 msgid "Filetype"
 msgstr "Dateityp"
 
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt templates/mediumfolder.template.txt
+#: zzbrick_tables/media.php
 msgid "Filesize"
 msgstr "Dateigröße"
 

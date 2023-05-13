@@ -1,0 +1,32 @@
+# media module
+# HTML template for file import
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2023 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+%%% condition if thumbnail_created %%%
+<p>%%% text "A thumbnail was created for medium ID %d." medium_id %%%</p>
+
+%%% condition elseif thumbnail_failed %%%
+<p class="error">%%% text "Failed to create thumbnail for medium ID %d." medium_id %%%</p>
+
+%%% condition elseif import_successful %%%
+<p>%%% text "Import of file %s into folder %s was successful." file folder %%%</p>
+
+%%% condition else %%%
+%%% condition if import_failed %%%
+<p class="error">%%% text "Failed to import file %s into folder %s." file folder %%%</p>
+%%% condition endif %%%
+
+<form method="POST" action="">
+<input type="submit" value="%%% text "Import file %s into folder %s" file folder %%%">
+</form>
+%%% condition endif %%%
+
+%%% condition if folder_path %%%
+<p><a href="%%% item folder_path %%%">%%% text "Back to folder <strong>%s</strong>" folder %%%</p>
+%%% condition endif %%%
