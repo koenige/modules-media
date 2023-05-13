@@ -27,6 +27,6 @@
 </form>
 %%% condition endif %%%
 
-%%% condition if folder_path %%%
+%%% condition if folder_path & folder %%%
 <p><a href="%%% item folder_path %%%">%%% text "Back to folder <strong>%s</strong>" folder %%%</p>
 %%% condition endif %%%
