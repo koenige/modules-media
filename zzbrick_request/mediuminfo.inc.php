@@ -2,7 +2,7 @@
 
 /**
  * media module
- * Output of files from protected area
+ * show information about a medium
  *
  * Part of »Zugzwang Project«
  * https://www.zugzwang.org/modules/media
@@ -14,7 +14,7 @@
 
 
 /**
- * show information on a medium
+ * show information about a medium
  *
  * @param array $params
  * @return array
