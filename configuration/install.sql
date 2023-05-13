@@ -103,4 +103,4 @@ INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`
 
 
 -- jobmanager --
-INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_requests=2', NULL, NOW());
+INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_requests=2', NULL, NOW());

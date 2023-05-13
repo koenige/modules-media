@@ -24,4 +24,4 @@
 /* 2021-04-24-1 */	ALTER TABLE `media` ADD `alternative_text` varchar(500) COLLATE 'utf8mb4_unicode_ci' NULL AFTER `description`;
 /* 2021-10-31-1 */	ALTER TABLE `media` CHANGE `clipping` `clipping` enum('center','top','bottom','right','left','custom') COLLATE 'latin1_general_ci' NOT NULL DEFAULT 'center' AFTER `published`;
 /* 2022-09-29-1 */	ALTER TABLE `media` ADD INDEX `filename` (`filename`);
-/* 2023-05-13-1 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_requests=2', NULL, NOW());
+/* 2023-05-13-1 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Media', NULL, (SELECT category_id FROM categories c WHERE path = 'jobs'), 'jobs/media', '&alias=jobs/media&max_requests=2', NULL, NOW());
