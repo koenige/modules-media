@@ -73,11 +73,11 @@ function mod_media_folderinfo_import_files($folder) {
 			if ($selection !== 'on') continue;
 			if (!array_key_exists($sha1_hash, $data)) continue;
 			$path = wrap_path('media_import', $folder.'/'.$sha1_hash, false);
-			wrap_job($path, [
+			$success = wrap_job($path, [
 				'trigger' => 1,
 				'job_category_id' => wrap_category_id('jobs/media')
 			]);
-			$i++;
+			if ($success) $i++;
 		}
 		wrap_redirect_change(sprintf('?imported=%d', $i));
 	}
