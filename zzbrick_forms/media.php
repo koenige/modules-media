@@ -209,6 +209,7 @@ function mf_media_mediapool_view($vars, $parameter) {
  * @return array
  */
 function mf_media_mediapool_folder($view) {
+	global $zz_page;
 	if (!$view['full_path']) return [];
 
 	$sql = 'SELECT medium_id, description, filename
@@ -236,10 +237,12 @@ function mf_media_mediapool_folder($view) {
 
 	$folder['breadcrumbs'] = [];
 	$bpath = '';
+	$breadcrumb = substr($zz_page['db']['identifier'], 0, -1).'/';
 	foreach ($folder_paths as $index => $folder_path) {
 		if (!$folder_path) continue;
 		$bpath = $bpath.($bpath ? '/' : '').$folder_path;
-		$url = str_repeat('../', count($folder_paths) - $index - 1);
+		$breadcrumb .= $folder_path.'/';
+		$url = $breadcrumb;
 		if ($view['type'] === 'tree') $url = '../'.$url.'-/';
 		$folder['breadcrumbs'][] = [
 			'url' => $url,
