@@ -63,7 +63,10 @@ function mod_media_mediuminfo($params) {
 	];
 	$medium['crop'] = false;
 	if ($medium['thumb_filetype']) {
-		foreach (wrap_setting('media_sizes') as $type => $size) {
+		$media_sizes = wrap_setting('media_sizes');
+		$width = array_column($media_sizes, 'width');
+		array_multisort($width, SORT_DESC, $media_sizes);
+		foreach ($media_sizes as $type => $size) {
 			$size['type'] = wrap_text(ucfirst($size['action']).' file').', '.$type;
 			$size['version'] = $medium['version'];
 			$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
