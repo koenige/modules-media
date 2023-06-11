@@ -285,7 +285,8 @@ function mf_media_mediapool_title($title, $folder, $view) {
 		$variants[0]['link'] = '../';
 		$variants[1]['link'] = '';
 	}
-	$title .= mf_media_switch_links($variants);
+	if (empty($folder['is_file']))
+		$title .= mf_media_switch_links($variants);
 	$title .= '<br><small>';
 	if (!$folder) {
 		$title .= 'TOP</small>';
