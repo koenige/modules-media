@@ -82,7 +82,7 @@ if ($folder) {
 }
 
 /* explanation */
-if (!empty($folder['description'])) {
+if (!empty($folder['description']) AND empty($folder['is_file'])) {
 	$zz['explanation'] = markdown($folder['description']);
 }
 
@@ -243,7 +243,7 @@ function mf_media_mediapool_folder($view) {
 		$bpath = $bpath.($bpath ? '/' : '').$folder_path;
 		$breadcrumb .= $folder_path.'/';
 		$url = $breadcrumb;
-		if ($view['type'] === 'tree') $url = '../'.$url.'-/';
+		if ($view['type'] === 'tree') $url .= '-/';
 		$folder['breadcrumbs'][] = [
 			'url' => $url,
 			'title' => $titles[$bpath],
@@ -293,7 +293,7 @@ function mf_media_mediapool_title($title, $folder, $view) {
 		return $title;
 	}
 	if (!$view['hidden_path'])
-		$title .= '<a href="'.$view['base_path'].'">TOP</a> / ';
+		$title .= '<a href="'.$view['base_path'].($view['type'] === 'tree' ? '-/' : '').'">TOP</a> / ';
 	foreach ($folder['titles'] as $index => $crumb) {
 		if ($index < count($folder['titles']) - 1) {
 			$title .= sprintf('<a href="%s">%s</a> / '

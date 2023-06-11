@@ -11,6 +11,8 @@
 <div class="mediuminfo">
 <h1>%%% item title %%%</h1>
 
+%%% item description markdown %%%
+
 %%% condition if preview_image %%%
 <figure class="media_preview_image">
 <img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% condition if crop %%% id="cropper"%%% condition endif %%%>
