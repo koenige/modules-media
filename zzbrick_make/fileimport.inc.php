@@ -78,9 +78,9 @@ function mod_media_make_fileimport($params) {
 		$values['ids'] = ['main_medium_id'];
 		$values['POST']['main_medium_id'] = wrap_id('folders', $data['folder']);
 		// @todo set thumb_filetype_id depending on source
-		$values['FILES']['field_image']['name']['master'] = $data['file'];
-		$values['FILES']['field_image']['tmp_name']['master'] = $import_folder.'/'.$data['file'];
-		$values['FILES']['field_image']['do_not_delete']['master'] = true;
+		$values['FILES']['field_image']['name']['original'] = $data['file'];
+		$values['FILES']['field_image']['tmp_name']['original'] = $import_folder.'/'.$data['file'];
+		$values['FILES']['field_image']['do_not_delete']['original'] = true;
 		$ops = zzform_multi('media', $values);
 		if ($ops['id']) {
 			$data['import_successful'] = true;

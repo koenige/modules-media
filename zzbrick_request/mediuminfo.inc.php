@@ -48,12 +48,16 @@ function mod_media_mediuminfo($params) {
 	
 	$medium['backlink'] = $backlink;
 	$medium['sizes'] = [];
-	$master_filename = sprintf('%s.master.%s', $medium['filename'], $medium['extension']);
+	$original_filename = sprintf('%s%s.%s'
+		, $medium['filename']
+		, wrap_setting('media_original_filename_extension') ? '.'.wrap_setting('media_original_filename_extension') : ''
+		, $medium['extension']
+	);
 	$medium['sizes'][] = [
 		'type' => wrap_text('Original file'),
 		'version' => $medium['version'],
-		'filename' => $master_filename,
-		'file_exists' => file_exists(wrap_setting('media_folder').'/'.$master_filename) ? true : false,
+		'filename' => $original_filename,
+		'file_exists' => file_exists(wrap_setting('media_folder').'/'.$original_filename) ? true : false,
 		'width' => $medium['width_px'],
 		'height' => $medium['height_px']
 	];

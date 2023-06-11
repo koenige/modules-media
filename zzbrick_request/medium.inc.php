@@ -39,10 +39,15 @@ function mod_media_medium($params) {
 	}
 
 	$media_sizes = wrap_setting('media_sizes');
-	$media_sizes['master'] = ['path' => 'master'];
+	$media_sizes['original'] = ['path' => wrap_setting('media_original_filename_extension')];
 	$media_size = '';
 	foreach ($media_sizes as $size) {
-		if (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
+		if (!$size['path']) {
+			if (!strstr($identifier, '.')) {
+				$media_size = $size['path'];
+				break;
+			}
+		} elseif (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
 			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
 			$media_size = $size['path'];
 			break;
@@ -111,7 +116,7 @@ function mod_media_medium($params) {
 	if (!file_exists($file['name'])) {
 		if ($media_size) return false;
 		$pos = strrpos($file['name'], '.');
-		$file['name'] = substr($file['name'], 0, $pos).'.master'.substr($file['name'], $pos);
+		$file['name'] = substr($file['name'], 0, $pos).'.'.wrap_setting('media_original_filename_extension').substr($file['name'], $pos);
 		if (!file_exists($file['name'])) return false;
 	}
 	if (is_dir($file['name'])) return false;

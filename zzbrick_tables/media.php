@@ -53,10 +53,10 @@ $zz['fields'][14]['unless'][2]['link'] = [
 	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
 	'field1' => 'filename',
-	'string2' => '.',
-	'string3' => 'master',
+	'string2' => wrap_setting('media_primary_filename_extension') ? '.' : '', 
+	'string3' => wrap_setting('media_primary_filename_extension'),
 	'string4' => '.',
-	'extension' => 'master_extension',
+	'extension' => 'original_extension',
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
 ];
@@ -79,12 +79,12 @@ FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
 $zz['fields'][14]['if'][2]['hide_in_form'] = true;
 $zz['fields'][14]['if'][3]['hide_in_form'] = true;
 
-// Master file
-$zz['fields'][14]['image'][0]['title'] = 'master';
-$zz['fields'][14]['image'][0]['field_name'] = 'master';
+// original file
+$zz['fields'][14]['image'][0]['title'] = 'original';
+$zz['fields'][14]['image'][0]['field_name'] = 'original';
 $zz['fields'][14]['image'][0]['path'] = $zz['fields'][14]['path'];
-$zz['fields'][14]['image'][0]['path']['string3'] = 'master';
-$zz['fields'][14]['image'][0]['path']['extension'] = 'master_extension';
+$zz['fields'][14]['image'][0]['path']['string3'] = wrap_setting('media_original_filename_extension');
+$zz['fields'][14]['image'][0]['path']['extension'] = 'original_extension';
 $zz['fields'][14]['image'][0]['required'] = true;
 
 $i = 1;
@@ -305,7 +305,7 @@ $zz['fields'][15]['upload_value'] = 'filetype';
 $zz['fields'][15]['upload_sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes 
 	WHERE filetype = ';
-$zz['fields'][15]['display_field'] = 'master_extension_ucase';
+$zz['fields'][15]['display_field'] = 'original_extension_ucase';
 $zz['fields'][15]['hide_in_list'] = true;
 $zz['fields'][15]['search'] = 'o_mime.extension';
 $zz['fields'][15]['dont_show_missing'] = true;
@@ -424,8 +424,8 @@ $zz['sql'] = sprintf('SELECT /*_PREFIX_*/media.*
 	, CONCAT(DATE_FORMAT(/*_PREFIX_*/media.date, "%%Y"), "/", 
 		DATE_FORMAT(/*_PREFIX_*/media.date, "%%m"), "/", 
 		DATE_FORMAT(/*_PREFIX_*/media.date, "%%d")) AS date_path
-	, o_mime.extension AS master_extension
-	, UCASE(o_mime.extension) AS master_extension_ucase
+	, o_mime.extension AS original_extension
+	, UCASE(o_mime.extension) AS original_extension_ucase
 	, t_mime.extension AS thumb_extension
 	, language_%s
 	, SUBSTRING(filename, %d) AS filename_link
