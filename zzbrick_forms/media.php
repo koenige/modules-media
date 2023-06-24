@@ -28,8 +28,8 @@ $zz_conf['list_display'] = 'ul';
 $zz_conf['max_select'] = 100;
 
 if (empty($brick['local_settings']['no_publish'])) {
-	if (!isset($zz_conf['footer_text'])) $zz_conf['footer_text'] = '';
-	$zz_conf['footer_text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
+	if (!isset($zz['footer']['text'])) $zz['footer']['text'] = '';
+	$zz['footer']['text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
 
 $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.wrap_setting('layout_path').'/media/zzform-media.css">'."\n";
@@ -170,7 +170,7 @@ if (!empty($folder['is_file'])) {
 	$zz['request'][] = 'mediuminfo';
 	
 	$zz_conf['add'] = false;
-	$zz_conf['footer_text'] = false;
+	$zz['footer']['text'] = false;
 } else {
 	$zz['request'][] = 'folderinfo';
 }
