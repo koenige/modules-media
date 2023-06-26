@@ -175,7 +175,7 @@ if (!empty($folder['is_file'])) {
 	$zz['request'][] = 'folderinfo';
 }
 
-$zz_conf['redirect_to_referer_zero_records'] = true;
+$zz['record']['redirect_to_referer_zero_records'] = true;
 
 
 /**
