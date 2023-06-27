@@ -24,7 +24,7 @@ if ($view['hidden_path'])
 $zz = zzform_include('media', $brick['local_settings']);
 
 $zz_conf['limit'] = 42;
-$zz_conf['list_display'] = 'ul';
+$zz['list']['display'] = 'ul';
 $zz_conf['max_select'] = 100;
 
 if (empty($brick['local_settings']['no_publish'])) {
@@ -96,7 +96,7 @@ if ($view['type'] === 'gallery') {
 		'string2' => '/'
 	];
 	
-	$zz_conf['search_form_always'] = true;
+	wrap_setting('zzform_search_form_always', true);
 	if (!empty($zz['fields'][33])) {
 		$zz['fields'][33]['hide_in_list'] = true;
 	}
@@ -156,7 +156,7 @@ if ($view['type'] === 'gallery') {
 	$zz['fields'][37]['hide_in_list'] = false;
 	$zz['fields'][38]['hide_in_list'] = false;
 
-	$zz_conf['list_display'] = 'table';
+	$zz['list']['display'] = 'table';
 
 	// Hierarchy ...
 
