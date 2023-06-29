@@ -25,7 +25,7 @@ $zz = zzform_include('media', $brick['local_settings']);
 
 $zz_conf['limit'] = 42;
 $zz['list']['display'] = 'ul';
-$zz_conf['max_select'] = 100;
+wrap_setting('zzform_max_select', 100);
 
 if (empty($brick['local_settings']['no_publish'])) {
 	if (!isset($zz['footer']['text'])) $zz['footer']['text'] = '';
