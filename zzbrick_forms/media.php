@@ -23,7 +23,7 @@ if ($view['hidden_path'])
 /* include media table definition */
 $zz = zzform_include('media', $brick['local_settings']);
 
-$zz_conf['limit'] = 42;
+wrap_setting('zzform_limit', 42);
 $zz['list']['display'] = 'ul';
 wrap_setting('zzform_max_select', 100);
 
