@@ -169,7 +169,7 @@ if (!empty($folder['is_file'])) {
 	$zz['list']['hide_empty_table'] = true;
 	$zz['request'][] = 'mediuminfo';
 	
-	$zz_conf['add'] = false;
+	$zz['record']['add'] = false;
 	$zz['footer']['text'] = false;
 } else {
 	$zz['request'][] = 'folderinfo';
