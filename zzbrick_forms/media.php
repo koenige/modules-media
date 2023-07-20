@@ -176,6 +176,7 @@ if (!empty($folder['is_file'])) {
 }
 
 $zz['record']['redirect_to_referer_zero_records'] = true;
+$zz['page']['dynamic_referer'] = $zz['fields'][14]['link'];
 
 
 /**
