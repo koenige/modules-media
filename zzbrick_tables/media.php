@@ -200,6 +200,7 @@ if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
 	$zz['fields'][6]['title'] = 'Tags';
 	$zz['fields'][6]['type'] = 'subtable';
 	$zz['fields'][6]['form_display'] = 'lines';
+	$zz['fields'][6]['min_records'] = 1;
 	$zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
 	$zz['fields'][6]['fields'][5]['type'] = 'sequence';
 	$zz['fields'][6]['if'][2]['hide_in_form'] = true; // not for folders
