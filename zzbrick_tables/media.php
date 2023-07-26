@@ -146,7 +146,7 @@ $zz['fields'][16]['path_sql'] = 'SELECT extension
 	FROM /*_PREFIX_*/filetypes WHERE filetype_id = ';
 $zz['fields'][16]['concat_fields'] = ' – ';
 $zz['fields'][16]['display_field'] = 'thumb_extension';
-$zz['fields'][16]['default'] = 1; // image/jpeg
+$zz['fields'][16]['default'] = wrap_filetype_id('jpeg');
 $zz['fields'][16]['hide_in_list'] = true;
 $zz['fields'][16]['hide_novalue'] = false;
 $zz['fields'][16]['search'] = 't_mime.extension';
@@ -194,8 +194,19 @@ $zz['fields'][17]['explanation'] = 'optional content of `alt`-attribute for imag
 $zz['fields'][17]['hide_in_list'] = true;
 $zz['fields'][17]['if'][2] = false;
 
+$zz['fields'][6] = [];
+if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
+	$zz['fields'][6] = zzform_include('media-categories');
+	$zz['fields'][6]['title'] = 'Tags';
+	$zz['fields'][6]['type'] = 'subtable';
+	$zz['fields'][6]['form_display'] = 'lines';
+	$zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
+	$zz['fields'][6]['fields'][5]['type'] = 'sequence';
+	$zz['fields'][6]['if'][2]['hide_in_form'] = true; // not for folders
+	$zz['fields'][6]['hide_in_list'] = true;
+}
+
 // additional fields
-$zz['fields'][6] = []; // media_categories
 $zz['fields'][41] = [];
 $zz['fields'][42] = [];
 $zz['fields'][43] = [];
