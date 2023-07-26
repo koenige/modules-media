@@ -333,6 +333,10 @@ msgstr "Zugriffsrechte für Medien"
 msgid "Access"
 msgstr "Zugriff"
 
+#: zzbrick_tables/media-tags.php
+msgid "Media Tags"
+msgstr "Medien-Tags"
+
 #: templates/embed.template.txt
 msgid "Yes, I’d like this content to be embedded directly on this website."
 msgstr ""

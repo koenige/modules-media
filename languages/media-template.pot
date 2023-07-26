@@ -330,6 +330,10 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
+#: zzbrick_tables/media-tags.php
+msgid "Media Tags"
+msgstr ""
+
 #: templates/embed.template.txt
 msgid "Yes, I’d like this content to be embedded directly on this website."
 msgstr ""
