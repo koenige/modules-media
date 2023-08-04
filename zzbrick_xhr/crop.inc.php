@@ -24,7 +24,7 @@
  * @return array
  */
 function mod_media_xhr_crop($data) {
-	if (!wrap_access('media_edit')) wrap_quit(403);
+	wrap_access_quit('media_edit');
 	// @todo check access rights to medium_id via media_access
 	if (empty($data['medium_id'])) wrap_quit(404);
 
