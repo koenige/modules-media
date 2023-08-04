@@ -55,6 +55,7 @@ $zz['fields'][4]['value'] = wrap_category_id('tags');
 $zz['fields'][4]['hide_in_form'] = true;
 $zz['fields'][4]['hide_in_list'] = true;
 $zz['fields'][4]['exclude_from_search'] = true;
+$zz['fields'][4]['for_action_ignore'] = true;
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
