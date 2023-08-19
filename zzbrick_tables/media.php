@@ -303,10 +303,10 @@ $zz['fields'][10]['type'] = 'identifier';
 $zz['fields'][10]['fields'] = ['main_medium_id[filename]', 'title'];
 $zz['fields'][10]['class'] = 'hidden';
 $zz['fields'][10]['hide_in_list'] = true;
-$zz['fields'][10]['conf_identifier']['concat'] = ['/'];
-$zz['fields'][10]['conf_identifier']['exists'] = '-';
-$zz['fields'][10]['if'][3]['conf_identifier']['lowercase'] = false;
-$zz['fields'][10]['if'][3]['conf_identifier']['replace'] = ['_' => '_'];
+$zz['fields'][10]['identifier']['concat'] = ['/'];
+$zz['fields'][10]['identifier']['exists'] = '-';
+$zz['fields'][10]['if'][3]['identifier']['lowercase'] = false;
+$zz['fields'][10]['if'][3]['identifier']['replace'] = ['_' => '_'];
 
 $zz['fields'][15]['title'] = 'Filetype';
 $zz['fields'][15]['title_append'] = 'File';
