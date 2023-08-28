@@ -45,3 +45,4 @@
 %%% condition else %%%
 &nbsp;
 %%% condition endif %%%
+%%% template link-rel-nav %%%

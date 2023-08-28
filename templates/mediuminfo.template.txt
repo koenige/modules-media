@@ -79,3 +79,4 @@
 %%% condition if crop %%%
 <script src="%%% setting behaviour_path %%%/media/croppr.js"></script>
 %%% condition endif %%%
+%%% template link-rel-nav %%%

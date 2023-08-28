@@ -46,6 +46,9 @@ function mod_media_mediuminfo($params) {
 	$medium = wrap_db_fetch($sql);
 	if (!$medium) return false;
 	
+	// next, prev?
+	$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
+	
 	$medium['backlink'] = $backlink;
 	$medium['sizes'] = [];
 	$original_filename = sprintf('%s%s.%s'

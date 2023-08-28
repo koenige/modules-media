@@ -26,6 +26,14 @@ function mod_media_folderinfo($params) {
 	$data['import_count'] = count($data['files']) ? count($data['files']) :  NULL;
 	$data['import'] = ($data['import_count'] AND isset($_GET['import'])) ? true : false;
 	$data['imported'] = $_GET['imported'] ?? NULL;
+
+	$sql = 'SELECT medium_id, main_medium_id
+	    FROM media
+	    WHERE filename = "%s"';
+	$sql = sprintf($sql, wrap_db_escape($folder));
+	$medium = wrap_db_fetch($sql);
+	if ($medium)
+		$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
 	
 	$page['text'] = wrap_template('folderinfo', $data);
 	$page['query_strings'][] = 'import';
