@@ -282,6 +282,7 @@ $zz['fields'][5]['suffix'] = ' '.wrap_text('h');
 $zz['fields'][5]['upload_field'] = 14;
 $zz['fields'][5]['upload_value'] = 'exif[DateTimeOriginal]';
 $zz['fields'][5]['hide_in_list'] = true;
+$zz['fields'][5]['time_format'] = 'H:i:s';
 $zz['fields'][5]['if'][2] = false;
 
 if (empty($values['no_publish'])) {
