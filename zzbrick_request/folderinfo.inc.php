@@ -89,28 +89,3 @@ function mod_media_folderinfo_import_files($folder) {
 	}
 	return $data;
 }
-
-/**
- * check for case insenstive or not normalized folder variants
- *
- * @param string $folder
- * @return string
- */
-function mf_media_import_folder($folder) {
-	$import_folder = wrap_setting('media_import_folder');
-	if (!$import_folder) return '';
-	if (!is_dir($import_folder)) return '';
-	$paths = explode('/', $folder);
-	foreach ($paths as $path) {
-		$path = strtolower($path);
-		$files = scandir($import_folder);
-		$found = false;
-		foreach ($files as $file) {
-			if (strtolower($file) === $path) $found = $file;
-			elseif (wrap_filename($file) === $path) $found = $file;
-		}
-		if (!$found) return '';
-		$import_folder .= '/'.$found;
-	}
-	return $import_folder;
-}

@@ -54,8 +54,8 @@ function mod_media_make_fileimport($params) {
 
 	// is there an import folder?
 	$data['folder'] = implode('/', $params);
-	$import_folder = wrap_setting('media_import_folder').'/'.$data['folder'];
-	if (!is_dir($import_folder)) return false;
+	$import_folder = mf_media_import_folder($data['folder']);
+	if (!$import_folder) return false;
 
 	// does file with this sha1_hash exist in folder?
 	$files = scandir($import_folder);
