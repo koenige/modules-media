@@ -48,24 +48,20 @@ function mod_media_folderinfo($params) {
  * @return array
  */
 function mod_media_folderinfo_import_files($folder) {
-	$import = wrap_setting('media_import_folder');
-	if (!$import) return [];
-	if (!is_dir($import)) return [];
-	
-	$local_folder = mod_media_folderinfo_import_folder($import, $folder);
-	if (!$local_folder) return [];
 	if (!wrap_path('media_import', $folder)) return [];
 
-	$import .= '/'.$folder;
-	$files = scandir($import);
+	$import_folder = mf_media_import_folder($folder);
+	if (!$import_folder) return [];
+
+	$files = scandir($import_folder);
 	foreach ($files as $index => $file)
 		if (str_starts_with($file, '.')) unset($files[$index]);
-		elseif (is_dir($import.'/'.$file)) unset($files[$index]);
+		elseif (is_dir($import_folder.'/'.$file)) unset($files[$index]);
 	if (!$files) return [];
 	
 	$data = [];
 	foreach ($files as $file) {
-		$filename = $import.'/'.$file;
+		$filename = $import_folder.'/'.$file;
 		$file = explode('.', $file);
 		$extension = (count($file) > 1) ? array_pop($file) : '';
 		$file = implode('.', $file);
@@ -97,24 +93,24 @@ function mod_media_folderinfo_import_files($folder) {
 /**
  * check for case insenstive or not normalized folder variants
  *
- * @param string $import
  * @param string $folder
  * @return string
  */
-function mod_media_folderinfo_import_folder($import, $folder) {
+function mf_media_import_folder($folder) {
+	$import_folder = wrap_setting('media_import_folder');
+	if (!$import_folder) return '';
+	if (!is_dir($import_folder)) return '';
 	$paths = explode('/', $folder);
-	$actual_folder = [];
 	foreach ($paths as $path) {
 		$path = strtolower($path);
-		$files = scandir($import);
+		$files = scandir($import_folder);
 		$found = false;
 		foreach ($files as $file) {
 			if (strtolower($file) === $path) $found = $file;
 			elseif (wrap_filename($file) === $path) $found = $file;
 		}
 		if (!$found) return '';
-		$actual_folder[] = $found;
-		$import .= '/'.$found;
+		$import_folder .= '/'.$found;
 	}
-	return implode('/', $actual_folder);
+	return $import_folder;
 }
