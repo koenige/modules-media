@@ -51,10 +51,12 @@ function mod_media_folderinfo_import_files($folder) {
 	$import = wrap_setting('media_import_folder');
 	if (!$import) return [];
 	if (!is_dir($import)) return [];
-	$import .= '/'.$folder;
-	if (!is_dir($import)) return [];
-	if (!wrap_path('media_import', $folder)) return [];
 	
+	$local_folder = mod_media_folderinfo_import_folder($import, $folder);
+	if (!$local_folder) return [];
+	if (!wrap_path('media_import', $folder)) return [];
+
+	$import .= '/'.$folder;
 	$files = scandir($import);
 	foreach ($files as $index => $file)
 		if (str_starts_with($file, '.')) unset($files[$index]);
@@ -90,4 +92,29 @@ function mod_media_folderinfo_import_files($folder) {
 		wrap_redirect_change(sprintf('?imported=%d', $i));
 	}
 	return $data;
+}
+
+/**
+ * check for case insenstive or not normalized folder variants
+ *
+ * @param string $import
+ * @param string $folder
+ * @return string
+ */
+function mod_media_folderinfo_import_folder($import, $folder) {
+	$paths = explode('/', $folder);
+	$actual_folder = [];
+	foreach ($paths as $path) {
+		$path = strtolower($path);
+		$files = scandir($import);
+		$found = false;
+		foreach ($files as $file) {
+			if (strtolower($file) === $path) $found = $file;
+			elseif (wrap_filename($file) === $path) $found = $file;
+		}
+		if (!$found) return '';
+		$actual_folder[] = $found;
+		$import .= '/'.$found;
+	}
+	return implode('/', $actual_folder);
 }
