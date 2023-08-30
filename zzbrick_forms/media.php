@@ -167,12 +167,12 @@ if ($view['type'] === 'gallery') {
 // display image
 if (!empty($folder['is_file'])) {
 	$zz['list']['hide_empty_table'] = true;
-	$zz['request'][] = 'mediuminfo';
+	$zz['page']['request'][] = 'mediuminfo';
 	
 	$zz['record']['add'] = false;
 	$zz['footer']['text'] = false;
 } else {
-	$zz['request'][] = 'folderinfo';
+	$zz['page']['request'][] = 'folderinfo';
 }
 
 $zz['record']['redirect_to_referer_zero_records'] = true;
