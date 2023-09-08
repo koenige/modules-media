@@ -107,6 +107,7 @@ CREATE TABLE `media_categories` (
   `medium_category_id` int unsigned NOT NULL AUTO_INCREMENT,
   `medium_id` int unsigned NOT NULL,
   `category_id` int unsigned NOT NULL,
+  `property` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type_category_id` int unsigned NOT NULL,
   `sequence` tinyint DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

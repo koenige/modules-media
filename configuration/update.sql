@@ -30,3 +30,4 @@
 /* 2023-07-26-3 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'media_categories', 'medium_category_id', 'category_id', 'no-delete');
 /* 2023-07-26-4 */	INSERT INTO _relations (`master_db`, `master_table`, `master_field`, `detail_db`, `detail_table`, `detail_id_field`, `detail_field`, `delete`) VALUES ((SELECT DATABASE()), 'categories', 'category_id', (SELECT DATABASE()), 'media_categories', 'medium_category_id', 'type_category_id', 'no-delete');
 /* 2023-07-26-5 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Tags', NULL, NULL, 'tags', '&alias=tags', NULL, NOW());
+/* 2023-09-08-1 */	ALTER TABLE `media_categories` ADD `property` varchar(255) NULL AFTER `category_id`;

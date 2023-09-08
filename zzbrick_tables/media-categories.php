@@ -20,8 +20,9 @@ $zz['fields'][1]['title'] = 'ID';
 $zz['fields'][1]['field_name'] = 'medium_category_id';
 $zz['fields'][1]['type'] = 'id';
 
-$zz['fields'][5]['field_name'] = 'sequence';
-$zz['fields'][5]['type'] = 'number';
+$zz['fields'][4]['title'] = 'No.';
+$zz['fields'][4]['field_name'] = 'sequence';
+$zz['fields'][4]['type'] = 'number';
 
 $zz['fields'][2]['field_name'] = 'medium_id';
 $zz['fields'][2]['type'] = 'select';
@@ -48,14 +49,19 @@ $zz['fields'][3]['show_hierarchy_subtree'] = wrap_category_id('tags');
 if ($path = wrap_path('default_tables', 'categories'))
 	$zz['fields'][3]['add_details'] = sprintf('%s?filter[maincategory]=%d', $path, wrap_category_id('tags'));
 
-$zz['fields'][4]['field_name'] = 'type_category_id';
-$zz['fields'][4]['type'] = 'hidden';
-$zz['fields'][4]['type_detail'] = 'select';
-$zz['fields'][4]['value'] = wrap_category_id('tags');
-$zz['fields'][4]['hide_in_form'] = true;
-$zz['fields'][4]['hide_in_list'] = true;
-$zz['fields'][4]['exclude_from_search'] = true;
-$zz['fields'][4]['for_action_ignore'] = true;
+$zz['fields'][5]['field_name'] = 'type_category_id';
+$zz['fields'][5]['type'] = 'hidden';
+$zz['fields'][5]['type_detail'] = 'select';
+$zz['fields'][5]['value'] = wrap_category_id('tags');
+$zz['fields'][5]['hide_in_form'] = true;
+$zz['fields'][5]['hide_in_list'] = true;
+$zz['fields'][5]['exclude_from_search'] = true;
+$zz['fields'][5]['for_action_ignore'] = true;
+
+if (wrap_setting('media_category_properties')) {
+	$zz['fields'][6]['field_name'] = 'property';
+	$zz['fields'][6]['typo_cleanup'] = true;
+}
 
 $zz['fields'][99]['field_name'] = 'last_update';
 $zz['fields'][99]['type'] = 'timestamp';
