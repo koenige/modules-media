@@ -228,7 +228,7 @@ function mf_media_switch_links($variants) {
  * @return array
  */
 function mf_media_get_embed_youtube($video) {
-	static $meta;
+	static $meta = [];
 	if (!empty($meta[$video])) return $meta[$video];
 	require_once wrap_setting('core').'/syndication.inc.php';
 
