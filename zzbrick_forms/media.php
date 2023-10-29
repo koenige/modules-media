@@ -23,9 +23,9 @@ if ($view['hidden_path'])
 /* include media table definition */
 $zz = zzform_include('media', $brick['local_settings']);
 
-wrap_setting('zzform_limit', 42);
 $zz['list']['display'] = 'ul';
-wrap_setting('zzform_max_select', 100);
+$zz['setting']['zzform_limit'] = 42;
+$zz['setting']['zzform_max_select'] = 100;
 
 if (empty($brick['local_settings']['no_publish'])) {
 	if (!isset($zz['footer']['text'])) $zz['footer']['text'] = '';
@@ -96,7 +96,7 @@ if ($view['type'] === 'gallery') {
 		'string2' => '/'
 	];
 	
-	wrap_setting('zzform_search_form_always', true);
+	$zz['setting']['zzform_search_form_always'] = true;
 	if (!empty($zz['fields'][33])) {
 		$zz['fields'][33]['hide_in_list'] = true;
 	}
