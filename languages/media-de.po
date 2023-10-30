@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017, 2021 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2021-2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -53,8 +53,10 @@ msgid "Back to folder <strong>%s</strong>"
 msgstr "Zurück zum Ordner <strong>%s</strong>"
 
 #: templates/folderinfo.template.txt
-msgid "%d files were imported in the background."
-msgstr "%d Dateien wurden im Hintergrund importiert."
+msgid "%d file was imported in the background."
+msgid_plural "%d files were imported in the background."
+msgstr[0] "%d Datei wurde im Hintergrund importiert."
+msgstr[1] "%d Dateien wurden im Hintergrund importiert."
 
 #: templates/folderinfo.template.txt
 msgid "Import?"
@@ -69,8 +71,10 @@ msgid "Import %d files"
 msgstr "%d Dateien importieren"
 
 #: templates/folderinfo.template.txt
-msgid "You can import %d files into this folder."
-msgstr "Sie können %d Dateien in diesen Ordner importieren."
+msgid "You can import %d file into this folder."
+msgid_plural "You can import %d files into this folder."
+msgstr[0] "Sie können %d Datei in diesen Ordner importieren."
+msgstr[1] "Sie können %d Dateien in diesen Ordner importieren."
 
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
