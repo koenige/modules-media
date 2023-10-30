@@ -46,6 +46,20 @@ function mod_media_mediuminfo($params) {
 	$medium = wrap_db_fetch($sql);
 	if (!$medium) return false;
 	
+	// categories, tags
+	$sql = 'SELECT medium_category_id, property
+			, categories.category, categories.path
+			, types.category as type
+			, IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(types.parameters, "&alias=", -1), "&", 1), types.path) AS type_path
+		FROM media_categories
+		LEFT JOIN categories USING (category_id)
+		LEFT JOIN categories types
+			ON media_categories.type_category_id = types.category_id
+	    WHERE medium_id = %d
+	    ORDER BY types.sequence, media_categories.sequence, categories.sequence, categories.path';
+	$sql = sprintf($sql, $medium['medium_id']);
+	$medium += wrap_db_fetch($sql, ['type_path', 'medium_category_id']);
+	
 	// next, prev?
 	$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
 	

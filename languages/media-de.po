@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: behaviour/croppr.js
 msgid "Medium was cropped."
@@ -77,6 +77,10 @@ msgid "Meta data"
 msgstr "Metadaten"
 
 #: templates/mediuminfo.template.txt
+msgid "Tags"
+msgstr "Schlagwörter"
+
+#: templates/mediuminfo.template.txt
 msgid "Date/Time"
 msgstr "Datum/Zeit"
 
@@ -110,11 +114,11 @@ msgstr "Medium bearbeiten"
 
 #: templates/mediuminfo.template.txt
 msgid "Crop image (custom)"
-msgstr "Bild zuschneiden (eigene Größe) "
+msgstr "Bild zuschneiden (eigene Größe)"
 
 #: templates/mediuminfo.template.txt
 msgid "Save image section"
-msgstr "Bildausschnitt speichern "
+msgstr "Bildausschnitt speichern"
 
 #: templates/mediuminfo.template.txt
 msgid "Original file"

@@ -76,6 +76,10 @@ msgid "Meta data"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
+msgid "Tags"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
 msgid "Date/Time"
 msgstr ""
 

@@ -45,6 +45,15 @@
 <p>%%% item alternative_text %%%</p>
 %%% condition endif %%%
 
+%%% condition if tags %%%
+<h3>%%% text Tags %%%</h3>
+<ul class="tags">
+%%% loop tags %%%
+<li>%%% item category %%%</li>
+%%% loop end %%%
+</ul>
+%%% condition endif %%%
+
 <h3>%%% text File info %%%</h3>
 
 <ul>
