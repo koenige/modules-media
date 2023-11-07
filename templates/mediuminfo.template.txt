@@ -49,7 +49,7 @@
 <h3>%%% text Tags %%%</h3>
 <ul class="tags">
 %%% loop tags %%%
-<li>%%% item category %%%</li>
+<li>%%% path media_internal path "html=<a href="%s">" %%%%%% item category %%%%%% path media_internal path "html=</a>" %%%</li>
 %%% loop end %%%
 </ul>
 %%% condition endif %%%

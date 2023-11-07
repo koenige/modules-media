@@ -182,6 +182,10 @@ msgstr "Dateityp"
 msgid "Filesize"
 msgstr "Dateigröße"
 
+#: zzbrick_forms/media.php
+msgid "TOP"
+msgstr "TOP"
+
 #: zzbrick_tables/media.php
 msgid "MD5"
 msgstr "MD5"

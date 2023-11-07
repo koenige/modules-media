@@ -38,18 +38,22 @@ $zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.wrap_
 $folder = mf_media_mediapool_folder($view);
 
 /* modify SQL query */
+if (!empty($view['tag'])) {
+	$zz['sql'] = wrap_edit_sql($zz['sql'], 'JOIN', 'LEFT JOIN /*_PREFIX_*/media_categories USING (medium_id)');
+	$zz['sql'] = wrap_edit_sql($zz['sql'], 'WHERE', sprintf('/*_PREFIX_*/media_categories.category_id = %d', $view['category_id']));
+}
 if ($view['type'] === 'gallery') {
 	if ($folder AND empty($_GET['q']))
 		$zz['where']['main_medium_id'] = $folder['medium_id'];
-	elseif (empty($_GET['q']))
-		$zz['sql'] .= ' WHERE ISNULL(main_medium_id)';
+	elseif (empty($_GET['q']) AND empty($view['tag']))
+		$zz['sql'] = wrap_edit_sql($zz['sql'], 'WHERE', 'ISNULL(main_medium_id)');
 	else
-		$zz['sql'] .= sprintf(' WHERE /*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder'));
+		$zz['sql'] = wrap_edit_sql($zz['sql'], sprintf('/*_PREFIX_*/media.filetype_id != %d', wrap_filetype_id('folder')));
 	if (!$folder)
 		$zz['fields'][8]['hide_in_form'] = true;
 } elseif ($folder) {
 	// $view['type'] = tree
-	$zz['sql'] .= sprintf(' WHERE filename LIKE "%s/%%"', $folder['filename']);
+	$zz['sql'] = wrap_edit_sql($zz['sql'], 'WHERE', sprintf('filename LIKE "%s/%%"', $folder['filename']));
 
 	$zz['list']['hierarchy']['mother_id_field_name'] = 'main_medium_id';
 	$zz['list']['hierarchy']['id'] = $folder['medium_id'];
@@ -202,7 +206,15 @@ function mf_media_mediapool_view($vars, $parameter) {
 	} else {
 		$view['type'] = 'gallery';
 	}
-	$view['full_path'] = implode('/', $full_path_parts);
+	if (reset($full_path_parts) === '-tags') {
+		$view['tag'] = array_pop($full_path_parts);
+		$view['category_id'] = wrap_category_id('tags/'.$view['tag']);
+		if (!$view['category_id']) wrap_quit(404);
+		$view['full_path'] = '';
+	} else {
+		$view['full_path'] = implode('/', $full_path_parts);
+	}
+	
 	return $view;
 }
 
@@ -292,12 +304,24 @@ function mf_media_mediapool_title($title, $folder, $view) {
 	if (empty($folder['is_file']))
 		$title .= mf_media_switch_links($variants);
 	$title .= '<br><small>';
-	if (!$folder) {
-		$title .= 'TOP</small>';
+	if (!$folder AND empty($view['tag'])) {
+		$title .= wrap_text('TOP').'</small>';
 		return $title;
 	}
 	if (!$view['hidden_path'])
-		$title .= '<a href="'.$view['base_path'].($view['type'] === 'tree' ? '-/' : '').'">TOP</a> / ';
+		$title .= sprintf(
+			'<a href="%s%s">%s</a> / '
+			, $view['base_path'], ($view['type'] === 'tree' ? '-/' : ''), wrap_text('TOP')
+		);
+	if (!empty($view['tag'])) {
+		$sql = 'SELECT category_id, category FROM categories WHERE category_id = %d';
+		$sql = sprintf($sql, $view['category_id']);
+		$category = wrap_db_fetch($sql);
+		$category = wrap_translate($category, 'categories');
+		// @todo add categories overview
+		$title .= $category['category'].'</small>';
+		return $title;
+	}
 	foreach ($folder['titles'] as $index => $crumb) {
 		if ($index < count($folder['titles']) - 1) {
 			$title .= sprintf('<a href="%s">%s</a> / '
