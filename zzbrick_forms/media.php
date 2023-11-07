@@ -22,6 +22,7 @@ if ($view['hidden_path'])
 
 /* include media table definition */
 $zz = zzform_include('media', $brick['local_settings']);
+$zz['page']['extra']['class'] = 'mediapool';
 if (!empty($view['tag_overview'])) {
 	$zz['record']['add'] = false;
 	$zz['list']['display'] = false;
@@ -313,6 +314,11 @@ function mf_media_mediapool_title($title, $folder, $view) {
 	}
 	if (empty($folder['is_file']))
 		$title .= mf_media_switch_links($variants);
+	if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
+		$title .= sprintf('<span class="tools"><a href="%s">%s</a></span>'
+			, wrap_path('media_internal', '-tags'), wrap_text('Tags')
+		);
+	}
 	$title .= '<br><small>';
 	if (!$folder AND empty($view['tag'])) {
 		$title .= wrap_text('TOP').'</small>';

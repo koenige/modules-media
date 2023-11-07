@@ -40,7 +40,7 @@
 					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; 
 					display: inline-block; }
 
-#zzform img.icon	{ padding: 0 5px; vertical-align: middle; }
+#zzform img.icon	{ padding: 0 5px; }
 
 #zzform .media_preview_image
 					{ text-align: center; }
@@ -55,3 +55,16 @@
 
 #zzform .folderinfo { margin: 1.5em 0; padding: .5em 0; border: 1px #CCC; 
 					border-style: solid none; }
+
+
+/* media pool, heading 1 */
+.mediapool h1		{ display: grid; grid-template-columns: auto 1.75rem 1.75rem 1fr; 
+					column-gap: .5rem; row-gap: .25rem; }
+.mediapool h1 .icon	{ grid-column: 2/3; grid-row: 1/1; align-self: center; justify-self: center; }
+.mediapool h1 .icon:nth-child(1)	{ grid-column: 2/3; }
+.mediapool h1 .icon:nth-child(2)	{ grid-column: 3/4; }
+.mediapool h1 .icon	{ grid-column: 2/3; grid-row: 1/1; align-self: center;}
+.mediapool h1 .tools
+					{ grid-column: 4/5; grid-row: 1/1; justify-self: right;
+					align-self: center; font-weight: normal; font-size: 1rem; }
+.mediapool h1 small	{ grid-column: 1/5; grid-row: 2/2; }

@@ -213,7 +213,7 @@ function mf_media_separate_overview($media) {
 function mf_media_switch_links($variants) {
 	$text = '';
 	foreach ($variants as $variant) {
-		$link = $variant['link'] ? '<a href="'.$variant['link'].'">' : '';
+		$link = $variant['link'] ? '<a href="'.$variant['link'].'" class="icon">' : '';
 		$link_end = $variant['link'] ? '</a>' : '';
 		$text .= ' '.sprintf($link.'<img src="%s" alt="%s" title="%s" class="icon">'
 			.$link_end, $variant['img'], $variant['alt'], $variant['title']);
