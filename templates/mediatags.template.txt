@@ -1,0 +1,15 @@
+# media module
+# HTML template for list of tags for media
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2023 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+<ul>
+%%% loop start %%%
+<li>%%% path media_internal path "html=<a href="%s">" %%%%%% item category %%%%%% path media_internal path "html=</a>" %%% (%%% item media_count %%%)</li>
+%%% loop end %%%
+</ul>

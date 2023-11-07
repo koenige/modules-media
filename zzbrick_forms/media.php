@@ -22,6 +22,12 @@ if ($view['hidden_path'])
 
 /* include media table definition */
 $zz = zzform_include('media', $brick['local_settings']);
+if (!empty($view['tag_overview'])) {
+	$zz['record']['add'] = false;
+	$zz['list']['display'] = false;
+	$zz['page']['request'] = 'mediatags';
+	return;
+}
 
 $zz['list']['display'] = 'ul';
 $zz['setting']['zzform_limit'] = 42;
@@ -207,6 +213,10 @@ function mf_media_mediapool_view($vars, $parameter) {
 		$view['type'] = 'gallery';
 	}
 	if (reset($full_path_parts) === '-tags') {
+		if (count($full_path_parts) === 1) {
+			$view['tag_overview'] = 1;
+			return $view;
+		}
 		$view['tag'] = array_pop($full_path_parts);
 		$view['category_id'] = wrap_category_id('tags/'.$view['tag']);
 		if (!$view['category_id']) wrap_quit(404);
@@ -314,11 +324,14 @@ function mf_media_mediapool_title($title, $folder, $view) {
 			, $view['base_path'], ($view['type'] === 'tree' ? '-/' : ''), wrap_text('TOP')
 		);
 	if (!empty($view['tag'])) {
+		$title .= sprintf(
+			'<a href="%s%s">%s</a> / ', wrap_path('media_internal', '-tags')
+			, ($view['type'] === 'tree' ? '-/' : ''), wrap_text('Tags')
+		);
 		$sql = 'SELECT category_id, category FROM categories WHERE category_id = %d';
 		$sql = sprintf($sql, $view['category_id']);
 		$category = wrap_db_fetch($sql);
 		$category = wrap_translate($category, 'categories');
-		// @todo add categories overview
 		$title .= $category['category'].'</small>';
 		return $title;
 	}
