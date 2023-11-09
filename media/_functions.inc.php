@@ -96,14 +96,14 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
-		$media = mf_media_separate_overview($media);
 		$media = mf_media_prepare($media);
+		$media = mf_media_separate_overview($media);
 	} else {
 		$media = wrap_db_fetch($sql, [$id_field.'_id', 'filecategory', 'medium_id']);
 		foreach ($media as $table_id => $medialist) {
 			$medialist = mf_media_separate_embeds($medialist);
-			$medialist = mf_media_separate_overview($medialist);
-			$media[$table_id] = mf_media_prepare($medialist);
+			$medialist = mf_media_prepare($medialist);
+			$media[$table_id] = mf_media_separate_overview($medialist);
 		}
 	}
 	return $media;
@@ -117,9 +117,10 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
  * @return array
  */
 function mf_media_prepare($media) {
-	foreach ($media as $filecategory => $files) {
-		$media[$filecategory] = wrap_translate($files, 'media');
-		foreach ($files as $medium_id => $medium) {
+	// work with array $media, because it might change
+	foreach (array_keys($media) as $filecategory) {
+		$media[$filecategory] = wrap_translate($media[$filecategory], 'media');
+		foreach ($media[$filecategory] as $medium_id => $medium) {
 			if ($media[$filecategory][$medium_id]['description'])
 				$media[$filecategory][$medium_id]['title'] = $media[$filecategory][$medium_id]['description'];
 			$media[$filecategory][$medium_id]['source']
@@ -137,6 +138,17 @@ function mf_media_prepare($media) {
 			$media['images'][$medium_id] = $medium;
 		}
 	}
+	// put media in images at correct position in sequence
+	if (empty($media['images'])) return $media;
+	if (count($media['images']) === 1) return $media;
+	foreach ($media['images'] as $medium_id => $medium)
+		$sequence[$medium_id] = $medium['sequence'];
+	$keys = array_keys($media['images']);
+	array_multisort(
+		$sequence, SORT_ASC, SORT_NUMERIC,
+		$media['images'], $keys
+	);
+	$media['images'] = array_combine($keys, $media['images']);
 	return $media;
 }
 
