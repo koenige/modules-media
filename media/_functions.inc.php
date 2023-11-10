@@ -217,23 +217,6 @@ function mf_media_separate_overview($media) {
 }
 
 /**
- * links for media form
- *
- * @param array $variants
- * @return string
- */
-function mf_media_switch_links($variants) {
-	$text = '';
-	foreach ($variants as $variant) {
-		$link = $variant['link'] ? '<a href="'.$variant['link'].'" class="icon">' : '';
-		$link_end = $variant['link'] ? '</a>' : '';
-		$text .= ' '.sprintf($link.'<img src="%s" alt="%s" title="%s" class="icon">'
-			.$link_end, $variant['img'], $variant['alt'], $variant['title']);
-	}
-	return $text;
-}
-
-/**
  * read metadata for youtube movies
  *
  * @param string $video
