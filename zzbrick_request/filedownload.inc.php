@@ -27,7 +27,7 @@
 function mod_media_filedownload($params, $settings) {
 	if (empty($params)) return false;
 	// download from main folder uses -media as string
-	if ($params[0] === '-media') $params[0] = '';
+	if ($params[0] === '-media') unset($params[0]);
 
 	$page['query_strings'] = ['mode', 'size', 'q', 'scope'];
 	// downloading different sizes than original file
@@ -79,6 +79,9 @@ function mod_media_filedownload($params, $settings) {
 
 	$archive_filename = str_replace('/', '-', implode('/', $params));
 	$archive_filename = trim($archive_filename, '-');
+	if (!empty($_GET['q']))
+		$archive_filename .= ' '.wrap_filename($_GET['q']);
+	$archive_filename = trim($archive_filename);
 	return mf_default_download_zip($files_to_zip, $archive_filename);
 }
 
@@ -99,7 +102,16 @@ function mod_media_filedownload_files($params) {
 		$join[] = 'LEFT JOIN media_categories USING (medium_id)';
 		$where[] = sprintf('media_categories.category_id = %d', $category_id);
 	} elseif ($params) {
-		$where[] = sprintf('filename LIKE "%s/%%"', implode('/', $params));
+		$where[] = sprintf('filename LIKE "%s/%%"', wrap_db_escape(implode('/', $params)));
+	}
+	if (!empty($_GET['q'])) {
+		$fields = ['title', 'description', 'source'];
+		$or = [];
+		foreach ($fields as $field)
+			$or[] = sprintf('%s LIKE "%%%s%%"', $field, wrap_db_escape($_GET['q']));
+		$where[] = implode(' OR ', $or);
+		// @todo support scope
+		// @todo support search for date if q looks like a date
 	}
 	$sql = 'SELECT medium_id, title, description, date, time, source
 			, filename, extension, md5_hash, main_medium_id, filesize
