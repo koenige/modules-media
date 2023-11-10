@@ -302,22 +302,8 @@ function mf_media_mediapool_folder($view) {
  * @return string
  */
 function mf_media_mediapool_title($title, $folder, $view) {
-	$variants[0]['img'] = wrap_setting('layout_path').'/media/list-ul.png';
-	$variants[0]['alt'] = wrap_text('Gallery');
-	$variants[0]['title'] = wrap_text('Display as Gallery');
-	$variants[0]['link'] = '';
-
-	$variants[1]['img'] = wrap_setting('layout_path').'/media/list-table.png';
-	$variants[1]['alt'] = wrap_text('Table');
-	$variants[1]['title'] = wrap_text('Display as Table');
-	$variants[1]['link'] = '-/';
-	
-	if ($view['type'] === 'tree') {
-		$variants[0]['link'] = '../';
-		$variants[1]['link'] = '';
-	}
 	if (empty($folder['is_file']))
-		$title .= mf_media_switch_links($variants);
+		$title .= mf_media_tools($view);
 	if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
 		$title .= sprintf('<span class="tools"><a href="%s">%s</a></span>'
 			, mf_media_path($view, '-tags'), wrap_text('Tags')
@@ -376,18 +362,34 @@ function mf_media_path($view, $path = '') {
 }
 
 /**
- * links for media form
+ * tools for media form
  *
- * @param array $variants
+ * @param array $view
  * @return string
  */
-function mf_media_switch_links($variants) {
-	$text = '';
-	foreach ($variants as $variant) {
-		$link = $variant['link'] ? '<a href="'.$variant['link'].'" class="icon">' : '';
-		$link_end = $variant['link'] ? '</a>' : '';
-		$text .= ' '.sprintf($link.'<img src="%s" alt="%s" title="%s" class="icon">'
-			.$link_end, $variant['img'], $variant['alt'], $variant['title']);
+function mf_media_tools($view) {
+	// define tools
+	$tools[] = [
+		'img' => 'list-ul',
+		'alt' => 'Gallery',
+		'title' => 'Display as Gallery',
+		'link' => $view['type'] === 'tree' ? '../' : ''
+	];
+	$tools[] = [
+		'img' => 'list-table',
+		'alt' => 'Table',
+		'title' => 'Display as Gallery',
+		'link' => $view['type'] === 'tree' ? '' : '-'
+	];
+
+	// output tools
+	$text = [];
+	foreach ($tools as $tool) {
+		$text[] = sprintf('%s<img src="%s/media/%s.png" alt="%s" title="%s" class="icon">%s'
+			, ($tool['link'] ? sprintf('<a href="%s" class="icon">', $tool['link']) : '')
+			, wrap_setting('layout_path'), $tool['img'], wrap_text($tool['alt'])
+			, wrap_text($tool['title']), ($tool['link'] ? '</a>' : '')
+		);
 	}
-	return $text;
+	return implode(' ', $text);
 }
