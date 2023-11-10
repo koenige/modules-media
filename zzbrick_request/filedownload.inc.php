@@ -99,7 +99,9 @@ function mod_media_filedownload($params, $settings) {
 function mod_media_filedownload_files($params) {
 	$join = [];
 	$where = [];
-	$where[] = 'published = "yes"';
+	// @todo add rights check on a per folder basis
+	if (empty($_SESSION['logged_in']))
+		$where[] = 'published = "yes"';
 	
 	if (reset($params) === '-tags') {
 		$category_id = wrap_category_id('tags/'.$params[1]);
@@ -125,11 +127,11 @@ function mod_media_filedownload_files($params) {
 		LEFT JOIN filetypes USING (filetype_id)
 		%s
 		WHERE filetype_id != %d
-		AND %s';
+		%s';
 	$sql = sprintf($sql
 		, implode("\n", $join)
 		, wrap_id('filetypes', 'folder')
-		, implode(" AND ", $where)
+		, $where ? sprintf(' AND %s', implode(" AND ", $where)) : ''
 	);
 	$files = wrap_db_fetch($sql, 'medium_id');
 	return $files;
