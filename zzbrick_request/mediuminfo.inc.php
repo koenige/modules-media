@@ -17,9 +17,10 @@
  * show information about a medium
  *
  * @param array $params
+ * @param array $setting = $zz
  * @return array
  */
-function mod_media_mediuminfo($params) {
+function mod_media_mediuminfo($params, $setting) {
 	if (!count($params)) return false;
 
 	$filename = implode('/', $params);
@@ -108,6 +109,7 @@ function mod_media_mediuminfo($params) {
 		$medium['embed'] = wrap_template($medium['filetype'], $medium);
 	}
 	
+	$page['h1'] = mf_media_mediapool_title($setting['vars']['title'], $setting['vars']['folder'], $setting['vars']['view']);
 	$page['text'] = wrap_template('mediuminfo', $medium);
 	if ($medium['crop'])
 		$page['head'] = wrap_template('mediuminfo-head');

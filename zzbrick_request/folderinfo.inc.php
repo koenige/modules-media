@@ -17,10 +17,11 @@
  * folder operations
  *
  * @param array $params
+ * @param array $setting = $zz
  * @return array
  */
-function mod_media_folderinfo($params) {
-	$folder = implode('/', $params);
+function mod_media_folderinfo($params, $setting, $ops) {
+	$folder = $setting['vars']['view']['full_path'];
 	$data = [];
 	$data['files'] = mod_media_folderinfo_import_files($folder);
 	$data['import_count'] = count($data['files']) ? count($data['files']) :  NULL;
@@ -36,6 +37,9 @@ function mod_media_folderinfo($params) {
 		$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
 	
 	$page['text'] = wrap_template('folderinfo', $data);
+	$setting['vars']['view']['filecount'] = $ops['records_total'];
+	$page['h1'] = mf_media_mediapool_title($setting['vars']['title'], $setting['vars']['folder'], $setting['vars']['view']);
+
 	$page['query_strings'][] = 'import';
 	$page['query_strings'][] = 'imported';
 	return $page;
@@ -48,6 +52,7 @@ function mod_media_folderinfo($params) {
  * @return array
  */
 function mod_media_folderinfo_import_files($folder) {
+	if (!$folder) return [];
 	if (!wrap_path('media_import', $folder)) return [];
 
 	$import_folder = mf_media_import_folder($folder);

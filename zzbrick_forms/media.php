@@ -70,10 +70,16 @@ if ($view['type'] === 'gallery') {
 }
 
 /* title */
-if (!empty($brick['local_settings']['title'])) {
+if (!empty($brick['local_settings']['title']))
 	$zz['title'] = wrap_text($brick['local_settings']['title']);
+$zz['vars']['title'] = $zz['title'];
+if (!empty($folder['titles'])) {
+	$title_paths = [];
+	foreach ($folder['titles'] as $title)
+		$title_paths[] = $title['title'];
+	if ($title_paths)
+		$zz['title'] = sprintf('%s: %s', $zz['title'], implode(' / ', $title_paths));
 }
-$zz['title'] = mf_media_mediapool_title($zz['title'], $folder, $view);
 
 /* breadcrumbs */
 $zz['page']['dont_show_title_as_breadcrumb'] = true;
@@ -185,6 +191,8 @@ if (!empty($folder['is_file'])) {
 } else {
 	$zz['page']['request'][] = 'folderinfo';
 }
+$zz['vars']['view'] = $view;
+$zz['vars']['folder'] = $folder;
 
 $zz['record']['redirect_to_referer_zero_records'] = true;
 $zz['page']['dynamic_referer'] = $zz['fields'][14]['link'];
@@ -231,7 +239,7 @@ function mf_media_mediapool_view($vars, $parameter) {
 		$view['full_path'] = NULL;
 		$view['tag_path'] = '-tags/'.$view['tag'];
 	} else {
-		$view['full_path'] = implode('/', $full_path_parts);
+		$view['full_path'] = $full_path_parts ? implode('/', $full_path_parts) : NULL;
 		$view['tag_path'] = NULL;
 	}
 	
@@ -299,12 +307,12 @@ function mf_media_mediapool_folder($view) {
  * create title for mediapool with breadcrumbs
  *
  * @param string $title
- * @param string $folder
+ * @param array $folder
  * @param array $view
  * @return string
  */
 function mf_media_mediapool_title($title, $folder, $view) {
-	if (empty($folder['is_file']))
+	if (!empty($view['filecount']))
 		$title .= mf_media_tools($view);
 	if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
 		$title .= sprintf('<span class="tools"><a href="%s">%s</a></span>'
@@ -381,9 +389,11 @@ function mf_media_tools($view) {
 		'img' => 'list-table',
 		'alt' => 'Table',
 		'title' => 'Display as Table',
-		'link' => $view['type'] === 'tree' ? '' : '-'
+		'link' => $view['type'] === 'tree' ? '' : '-/'
 	];
-	if ($path = wrap_path('media_download', $view['tag_path'] ?? $view['full_path'])) {
+	if ($path = wrap_path('media_download', $view['tag_path'] ?? $view['full_path'] ?? '-media')) {
+		if (!empty($_GET['q']))
+			$path = sprintf('%s?q=%s&amp;scope=%s', $path, $_GET['q'], $_GET['scope'] ?? '');
 		$tools[] = [
 			'img' => 'download',
 			'alt' => 'Download',
