@@ -201,12 +201,19 @@ $zz['page']['dynamic_referer'] = $zz['fields'][14]['link'];
  * @return array
  */
 function mf_media_mediapool_view($vars, $parameter) {
+	global $zz_page;
+
+	// get base path for media folders
+	$view['base_path'] = $zz_page['db']['identifier'];
+	$view['base_path'] = rtrim($view['base_path'], '*');
+	$view['base_path'] = sprintf('%s/', $view['base_path']);
+	
+	// get full path
 	$full_path = implode('/', $vars);
 	$full_path_parts = $full_path ? explode('/', $full_path) : [];
 	// hidden path is 'vars' minus *-'parameter' (if there are some)
 	$view['hidden_path'] = $parameter ? substr($full_path, 0, -strlen($parameter) - 1) : $full_path;
 	$view['hidden_path_parts'] = $view['hidden_path'] ? explode('/', $view['hidden_path']) : [];
-	$view['base_path'] = str_repeat('../', count($full_path_parts) - count($view['hidden_path_parts']));
 	if (end($full_path_parts) === '-') {
 		$view['type'] = 'tree';
 		array_pop($full_path_parts);
@@ -236,7 +243,6 @@ function mf_media_mediapool_view($vars, $parameter) {
  * @return array
  */
 function mf_media_mediapool_folder($view) {
-	global $zz_page;
 	if (!$view['full_path']) return [];
 
 	$sql = 'SELECT medium_id, description, filename
@@ -264,15 +270,13 @@ function mf_media_mediapool_folder($view) {
 
 	$folder['breadcrumbs'] = [];
 	$bpath = '';
-	$breadcrumb = substr($zz_page['db']['identifier'], 0, -1).'/';
+	$breadcrumb = '';
 	foreach ($folder_paths as $index => $folder_path) {
 		if (!$folder_path) continue;
 		$bpath = $bpath.($bpath ? '/' : '').$folder_path;
 		$breadcrumb .= $folder_path.'/';
-		$url = $breadcrumb;
-		if ($view['type'] === 'tree') $url .= '-/';
 		$folder['breadcrumbs'][] = [
-			'url' => $url,
+			'url' => mf_media_path($view, $breadcrumb),
 			'title' => $titles[$bpath],
 			'folder_path' => $folder_path
 		];
@@ -316,7 +320,7 @@ function mf_media_mediapool_title($title, $folder, $view) {
 		$title .= mf_media_switch_links($variants);
 	if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
 		$title .= sprintf('<span class="tools"><a href="%s">%s</a></span>'
-			, wrap_path('media_internal', '-tags'), wrap_text('Tags')
+			, mf_media_path($view, '-tags'), wrap_text('Tags')
 		);
 	}
 	$title .= '<br><small>';
@@ -326,13 +330,11 @@ function mf_media_mediapool_title($title, $folder, $view) {
 	}
 	if (!$view['hidden_path'])
 		$title .= sprintf(
-			'<a href="%s%s">%s</a> / '
-			, $view['base_path'], ($view['type'] === 'tree' ? '-/' : ''), wrap_text('TOP')
+			'<a href="%s">%s</a> / ', mf_media_path($view), wrap_text('TOP')
 		);
 	if (!empty($view['tag'])) {
 		$title .= sprintf(
-			'<a href="%s%s">%s</a> / ', wrap_path('media_internal', '-tags')
-			, ($view['type'] === 'tree' ? '-/' : ''), wrap_text('Tags')
+			'<a href="%s">%s</a> / ', mf_media_path($view, '-tags'), wrap_text('Tags')
 		);
 		$sql = 'SELECT category_id, category FROM categories WHERE category_id = %d';
 		$sql = sprintf($sql, $view['category_id']);
@@ -354,4 +356,21 @@ function mf_media_mediapool_title($title, $folder, $view) {
 	}
 	$title .= '</small>';
 	return $title;
+}
+
+/**
+ * get relative path to media folder or tag list
+ *
+ * @param array $view
+ * @param string $path
+ * @return string
+ */
+function mf_media_path($view, $path = '') {
+	if ($path) {
+		if (str_starts_with($path, '/')) $path = substr($path, 1);
+		if ($path AND !str_ends_with($path, '/')) $path = sprintf('%s/', $path);
+	}
+	$tree = $view['type'] === 'tree' ? '-/' : '';
+	$path = sprintf('%s%s%s', $view['base_path'], $path, $tree);
+	return $path;
 }
