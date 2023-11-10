@@ -36,20 +36,8 @@ function mod_media_filedownload($params, $settings) {
 	// flat mode, i. e. all folder names are incorporated into filenames
 	if (!empty($_GET['mode'])) $settings['mode'] = $_GET['mode'];
 
-	// get files	
-	$identifier = implode('/', $params);
-	$sql = 'SELECT medium_id, title, description, date, time, source
-			, filename, extension, md5_hash, last_update, main_medium_id, filesize
-		FROM media
-		LEFT JOIN filetypes USING (filetype_id)
-		WHERE filename LIKE "%s/%%"
-		AND filetype_id != %d
-		AND published = "yes"';
-	$sql = sprintf($sql
-		, $identifier
-		, wrap_id('filetypes', 'folder')
-	);
-	$files = wrap_db_fetch($sql, 'medium_id');
+	// get files
+	$files = mod_media_filedownload_files($params);
 
 	// get folders
 	$folders = mod_media_filedownload_folders($files);
@@ -89,7 +77,29 @@ function mod_media_filedownload($params, $settings) {
 	$page = mf_default_download_restrictions($files);
 	if ($page) return $page;
 
-	return mf_default_download_zip($files_to_zip, str_replace('/', '-', $identifier));
+	return mf_default_download_zip($files_to_zip, str_replace('/', '-', implode('/', $params)));
+}
+
+/**
+ * get files via URL
+ *
+ * @param array $files
+ * @return array
+ */
+function mod_media_filedownload_files($params) {
+	$sql = 'SELECT medium_id, title, description, date, time, source
+			, filename, extension, md5_hash, last_update, main_medium_id, filesize
+		FROM media
+		LEFT JOIN filetypes USING (filetype_id)
+		WHERE filename LIKE "%s/%%"
+		AND filetype_id != %d
+		AND published = "yes"';
+	$sql = sprintf($sql
+		, implode('/', $params)
+		, wrap_id('filetypes', 'folder')
+	);
+	$files = wrap_db_fetch($sql, 'medium_id');
+	return $files;
 }
 
 /**
