@@ -135,6 +135,30 @@ msgstr ""
 msgid "Crop file"
 msgstr ""
 
+#: zzbrick_forms/media.php
+msgid "Display as Table"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Table"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Display as Gallery"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Gallery"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Download files in ZIP archive"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Download"
+msgstr ""
+
 #: zzbrick_tables/media.php
 msgid "File"
 msgstr ""
@@ -259,22 +283,6 @@ msgstr ""
 msgid ""
 "If it’s not a medium created by yourself, who created it, where did you find "
 "it?"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Display as Table"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Table"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Display as Gallery"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Gallery"
 msgstr ""
 
 #: zzbrick_tables/media.php

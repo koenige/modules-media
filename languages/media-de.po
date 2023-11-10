@@ -136,6 +136,30 @@ msgstr "Vorschau"
 msgid "Crop file"
 msgstr "Zugeschnittene Vorschau"
 
+#: zzbrick_forms/media.php
+msgid "Display as Table"
+msgstr "Darstellung als Tabelle"
+
+#: zzbrick_forms/media.php
+msgid "Table"
+msgstr "Tabelle"
+
+#: zzbrick_forms/media.php
+msgid "Display as Gallery"
+msgstr "Darstellung als Galerie"
+
+#: zzbrick_forms/media.php
+msgid "Gallery"
+msgstr "Galerie"
+
+#: zzbrick_forms/media.php
+msgid "Download files in ZIP archive"
+msgstr "Dateien im ZIP-Archiv herunterladen"
+
+#: zzbrick_forms/media.php
+msgid "Download"
+msgstr "Herunterladen"
+
 #: zzbrick_tables/media.php
 msgid "File"
 msgstr "Datei"
@@ -262,22 +286,6 @@ msgid ""
 "If it’s not a medium created by yourself, who created it, where did you find "
 "it?"
 msgstr "Falls es kein selbst erstelltes Medium ist: Urheberrechtsvermerk"
-
-#: zzbrick_tables/media.php
-msgid "Display as Table"
-msgstr "Darstellung als Tabelle"
-
-#: zzbrick_tables/media.php
-msgid "Table"
-msgstr "Tabelle"
-
-#: zzbrick_tables/media.php
-msgid "Display as Gallery"
-msgstr "Darstellung als Galerie"
-
-#: zzbrick_tables/media.php
-msgid "Gallery"
-msgstr "Galerie"
 
 #: zzbrick_tables/media.php
 msgid "Clipping"

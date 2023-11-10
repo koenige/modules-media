@@ -228,9 +228,11 @@ function mf_media_mediapool_view($vars, $parameter) {
 		$view['tag'] = array_pop($full_path_parts);
 		$view['category_id'] = wrap_category_id('tags/'.$view['tag']);
 		if (!$view['category_id']) wrap_quit(404);
-		$view['full_path'] = '';
+		$view['full_path'] = NULL;
+		$view['tag_path'] = '-tags/'.$view['tag'];
 	} else {
 		$view['full_path'] = implode('/', $full_path_parts);
+		$view['tag_path'] = NULL;
 	}
 	
 	return $view;
@@ -378,9 +380,17 @@ function mf_media_tools($view) {
 	$tools[] = [
 		'img' => 'list-table',
 		'alt' => 'Table',
-		'title' => 'Display as Gallery',
+		'title' => 'Display as Table',
 		'link' => $view['type'] === 'tree' ? '' : '-'
 	];
+	if ($path = wrap_path('media_download', $view['tag_path'] ?? $view['full_path'])) {
+		$tools[] = [
+			'img' => 'download',
+			'alt' => 'Download',
+			'title' => 'Download files in ZIP archive',
+			'link' => $path
+		];
+	}
 
 	// output tools
 	$text = [];
