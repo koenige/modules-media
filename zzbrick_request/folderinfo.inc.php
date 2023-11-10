@@ -37,7 +37,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
 		$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
 	
 	$page['text'] = wrap_template('folderinfo', $data);
-	$setting['vars']['view']['filecount'] = $ops['records_total'];
+	$setting['vars']['view']['filecount'] = $ops['records_total'] ?? NULL;
 	$page['h1'] = mf_media_mediapool_title($setting['vars']['title'], $setting['vars']['folder'], $setting['vars']['view']);
 
 	$page['query_strings'][] = 'import';
