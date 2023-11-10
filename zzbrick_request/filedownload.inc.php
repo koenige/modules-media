@@ -45,6 +45,11 @@ function mod_media_filedownload($params, $settings) {
 	// prepare files
 	$files_to_zip = [];
 	foreach ($files as $file_id => $file) {
+		if (!$file['extension']) {
+			// embeds
+			unset($files[$file_id]);
+			continue;
+		}
 		$filename = sprintf('%s/%s%s.%s'
 			, wrap_setting('media_folder'), $file['filename']
 			, $settings['size'] ?? (wrap_setting('media_original_filename_extension') ? '.'.wrap_setting('media_original_filename_extension') : '')
@@ -52,7 +57,7 @@ function mod_media_filedownload($params, $settings) {
 		);
 		if (!file_exists($filename)) {
 			wrap_error(sprintf('Download: File %s does not exist', $filename), E_USER_NOTICE);
-			unset($files[$index]);
+			unset($files[$file_id]);
 			continue;
 		}
 		$folder = dirname($file['filename']);
