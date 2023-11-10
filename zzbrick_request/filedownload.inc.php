@@ -77,7 +77,9 @@ function mod_media_filedownload($params, $settings) {
 	$page = mf_default_download_restrictions($files);
 	if ($page) return $page;
 
-	return mf_default_download_zip($files_to_zip, str_replace('/', '-', implode('/', $params)));
+	$archive_filename = str_replace('/', '-', implode('/', $params));
+	$archive_filename = trim($archive_filename, '-');
+	return mf_default_download_zip($files_to_zip, $archive_filename);
 }
 
 /**
@@ -87,16 +89,30 @@ function mod_media_filedownload($params, $settings) {
  * @return array
  */
 function mod_media_filedownload_files($params) {
+	$join = [];
+	$where = [];
+	$where[] = 'published = "yes"';
+	
+	if (reset($params) === '-tags') {
+		$category_id = wrap_category_id('tags/'.$params[1]);
+		if (!$category_id) wrap_quit(404);
+		$join[] = 'LEFT JOIN media_categories USING (medium_id)';
+		$where[] = sprintf('media_categories.category_id = %d', $category_id);
+	} elseif ($params) {
+		$where[] = sprintf('filename LIKE "%s/%%"', implode('/', $params));
+	}
 	$sql = 'SELECT medium_id, title, description, date, time, source
-			, filename, extension, md5_hash, last_update, main_medium_id, filesize
+			, filename, extension, md5_hash, main_medium_id, filesize
+			, media.last_update
 		FROM media
 		LEFT JOIN filetypes USING (filetype_id)
-		WHERE filename LIKE "%s/%%"
-		AND filetype_id != %d
-		AND published = "yes"';
+		%s
+		WHERE filetype_id != %d
+		AND %s';
 	$sql = sprintf($sql
-		, implode('/', $params)
+		, implode("\n", $join)
 		, wrap_id('filetypes', 'folder')
+		, implode(" AND ", $where)
 	);
 	$files = wrap_db_fetch($sql, 'medium_id');
 	return $files;
