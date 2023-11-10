@@ -52,21 +52,7 @@ function mod_media_filedownload($params, $settings) {
 	$files = wrap_db_fetch($sql, 'medium_id');
 
 	// get folders
-	$folder_idfs = [];
-	foreach ($files as $file_id => $file) {
-		$folder = dirname($file['filename']);
-		$folders = explode('/', $folder);
-		while ($folders) {
-			$folder_idfs[] = implode('/', $folders);
-			array_pop($folders);
-		}
-	}
-	$folder_idfs = array_unique($folder_idfs);
-	$sql = 'SELECT filename, title
-		FROM media
-		WHERE filename IN ("%s")';
-	$sql = sprintf($sql, implode('","', $folder_idfs));
-	$folders = wrap_db_fetch($sql, 'filename');
+	$folders = mod_media_filedownload_folders($files);
 
 	// prepare files
 	$files_to_zip = [];
@@ -104,4 +90,28 @@ function mod_media_filedownload($params, $settings) {
 	if ($page) return $page;
 
 	return mf_default_download_zip($files_to_zip, str_replace('/', '-', $identifier));
+}
+
+/**
+ * get folder titles for all files
+ *
+ * @param array $files
+ * @return array
+ */
+function mod_media_filedownload_folders($files) {
+	$folder_idfs = [];
+	foreach ($files as $file_id => $file) {
+		$folder = dirname($file['filename']);
+		$folders = explode('/', $folder);
+		while ($folders) {
+			$folder_idfs[] = implode('/', $folders);
+			array_pop($folders);
+		}
+	}
+	$folder_idfs = array_unique($folder_idfs);
+	$sql = 'SELECT filename, title
+		FROM media
+		WHERE filename IN ("%s")';
+	$sql = sprintf($sql, implode('","', $folder_idfs));
+	return wrap_db_fetch($sql, 'filename');
 }
