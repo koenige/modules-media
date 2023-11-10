@@ -70,7 +70,6 @@ function mod_media_filedownload($params, $settings) {
 
 	// prepare files
 	$files_to_zip = [];
-	$file_not_found = true;
 	foreach ($files as $file_id => $file) {
 		$filename = sprintf('%s/%s%s.%s'
 			, wrap_setting('media_folder'), $file['filename']
@@ -82,7 +81,6 @@ function mod_media_filedownload($params, $settings) {
 			unset($files[$index]);
 			continue;
 		}
-		$file_not_found = false;
 		$folder = dirname($file['filename']);
 		$folder = explode('/', $folder);
 		$my_folders = [];
@@ -101,121 +99,9 @@ function mod_media_filedownload($params, $settings) {
 		];
 	}
 
-	// @todo use template!
-	/*
-	if (count($files) > $zz_setting['download_max_files']) {
-		$page['title'] = wrap_text('Download: Archive Too Big').': <br><em>'.media_object_link($params).'</em>';
-		$page['text'] = '<p class="error">'
-			.sprintf(wrap_text('Sorry, but you might only download up to %s files at once.'), $zz_setting['download_max_files'])
-			.'</p>'."\n".'<p>'.sprintf(wrap_text('This archive would contain %s files.'), count($files))
-			.'</p>'."\n";
-		$page['text'] .= '<p>'.wrap_text('We recommend that you download every single subfolder instead of this main folder.').'</p>';
-		return $page;
-	}
-	$size = 0;
-	foreach ($files as $file) $size += $file['filesize'];
-	if ($size > $zz_setting['download_max_filesize']) {
-		$page['title'] = wrap_text('Download: Archive Too Big').': <br><em>'.media_object_link($params).'</em>';
-		$page['text'] = '<p class="error">'
-			.sprintf(wrap_text('Sorry, but you might only download an archive up to %s.'), wrap_bytes($zz_setting['download_max_filesize']))
-			.'</p>'
-			.'<p>'.sprintf(wrap_text('The requested archive would include files of %s size.'), wrap_bytes($size))
-			.'</p>'."\n";
-		$page['text'] .= '<p>'.wrap_text('We recommend that you download every single subfolder instead of this main folder.').'</p>';
-		return $page;
-	}
-	*/
+	wrap_include_files('download', 'default');
+	$page = mf_default_download_restrictions($files);
+	if ($page) return $page;
 
-	// Temporary folder, so we do not mess this ZIP with other file downloads
-	ignore_user_abort(1); // make sure we can delete temporary files at the end
-	$temp_folder = sprintf('%s/%s%s', wrap_setting('tmp_dir'), rand(), time());
-	mkdir($temp_folder);
-	$zip_file = sprintf('%s/%s.zip', $temp_folder, str_replace('/', '-', $identifier));
-
-	if (wrap_get_setting('media_download_zip_mode') === 'shell')
-		$success = mod_media_filedownload_zip_shell($zip_file, $files_to_zip, $temp_folder);
-	else
-		$success = mod_media_filedownload_zip_php($zip_file, $files_to_zip);
-	if (!$success) {
-		wrap_error(sprintf('Creation of ZIP file %s failed', $identifier), E_USER_ERROR);
-		exit;
-	}
-	
-	$file = [];
-	$file['name'] = $zip_file;
-	$file['cleanup'] = true; // delete file after downloading
-	$file['cleanup_dir'] = $temp_folder; // remove folder after downloading
-	if ($file_not_found) {
-		$file['error_code'] = 503;
-		$file['error_msg'] = '<p class="error">'.wrap_text('None of the files for the requested archive could be found on the server.').'</p>';
-	}
-	return wrap_file_send($file);
-}
-
-/**
- * Create ZIP archive from files via shell zip
- * (faster ZIP creation)
- *
- * @param string $zip_file filename
- * @param string $json_file filename of JSONL-file with list of filenames
- *		[n]['filename'] absolute path to file
- *		[n]['local_filename'] relative path for ZIP archive
- * @return bool true: everything ok, false: error
- */
-function mod_media_filedownload_zip_shell($zip_file, $files_to_zip, $temp_path) {
-	$filelist = [];
-
-	// create hard links to filesystem
-	mkdir($temp_path.'/ln');
-	chdir($temp_path.'/ln');
-	$current_folder = getcwd();
-	$created = [];
-	foreach ($files_to_zip as $file) {
-		$return = wrap_mkdir(dirname($current_folder.'/'.$file['local_filename']));
-		if (is_array($return)) $created += $return;
-		link(realpath($file['filename']), $current_folder.'/'.$file['local_filename']);
-		$filelist[] = $file['local_filename'];
-	}
-
-	// zip files
-	// -o	make zipfile as old as latest entry
-	// -0	store files (no compression)
-	$command = 'zip -o -0 %s %s';
-	$command = sprintf($command, $zip_file, implode(' ', $filelist));
-	exec($command);
-	
-	// cleanup files, remove hardlinks
-	foreach ($files_to_zip as $file) {
-		unlink($current_folder.'/'.$file['local_filename']);
-	}
-	$created = array_reverse($created);
-	foreach ($created as $folder) {
-		rmdir($folder);
-	}
-	chdir($temp_path);
-	rmdir($temp_path.'/ln');
-	return true;
-}
-
-/**
- * Create ZIP archive from files with PHP class ZipArchive
- * (if exec() is not available)
- *
- * @param string $zip_file filename
- * @param string $json_file filename of JSONL-file with list of filenames
- *		[n]['filename'] absolute path to file
- *		[n]['local_filename'] relative path for ZIP archive
- * @return bool true: everything ok, false: error
- */
-function mod_media_filedownload_zip_php($zip_file, $files_to_zip) {
-	$zip = new ZipArchive;
-	if ($zip->open($zip_file, ZIPARCHIVE::CREATE) !== TRUE) {
-		return false;
-	}
-	foreach ($files_to_zip as $file) {
-		$zip->addFile($file['filename'], $file['local_filename']);
-		// @todo maybe check if connection_aborted() but with what as a flush?
-	}
-	$zip->close();
-	return true;
+	return mf_default_download_zip($files_to_zip, str_replace('/', '-', $identifier));
 }
