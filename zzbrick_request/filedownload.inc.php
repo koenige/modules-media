@@ -74,7 +74,16 @@ function mod_media_filedownload($params, $settings) {
 			$local_filename = str_replace('/', '_', $local_filename);
 		$files_to_zip[] = [
 			'filename' => $filename,
-			'local_filename' => $local_filename
+			'local_filename' => $local_filename,
+			'meta' => [
+				wrap_text('Folder') => trim($folder, '/'),
+				wrap_text('Title') => $file['title'],
+				wrap_text('Description') => $file['description'],
+				wrap_text('Source') => $file['source'],
+				wrap_text('Date') => $file['date'],
+				wrap_text('Time') => $file['time'],
+				wrap_text('MD5 Hash') => $file['md5_hash'],
+			]
 		];
 	}
 
