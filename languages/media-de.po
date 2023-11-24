@@ -117,6 +117,10 @@ msgid "Edit medium"
 msgstr "Medium bearbeiten"
 
 #: templates/mediuminfo.template.txt
+msgid "Delete medium"
+msgstr "Medium löschen"
+
+#: templates/mediuminfo.template.txt
 msgid "Crop image (custom)"
 msgstr "Bild zuschneiden (eigene Größe)"
 

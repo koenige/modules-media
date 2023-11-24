@@ -26,23 +26,15 @@
 %%% item embed %%%
 %%% condition endif %%%
 
-%%% condition if date | og:description %%%
+%%% condition if date | og:description | source | alternative_text %%%
 <h3>%%% text Meta data %%%</h3>
 
-<ul>
-<li>%%% text Date/Time %%%: %%% item date wrap_date %%% %%% item time wrap_time %%%</li>
-%%% condition if og:description %%%<li>%%% text Description %%% %%% text (OpenGraph) %%%: %%% item og:description %%%</li>%%% condition endif %%%
-</ul>
-%%% condition endif %%%
-
-%%% condition if source %%%
-<h3>%%% text Source %%%</h3>
-<p>%%% item source %%%</p>
-%%% condition endif %%%
-
-%%% condition if alternative_text %%%
-<h3>%%% text Alternative text %%%</h3>
-<p>%%% item alternative_text %%%</p>
+<dl>
+<dt>%%% text Date/Time %%%</dt><dd>%%% item date wrap_date %%% %%% item time wrap_time %%%</dd>
+%%% condition if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description %%%</dd>%%% condition endif %%%
+%%% condition if source %%%<dt>%%% text Source %%%</dt><dd>%%% item source %%%</dd>%%% condition endif %%%
+%%% condition if alternative_text %%%<dt>%%% text Alternative text %%%</dt><dd>%%% item alternative_text %%%</dd>%%% condition endif %%%
+</dl>
 %%% condition endif %%%
 
 %%% condition if tags %%%
@@ -56,11 +48,11 @@
 
 <h3>%%% text File info %%%</h3>
 
-<ul>
-%%% condition if filesize %%%<li>%%% text Filesize %%%: %%% item filesize wrap_bytes %%%</li>%%% condition endif %%%
-%%% condition if md5_hash %%%<li>%%% text Hash (MD5) %%%: %%% item md5_hash %%%</li>%%% condition endif %%%
-<li>%%% text Filetype %%%: %%% item filetype_description %%% %%% condition if extension %%%(%%% text Extension: %%% .%%% item extension %%%)%%% condition endif %%%</li>
-</ul>
+<dl>
+%%% condition if filesize %%%<dt>%%% text Filesize %%%</dt><dd>%%% item filesize wrap_bytes %%%</dd>%%% condition endif %%%
+%%% condition if md5_hash %%%<dt>%%% text Hash (MD5) %%%</dt><dd><code>%%% item md5_hash %%%</code></dd>%%% condition endif %%%
+<dt>%%% text Filetype %%%</dt><dd>%%% item filetype_description %%% %%% condition if extension %%%(%%% text Extension: %%% .%%% item extension %%%)%%% condition endif %%%</dd>
+</dl>
 
 <h3>%%% text Files %%%</h3>
 
@@ -76,6 +68,7 @@
 
 <ul>
 <li><a href="%%% item backlink %%%?edit=%%% item medium_id %%%&amp;nolist">%%% text Edit medium %%%</a></li>
+<li><a href="%%% item backlink %%%?delete=%%% item medium_id %%%&amp;nolist">%%% text Delete medium %%%</a></li>
 </ul>
 
 %%% comment
