@@ -29,7 +29,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
 	$data['imported'] = $_GET['imported'] ?? NULL;
 
 	// page links
-	if (isset($_GET['nolist']) AND $id = $_GET['edit'] ?? $_GET['delete'] ?? $_GET['noupdate']) {
+	if (isset($_GET['nolist']) AND $id = $_GET['edit'] ?? $_GET['delete'] ?? $_GET['noupdate'] ?? NULL) {
 		$sql = 'SELECT medium_id, main_medium_id
 			FROM media
 			WHERE medium_id = %d';
