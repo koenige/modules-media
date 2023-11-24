@@ -34,6 +34,8 @@ function mod_media_mediatags($params) {
 	$sql = sprintf($sql, $suffix);
 	$data = wrap_db_fetch($sql, 'category_id');
 	$data = wrap_translate($data, 'categories');
+
+	$data['add_new_path'] = wrap_path('default_tables', 'categories');
 	
 	$page['text'] = wrap_template('mediatags', $data);
 	$page['title'] = sprintf('%s<br><small><a href="../%s">%s</a> / %s</small>'

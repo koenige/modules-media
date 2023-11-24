@@ -13,3 +13,7 @@
 <li>%%% path media_internal path "html=<a href="%s">" %%%%%% item category %%%%%% path media_internal path "html=</a>" %%% (%%% item media_count %%%)</li>
 %%% loop end %%%
 </ul>
+
+%%% condition if add_new_path %%%
+<p><a href="%%% item add_new_path %%%?filter[maincategory]=%%% id categories tags %%%">%%% text Add new tags … %%%</a></p>
+%%% condition endif %%%
