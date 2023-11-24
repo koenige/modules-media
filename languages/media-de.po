@@ -1,5 +1,5 @@
 # media module
-# Translations
+# Translations to German
 #
 # Part of »Zugzwang Project«
 # https://www.zugzwang.org/modules/media
@@ -75,6 +75,10 @@ msgid "You can import %d file into this folder."
 msgid_plural "You can import %d files into this folder."
 msgstr[0] "Sie können %d Datei in diesen Ordner importieren."
 msgstr[1] "Sie können %d Dateien in diesen Ordner importieren."
+
+#: templates/mediatags.template.txt
+msgid "Add new tags …"
+msgstr "Neue Schlagwörter ergänzen …"
 
 #: templates/mediuminfo.template.txt
 msgid "Meta data"

@@ -10,18 +10,18 @@
 #
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: Zugzwang Project – Media Module\n"
 "POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"PO-Revision-Date: \n"
-"X-Generator: Poedit 1.6.4\n"
-"Language: en\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: behaviour/croppr.js
 msgid "Medium was cropped."
@@ -75,6 +75,10 @@ msgid_plural "You can import %d files into this folder."
 msgstr[0] ""
 msgstr[1] ""
 
+#: templates/mediatags.template.txt
+msgid "Add new tags …"
+msgstr ""
+
 #: templates/mediuminfo.template.txt
 msgid "Meta data"
 msgstr ""
@@ -113,6 +117,10 @@ msgstr ""
 
 #: templates/mediuminfo.template.txt
 msgid "Edit medium"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Delete medium"
 msgstr ""
 
 #: templates/mediuminfo.template.txt
@@ -195,15 +203,11 @@ msgstr ""
 msgid "Sequence"
 msgstr ""
 
-#: templates/mediuminfo.template.txt
-#: templates/folderinfo.template.txt
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt templates/folderinfo.template.txt zzbrick_tables/media.php
 msgid "Filetype"
 msgstr ""
 
-#: templates/mediuminfo.template.txt
-#: templates/folderinfo.template.txt
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt templates/folderinfo.template.txt zzbrick_tables/media.php
 msgid "Filesize"
 msgstr ""
 
@@ -224,8 +228,7 @@ msgid "Updated"
 msgstr ""
 
 #: zzbrick_tables/media.php
-msgid ""
-"Coloured border: medium is published; gray border: medium is not published."
+msgid "Coloured border: medium is published; gray border: medium is not published."
 msgstr ""
 
 #: zzbrick_tables/media.php
@@ -269,20 +272,15 @@ msgid "h"
 msgstr ""
 
 #: zzbrick_tables/media.php
-msgid ""
-"Digital photography: If nothing is entered, date and time will be read from "
-"file."
+msgid "Digital photography: If nothing is entered, date and time will be read from file."
 msgstr ""
 
-#: templates/mediuminfo.template.txt
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Source"
 msgstr ""
 
 #: zzbrick_tables/media.php
-msgid ""
-"If it’s not a medium created by yourself, who created it, where did you find "
-"it?"
+msgid "If it’s not a medium created by yourself, who created it, where did you find it?"
 msgstr ""
 
 #: zzbrick_tables/media.php
@@ -333,8 +331,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: templates/mediuminfo.template.txt
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Alternative text"
 msgstr ""
 
