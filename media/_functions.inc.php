@@ -60,13 +60,15 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 		}
 	}
 	$extra_fields = $extra_fields ? ','.implode(', ', $extra_fields) : '';
+	$table_short = $table;
+	if ($pos = strpos($table, ' ')) $table_short = substr($table_short, $pos);
 	
 	$sql = 'SELECT %s_id, medium_id, %s_media.sequence
 			, IF(ISNULL(description), media.title, description) AS title
 			, description
 			, source, filename, version
 			, thumb_filetypes.extension AS thumb_extension
-			, media.date
+			, media.date, media.time
 			, filetypes.extension AS extension
 			, filetypes.mime_content_type
 			, filetypes.mime_subtype
@@ -89,10 +91,10 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE %s_id IN (%s)
 		%s
-		ORDER BY %s_media.sequence, title, filename
+		ORDER BY %s_media.sequence, date, time, title, filename
 	';
 	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
-	$sql = sprintf($sql, $id_field, $table, $extra_fields, $table, $id_field, $id, $where, $table);
+	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, $id_field, $id, $where, $table_short);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
@@ -142,10 +144,10 @@ function mf_media_prepare($media) {
 	if (empty($media['images'])) return $media;
 	if (count($media['images']) === 1) return $media;
 	foreach ($media['images'] as $medium_id => $medium)
-		$sequence[$medium_id] = $medium['sequence'];
+		$sequence[$medium_id] = sprintf('%04d-%s-%s-%s-%s', $medium['sequence'], $medium['date'], $medium['time'], $medium['title'], $medium['filename']);
 	$keys = array_keys($media['images']);
 	array_multisort(
-		$sequence, SORT_ASC, SORT_NUMERIC,
+		$sequence, SORT_ASC, SORT_REGULAR,
 		$media['images'], $keys
 	);
 	$media['images'] = array_combine($keys, $media['images']);
