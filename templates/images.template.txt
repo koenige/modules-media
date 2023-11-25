@@ -5,11 +5,11 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2014-2015, 2017, 2019-2021 Gustaf Mossakowski
+# @copyright Copyright © 2014-2015, 2017, 2019-2021, 2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <p class="gallery js-gallery">
 %%% loop start %%%
-<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%" title="%%% item strip_tags %%%%%% item source strip_tags %%%" data-title="%%% item title wrap_html_escape %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img%%% loopposition uneven " first" %%%"><img src="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%" alt="%%% condition if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% condition else %%%%%% text Image %%% %%% item title markdown_attribute %%%%%% condition endif %%%"%%% condition if setting media_gallery_image_size_x2 %%% srcset="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x "%%% condition endif %%%></a>
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%" title="%%% item title strip_tags %%%%%% item source strip_tags " (%s)" %%%" data-title="%%% item title wrap_html_escape %%%%%% item source wrap_html_escape " <em>(%s)</em>" %%%" class="js-img%%% loopposition uneven " first" %%%"><img src="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%" alt="%%% condition if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% condition else %%%%%% text Image %%% %%% item title markdown_attribute %%%%%% condition endif %%%"%%% condition if setting media_gallery_image_size_x2 %%% srcset="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% setting media_gallery_image_size_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x "%%% condition endif %%%></a>
 %%% loop end %%%
 </p>
