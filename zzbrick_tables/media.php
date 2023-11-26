@@ -499,6 +499,8 @@ if (wrap_setting('embed')) {
 }
 
 $zz['if'][3]['hooks']['before_insert'][] = 'mf_media_hook_embed';
+$zz['hooks']['before_insert'][] = 'mf_media_hook_thumb';
+$zz['hooks']['before_update'][] = 'mf_media_hook_thumb';
 
 $zz['set_redirect'][] = [
 	'old' => wrap_setting('files_path').'/%s*',

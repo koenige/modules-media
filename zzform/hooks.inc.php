@@ -47,3 +47,23 @@ function mf_media_hook_embed($ops) {
 	}
 	return $change;
 }
+
+/**
+ * check if filetype allows thumbnails
+ *
+ * @param array $ops
+ * @return array
+ */
+function mf_media_hook_thumb($ops) {
+	if (empty($ops['record_new'][0]['thumb_filetype_id'])) return [];
+	
+	$filetypes = wrap_filetype_id(false, 'list');
+	$filetypes = array_flip($filetypes);
+	$filetype = $filetypes[$ops['record_new'][0]['filetype_id']];
+	$filetype_def = wrap_filetypes($filetype);
+	// does filetype allow thumbnail?
+	if (!empty($filetype_def['thumbnail'])) return [];
+
+	$change['record_replace'][0]['thumb_filetype_id'] = NULL;
+	return $change;
+}
