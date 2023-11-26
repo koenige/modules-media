@@ -72,6 +72,9 @@ $zz['fields'][14]['path'] = [
 	'webstring1' => '?v=',
 	'webfield1' => 'version'
 ];
+$zz['fields'][14]['if'][4]['path']['string3'] = wrap_setting('media_original_filename_extension');
+$zz['fields'][14]['if'][4]['path']['extension'] = 'original_extension';
+
 $zz['fields'][14]['default_image'] = wrap_setting('layout_path').'/media/no-preview.png';
 $zz['fields'][14]['input_filetypes'] = array_keys(wrap_db_fetch('SELECT filetype 
 FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
@@ -474,6 +477,17 @@ $zz['conditions'][3]['add']['sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes o_mime
 	WHERE filetype_id = ';
 $zz['conditions'][3]['add']['key_field_name'] = 'filetype_id';
+
+$filetype_ids = wrap_filetype_id('', 'list');
+$filetype_ids_inline = [];
+foreach ($filetype_ids as $filetype => $filetype_id) {
+	$def = wrap_filetypes($filetype);
+	if (empty($def['webimage'])) continue;
+	$filetype_ids_inline[] = $filetype_id;
+}
+$zz['conditions'][4]['scope'] = 'record';
+$zz['conditions'][4]['where'] = sprintf('ISNULL(thumb_filetype_id) AND o_mime.filetype_id IN (%s)',
+	implode(',', $filetype_ids_inline));
 
 $zz['title'] = wrap_text('Media Pool');
 
