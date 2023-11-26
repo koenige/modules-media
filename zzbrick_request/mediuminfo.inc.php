@@ -61,6 +61,7 @@ function mod_media_mediuminfo($params, $setting) {
 	    ORDER BY types.sequence, media_categories.sequence, categories.sequence, categories.path';
 	$sql = sprintf($sql, $medium['medium_id']);
 	$medium += wrap_db_fetch($sql, ['type_path', 'medium_category_id']);
+	$medium['filetype_details'] = wrap_filetypes($medium['filetype']);
 	
 	// next, prev?
 	$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
@@ -98,6 +99,9 @@ function mod_media_mediuminfo($params, $setting) {
 			if ($size['action'] === 'crop' AND wrap_setting('media_croppr'))
 				$medium['crop'] = true;
 		}
+	} elseif (!empty($medium['filetype_details']['webimage'])) {
+		$medium['preview_image'] = sprintf('%s.%s.%s', $medium['filename'], wrap_setting('media_original_filename_extension'), $medium['extension']);
+		$medium['preview_title'] = wrap_text('Original file');
 	}
 	if ($medium['parameters']) {
 		parse_str($medium['parameters'], $medium['parameters']);
