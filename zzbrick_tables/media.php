@@ -78,6 +78,7 @@ FROM /*_PREFIX_*/filetypes ORDER BY filetype', 'filetype'));
 
 $zz['fields'][14]['if'][2]['hide_in_form'] = true;
 $zz['fields'][14]['if'][3]['hide_in_form'] = true;
+$zz['fields'][14]['link_record'] = true;
 
 // original file
 $zz['fields'][14]['image'][0]['title'] = 'original';
