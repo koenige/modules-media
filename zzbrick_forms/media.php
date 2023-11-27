@@ -123,20 +123,6 @@ if ($view['type'] === 'gallery') {
 		'field1' => 'filename_link',
 		'string2' => '/-/'
 	];
-
-	// Files
-	$zz['fields'][14]['path'] = [
-		'root' => wrap_setting('media_folder'),
-		'webroot' => wrap_setting('files_path'),
-		'string1' => '/',
-		'field1' => 'filename',
-		'string2' => '.',
-		'string3' => wrap_setting('media_sizes[min][path]'),
-		'string4' => '.',
-		'extension' => 'thumb_extension',
-		'webstring1' => '?v=',
-		'webfield1' => 'version'
-	];
 	$zz['fields'][14]['if'][2]['default_image'] = wrap_setting('layout_path').'/media/folder-120.png';
 	if (!empty($zz['fields'][14]['if'][2]['class']))
 		$zz['fields'][14]['if'][2]['class'] .= ' stretch40';
