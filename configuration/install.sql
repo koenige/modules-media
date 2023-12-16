@@ -14,7 +14,7 @@
 -- filetypes --
 CREATE TABLE `filetypes` (
   `filetype_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `filetype` varchar(7) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `filetype` varchar(10) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `mime_content_type` varchar(31) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `mime_subtype` varchar(127) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `filetype_description` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
