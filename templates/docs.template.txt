@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020-2022 Gustaf Mossakowski
+# @copyright Copyright © 2020-2023 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 # List of fields:
@@ -16,6 +16,6 @@
 #
 <ul class="documents">
 %%% loop start %%%
-<li><a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title markdown_inline %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% <small>(<abbr title="%%% item filetype_description %%%">%%% item filetype strtoupper %%%</abbr>, %%% item filesize wrap_bytes %%%)</small></a></li>
+<li>%%% condition if date %%%<span class="documents_date">%%% item date wrap_date %%%:</span> %%% condition endif %%%<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%">%%% condition if custom_title %%%%%% item custom_title markdown_inline %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% <small>(<abbr title="%%% item filetype_description %%%">%%% item filetype strtoupper %%%</abbr>, %%% item filesize wrap_bytes %%%)</small></a></li>
 %%% loop end %%%
 </ul>
