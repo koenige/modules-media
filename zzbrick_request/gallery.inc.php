@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -24,10 +24,25 @@ function mod_media_gallery($params) {
 	$page['text'] = "\n"; // no 404
 	if (count($params) !== 1) return $page;
 	
+	$where = [];
+	// media associated with the gallery tag, showing contents of a folder
+	if (wrap_category_id('tags/gallery', 'check')) {
+		$sql = 'SELECT medium_id
+			FROM /*_PREFIX_*/media
+			WHERE filename = "%s"';
+		$sql = sprintf($sql, wrap_db_escape($params[0]));
+		$folder_medium_id = wrap_db_fetch($sql, '', 'single value');
+		if ($folder_medium_id) {
+			$where[] = sprintf('main_medium_id = %d', $folder_medium_id);
+			$params[0] = 'gallery';
+		}
+	}
+
+	// all media associated with a tag	
 	$category_id = wrap_category_id('tags/'.$params[0]);
 	if (!$category_id) return $page;
 
-	$media = wrap_get_media($category_id, 'media_categories categories', 'category');
+	$media = wrap_get_media($category_id, 'media_categories categories', 'category', $where);
 	if (!$media) return $page;
 
 	$page['text'] = wrap_template('images', $media['images']);
