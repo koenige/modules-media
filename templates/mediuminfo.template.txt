@@ -24,6 +24,10 @@
 </figure>
 %%% condition elseif embed %%%
 %%% item embed %%%
+%%% condition elseif video %%%
+<video width="%%% item width_px %%%" height="%%% item height_px %%%" controls preload="metadata"%%% condition if thumb_extension %%% poster="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"%%% condition endif %%%>
+  <source src="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%" type="%%% item mime_content_type %%%/%%% item mime_subtype %%%">
+</video>
 %%% condition endif %%%
 
 %%% condition if date | og:description | source | alternative_text %%%
@@ -31,7 +35,7 @@
 
 <dl>
 <dt>%%% text Date/Time %%%</dt><dd>%%% item date wrap_date %%% %%% item time wrap_time %%%</dd>
-%%% condition if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description %%%</dd>%%% condition endif %%%
+%%% condition if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description wrap_html_escape %%%</dd>%%% condition endif %%%
 %%% condition if source %%%<dt>%%% text Source %%%</dt><dd>%%% item source %%%</dd>%%% condition endif %%%
 %%% condition if alternative_text %%%<dt>%%% text Alternative text %%%</dt><dd>%%% item alternative_text %%%</dd>%%% condition endif %%%
 </dl>

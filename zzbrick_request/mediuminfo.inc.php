@@ -107,6 +107,7 @@ function mod_media_mediuminfo($params, $setting) {
 		parse_str($medium['parameters'], $medium['parameters']);
 		$medium += $medium['parameters'];
 	}
+	$medium[$medium['mime_content_type']] = true;
 	$embeds = mf_media_embeds();
 	if (in_array($medium['filetype'], $embeds)) {
 		$medium['embed_id'] = $medium['title'];
