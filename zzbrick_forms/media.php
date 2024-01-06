@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -183,6 +183,21 @@ $zz['vars']['folder'] = $folder;
 $zz['record']['redirect_to_referer_zero_records'] = true;
 $zz['page']['dynamic_referer'] = $zz['fields'][14]['link'];
 
+// filter
+if (!empty($view['tag'])) {
+	$zz['filter'][1]['title'] = wrap_text('Folder');
+	$zz['filter'][1]['identifier'] = 'folder';
+	$zz['filter'][1]['type'] = 'list';
+	$zz['filter'][1]['where'] = 'main_medium_id';
+	$zz['filter'][1]['sql'] = 'SELECT DISTINCT folders.medium_id, folders.filename
+		FROM /*_PREFIX_*/media folders
+		LEFT JOIN /*_PREFIX_*/media media
+			ON media.main_medium_id = folders.medium_id
+		LEFT JOIN /*_PREFIX_*/media_categories
+			ON /*_PREFIX_*/media_categories.medium_id = media.medium_id
+		WHERE /*_PREFIX_*/media_categories.category_id = %d';
+	$zz['filter'][1]['sql'] = sprintf($zz['filter'][1]['sql'], $view['category_id']);
+}
 
 /**
  * check which folder/file is chosen and how to display it
