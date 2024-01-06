@@ -9,7 +9,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -18,8 +18,8 @@
  * register mf_media_get() as wrap_get_media() if no custom function exists
  */
 if (!function_exists('wrap_get_media')) {
-	function wrap_get_media($id, $table = 'webpages', $id_field = 'page') {
-		return mf_media_get($id, $table, $id_field);
+	function wrap_get_media($id, $table = 'webpages', $id_field = 'page', $where = []) {
+		return mf_media_get($id, $table, $id_field, $where);
 	}
 }
 
@@ -27,12 +27,13 @@ if (!function_exists('wrap_get_media')) {
  * Read media from database depending on ID
  *
  * @param int $id ID
- * @param string $table name of table, optional
- * @param string $id_field name of id field
+ * @param string $table (optional) name of table, optional
+ * @param string $id_field (optional) name of id field
+ * @param array $where (optional) extra WHERE condition
  * @return array $media
  *		grouped by images, links
  */
-function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
+function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = []) {
 	if (!wrap_setting('mod_media_install_date')) return [];
 	$multiple_ids = false;
 	if (is_array($id)) {
@@ -89,12 +90,12 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page') {
 			ON media.thumb_filetype_id = thumb_filetypes.filetype_id
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
-		WHERE %s_id IN (%s)
-		%s
+		WHERE (%s)
 		ORDER BY %s_media.sequence, date, time, title, filename
 	';
-	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
-	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, $id_field, $id, $where, $table_short);
+	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
+	if (!empty($_SESSION['logged_in'])) $where[] = 'published = "yes"';
+	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, implode(') AND (', $where), $table_short);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
