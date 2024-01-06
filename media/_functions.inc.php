@@ -77,6 +77,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = [])
 			, filesize
 			, filetypes.filetype_description
 			, width_px, height_px
+			, clipping
 			, IF(height_px > width_px, "portrait", "panorama") AS orientation
 			, CASE filetypes.mime_content_type
 				WHEN "image" THEN "images"
