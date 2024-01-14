@@ -25,6 +25,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
 	$data = [];
 	$data['files'] = mod_media_folderinfo_import_files($folder);
 	$data['import_count'] = count($data['files']) ? count($data['files']) :  NULL;
+	$data['nolist'] = $_GET['nolist'] ?? NULL;
 	$data['import'] = ($data['import_count'] AND isset($_GET['import'])) ? true : false;
 	$data['imported'] = $_GET['imported'] ?? NULL;
 

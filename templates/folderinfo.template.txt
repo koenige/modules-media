@@ -39,9 +39,11 @@
 </form>
 </div>
 %%% condition elseif import_count %%%
+%%% condition unless nolist %%%
 <div class="folderinfo">
 <p><a href="?import">%%% text "You can import %d files into this folder." import_count %%%</a></p>
 </div>
+%%% condition endif %%%
 %%% condition else %%%
 &nbsp;
 %%% condition endif %%%
