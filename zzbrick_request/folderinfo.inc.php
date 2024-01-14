@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -25,12 +25,12 @@ function mod_media_folderinfo($params, $setting, $ops) {
 	$data = [];
 	$data['files'] = mod_media_folderinfo_import_files($folder);
 	$data['import_count'] = count($data['files']) ? count($data['files']) :  NULL;
-	$data['nolist'] = $_GET['nolist'] ?? NULL;
+	$data['nolist'] = isset($_GET['nolist']) ? true : NULL;
 	$data['import'] = ($data['import_count'] AND isset($_GET['import'])) ? true : false;
 	$data['imported'] = $_GET['imported'] ?? NULL;
 
 	// page links
-	if (isset($_GET['nolist']) AND $id = $_GET['edit'] ?? $_GET['delete'] ?? $_GET['noupdate'] ?? NULL) {
+	if ($data['nolist'] AND $id = $_GET['edit'] ?? $_GET['delete'] ?? $_GET['noupdate'] ?? NULL) {
 		$sql = 'SELECT medium_id, main_medium_id
 			FROM media
 			WHERE medium_id = %d';
