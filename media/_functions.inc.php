@@ -417,3 +417,42 @@ function mf_media_media_from_folder($folder) {
 	$images = wrap_db_fetch($sql, 'medium_id');
 	return $images;
 }
+
+/**
+ * prepare all given media files as mail attachments
+ *
+ * @param array $data
+ * @param string $image_size (optional)
+ * @return array
+ */
+function mf_media_mail_attachments(&$data, $image_size = 'media_standard_image_size') {
+	$files = [];
+	$keys = ['images', 'links'];
+	$of = wrap_setting('media_original_filename_extension') ? sprintf('.%s', wrap_setting('media_original_filename_extension')) : '';
+	foreach ($keys as $key) {
+		if (!array_key_exists($key, $data)) continue;
+		foreach ($data[$key] as $medium_id => &$file) {
+			if (!$file) continue; // dummy entry for zzbrick @todo remove this
+			switch ($key) {
+			case 'images':
+				if (!$file['thumb_extension']) {
+					if (!wrap_webimage($file['filetype'])) continue 2; // no image possible
+					$file['path'] = sprintf('%s%s.%s', $file['filename'], $of, $file['extension']);
+				} else {
+					$file['path'] = sprintf('%s.%s.%s', $file['filename'], wrap_setting($image_size), $file['thumb_extension']);
+				}
+				$file['disposition'] = 'inline';
+				break;
+			case 'links':
+				$file['path'] = sprintf('%s%s.%s', $file['filename'], $of, $file['extension']);
+				$file['disposition'] = 'attachment';
+				break;
+			}
+			$file['path_local'] = wrap_setting('media_folder').'/'.$file['path'];
+			$file['cid'] = sprintf('%s@%s', $file['path'], wrap_setting('hostname'));
+			$file['medium_description'] = $file['description']; // to avoid descriptions in loops to be taken from articles
+			$files[] = $file;
+		}
+	}
+	return $files;
+}
