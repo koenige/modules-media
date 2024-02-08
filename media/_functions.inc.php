@@ -95,7 +95,12 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = [])
 		ORDER BY %s_media.sequence, date, time, title, filename
 	';
 	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
-	if (!empty($_SESSION['logged_in'])) $where[] = 'published = "yes"';
+	// not logged in: show only published media
+	$pos = array_search('published = "yes" OR published = "no"', $where);
+	if ($pos !== false) unset($where[$pos]);
+	if (!empty($_SESSION['logged_in']) AND $pos === false)
+		$where[] = 'published = "yes"';
+		
 	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, implode(') AND (', $where), $table_short);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
