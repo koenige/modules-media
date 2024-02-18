@@ -313,6 +313,7 @@ function mf_media_mediapool_folder($view) {
  * @return string
  */
 function mf_media_mediapool_title($title, $folder, $view) {
+	$title = sprintf('<span>%s %s</span>', wrap_setting('zzform_heading_prefix'), $title);
 	if (!empty($view['filecount']))
 		$title .= mf_media_tools($view);
 	if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
