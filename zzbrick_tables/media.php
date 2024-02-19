@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -359,7 +359,6 @@ $zz['fields'][34]['hide_in_list'] = true;
 $zz['fields'][34]['upload_field'] = 14;
 $zz['fields'][34]['upload_value'] = 'md5';
 $zz['fields'][34]['dont_show_missing'] = true;
-$zz['fields'][34]['exclude_from_search'] = true;
 $zz['fields'][34]['if']['add']['hide_in_form'] = true;
 $zz['fields'][34]['if'][2] = false;
 $zz['fields'][34]['if'][3] = false;
