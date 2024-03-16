@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -90,7 +90,7 @@ CREATE TABLE `media_access` (
   `medium_id` int unsigned DEFAULT NULL,
   `usergroup_id` int unsigned NOT NULL,
   `access_category_id` int unsigned NOT NULL,
-  `last_update` timestamp NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`medium_access_id`),
   UNIQUE KEY `medium_id_usergroup_id` (`medium_id`,`usergroup_id`),
   KEY `usergroup_id` (`usergroup_id`),

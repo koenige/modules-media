@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2017, 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2017, 2020-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -32,3 +32,4 @@
 /* 2023-07-26-5 */	INSERT INTO categories (`category`, `description`, `main_category_id`, `path`, `parameters`, `sequence`, `last_update`) VALUES ('Tags', NULL, NULL, 'tags', '&alias=tags', NULL, NOW());
 /* 2023-09-08-1 */	ALTER TABLE `media_categories` ADD `property` varchar(255) NULL AFTER `category_id`;
 /* 2023-12-16-1 */	ALTER TABLE `filetypes` CHANGE `filetype` `filetype` varchar(10) COLLATE 'latin1_general_ci' NOT NULL AFTER `filetype_id`;
+/* 2024-03-16-1 */	ALTER TABLE `media_access` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
