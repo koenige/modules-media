@@ -46,6 +46,6 @@ function mod_media_xhr_crop($data) {
 		'parameters' => http_build_query($medium['parameters']),
 		'clipping' => 'custom'
 	];
-	$ops = zzform_update('media', $line, E_USER_ERROR, 'Unable to set crop coordinates');
+	$ops = zzform_update('media', $line, E_USER_ERROR, ['msg' => 'Unable to set crop coordinates']);
 	return 'success';
 }
