@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -41,14 +41,11 @@ function mod_media_xhr_crop($data) {
 
 	$medium['parameters']['crop'] = sprintf('%s,%s,%s,%s', $left, $top, $right, $bottom);
 
-	$values = [];
-	$values['action'] = 'update';
-	$values['POST']['medium_id'] = $medium['medium_id'];
-	$values['POST']['parameters'] = http_build_query($medium['parameters']);
-	$values['POST']['clipping'] = 'custom';
-	$ops = zzform_multi('media', $values);
-	if (!$ops) {
-		wrap_error(sprintf('Unable to set crop coordinates for medium ID %d', $data['medium_id']), E_USER_ERROR);
-	}
+	$line = [
+		'medium_id' => $medium['medium_id'],
+		'parameters' => http_build_query($medium['parameters']),
+		'clipping' => 'custom'
+	];
+	$ops = zzform_update('media', $line, E_USER_ERROR, 'Unable to set crop coordinates');
 	return 'success';
 }
