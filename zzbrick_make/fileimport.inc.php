@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -31,7 +31,7 @@ function mod_media_make_fileimport($params) {
 
 	// thumbnail creation in background?
 	if (!empty($_GET['thumbs']) AND !empty($_GET['field'])) {
-		wrap_include_files('zzform.php', 'zzform');
+		wrap_include('zzform.php', 'zzform');
 		$zz = zzform_include('media');
 		$ops = zzform($zz);
 		$data['medium_id'] = wrap_html_escape($_GET['thumbs']);

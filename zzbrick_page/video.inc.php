@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -21,7 +21,7 @@
  * @return string $text
  */
 function page_video(&$params, &$page) {
-	wrap_include_files('request', 'zzbrick');
+	wrap_include('request', 'zzbrick');
 
 	if (empty($page['status'])) {
 		$text = '%%% page video '.implode(' ', $params).' %%%';
