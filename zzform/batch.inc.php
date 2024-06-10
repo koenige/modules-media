@@ -40,7 +40,8 @@ function mf_media_folder($identifier) {
 			$line = [
 				'main_medium_id' => $main_medium_id,
 				'title' => $folder,
-				'filetype_id' => wrap_id('filetypes', 'folder')
+				'filetype_id' => wrap_id('filetypes', 'folder'),
+				'sequence' => is_numeric($new_folder) ? $new_folder : ''
 			];
 			$main_medium_id = $medium_id = zzform_insert('media', $line);
 		}
