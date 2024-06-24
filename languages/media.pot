@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2012-2014, 2017, 2020-2023 Gustaf Mossakowski
+# @copyright Copyright © 2012-2014, 2017, 2020-2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 msgid ""
@@ -21,10 +21,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.4.1\n"
 
 #: behaviour/croppr.js
 msgid "Medium was cropped."
+msgstr ""
+
+#: configuration/access.cfg
+msgid "download files"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "allow to edit media"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "import files"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "internal access to media"
 msgstr ""
 
 #: templates/fileimport.template.txt
