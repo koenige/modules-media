@@ -157,8 +157,8 @@ $zz['fields'][16]['hide_in_list'] = true;
 $zz['fields'][16]['hide_novalue'] = false;
 $zz['fields'][16]['search'] = 't_mime.extension';
 $zz['fields'][16]['separator'] = true;
-$zz['fields'][16]['if'][2] = false;
-$zz['fields'][16]['if'][3] = false;
+$zz['fields'][16]['if'][2] = [];
+$zz['fields'][16]['if'][3] = [];
 $zz['fields'][16]['show_values_as_list'] = true;
 $zz['fields'][16]['character_set'] = 'latin1';
 
@@ -198,7 +198,7 @@ $zz['fields'][17]['field_name'] = 'alternative_text';
 $zz['fields'][17]['type'] = 'text';
 $zz['fields'][17]['explanation'] = 'optional content of `alt`-attribute for images, for screen reader software';
 $zz['fields'][17]['hide_in_list'] = true;
-$zz['fields'][17]['if'][2] = false;
+$zz['fields'][17]['if'][2] = [];
 
 $zz['fields'][6] = [];
 if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
@@ -289,14 +289,14 @@ $zz['fields'][5]['upload_field'] = 14;
 $zz['fields'][5]['upload_value'] = 'exif[DateTimeOriginal]';
 $zz['fields'][5]['hide_in_list'] = true;
 $zz['fields'][5]['time_format'] = 'H:i:s';
-$zz['fields'][5]['if'][2] = false;
+$zz['fields'][5]['if'][2] = [];
 
 if (empty($values['no_publish'])) {
 	$zz['fields'][19]['field_name'] = 'source';
 	$zz['fields'][19]['type'] = 'text';
 	$zz['fields'][19]['hide_in_list'] = true;
 	$zz['fields'][19]['explanation'] = 'If it’s not a medium created by yourself, who created it, where did you find it?';
-	$zz['fields'][19]['if'][2] = false;
+	$zz['fields'][19]['if'][2] = [];
 	$zz['fields'][19]['separator'] = true;
 	$zz['fields'][19]['sql'] = 'SELECT DISTINCT source, source FROM media ORDER BY source';
 	$zz['fields'][19]['if']['add']['separator'] = false;
@@ -360,8 +360,8 @@ $zz['fields'][34]['upload_field'] = 14;
 $zz['fields'][34]['upload_value'] = 'md5';
 $zz['fields'][34]['dont_show_missing'] = true;
 $zz['fields'][34]['if']['add']['hide_in_form'] = true;
-$zz['fields'][34]['if'][2] = false;
-$zz['fields'][34]['if'][3] = false;
+$zz['fields'][34]['if'][2] = [];
+$zz['fields'][34]['if'][3] = [];
 
 $zz['fields'][37]['title_append'] = 'Size';
 $zz['fields'][37]['title_tab'] = 'Size';
@@ -421,8 +421,8 @@ $zz['fields'][35]['upload_field'] = 14;
 $zz['fields'][35]['upload_value'] = 'increment_on_change';
 $zz['fields'][35]['dont_show_missing'] = true;
 $zz['fields'][35]['if']['add']['hide_in_form'] = true;
-$zz['fields'][35]['if'][2] = false;
-$zz['fields'][35]['if'][3] = false;
+$zz['fields'][35]['if'][2] = [];
+$zz['fields'][35]['if'][3] = [];
 
 $zz['fields'][40]['field_name'] = 'parameters';
 $zz['fields'][40]['type'] = 'parameter';
