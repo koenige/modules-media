@@ -45,6 +45,8 @@ function mf_media_folder($identifier) {
 			];
 			$main_medium_id = $medium_id = zzform_insert('media', $line);
 		}
+		$main_medium_id = $medium_id;
 	}
+	wrap_id('folders', $identifier, 'write', $medium_id);
 	return $medium_id;
 }
