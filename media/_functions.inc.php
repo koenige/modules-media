@@ -126,21 +126,14 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = [])
  * @return array
  */
 function mf_media_prepare($media) {
-	// work with array $media, because it might change
-	foreach (array_keys($media) as $filecategory) {
-		$media[$filecategory] = wrap_translate($media[$filecategory], 'media');
-		foreach ($media[$filecategory] as $medium_id => $medium) {
-			if ($media[$filecategory][$medium_id]['description'])
-				$media[$filecategory][$medium_id]['title'] = $media[$filecategory][$medium_id]['description'];
-			$media[$filecategory][$medium_id]['source']
-				= trim(markdown($medium['source']));
-			if (str_starts_with($media[$filecategory][$medium_id]['source'], '<p>'))
-				$media[$filecategory][$medium_id]['source']
-					= substr($media[$filecategory][$medium_id]['source'], 3);
-			if (str_ends_with($media[$filecategory][$medium_id]['source'], '</p>'))
-				$media[$filecategory][$medium_id]['source']
-					= substr($media[$filecategory][$medium_id]['source'], 0, -4);
-			$media[$filecategory][$medium_id]['filecategory_'.$medium['filecategory']] 
+	foreach ($media as $filecategory => &$files) {
+		$files = wrap_translate($files, 'media');
+		foreach ($files as $medium_id => $medium) {
+			if ($files[$medium_id]['description'])
+				$files[$medium_id]['title'] = $files[$medium_id]['description'];
+			$files[$medium_id]['source']
+				= markdown_inline($medium['source']);
+			$files[$medium_id]['filecategory_'.$medium['filecategory']] 
 				= $medium['filecategory_'.$medium['filecategory']] = true;
 			if ($medium['filetype'] !== 'pdf' AND $filecategory !== 'videos') continue;
 			if (!$medium['thumb_extension']) continue;
