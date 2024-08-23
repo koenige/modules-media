@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020, 2022-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -18,8 +18,8 @@
  *
  * @param array $params
  */
-function mod_media_make_twitch($params) {
-	require_once wrap_setting('core').'/syndication.inc.php';
+function mod_media_make_twitch($params, $settings = []) {
+	wrap_include('syndication', 'zzwrap');
 
 	$url = sprintf(wrap_setting('twitch_url'), $params[0]);
 	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url);
@@ -29,26 +29,20 @@ function mod_media_make_twitch($params) {
 	}
 	
 	// add medium
-	$values = [];
-	$values['action'] = 'insert';
-	$sql = 'SELECT medium_id FROM media
-		WHERE filetype_id = %d
-		AND filename = "%s"';
-	$sql = sprintf($sql
-		, wrap_filetype_id('folder')
-		, wrap_setting('embed_path_twitch')
-	);
-	$values['GET']['add']['filetype_id'] = wrap_filetype_id('twitch');
-	$values['POST']['main_medium_id'] = wrap_db_fetch($sql, '', 'single value');
-	$values['POST']['title'] = $params[0];
-	$values['POST']['source'] = 'Twitch';
-	$values['POST']['published'] = 'yes';
-	$values['POST']['filename'] = sprintf('%s/%s', wrap_setting('embed_path_twitch'), $params[0]);
-	$ops = zzform_multi('media', $values);
-	if (!$ops['id']) {
-		wrap_error(sprintf('Could not add Twitch Video %s.', $params[0]));
+	$line = [
+		'filetype_id' => wrap_filetype_id('twitch'),
+		'main_medium_id' => $settings['main_medium_id'] ?? wrap_id('folders', wrap_setting('media_embed_path_twitch')),
+		'title' => $params[0],
+		'source' => 'Twitch',
+		'published' => 'yes',
+		'filename' => $params[0]
+	];
+	$id = zzform_insert('media', $line);
+	if ($id) {
+		$sql = 'SELECT * FROM media WHERE medium_id = %d';
+		$sql = sprintf($sql, $id);
+		$data = wrap_db_fetch($sql);
 	}
-	$data = $ops['record_new'][0];
 	$data['embed_id'] = $params[0];
 	$page['text'] = json_encode($data);
 	$page['content_type'] = 'json';

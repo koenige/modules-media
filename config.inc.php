@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -20,8 +20,8 @@ if ($embeds = wrap_setting('embed')) {
 		wrap_setting_add('brick_types_translated', [$embed => 'page']);
 		wrap_setting_add('brick_page_shortcuts', $embed);
 
-		if (!wrap_setting('embed_path_'.$embed))
-			wrap_setting('embed_path_'.$embed, $embed);
+		if (!wrap_setting('media_embed_path_'.$embed))
+			wrap_setting('media_embed_path_'.$embed, $embed);
 		wrap_setting($embed.'_embed_url', $url);
 		if (!wrap_setting($embed.'_url'))
 			wrap_setting($embed.'_url', $url);

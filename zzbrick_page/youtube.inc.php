@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -28,11 +28,10 @@ function page_youtube(&$params, $page) {
 			, title, description, source, width_px, height_px, parameters
 			, filename, SUBSTRING_INDEX(filename, "/", -1) AS embed_id
 		FROM media
-		WHERE filetype_id = %d
+		WHERE filetype_id = /*_ID filetypes youtube _*/
 		AND filename = "%s/%s"';
 	$sql = sprintf($sql
-		, wrap_filetype_id('youtube')
-		, wrap_setting('embed_path_youtube')
+		, wrap_setting('media_embed_path_youtube')
 		, wrap_db_escape($video)
 	);
 	$medium = wrap_db_fetch($sql);

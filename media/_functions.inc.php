@@ -227,7 +227,7 @@ function mf_media_separate_overview($media) {
 function mf_media_get_embed_youtube($video) {
 	static $meta = [];
 	if (!empty($meta[$video])) return $meta[$video];
-	require_once wrap_setting('core').'/syndication.inc.php';
+	wrap_include('syndication', 'zzwrap');
 
 	$url = sprintf(wrap_setting('youtube_url'), $video);
 	$headers[] = sprintf('Cookie: CONSENT=NO+%s', strtoupper(wrap_setting('lang')));

@@ -33,3 +33,5 @@
 /* 2023-09-08-1 */	ALTER TABLE `media_categories` ADD `property` varchar(255) NULL AFTER `category_id`;
 /* 2023-12-16-1 */	ALTER TABLE `filetypes` CHANGE `filetype` `filetype` varchar(10) COLLATE 'latin1_general_ci' NOT NULL AFTER `filetype_id`;
 /* 2024-03-16-1 */	ALTER TABLE `media_access` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
+/* 2024-08-23-1 */	UPDATE _settings SET setting_key = 'media_embed_path_twitch' WHERE setting_key = 'embed_path_twitch';
+/* 2024-08-23-2 */	UPDATE _settings SET setting_key = 'media_embed_path_youtube' WHERE setting_key = 'embed_path_youtube';
