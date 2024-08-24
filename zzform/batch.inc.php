@@ -18,9 +18,10 @@
  * create folder if it does not exist
  *
  * @param string $folder
+ * @param string $description (optional)
  * @return int
  */
-function mf_media_folder($identifier) {
+function mf_media_folder($identifier, $description = '') {
 	if ($medium_id = wrap_id('folders', $identifier, 'check')) return $medium_id;
 
 	// get all folders
@@ -40,8 +41,10 @@ function mf_media_folder($identifier) {
 			$line = [
 				'main_medium_id' => $main_medium_id,
 				'title' => $folder,
+				'description' => $path === $identifier ? $description : '',
 				'filetype_id' => wrap_id('filetypes', 'folder'),
-				'sequence' => is_numeric($folder) ? $folder : ''
+				'sequence' => (is_numeric($folder) AND $folder < wrap_setting('media_folder_max_sequence'))
+					? $folder : ''
 			];
 			$main_medium_id = $medium_id = zzform_insert('media', $line);
 		}
