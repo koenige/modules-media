@@ -5,11 +5,11 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018-2023 Gustaf Mossakowski
+# @copyright Copyright © 2018-2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="image%%% item position " %s" %%%%%% item orientation " %s" %%%"><figure>
-%%% condition if bigger_size_available & setting media_big_image_size %%%
+%%% condition if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
 %%% condition unless cid %%%
 <a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
 %%% condition endif %%%
