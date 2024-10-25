@@ -37,14 +37,13 @@ INSERT INTO `filetypes` (`filetype_id`, `filetype`, `mime_content_type`, `mime_s
 (11,	'zip',	'application',	'zip',	'ZIP Archive',	'zip'),
 (12,	'doc',	'application',	'msword',	'MS Word Document',	'doc'),
 (13,	'docx',	'application',	'vnd.openxmlformats-officedocument.wordprocessingml.document',	'MS Word Open XML Document',	'docx'),
-(14,	'dot',	'application',	'msword',	'MS Word Document Template',	'dot'),
-(15,	'dotx',	'application',	'vnd.openxmlformats-officedocument.wordprocessingml.template',	'MS Word Open XML Document Template',	'dotx'),
-(16,	'folder',	'example',	'x-folder',	NULL,	''),
-(17,	'css',	'text',	'css',	'Cascading Stylesheets',	'css'),
-(18,	'js',	'application',	'javascript',	'JavaScript',	'js'),
-(19,	'm4v',	'video',	'mp4',	'MPEG v4 Video',	'mp4'),
-(20,	'mp3',	'audio',	'mp3',	'MPEG Audio Stream, Layer III',	'mp3'),
-(21,	'youtube',	'application',	'octet-stream',	'YouTube Video',	'');
+(14,	'folder',	'example',	'x-folder',	NULL,	''),
+(15,	'css',	'text',	'css',	'Cascading Stylesheets',	'css'),
+(16,	'js',	'application',	'javascript',	'JavaScript',	'js'),
+(17,	'm4v',	'video',	'mp4',	'MPEG v4 Video',	'mp4'),
+(18,	'mp3',	'audio',	'mp3',	'MPEG Audio Stream, Layer III',	'mp3'),
+(19,	'youtube',	'application',	'octet-stream',	'YouTube Video',	''),
+(20,	'svg',	'image',	'svg+xml',	'Scalable Vector Graphics',	'svg');
 
 
 -- media --
