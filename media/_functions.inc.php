@@ -306,7 +306,7 @@ function mf_media_image_size($image, $dimension, $size) {
 function mf_media_opengraph_image($image, $size = '') {
 	if (!$media_sizes = wrap_setting('media_sizes')) return [];
 	if (!$size) {
-		$size = wrap_setting('media_standard_image_size');
+		$size = wrap_setting('opengraph_image_size') ?? wrap_setting('media_standard_image_size');
 		if (!$size) return [];
 	}
 	$msize = [];
