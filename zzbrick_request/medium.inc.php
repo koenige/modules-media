@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2023 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -129,5 +129,5 @@ function mod_media_medium($params) {
 	if (!empty($_GET['v'])) {
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
 	}
-	return wrap_file_send($file);
+	wrap_send_file($file);
 }
