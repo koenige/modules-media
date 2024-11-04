@@ -7,7 +7,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014, 2017, 2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2014, 2017, 2021, 2023-2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -38,9 +38,11 @@
 					{ max-width: 40px; max-height: 40px;}
 #zzform ul.data p.legend
 					{ max-height: 2.5em; overflow: hidden; line-height: 1.2; 
-					display: inline-block; }
+					display: inline-block; text-align: left; }
 
-#zzform img.icon	{ padding: 0 5px; }
+#zzform .mediatools	{ margin: 0 1rem; display: inline-block; }
+#zzform img.icon	{ padding: 0 .25rem; vertical-align: middle; height: 1.25rem; 
+					display: inline-block; }
 
 #zzform .media_preview_image
 					{ text-align: center; }
@@ -72,7 +74,6 @@
 .mediapool h1 .icon:nth-child(1)	{ grid-column: 2/3; }
 .mediapool h1 .icon:nth-child(2)	{ grid-column: 3/4; }
 .mediapool h1 .icon:nth-child(3)	{ grid-column: 4/5; }
-.mediapool h1 .icon	{ grid-column: 2/3; grid-row: 1/1; align-self: center;}
 .mediapool h1 .tools
 					{ grid-column: 5/6; grid-row: 1/1; justify-self: right;
 					align-self: center; font-weight: normal; font-size: 1rem; }

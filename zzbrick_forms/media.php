@@ -405,13 +405,5 @@ function mf_media_tools($view) {
 	}
 
 	// output tools
-	$text = [];
-	foreach ($tools as $tool) {
-		$text[] = sprintf('%s<img src="%s/media/%s.png" alt="%s" title="%s" class="icon">%s'
-			, ($tool['link'] ? sprintf('<a href="%s" class="icon">', $tool['link']) : '')
-			, wrap_setting('layout_path'), $tool['img'], wrap_text($tool['alt'])
-			, wrap_text($tool['title']), ($tool['link'] ? '</a>' : '')
-		);
-	}
-	return implode(' ', $text);
+	return wrap_template('media-tools', $tools);
 }

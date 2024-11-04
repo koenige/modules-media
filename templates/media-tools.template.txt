@@ -1,0 +1,17 @@
+# media module
+# HTML template for tools for media
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+# @author Gustaf Mossakowski <gustaf@koenige.org>
+# @copyright Copyright © 2024 Gustaf Mossakowski
+# @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
+#
+<span class="mediatools">%%% loop start %%%
+%%% condition if link %%%
+<a href="%%% item link %%%" class="icon">%%% condition endif %%%
+<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% item alt wrap_text %%%" title="%%% item title wrap_text %%%" class="icon">%%% condition if link %%%
+</a>%%% condition endif %%%
+%%% loop end %%%
+</span>
