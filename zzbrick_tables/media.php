@@ -381,8 +381,9 @@ $zz['fields'][37]['upload_value'] = [
 	'upload[width]'
 ];
 $zz['fields'][37]['if'][81]['upload_value'] = 'modified[width]';
-$zz['fields'][37]['suffix'] = ' × ';
-$zz['fields'][37]['list_suffix'] = ' × ';
+$zz['fields'][37]['suffix'] = ' ×&nbsp;';
+$zz['fields'][37]['list_suffix'] = ' ×&nbsp;';
+$zz['fields'][37]['class'] = 'number';
 $zz['fields'][37]['append_next'] = true;
 $zz['fields'][37]['dont_show_missing'] = true;
 $zz['fields'][37]['if']['add']['hide_in_form'] = true;
