@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020-2021 Gustaf Mossakowski
+# @copyright Copyright © 2020-2021, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 %%% condition if no_embeds %%%
@@ -17,7 +17,7 @@
 <fieldset class="privacysettings">
 <ul>
 %%% loop start %%%
-<li><p><label for="embed_%%% item type %%%"><input type="checkbox"%%% condition if selected %%% checked="checked" %%% condition endif %%% id="embed_%%% item type %%%" data-embed="%%% item identifier %%%">
+<li><p><label for="embed_%%% item type %%%"><input type="checkbox"%%% condition if selected %%% checked %%% condition endif %%% id="embed_%%% item type %%%" data-embed="%%% item identifier %%%">
 <strong>%%% item type %%%</strong>
 </label></p>
 %%% condition if privacy %%%
