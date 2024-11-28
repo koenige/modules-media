@@ -39,7 +39,7 @@ if (empty($brick['local_settings']['no_publish'])) {
 	$zz['footer']['text'] .= '<p><em>'.wrap_text('Coloured border: medium is published; gray border: medium is not published.').'</em></p>';
 }
 
-$zz['page']['head'] = "\t".'<link rel="stylesheet" type="text/css" href="'.wrap_setting('layout_path').'/media/zzform-media.css">'."\n";
+$zz['page']['extra']['css'][] = 'media/zzform-media.css';
 
 /* get information about folder if it is not top level */
 $folder = mf_media_mediapool_folder($view);
@@ -365,6 +365,8 @@ function mf_media_mediapool_title($title, $folder, $view) {
  */
 function mf_media_path($view, $path = '') {
 	if ($path) {
+		if (!empty($view['hidden_path']) AND str_starts_with($path, $view['hidden_path']))
+			$path = substr($path, strlen($view['hidden_path']));
 		if (str_starts_with($path, '/')) $path = substr($path, 1);
 		if ($path AND !str_ends_with($path, '/')) $path = sprintf('%s/', $path);
 	}
