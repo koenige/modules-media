@@ -43,7 +43,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
 	}
 	$medium = wrap_db_fetch($sql);
 	if ($medium)
-		$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
+		$page['link'] = mf_media_page_links($medium, $setting['vars']['view']);
 	
 	$page['text'] = wrap_template('folderinfo', $data);
 	$setting['vars']['view']['filecount'] = $ops['records_total'] ?? NULL;

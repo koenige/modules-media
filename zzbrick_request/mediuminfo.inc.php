@@ -64,7 +64,7 @@ function mod_media_mediuminfo($params, $setting) {
 	$medium['filetype_details'] = wrap_filetypes($medium['filetype']);
 	
 	// next, prev?
-	$page['link'] = mf_media_page_links($medium['medium_id'], $medium['main_medium_id']);
+	$page['link'] = mf_media_page_links($medium, $setting['vars']['view']);
 	
 	$medium['backlink'] = $backlink;
 	$medium['sizes'] = [];
