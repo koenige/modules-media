@@ -79,7 +79,7 @@ function mod_media_medium($params) {
 	if (!$file) return false;
 	// If no public access, require login
 	if (!$file['published']) {
-		require_once wrap_setting('core').'/auth.inc.php';
+		wrap_include('auth', 'zzwrap');
 		wrap_auth(1);
 	}
 
