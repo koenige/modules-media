@@ -93,6 +93,7 @@ function mod_media_medium($params) {
 			$code = array_pop($code);
 			$url = sprintf($embeds[$file['filetype']], $code);
 			if (!empty($_GET['inactive'])) {
+				if (is_array($_GET['inactive'])) return false;
 				if ($_GET['inactive'].'' !== '1') return false;
 				$file['url'] = $url;
 				$file['privacy_policy_url'] = wrap_setting('privacy_policy_url');
