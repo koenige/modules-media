@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2024 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -23,14 +23,13 @@ $zz['fields'][1]['type'] = 'id';
 $zz['fields'][2]['title'] = 'Folder';
 $zz['fields'][2]['field_name'] = 'medium_id';
 $zz['fields'][2]['type'] = 'select';
-$zz['fields'][2]['sql'] = sprintf('SELECT /*_PREFIX_*/media.medium_id
+$zz['fields'][2]['sql'] = 'SELECT /*_PREFIX_*/media.medium_id
 		, /*_PREFIX_*/media.filename
 	FROM /*_PREFIX_*/media 
-	WHERE /*_PREFIX_*/media.filetype_id = %d
-	ORDER BY /*_PREFIX_*/media.filename', wrap_filetype_id('folder'));
+	WHERE /*_PREFIX_*/media.filetype_id = /*_ID filetypes folder _*/
+	ORDER BY /*_PREFIX_*/media.filename';
 $zz['fields'][2]['sql_character_set'][1] = 'utf8';
 $zz['fields'][2]['sql_character_set'][2] = 'utf8';
-$zz['fields'][2]['id_field_name'] = '/*_PREFIX_*/media.medium_id';
 $zz['fields'][2]['display_field'] = 'filename';
 $zz['fields'][2]['exclude_from_search'] = true;
 
