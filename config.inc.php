@@ -17,8 +17,7 @@ if ($embeds = wrap_setting('embed')) {
 	foreach ($embeds as $embed => $url) {
 		if ($url === 'true') continue;
 		$embed = strtolower($embed);
-		wrap_setting_add('brick_types_translated', [$embed => 'page']);
-		wrap_setting_add('brick_page_shortcuts', $embed);
+		wrap_setting_add('brick_shortcuts', sprintf('page %s', $embed));
 
 		if (!wrap_setting('media_embed_path_'.$embed))
 			wrap_setting('media_embed_path_'.$embed, $embed);
