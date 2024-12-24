@@ -13,58 +13,58 @@
 
 %%% item description markdown %%%
 
-%%% condition if preview_image %%%
+%%% if preview_image %%%
 <figure class="media_preview_image">
-<img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% condition if crop %%% id="cropper"%%% condition endif %%%>
-%%% condition if crop %%%
+<img src="%%% setting files_path %%%/%%% item preview_image %%%?v=%%% item version %%%" alt="" title="%%% item preview_title %%%"%%% if crop %%% id="cropper"%%% endif %%%>
+%%% if crop %%%
 <br>
 <button id="cropimage_activate">%%% text Crop image (custom) %%%</button>
 <button id="cropimage_save" data-medium_id="%%% item medium_id %%%">%%% text Save image section %%%</button>
-%%% condition endif %%%
+%%% endif %%%
 </figure>
-%%% condition elseif embed %%%
+%%% elseif embed %%%
 %%% item embed %%%
-%%% condition elseif video %%%
-<video width="%%% item width_px %%%" height="%%% item height_px %%%" controls preload="metadata"%%% condition if thumb_extension %%% poster="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"%%% condition endif %%%>
+%%% elseif video %%%
+<video width="%%% item width_px %%%" height="%%% item height_px %%%" controls preload="metadata"%%% if thumb_extension %%% poster="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"%%% endif %%%>
   <source src="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%" type="%%% item mime_content_type %%%/%%% item mime_subtype %%%">
 </video>
-%%% condition endif %%%
+%%% endif %%%
 
-%%% condition if date | og:description | source | alternative_text %%%
+%%% if date | og:description | source | alternative_text %%%
 <h3>%%% text Meta data %%%</h3>
 
 <dl>
 <dt>%%% text Date/Time %%%</dt><dd>%%% item date wrap_date %%% %%% item time wrap_time %%%</dd>
-%%% condition if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description wrap_html_escape %%%</dd>%%% condition endif %%%
-%%% condition if source %%%<dt>%%% text Source %%%</dt><dd>%%% item source %%%</dd>%%% condition endif %%%
-%%% condition if alternative_text %%%<dt>%%% text Alternative text %%%</dt><dd>%%% item alternative_text %%%</dd>%%% condition endif %%%
+%%% if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description wrap_html_escape %%%</dd>%%% endif %%%
+%%% if source %%%<dt>%%% text Source %%%</dt><dd>%%% item source %%%</dd>%%% endif %%%
+%%% if alternative_text %%%<dt>%%% text Alternative text %%%</dt><dd>%%% item alternative_text %%%</dd>%%% endif %%%
 </dl>
-%%% condition endif %%%
+%%% endif %%%
 
-%%% condition if tags %%%
+%%% if tags %%%
 <h3>%%% text Tags %%%</h3>
 <ul class="tags">
 %%% loop tags %%%
 <li>%%% path media_internal path "html=<a href="%s">" %%%%%% item category %%%%%% path media_internal path "html=</a>" %%%</li>
 %%% loop end %%%
 </ul>
-%%% condition endif %%%
+%%% endif %%%
 
 <h3>%%% text File info %%%</h3>
 
 <dl>
-%%% condition if filesize %%%<dt>%%% text Filesize %%%</dt><dd>%%% item filesize wrap_bytes %%%</dd>%%% condition endif %%%
-%%% condition if md5_hash %%%<dt>%%% text Hash (MD5) %%%</dt><dd><code>%%% item md5_hash %%%</code></dd>%%% condition endif %%%
-<dt>%%% text Filetype %%%</dt><dd>%%% item filetype_description %%% %%% condition if extension %%%(%%% text Extension: %%% .%%% item extension %%%)%%% condition endif %%%</dd>
+%%% if filesize %%%<dt>%%% text Filesize %%%</dt><dd>%%% item filesize wrap_bytes %%%</dd>%%% endif %%%
+%%% if md5_hash %%%<dt>%%% text Hash (MD5) %%%</dt><dd><code>%%% item md5_hash %%%</code></dd>%%% endif %%%
+<dt>%%% text Filetype %%%</dt><dd>%%% item filetype_description %%% %%% if extension %%%(%%% text Extension: %%% .%%% item extension %%%)%%% endif %%%</dd>
 </dl>
 
 <h3>%%% text Files %%%</h3>
 
 <ul>
 %%% loop sizes %%%
-<li>%%% condition if file_exists %%%<a href="%%% setting files_path %%%/%%% item filename %%%?v=%%% item version %%%">%%% condition endif %%%
-%%% item type %%%%%% condition if width %%%, %%% item width %%% × %%% item height %%%&nbsp;%%% text pixels %%%%%% condition endif %%%
-%%% condition if file_exists %%%</a>%%% condition endif %%%
+<li>%%% if file_exists %%%<a href="%%% setting files_path %%%/%%% item filename %%%?v=%%% item version %%%">%%% endif %%%
+%%% item type %%%%%% if width %%%, %%% item width %%% × %%% item height %%%&nbsp;%%% text pixels %%%%%% endif %%%
+%%% if file_exists %%%</a>%%% endif %%%
 %%% loop end %%%
 </ul>
 
@@ -84,7 +84,7 @@
 %%%
 </div>
 
-%%% condition if crop %%%
+%%% if crop %%%
 <script src="%%% setting behaviour_path %%%/media/croppr.js"></script>
-%%% condition endif %%%
+%%% endif %%%
 %%% template link-rel-nav %%%

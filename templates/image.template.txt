@@ -9,18 +9,18 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="image%%% item position " %s" %%%%%% item orientation " %s" %%%%%% item path " medium-%s" %%%"><figure>
-%%% condition if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
-%%% condition unless cid %%%
+%%% if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
+%%% unless cid %%%
 <a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
-%%% condition endif %%%
-%%% condition endif %%%
-<img itemprop="image" src="%%% condition if cid %%%cid:%%% item cid %%%%%% condition else %%%%%% setting files_path %%%/%%% item filename %%%.%%% condition if thumb_extension %%%%%% condition if path %%%%%% item path "%s." %%%%%% condition else %%%%%% setting media_standard_image_size "%s." %%%%%% condition endif %%%%%% item thumb_extension %%%%%% condition else %%%%%% item extension %%%%%% condition endif %%%?v=%%% item version %%%%%% condition endif %%%" alt="%%% condition if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% condition else %%%%%% item title markdown_attribute %%%%%% condition endif %%%"%%% condition if path & path_x2 & thumb_extension %%%%%% condition unless cid %%%
+%%% endif %%%
+%%% endif %%%
+<img itemprop="image" src="%%% if cid %%%cid:%%% item cid %%%%%% else %%%%%% setting files_path %%%/%%% item filename %%%.%%% if thumb_extension %%%%%% if path %%%%%% item path "%s." %%%%%% else %%%%%% setting media_standard_image_size "%s." %%%%%% endif %%%%%% item thumb_extension %%%%%% else %%%%%% item extension %%%%%% endif %%%?v=%%% item version %%%%%% endif %%%" alt="%%% if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% else %%%%%% item title markdown_attribute %%%%%% endif %%%"%%% if path & path_x2 & thumb_extension %%%%%% unless cid %%%
  srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x"
-%%% condition endif %%%%%% condition endif %%%>
-%%% condition if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
-%%% condition unless cid %%%
+%%% endif %%%%%% endif %%%>
+%%% if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
+%%% unless cid %%%
 </a>
-%%% condition endif %%%
-%%% condition endif %%%
-<figcaption><em>%%% condition if custom_title %%%%%% item custom_title %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% %%% condition if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% condition endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
+%%% endif %%%
+%%% endif %%%
+<figcaption><em>%%% if custom_title %%%%%% item custom_title %%%%%% else %%%%%% item title markdown_inline %%%%%% endif %%% %%% if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
 </div>

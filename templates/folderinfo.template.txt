@@ -5,12 +5,12 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2023 Gustaf Mossakowski
+# @copyright Copyright © 2023-2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-%%% condition if imported %%%
+%%% if imported %%%
 <p>%%% text "%d files were imported in the background." imported %%%</p>
-%%% condition elseif import %%%
+%%% elseif import %%%
 <div class="folderinfo">
 
 <form method="POST" action="">
@@ -38,13 +38,13 @@
 <p><input type="submit" name="zz_import" value="%%% text "Import %d files" import_count %%%"></p>
 </form>
 </div>
-%%% condition elseif import_count %%%
-%%% condition unless nolist %%%
+%%% elseif import_count %%%
+%%% unless nolist %%%
 <div class="folderinfo">
 <p><a href="?import">%%% text "You can import %d files into this folder." import_count %%%</a></p>
 </div>
-%%% condition endif %%%
-%%% condition else %%%
+%%% endif %%%
+%%% else %%%
 &nbsp;
-%%% condition endif %%%
+%%% endif %%%
 %%% template link-rel-nav %%%

@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020-2022 Gustaf Mossakowski
+# @copyright Copyright © 2020-2022, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 # List of fields:
@@ -15,11 +15,11 @@
 # filecategory_links, custom_title
 #
 <figure><img src="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_downloads_size %%%.%%% item thumb_extension %%%?v=%%% item version %%%"></figure>
-<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%&amp;download=1">%%% condition if custom_title %%%%%% item custom_title markdown_inline %%%%%% condition else %%%%%% item title markdown_inline %%%%%% condition endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
-%%% condition if files %%%
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% item extension %%%?v=%%% item version %%%&amp;download=1">%%% if custom_title %%%%%% item custom_title markdown_inline %%%%%% else %%%%%% item title markdown_inline %%%%%% endif %%% <small>(%%% item filetype strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a>
+%%% if files %%%
 <ul class="media-download">
 %%% loop files %%%
 <li><a href="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%%?v=%%% item version %%%&amp;download=1">%%% item width %%%&nbsp;×&nbsp;%%% item height %%%&nbsp;px <small>(%%% item thumb_extension strtoupper %%%, %%% item filesize wrap_bytes %%%)</small></a></li>
 %%% loop end %%%
 </ul>
-%%% condition endif %%%
+%%% endif %%%

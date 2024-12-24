@@ -8,26 +8,26 @@
 # @copyright Copyright © 2020-2021, 2024 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-%%% condition if no_embeds %%%
+%%% if no_embeds %%%
 <p>%%% text There is currently no embedded content. %%%</p>
 
-%%% condition else %%%
+%%% else %%%
 <p>%%% text Here, you can decide whether you’d like to have embedded content displayed inline on our website or not: %%%</p>
 
 <fieldset class="privacysettings">
 <ul>
 %%% loop start %%%
-<li><p>%%% condition unless setting html_label_after_input %%%<label for="embed_%%% item type %%%">%%% condition endif %%%<input type="checkbox"%%% condition if selected %%% checked %%% condition endif %%% id="embed_%%% item type %%%" data-embed="%%% item identifier %%%">
-%%% condition if setting html_label_after_input %%%<label for="embed_%%% item type %%%">%%% condition endif %%%<strong>%%% item type %%%</strong>
+<li><p>%%% unless setting html_label_after_input %%%<label for="embed_%%% item type %%%">%%% endif %%%<input type="checkbox"%%% if selected %%% checked %%% endif %%% id="embed_%%% item type %%%" data-embed="%%% item identifier %%%">
+%%% if setting html_label_after_input %%%<label for="embed_%%% item type %%%">%%% endif %%%<strong>%%% item type %%%</strong>
 </label></p>
-%%% condition if privacy %%%
+%%% if privacy %%%
 %%% item privacy markdown %%%
-%%% condition elseif YouTube %%%
+%%% elseif YouTube %%%
 <p>%%% text "Watch a YouTube video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Google. %%% <a href="https://policies.google.com/privacy">%%% text Google’s Privacy Policy %%%</a>.</p>
-%%% condition elseif Twitch %%%
+%%% elseif Twitch %%%
 <p>%%% text "Watch a Twitch video on our website." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Twitch, tracking and other cookies may be set. %%% <a href="https://www.twitch.tv/p/legal/privacy-notice/">%%% text Twitch’s Privacy Policy %%%</a>.</p>
 
-%%% condition endif %%%
+%%% endif %%%
 
 </li>
 %%% loop end %%%

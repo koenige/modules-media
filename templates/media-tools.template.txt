@@ -9,9 +9,9 @@
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <span class="mediatools">%%% loop start %%%
-%%% condition if link %%%
-<a href="%%% item link %%%" class="icon">%%% condition endif %%%
-<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% item alt wrap_text %%%" title="%%% item title wrap_text %%%" class="icon">%%% condition if link %%%
-</a>%%% condition endif %%%
+%%% if link %%%
+<a href="%%% item link %%%" class="icon">%%% endif %%%
+<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% item alt wrap_text %%%" title="%%% item title wrap_text %%%" class="icon">%%% if link %%%
+</a>%%% endif %%%
 %%% loop end %%%
 </span>
