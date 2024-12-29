@@ -463,16 +463,14 @@ if (empty($values['no_publish'])) {
 }
 
 $zz['conditions'][2]['scope'] = 'record';
-$zz['conditions'][2]['where'] = sprintf('o_mime.filetype_id = %d',
-	wrap_filetype_id('folder'));
+$zz['conditions'][2]['where'] = 'o_mime.filetype_id = /*_ID filetypes folder _*/';
 $zz['conditions'][2]['add']['sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes o_mime
 	WHERE filetype_id = ';
 $zz['conditions'][2]['add']['key_field_name'] = 'filetype_id';
 
 $zz['conditions'][3]['scope'] = 'record';
-$zz['conditions'][3]['where'] = sprintf('o_mime.extension = "" AND o_mime.filetype_id != %d',
-	wrap_filetype_id('folder'));
+$zz['conditions'][3]['where'] = 'o_mime.extension = "" AND o_mime.filetype_id != /*_ID filetypes folder _*/';
 $zz['conditions'][3]['add']['sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes o_mime
 	WHERE filetype_id = ';

@@ -257,13 +257,10 @@ function mf_media_mediapool_folder($view) {
 	if (!$view['full_path']) return [];
 
 	$sql = 'SELECT medium_id, description, filename
-			, IF(filetype_id != %d, 1, NULL) AS is_file
+			, IF(filetype_id != /*_ID filetypes folder _*/, 1, NULL) AS is_file
 		FROM /*_PREFIX_*/media
 		WHERE filename = "%s"';
-	$sql = sprintf($sql
-		, wrap_id('filetypes', 'folder')
-		, $view['full_path']
-	);
+	$sql = sprintf($sql, $view['full_path']);
 	$folder = wrap_db_fetch($sql);
 	if (!$folder) wrap_quit(404);
 

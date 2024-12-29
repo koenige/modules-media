@@ -135,11 +135,10 @@ function mod_media_filedownload_files($params) {
 		FROM media
 		LEFT JOIN filetypes USING (filetype_id)
 		%s
-		WHERE filetype_id != %d
+		WHERE filetype_id != /*_ID filetypes folder _*/
 		%s';
 	$sql = sprintf($sql
 		, implode("\n", $join)
-		, wrap_id('filetypes', 'folder')
 		, $where ? sprintf(' AND %s', implode(" AND ", $where)) : ''
 	);
 	$files = wrap_db_fetch($sql, 'medium_id');
