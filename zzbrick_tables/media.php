@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -132,20 +132,16 @@ $zz['fields'][14]['if'][3]['default_image'] = wrap_setting('layout_path').'/medi
 $zz['fields'][16]['title'] = 'Thumbnail';
 $zz['fields'][16]['field_name'] = 'thumb_filetype_id';
 $zz['fields'][16]['type'] = 'select';
-$zz['fields'][16]['sql'] = sprintf('SELECT filetype_id, UCASE(filetype)
+$zz['fields'][16]['sql'] = 'SELECT filetype_id, UCASE(filetype)
 		, (CASE mime_subtype
-			WHEN "jpeg" THEN "%s"
-			WHEN "png" THEN "%s"
-			WHEN "gif" THEN "%s"
+			WHEN "jpeg" THEN "/*_TEXT good for photos _*/"
+			WHEN "png" THEN "/*_TEXT good for drawings & texts / transparency _*/"
+			WHEN "gif" THEN "/*_TEXT good for drawings & texts / transparency (deprecated) _*/"
 		END) as explanation
 	FROM /*_PREFIX_*/filetypes
 	WHERE mime_content_type = "image"
 	AND mime_subtype IN ("jpeg", "gif", "png")
-	ORDER BY IF(mime_subtype = "jpeg", 0, 1), IF(mime_subtype = "png", 0, 1)',
-	wrap_text('good for photos'),
-	wrap_text('good for drawings & texts / transparency'),
-	wrap_text('good for drawings & texts / transparency (deprecated)')
-);
+	ORDER BY IF(mime_subtype = "jpeg", 0, 1), IF(mime_subtype = "png", 0, 1)';
 $zz['fields'][16]['path_sql'] = 'SELECT extension
 	FROM /*_PREFIX_*/filetypes WHERE filetype_id = ';
 $zz['fields'][16]['concat_fields'] = ' – ';
