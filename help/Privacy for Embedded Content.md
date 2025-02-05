@@ -13,11 +13,6 @@
 
 # Privacy for Embedded Content
 
-Embedded content from a third party server 
-
-
-# Data protection for embedded content 
-
 Embedded content from third-party servers, e.g. videos, is not displayed
 directly to the visitor to the website. Instead, consent is asked as to
 whether this content should be displayed directly on the website.
