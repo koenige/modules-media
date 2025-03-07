@@ -5,11 +5,13 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2018-2024 Gustaf Mossakowski
+# @copyright Copyright © 2018-2025 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="image%%% item position " %s" %%%%%% item orientation " %s" %%%%%% item path " medium-%s" %%%"><figure>
-%%% if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
+%%% if link %%%
+<a href="%%% item link %%%">
+%%% elseif bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
 %%% unless cid %%%
 <a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
 %%% endif %%%
@@ -17,7 +19,9 @@
 <img itemprop="image" src="%%% if cid %%%cid:%%% item cid %%%%%% else %%%%%% setting files_path %%%/%%% item filename %%%.%%% if thumb_extension %%%%%% if path %%%%%% item path "%s." %%%%%% else %%%%%% setting media_standard_image_size "%s." %%%%%% endif %%%%%% item thumb_extension %%%%%% else %%%%%% item extension %%%%%% endif %%%?v=%%% item version %%%%%% endif %%%" alt="%%% if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% else %%%%%% item title markdown_attribute %%%%%% endif %%%"%%% if path & path_x2 & thumb_extension %%%%%% unless cid %%%
  srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x"
 %%% endif %%%%%% endif %%%>
-%%% if bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
+%%% if link %%%
+</a>
+%%% elseif bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
 %%% unless cid %%%
 </a>
 %%% endif %%%
