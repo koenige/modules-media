@@ -9,7 +9,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -108,6 +108,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = [])
 		$media = mf_media_prepare($media);
 		$media = mf_media_separate_overview($media);
 	} else {
+		if ($pos = strpos($id_field, '.')) $id_field = substr($id_field, $pos + 1);
 		$media = wrap_db_fetch($sql, [$id_field.'_id', 'filecategory', 'medium_id']);
 		foreach ($media as $table_id => $medialist) {
 			$medialist = mf_media_separate_embeds($medialist);
