@@ -13,10 +13,10 @@
 <a href="%%% item link %%%">
 %%% elseif bigger_size_available & setting media_big_image_size & setting media_link_big_image %%%
 %%% unless cid %%%
-<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% item title markdown_attribute %%% %%% item source strip_tags %%%" data-title="%%% item title %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
+<a href="%%% setting files_path %%%/%%% item filename %%%.%%% setting media_big_image_size %%%.%%% item thumb_extension %%%" title="%%% if description %%%%%% item title markdown_attribute %%%%%% else %%%%%% item description markdown_attribute %%%%%% endif %%% %%% item source strip_tags %%%" data-title="%%% if title %%%%%% item title %%%%%% else %%%%%% item description %%%%%% endif %%%%%% item source wrap_html_escape " (%s)" %%%" class="js-img">
 %%% endif %%%
 %%% endif %%%
-<img itemprop="image" src="%%% if cid %%%cid:%%% item cid %%%%%% else %%%%%% setting files_path %%%/%%% item filename %%%.%%% if thumb_extension %%%%%% if path %%%%%% item path "%s." %%%%%% else %%%%%% setting media_standard_image_size "%s." %%%%%% endif %%%%%% item thumb_extension %%%%%% else %%%%%% item extension %%%%%% endif %%%?v=%%% item version %%%%%% endif %%%" alt="%%% if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% else %%%%%% item title markdown_attribute %%%%%% endif %%%"%%% if path & path_x2 & thumb_extension %%%%%% unless cid %%%
+<img itemprop="image" src="%%% if cid %%%cid:%%% item cid %%%%%% else %%%%%% setting files_path %%%/%%% item filename %%%.%%% if thumb_extension %%%%%% if path %%%%%% item path "%s." %%%%%% else %%%%%% setting media_standard_image_size "%s." %%%%%% endif %%%%%% item thumb_extension %%%%%% else %%%%%% item extension %%%%%% endif %%%?v=%%% item version %%%%%% endif %%%" alt="%%% if alternative_text %%%%%% item alternative_text wrap_html_escape %%%%%% else %%%%%% item description markdown_attribute %%%%%% endif %%%"%%% if path & path_x2 & thumb_extension %%%%%% unless cid %%%
  srcset="%%% setting files_path %%%/%%% item filename %%%.%%% item path %%%.%%% item thumb_extension %%%?v=%%% item version %%% 1x, %%% setting files_path %%%/%%% item filename %%%.%%% item path_x2 %%%.%%% item thumb_extension %%%?v=%%% item version %%% 2x"
 %%% endif %%%%%% endif %%%>
 %%% if link %%%
@@ -26,5 +26,5 @@
 </a>
 %%% endif %%%
 %%% endif %%%
-<figcaption><em>%%% if custom_title %%%%%% item custom_title %%%%%% else %%%%%% item title markdown_inline %%%%%% endif %%% %%% if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
+<figcaption><em>%%% if custom_title %%%%%% item custom_title %%%%%% elseif description %%%%%% item description markdown_inline %%%%%% else %%%%%% item title markdown_inline %%%%%% endif %%% %%% if setting media_figcaption_with_date %%%%%% item date wrap_date " –  %s" %%%%%% endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
 </div>
