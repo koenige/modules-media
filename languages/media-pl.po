@@ -22,7 +22,340 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 3.5\n"
+
+#: behaviour/croppr.js
+msgid "Medium was cropped."
+msgstr ""
+
+#: configuration/access.cfg
+msgid "download files"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "allow to edit media"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "import files"
+msgstr ""
+
+#: configuration/access.cfg
+msgid "internal access to media"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "if there is no size given for a medium, use this as the default size"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show document links not as links but as text only"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "list of embedded media types"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "URL to embed Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "URL to embed YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path for twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path for youtube videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "custom text in privacy settings for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "custom text in privacy settings for YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid ""
+"large size of images on page, is linked to preview image (e. g. for a "
+"gallery)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "use field media_categories.property to set values for categories"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "use croppr.js for images"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "download files path"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "size of downloads image"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "suffix variant for database files (multiple uploads)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show date in caption of images"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "folder where media files are saved"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "size of images for gallery on page"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "2x size of images for gallery on page for higher resolution screens"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "folder from where files can be imported"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "path for importing media"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "internal path to media folders on website"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "size of preview image for news module and others"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "extension for original file"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid ""
+"standard position of media elements on website (left, center, right, etc.)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "standard size of images on page"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "2x standard size of images on page for higher resolution screens"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "preview image for media module"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "preview image for news module"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "small image"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "medium image"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "large image"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "extra large image"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "allow to tag a medium"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "show top image on webpage"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "ID of webpage that holds top image for error pages"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "initial installation date of media module (for updates)"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "URL where your privacy policy is found."
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "Linked URL with placeholder for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "Embed URL with placeholder for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "Linked URL with placeholder for YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg
+msgid "Embed URL with placeholder for YouTube videos"
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "A thumbnail was created for medium ID %d."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Failed to create thumbnail for medium ID %d."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Import of file %s into folder %s was successful."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Failed to import file %s into folder %s."
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Import file %s into folder %s"
+msgstr ""
+
+#: templates/fileimport.template.txt
+msgid "Back to folder <strong>%s</strong>"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "%d file was imported in the background."
+msgid_plural "%d files were imported in the background."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: templates/folderinfo.template.txt
+msgid "Import?"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "Filename"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "Import %d files"
+msgstr ""
+
+#: templates/folderinfo.template.txt
+msgid "You can import %d file into this folder."
+msgid_plural "You can import %d files into this folder."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: templates/mediatags.template.txt
+msgid "Add new tags …"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Meta data"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Tags"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Date/Time"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "File info"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Hash (MD5)"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Extension:"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Files"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "pixels"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Edit"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Edit medium"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Delete medium"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Crop image (custom)"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Save image section"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Original file"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Thumbnail file"
+msgstr ""
+
+#: templates/mediuminfo.template.txt
+msgid "Crop file"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Display as Table"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Table"
+msgstr "Tabela"
+
+#: zzbrick_forms/media.php
+msgid "Display as Gallery"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Gallery"
+msgstr "Galeria"
+
+#: zzbrick_forms/media.php
+msgid "Download files in ZIP archive"
+msgstr ""
+
+#: zzbrick_forms/media.php
+msgid "Download"
+msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "File"
@@ -60,13 +393,19 @@ msgstr "Nr"
 msgid "Sequence"
 msgstr "Sekwencja"
 
+#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filetype"
 msgstr "Typ pliku"
 
+#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
 #: zzbrick_tables/media.php
 msgid "Filesize"
 msgstr "Wielkość Pliku"
+
+#: zzbrick_forms/media.php
+msgid "TOP"
+msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "MD5"
@@ -135,7 +474,7 @@ msgstr ""
 "Fotografia cyfrowa: Jeżeli dane nie zostają wprowadzone to w miare "
 "mozliwości zostaną odczytane ze zdjęcia."
 
-#: zzbrick_tables/media.php
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
 msgid "Source"
 msgstr "Źródło"
 
@@ -144,22 +483,6 @@ msgid ""
 "If it’s not a medium created by yourself, who created it, where did you find "
 "it?"
 msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Display as Table"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Table"
-msgstr "Tabela"
-
-#: zzbrick_tables/media.php
-msgid "Display as Gallery"
-msgstr ""
-
-#: zzbrick_tables/media.php
-msgid "Gallery"
-msgstr "Galeria"
 
 #: zzbrick_tables/media.php
 msgid "Clipping"
@@ -180,6 +503,10 @@ msgstr "na górze"
 #: zzbrick_tables/media.php
 msgid "left"
 msgstr "do lewej"
+
+#: zzbrick_tables/media.php
+msgid "custom"
+msgstr ""
 
 #: zzbrick_tables/media.php
 msgid "bottom"
@@ -204,3 +531,88 @@ msgstr ""
 #: zzbrick_tables/media.php
 msgid "Language"
 msgstr "Język"
+
+#: templates/mediuminfo.template.txt zzbrick_tables/media.php
+msgid "Alternative text"
+msgstr ""
+
+#: zzbrick_tables/media.php
+msgid ""
+"optional content of `alt`-attribute for images, for screen reader software"
+msgstr ""
+
+#: zzbrick_tables/media-access.php
+msgid "Media Access Rights"
+msgstr ""
+
+#: zzbrick_tables/media-access.php
+msgid "Access"
+msgstr ""
+
+#: zzbrick_tables/media-tags.php
+msgid "Media Tags"
+msgstr ""
+
+#: templates/embed.template.txt
+msgid "Yes, I’d like this content to be embedded directly on this website."
+msgstr ""
+"Tak, chcę, aby ta treść została osadzona bezpośrednio na tej stronie "
+"internetowej."
+
+#: templates/embed.template.txt
+msgid "Watch it on the original website:"
+msgstr "Obejrzyj na oryginalnej stronie internetowej:"
+
+#: templates/embed.template.txt
+msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
+msgstr "Akceptuję <a href='%s' target='_new'>politykę prywatności..</a>"
+
+#: templates/embed-privacy.template.txt
+msgid "Change privacy settings"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Your settings were saved"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "There is currently no embedded content."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Here, you can decide whether you’d like to have embedded content displayed "
+"inline on our website or not:"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Watch a YouTube video in privacy-enhanced mode on our website (no tracking "
+"cookies will be sent to Google)."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Some personal data (e. g. your IP address) is transmitted to Google."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Google’s Privacy Policy"
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Watch a Twitch video on our website."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid ""
+"Some personal data (e. g. your IP address) is transmitted to Twitch, "
+"tracking and other cookies may be set."
+msgstr ""
+
+#: templates/embed-privacy.template.txt
+msgid "Twitch’s Privacy Policy"
+msgstr ""
+
+#: templates/images.template.txt
+msgid "Image"
+msgstr ""
