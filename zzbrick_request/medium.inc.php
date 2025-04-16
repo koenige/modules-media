@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2011, 2014-2015, 2017-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2011, 2014-2015, 2017-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -63,6 +63,7 @@ function mod_media_medium($params) {
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 			, title AS send_as
 			, description
+			, filetypes.filetype_id
 			, filetypes.filetype
 			, filetypes.filetype_description
 		FROM /*_PREFIX_*/media media
@@ -102,6 +103,8 @@ function mod_media_medium($params) {
 					AND in_array($_GET['lang'], wrap_setting('languages_allowed'))) {
 					wrap_setting('lang', $_GET['lang']);
 				}
+				// different language? translate filetypes if set for translation
+				$file = wrap_translate($file, 'filetypes', 'filetype_id');
 				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
 				$page['template'] = 'embed';
 				$page['url_ending'] = 'none';
