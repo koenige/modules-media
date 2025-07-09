@@ -131,6 +131,7 @@ function mod_media_medium($params) {
 	if ($media_size)
 		$file['send_as'] .= ' '.$media_size;
 	if (!empty($_GET['v'])) {
+		if (!is_numeric($_GET['v'])) wrap_setting('cache', false);
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
 	}
 	wrap_send_file($file);
