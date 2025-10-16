@@ -5,8 +5,8 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2021 Gustaf Mossakowski
+# @copyright Copyright © 2021, 2025 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
-    <script src="%%% setting behaviour_path %%%/croppr/dist/croppr.js"></script>
+    %%% script croppr/dist/croppr.js %%%
     <link rel="stylesheet" href="%%% setting behaviour_path %%%/croppr/dist/croppr.css">
