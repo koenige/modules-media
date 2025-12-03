@@ -321,6 +321,9 @@ function mf_media_opengraph_image($image, $size = '') {
 		}
 	if (!$msize) return [];
 
+	// we need a binary image, JPEG, PNG, GIF or WebP
+	if (!$image['thumb_extension']) return [];
+
 	$og = [];
 	$og['og:image'] = sprintf(
 		'%s%s/%s.%s.%s?v=%d', wrap_setting('host_base'), wrap_setting('files_path')
