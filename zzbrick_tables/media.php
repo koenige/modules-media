@@ -15,12 +15,6 @@
 
 $zz['table'] = '/*_PREFIX_*/media';
 
-// @todo put into language module
-$language_code = wrap_setting('lang');
-$possible_codes = wrap_setting('language_translations');
-if (!in_array($language_code, $possible_codes))
-	$language_code = $possible_codes[0];
-
 $zz['fields'][1]['title'] = 'ID';
 $zz['fields'][1]['field_name'] = 'medium_id';
 $zz['fields'][1]['type'] = 'id';
@@ -255,11 +249,11 @@ if (count(wrap_setting('languages_allowed')) > 1) {
 	$zz['fields'][24]['type'] = 'select';
 	$zz['fields'][24]['default'] = wrap_language_id(wrap_setting('lang'));
 	$zz['fields'][24]['hide_in_list'] = true;
-	$zz['fields'][24]['sql'] = sprintf('SELECT language_id, language_%s
+	$zz['fields'][24]['sql'] = 'SELECT language_id, language
 		FROM /*_PREFIX_*/languages
 		WHERE website = "yes"
-		ORDER BY language_%s', $language_code, $language_code);
-	$zz['fields'][24]['display_field'] = sprintf('language_%s', $language_code);
+		ORDER BY language';
+	$zz['fields'][24]['sql_translate'] = ['language_id' => 'languages'];
 	$zz['fields'][24]['exclude_from_search'] = true;
 }
 
@@ -440,15 +434,13 @@ $zz['sql'] = sprintf('SELECT /*_PREFIX_*/media.*
 	, o_mime.extension AS original_extension
 	, UCASE(o_mime.extension) AS original_extension_ucase
 	, t_mime.extension AS thumb_extension
-	, language_%s
 	, SUBSTRING(filename, %d) AS filename_link
 	FROM /*_PREFIX_*/media
-	LEFT JOIN /*_PREFIX_*/languages USING (language_id)
 	LEFT JOIN /*_PREFIX_*/filetypes AS o_mime
 		ON /*_PREFIX_*/media.filetype_id = o_mime.filetype_id
 	LEFT JOIN /*_PREFIX_*/filetypes AS t_mime
 		ON /*_PREFIX_*/media.thumb_filetype_id = t_mime.filetype_id
-', $language_code, $values['filename_cut'] ?? 1
+', $values['filename_cut'] ?? 1
 );
 $zz['sqlorder'] = ' ORDER BY ISNULL(/*_PREFIX_*/media.sequence),
 	/*_PREFIX_*/media.sequence, /*_PREFIX_*/media.date, time, title ASC';
