@@ -232,7 +232,7 @@ function mf_media_get_embed_youtube($video) {
 
 	$url = sprintf(wrap_setting('youtube_url'), $video);
 	$headers[] = sprintf('Cookie: CONSENT=NO+%s', strtoupper(wrap_setting('lang')));
-	list($status, $headers, $data) = wrap_syndication_retrieve_via_http($url, $headers);
+	list($status, $headers, $data) = wrap_syndication_http_request($url, $headers);
 
 	// get opengraph metadata
 	if ($status === 200) {
