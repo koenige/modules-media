@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2025 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -109,7 +109,7 @@ function mod_media_filedownload_files($params) {
 	$join = [];
 	$where = [];
 	// @todo add rights check on a per folder basis
-	if (empty($_SESSION['logged_in']))
+	if (!wrap_access('media_preview'))
 		$where[] = 'published = "yes"';
 	
 	if (reset($params) === '-tags') {

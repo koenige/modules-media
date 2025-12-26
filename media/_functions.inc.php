@@ -96,9 +96,7 @@ function mf_media_get($id, $table = 'webpages', $id_field = 'page', $where = [])
 	';
 	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
 	// not logged in: show only published media
-	$pos = array_search('published = "yes" OR published = "no"', $where);
-	if ($pos !== false) unset($where[$pos]);
-	if (!empty($_SESSION['logged_in']) AND $pos === false)
+	if (!wrap_access('media_preview'))
 		$where[] = 'published = "yes"';
 		
 	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, implode(') AND (', $where), $table_short);
@@ -370,7 +368,7 @@ function mf_media_medium_from_setting($setting) {
 		WHERE medium_id = %d
 		%s
 	';
-	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
+	$where = wrap_access('media_preview') ? '' : 'AND published = "yes"';
 	$sql = sprintf($sql, $medium_id, $where);
 	$images = wrap_db_fetch($sql, 'medium_id');
 	return $images;
@@ -409,7 +407,7 @@ function mf_media_media_from_folder($folder) {
 		%s
 		ORDER BY sequence, title, filename
 	';
-	$where = !empty($_SESSION['logged_in']) ? '' : 'AND published = "yes"';
+	$where = wrap_access('media_preview') ? '' : 'AND published = "yes"';
 	$sql = sprintf($sql, $folder_medium_id, $where);
 	$images = wrap_db_fetch($sql, 'medium_id');
 	return $images;
