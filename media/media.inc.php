@@ -51,10 +51,12 @@ function mf_media_get($id, $table, $id_field, $where = []) {
 		}
 	}
 	$extra_fields = $extra_fields ? ','.implode(', ', $extra_fields) : '';
-	$table_short = $table;
-	if ($pos = strpos($table, ' ')) $table_short = substr($table_short, $pos);
-	
-	$sql = 'SELECT %s_id, medium_id, %s_media.sequence
+	if (in_array($table, ['categories']))
+		$media_table = sprintf('media_%s', $table);
+	else
+		$media_table = sprintf('%s_media', $table);
+
+	$sql = 'SELECT %s_id, medium_id, %s.sequence
 			, IF(ISNULL(description), media.title, description) AS title
 			, description
 			, source, filename, version
@@ -75,21 +77,21 @@ function mf_media_get($id, $table, $id_field, $where = []) {
 				ELSE "links" END
 			AS filecategory
 			%s
-		FROM %s_media
+		FROM %s
 		LEFT JOIN media USING (medium_id)
 		LEFT JOIN filetypes thumb_filetypes
 			ON media.thumb_filetype_id = thumb_filetypes.filetype_id
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE (%s)
-		ORDER BY %s_media.sequence, date, time, title, filename
+		ORDER BY %s.sequence, date, time, title, filename
 	';
 	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
 	// not logged in: show only published media
 	if (!wrap_access('media_preview'))
 		$where[] = 'published = "yes"';
 		
-	$sql = sprintf($sql, $id_field, $table_short, $extra_fields, $table, implode(') AND (', $where), $table_short);
+	$sql = sprintf($sql, $id_field, $media_table, $extra_fields, $media_table, implode(') AND (', $where), $media_table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);

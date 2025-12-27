@@ -42,7 +42,7 @@ function mod_media_gallery($params) {
 	$category_id = wrap_category_id('tags/'.$params[0]);
 	if (!$category_id) return $page;
 
-	$media = wrap_get_media($category_id, 'media_categories categories', 'category', $where);
+	$media = wrap_get_media($category_id, 'categories', 'category', $where);
 	if (!$media) return $page;
 
 	if (wrap_package('magnificpopup'))
