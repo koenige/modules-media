@@ -21,7 +21,7 @@
  * @param string $id_field name of id field
  * @param array $settings
  *		array where (optional) extra WHERE condition
- *		bool full_access if true, does not check user’s rights for unpublished media
+ *		bool include_unpublished if true, does not check user’s rights for unpublished media
  * @return array $media
  *		grouped by images, links
  */
@@ -90,7 +90,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	';
 	$settings['where'][] = sprintf('%s_id IN (%s)', $id_field, $id);
 	// not logged in: show only published media
-	if (empty($settings['full_access']) AND !wrap_access('media_preview'))
+	if (empty($settings['include_unpublished']) AND !wrap_access('media_preview'))
 		$settings['where'][] = 'published = "yes"';
 		
 	$sql = sprintf($sql, $id_field, $media_table, $extra_fields, $media_table, implode(') AND (', $settings['where']), $media_table);
