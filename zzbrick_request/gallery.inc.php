@@ -24,7 +24,7 @@ function mod_media_gallery($params) {
 	$page['text'] = "\n"; // no 404
 	if (count($params) !== 1) return $page;
 	
-	$where = [];
+	$settings['where'] = [];
 	// media associated with the gallery tag, showing contents of a folder
 	if (wrap_category_id('tags/gallery', 'check')) {
 		$sql = 'SELECT medium_id
@@ -33,7 +33,7 @@ function mod_media_gallery($params) {
 		$sql = sprintf($sql, wrap_db_escape($params[0]));
 		$folder_medium_id = wrap_db_fetch($sql, '', 'single value');
 		if ($folder_medium_id) {
-			$where[] = sprintf('main_medium_id = %d', $folder_medium_id);
+			$settings['where'][] = sprintf('main_medium_id = %d', $folder_medium_id);
 			$params[0] = 'gallery';
 		}
 	}
@@ -42,7 +42,7 @@ function mod_media_gallery($params) {
 	$category_id = wrap_category_id('tags/'.$params[0]);
 	if (!$category_id) return $page;
 
-	$media = wrap_get_media($category_id, 'categories', 'category', $where);
+	$media = wrap_media($category_id, 'categories', $settings);
 	if (!$media) return $page;
 
 	if (wrap_package('magnificpopup'))
