@@ -16,3 +16,4 @@
 # exclude_pattern: files matching this pattern will be excluded from results (multiple patterns separated by semicolon)
 #
 2025-12-26-1	published = "yes" OR published = "no"	remove from query, check via wrap_access('media_preview')
+2025-12-27-1	wrap_get_media	use wrap_media() with parameters $ids, $table, $settings instead	media/_functions.inc.php;zzwrap/media.inc.php

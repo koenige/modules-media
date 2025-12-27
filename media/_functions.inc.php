@@ -16,8 +16,10 @@
 
 /**
  * register mf_media_get() as wrap_get_media() if no custom function exists
+ * @deprecated
  */
-if (!function_exists('wrap_get_media')) {
+if (!function_exists('wrap_get_media') AND !function_exists('wrap_media')) {
+	wrap_error('Using wrap_get_media() is deprecated. Use wrap_media() instead.', E_USER_DEPRECATED);
 	wrap_include('media', 'media');
 	function wrap_get_media($id, $table = 'webpages', $id_field = 'page', $where = []) {
 		return mf_media_get($id, $table, $id_field, $where);
