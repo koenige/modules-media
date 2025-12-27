@@ -19,11 +19,12 @@
  * @param int $id ID
  * @param string $table name of table, optional
  * @param string $id_field name of id field
- * @param array $where (optional) extra WHERE condition
+ * @param array $settings
+ *		where (optional) extra WHERE condition
  * @return array $media
  *		grouped by images, links
  */
-function mf_media_get($id, $table, $id_field, $where = []) {
+function mf_media_get($id, $table, $id_field, $settings = []) {
 	if (!wrap_setting('mod_media_install_date')) return [];
 	$multiple_ids = false;
 	if (is_array($id)) {
@@ -86,12 +87,12 @@ function mf_media_get($id, $table, $id_field, $where = []) {
 		WHERE (%s)
 		ORDER BY %s.sequence, date, time, title, filename
 	';
-	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
+	$settings['where'][] = sprintf('%s_id IN (%s)', $id_field, $id);
 	// not logged in: show only published media
 	if (!wrap_access('media_preview'))
-		$where[] = 'published = "yes"';
+		$settings['where'][] = 'published = "yes"';
 		
-	$sql = sprintf($sql, $id_field, $media_table, $extra_fields, $media_table, implode(') AND (', $where), $media_table);
+	$sql = sprintf($sql, $id_field, $media_table, $extra_fields, $media_table, implode(') AND (', $settings['where']), $media_table);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
