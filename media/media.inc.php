@@ -19,11 +19,23 @@
  * @param int $id ID
  * @param string $table name of table, optional
  * @param string $id_field name of id field
- * @param array $settings
- *		array where (optional) extra WHERE condition
- *		bool include_unpublished if true, does not check user’s rights for unpublished media
- * @return array $media
- *		grouped by images, links
+ * @param array $settings {
+ *     Optional. Array of settings.
+ *
+ *     @type int  $main_medium_id      ID of parent medium to filter by folder. Default empty.
+ *     @type bool $include_unpublished Whether to include unpublished media without 
+ *                                     checking user rights. Default false.
+ * }
+ * @return array {
+ *     Media files grouped by category
+ *
+ *     @type array $images          Media files with mime type image/*
+ *     @type array $videos          Media files with mime type video/*
+ *     @type array $links           Other media files
+ *     @type array $embeds          Embeddable content (subset of links)
+ *     @type array $images_overview Image(s) marked as overview or first image
+ *     @type array $images_detail   Remaining images after overview extraction
+ * }
  */
 function mf_media_get($id, $table, $id_field, $settings = []) {
 	if (!wrap_setting('mod_media_install_date')) return [];
@@ -88,12 +100,17 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 		WHERE (%s)
 		ORDER BY detail_media.sequence, date, time, title, filename
 	';
-	$settings['where'][] = sprintf('%s_id IN (%s)', $id_field, $id);
-	// not logged in: show only published media
+
+	// WHERE condition
+	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
 	if (empty($settings['include_unpublished']) AND !wrap_access('media_preview'))
-		$settings['where'][] = 'published = "yes"';
-		
-	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, implode(') AND (', $settings['where']));
+		// not logged in: show only published media
+		$where[] = 'published = "yes"';
+	if (!empty($settings['main_medium_id']))
+		$where[] = sprintf('media.main_medium_id = %d', $settings['main_medium_id']);
+	$where = implode(') AND (', $where);
+
+	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, $where);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
@@ -111,10 +128,17 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 }
 
 /**
- * separate embeds from links
+ * Separate embeds from links
  *
- * @param array $media
- * @return array
+ * Moves media items with embeddable filetypes (e.g. YouTube, Vimeo) from the 
+ * 'links' category to a separate 'embeds' category and adds an embed_id field.
+ *
+ * @param array $media {
+ *     Media array grouped by category
+ *
+ *     @type array $links Optional. Media items that may contain embeddable content
+ * }
+ * @return array Modified media array with embeds separated from links
  */
 function mf_media_separate_embeds($media) {
 	if (empty($media['links'])) return $media;
@@ -131,11 +155,21 @@ function mf_media_separate_embeds($media) {
 }
 
 /**
- * prepare media: translate data, set filecategory for if
- * add pdfs with a thumbnail to 'images'
+ * Prepare media data for output
  *
- * @param array $media
- * @return array
+ * Translates media data, processes markdown in source field, sets filecategory 
+ * flags, and adds PDF files and videos with thumbnails to the 'images' category.
+ * Sorts images by sequence, date, time, title, and filename.
+ *
+ * @param array $media {
+ *     Media array grouped by category
+ *
+ *     @type array $images Optional. Image media items
+ *     @type array $videos Optional. Video media items
+ *     @type array $links  Optional. Other media items
+ *     @type array $embeds Optional. Embeddable media items
+ * }
+ * @return array Prepared media array with translated data and proper categorization
  */
 function mf_media_prepare($media) {
 	foreach ($media as $filecategory => &$files) {
@@ -167,12 +201,23 @@ function mf_media_prepare($media) {
 }
 
 /**
- * set 'images_detail', 'images_overview'
- * check if an image is marked with `overview_medium`
- * or just use first image
+ * Separate images into overview and detail categories
  *
- * @param array $media
- * @return array
+ * Creates 'images_overview' containing images marked with 'overview_medium' flag
+ * (or the first image if none marked), and 'images_detail' with remaining images.
+ *
+ * @param array $media {
+ *     Media array grouped by category
+ *
+ *     @type array $images Optional. Image media items. Each item may contain:
+ *         - 'overview_medium' (bool) Flag to mark image as overview image
+ * }
+ * @return array {
+ *     Media array with separated image categories
+ *
+ *     @type array $images_overview First image or image(s) marked as overview
+ *     @type array $images_detail   Remaining images not used as overview
+ * }
  */
 function mf_media_separate_overview($media) {
 	if (empty($media['images'])) return $media;
