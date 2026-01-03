@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -114,8 +114,7 @@ function mod_media_mediuminfo($params, $setting) {
 		$medium['embed'] = wrap_template($medium['filetype'], $medium);
 	}
 	
-	$relations = brick_format('%%% request relations media '.$medium['medium_id'].' %%%');
-	if ($relations['text']) $medium['relations'] = $relations['text'];
+	$medium['relations'] = brick(['request', 'relations', 'media', $medium['medium_id']]);
 	
 	$page['h1'] = mf_media_mediapool_title($setting['vars']['title'], $setting['vars']['folder'], $setting['vars']['view']);
 	$page['text'] = wrap_template('mediuminfo', $medium);
