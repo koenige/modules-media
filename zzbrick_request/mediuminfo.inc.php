@@ -50,7 +50,10 @@ function mod_media_mediuminfo($params, $setting) {
 	// categories, tags
 	$sql = 'SELECT medium_category_id, property
 			, categories.category
-			, CONCAT("-", IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(types.parameters, "&alias=", -1), "&", 1), types.path), "/", SUBSTRING_INDEX(categories.path, "/", -1)) AS path
+			, CONCAT(
+				"-", IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(types.parameters, "&alias=", -1), "&", 1), types.path),
+				"/", SUBSTRING(categories.path, INSTR(categories.path, "/") + 1)
+			) AS path
 			, types.category as type
 			, IFNULL(SUBSTRING_INDEX(SUBSTRING_INDEX(types.parameters, "&alias=", -1), "&", 1), types.path) AS type_path
 		FROM media_categories

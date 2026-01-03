@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -234,7 +234,8 @@ function mf_media_mediapool_view($vars, $parameter) {
 			$view['tag_overview'] = 1;
 			return $view;
 		}
-		$view['tag'] = array_pop($full_path_parts);
+		array_shift($full_path_parts);
+		$view['tag'] = implode('/', $full_path_parts);
 		$view['category_id'] = wrap_category_id('tags/'.$view['tag']);
 		if (!$view['category_id']) wrap_quit(404);
 		$view['full_path'] = NULL;
