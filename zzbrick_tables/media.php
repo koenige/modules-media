@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2010-2018, 2020-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2010-2018, 2020-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -197,6 +197,7 @@ if (wrap_setting('media_tags') AND wrap_category_id('tags', 'list') > 2) {
 	$zz['fields'][6]['min_records'] = 1;
 	$zz['fields'][6]['fields'][2]['type'] = 'foreign_key';
 	$zz['fields'][6]['fields'][4]['placeholder'] = 'Seq.';
+	$zz['fields'][6]['fields'][4]['type'] = 'sequence';
 	$zz['fields'][6]['if'][2]['hide_in_form'] = true; // not for folders
 	$zz['fields'][6]['hide_in_list'] = true;
 }
