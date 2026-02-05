@@ -5,13 +5,13 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2021-2025 Gustaf Mossakowski
+# @copyright Copyright © 2021-2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="mediuminfo">
 <h2>%%% item title %%%</h2>
 
-%%% item description markdown %%%
+%%% item description format=markdown %%%
 
 %%% if preview_image %%%
 <figure class="media_preview_image">
@@ -34,8 +34,8 @@
 <h3>%%% text Meta data %%%</h3>
 
 <dl>
-<dt>%%% text Date/Time %%%</dt><dd>%%% item date wrap_date %%% %%% item time wrap_time %%%</dd>
-%%% if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description wrap_html_escape %%%</dd>%%% endif %%%
+<dt>%%% text Date/Time %%%</dt><dd>%%% item date format=date %%% %%% item time format=time %%%</dd>
+%%% if og:description %%%<dt>%%% text Description %%%</dt><dd>%%% text (OpenGraph) %%%: %%% item og:description format=html_escape %%%</dd>%%% endif %%%
 %%% if source %%%<dt>%%% text Source %%%</dt><dd>%%% item source %%%</dd>%%% endif %%%
 %%% if alternative_text %%%<dt>%%% text Alternative text %%%</dt><dd>%%% item alternative_text %%%</dd>%%% endif %%%
 </dl>
@@ -53,7 +53,7 @@
 <h3>%%% text File info %%%</h3>
 
 <dl>
-%%% if filesize %%%<dt>%%% text Filesize %%%</dt><dd>%%% item filesize wrap_bytes %%%</dd>%%% endif %%%
+%%% if filesize %%%<dt>%%% text Filesize %%%</dt><dd>%%% item filesize format=bytes %%%</dd>%%% endif %%%
 %%% if md5_hash %%%<dt>%%% text Hash (MD5) %%%</dt><dd><code>%%% item md5_hash %%%</code></dd>%%% endif %%%
 <dt>%%% text Filetype %%%</dt><dd>%%% item filetype_description %%% %%% if extension %%%(%%% text Extension: %%% .%%% item extension %%%)%%% endif %%%</dd>
 </dl>

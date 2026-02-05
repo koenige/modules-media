@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020-2021, 2024 Gustaf Mossakowski
+# @copyright Copyright © 2020-2021, 2024, 2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 %%% if no_embeds %%%
@@ -21,7 +21,7 @@
 %%% if setting html_label_after_input %%%<label for="embed_%%% item type %%%">%%% endif %%%<strong>%%% item type %%%</strong>
 </label></p>
 %%% if privacy %%%
-%%% item privacy markdown %%%
+%%% item privacy format=markdown %%%
 %%% elseif YouTube %%%
 <p>%%% text "Watch a YouTube video in privacy-enhanced mode on our website (no tracking cookies will be sent to Google)." %%% %%% text Some personal data (e. g. your IP address) is transmitted to Google. %%% <a href="https://policies.google.com/privacy">%%% text Google’s Privacy Policy %%%</a>.</p>
 %%% elseif Twitch %%%

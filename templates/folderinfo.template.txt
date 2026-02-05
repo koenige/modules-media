@@ -5,7 +5,7 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2023-2025 Gustaf Mossakowski
+# @copyright Copyright © 2023-2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 %%% if imported %%%
@@ -28,8 +28,8 @@
 <tr class="%%% loopposition uneven un %%%even">
 <td><input type="checkbox" name="%%% item sha1 %%%" checked></td>
 <td>%%% item filename %%%</td>
-<td>%%% item extension strtoupper %%%</td>
-<td>%%% item filesize wrap_bytes %%%</td>
+<td>%%% item extension format=strtoupper %%%</td>
+<td>%%% item filesize format=bytes %%%</td>
 </tr>
 %%% loop end %%%
 </tbody>
