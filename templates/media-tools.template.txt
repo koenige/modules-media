@@ -5,13 +5,13 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2024 Gustaf Mossakowski
+# @copyright Copyright © 2024, 2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <span class="mediatools">%%% loop start %%%
 %%% if link %%%
 <a href="%%% item link %%%" class="icon">%%% endif %%%
-<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% item alt wrap_text %%%" title="%%% item title wrap_text %%%" class="icon">%%% if link %%%
+<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% translate item alt %%%" title="%%% translate item title %%%" class="icon">%%% if link %%%
 </a>%%% endif %%%
 %%% loop end %%%
 </span>
