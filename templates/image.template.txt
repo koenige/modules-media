@@ -26,5 +26,5 @@
 </a>
 %%% endif %%%
 %%% endif %%%
-<figcaption><em>%%% if custom_title %%%%%% item custom_title %%%%%% elseif description %%%%%% item description format=markdown_inline %%%%%% else %%%%%% item title format=markdown_inline %%%%%% endif %%% %%% if setting media_figcaption_with_date %%%%%% item date format=date " –  %s" %%%%%% endif %%%%%% item source " <small>(%s)</small>" %%%</em></figcaption></figure>
+<figcaption><em><span class="figure-title">%%% if custom_title %%%%%% item custom_title %%%%%% elseif description %%%%%% item description format=markdown_inline %%%%%% else %%%%%% item title format=markdown_inline %%%%%% endif %%%</span> %%% if setting media_figcaption_with_date %%%<span class="figure-date">%%% item date format=date " –  %s" %%%</span>%%% endif %%%%%% item source " <small class='figure-source'>(%s)</small>" %%%</em></figcaption></figure>
 </div>
