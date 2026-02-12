@@ -71,6 +71,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 		$detail_media_table = sprintf('%s_media', $table);
 
 	$sql = 'SELECT %s_id, medium_id, detail_media.sequence
+			, media.sequence AS media_sequence
 			, IF(ISNULL(description), media.title, description) AS title
 			, description
 			, source, filename, version
@@ -98,7 +99,6 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE (%s)
-		ORDER BY detail_media.sequence, date, time, title, filename
 	';
 
 	// WHERE condition
@@ -190,7 +190,11 @@ function mf_media_prepare($media) {
 	if (empty($media['images'])) return $media;
 	if (count($media['images']) === 1) return $media;
 	foreach ($media['images'] as $medium_id => $medium)
-		$sequence[$medium_id] = sprintf('%04d-%s-%s-%s-%s', $medium['sequence'], $medium['date'], $medium['time'], $medium['title'], $medium['filename']);
+		$sequence[$medium_id] = sprintf(
+			'%04d-%s-%s-%s-%s-%s'
+			, $medium['sequence'], $medium['media_sequence'], $medium['date']
+			, $medium['time'], $medium['title'], $medium['filename']
+		);
 	$keys = array_keys($media['images']);
 	array_multisort(
 		$sequence, SORT_ASC, SORT_REGULAR,
