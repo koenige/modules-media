@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -99,6 +99,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 		LEFT JOIN filetypes
 			ON media.filetype_id = filetypes.filetype_id
 		WHERE (%s)
+		%s
 	';
 
 	// WHERE condition
@@ -109,8 +110,11 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	if (!empty($settings['main_medium_id']))
 		$where[] = sprintf('media.main_medium_id = %d', $settings['main_medium_id']);
 	$where = implode(') AND (', $where);
+	
+	// LIMIT
+	$limit = !empty($settings['limit']) ? sprintf('LIMIT %d', $settings['limit']) : '';
 
-	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, $where);
+	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, $where, $limit);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
