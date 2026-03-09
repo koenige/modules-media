@@ -10,7 +10,7 @@
 #
 <ul>
 %%% loop start %%%
-<li>%%% path media_internal path html="<a href='%s'>" %%%%%% item category %%%%%% path media_internal path html=</a> %%% (%%% item media_count %%%)</li>
+<li>%%% path media_internal_folder path html="<a href='%s'>" %%%%%% item category %%%%%% path media_internal_folder path html=</a> %%% (%%% item media_count %%%)</li>
 %%% loop end %%%
 </ul>
 

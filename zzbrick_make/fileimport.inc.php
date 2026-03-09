@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -27,7 +27,7 @@ function mod_media_make_fileimport($params) {
 	if (strlen($sha1_hash) !== 40) return false;
 	if (!preg_match('/^[a-z0-9]+$/', $sha1_hash)) return false;
 	
-	$data['folder_path'] = wrap_path('media_internal', implode('/', $params));
+	$data['folder_path'] = wrap_path('media_internal_folder', implode('/', $params));
 
 	// thumbnail creation in background?
 	if (!empty($_GET['thumbs']) AND !empty($_GET['field'])) {
