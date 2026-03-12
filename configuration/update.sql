@@ -6,7 +6,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2017, 2020-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2017, 2020-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -35,3 +35,7 @@
 /* 2024-03-16-1 */	ALTER TABLE `media_access` CHANGE `last_update` `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
 /* 2024-08-23-1 */	UPDATE _settings SET setting_key = 'media_embed_path_twitch' WHERE setting_key = 'embed_path_twitch';
 /* 2024-08-23-2 */	UPDATE _settings SET setting_key = 'media_embed_path_youtube' WHERE setting_key = 'embed_path_youtube';
+/* 2026-03-12-1 */	DELETE FROM _settings WHERE setting_key = 'media_download_path';
+/* 2026-03-12-2 */	DELETE FROM _settings WHERE setting_key = 'media_import_path';
+/* 2026-03-12-3 */	DELETE FROM _settings WHERE setting_key = 'media_internal_path';
+/* 2026-03-12-4 */	DELETE FROM _settings WHERE setting_key = 'media_internal_folder_path';
