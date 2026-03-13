@@ -45,8 +45,7 @@ $zz['fields'][3]['display_field'] = 'category';
 $zz['fields'][3]['search'] = '/*_PREFIX_*/categories.category';
 $zz['fields'][3]['show_hierarchy'] = 'main_category_id';
 $zz['fields'][3]['show_hierarchy_subtree'] = wrap_category_id('tags');
-if ($path = wrap_path('default_tables', 'categories'))
-	$zz['fields'][3]['add_details'] = sprintf('%s?filter[maincategory]=%d', $path, wrap_category_id('tags'));
+$zz['fields'][3]['add_details'] = wrap_path('default_categorytree', 'tags');
 
 $zz['fields'][5]['field_name'] = 'type_category_id';
 $zz['fields'][5]['type'] = 'hidden';
