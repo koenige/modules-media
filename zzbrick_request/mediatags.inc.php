@@ -48,8 +48,6 @@ function mod_media_mediatags($params) {
 			$data[$category_id]['media_count'] = $category['media_count'];
 	}
 
-	$data['add_new_path'] = wrap_path('default_tables', 'categories');
-	
 	$page['text'] = wrap_template('mediatags', $data);
 	$page['title'] = sprintf('%s<br><small><a href="../%s">%s</a> / %s</small>'
 		, wrap_text('Media Pool'), $suffix ? '../-/' : '', wrap_text('TOP'), wrap_text('Tags')
