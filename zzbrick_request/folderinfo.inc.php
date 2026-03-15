@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -92,7 +92,7 @@ function mod_media_folderinfo_import_files($folder) {
 		foreach ($_POST as $sha1_hash => $selection) {
 			if ($selection !== 'on') continue;
 			if (!array_key_exists($sha1_hash, $data)) continue;
-			$path = wrap_path('media_import', $folder.'/'.$sha1_hash, false);
+			$path = wrap_path('media_import', $folder.'/'.$sha1_hash, ['check_rights' => false]);
 			$success = wrap_job($path, [
 				'trigger' => 1,
 				'job_category_id' => wrap_category_id('jobs/media')
