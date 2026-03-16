@@ -393,7 +393,7 @@ function mf_media_tools($view) {
 		'title' => 'Display as Table',
 		'link' => $view['type'] === 'tree' ? '' : '-/'
 	];
-	if ($path = wrap_path('media_download', $view['tag_path'] ?? $view['full_path'] ?? '-media')) {
+	if ($path = wrap_path('media_download', $view['tag_path'] ?? $view['full_path'] ?? '-media', ['hide_missing' => true])) {
 		if (!empty($_GET['q']))
 			$path = sprintf('%s?q=%s&amp;scope=%s', $path, $_GET['q'], $_GET['scope'] ?? '');
 		$tools[] = [
