@@ -39,3 +39,5 @@
 /* 2026-03-12-2 */	DELETE FROM _settings WHERE setting_key = 'media_import_path';
 /* 2026-03-12-3 */	DELETE FROM _settings WHERE setting_key = 'media_internal_path';
 /* 2026-03-12-4 */	DELETE FROM _settings WHERE setting_key = 'media_internal_folder_path';
+/* 2026-03-16-1 */	UPDATE webpages SET parameters = CONCAT(IFNULL(parameters, ''), '&route=privacy_policy') WHERE CONCAT(identifier, IF(ending = 'none', '', ending)) = '/*_SETTING privacy_policy_url _*/';
+/* 2026-03-16-2 */	DELETE FROM _settings WHERE setting_key = 'privacy_policy_url';

@@ -5,13 +5,13 @@
 # https://www.zugzwang.org/modules/media
 #
 # @author Gustaf Mossakowski <gustaf@koenige.org>
-# @copyright Copyright © 2020, 2022 Gustaf Mossakowski
+# @copyright Copyright © 2020, 2022, 2026 Gustaf Mossakowski
 # @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
 #
 <div class="embed-privacy">
 <h2><a href="javascript:setPrivacyCookie('%%% item filetype %%%');">
 %%% text Yes, I’d like this content to be embedded directly on this website. %%%</a><br>
-%%% text "I accept the <a href='%s' target='_new'>Privacy Policy.</a>" privacy_policy_url %%%</h2>
+%%% text "I accept the <a href='%s' target='_new'>Privacy Policy.</a>" path privacy_policy %%%</h2>
 
 <p>%%% text Watch it on the original website: %%% <a href="%%% item url %%%">%%% item description %%%</a></p>
 </div>

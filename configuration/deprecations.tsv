@@ -21,3 +21,4 @@
 2026-03-14-2	code	media_import_path	removed, paths from routes; use wrap_path()
 2026-03-14-3	code	media_internal_path	removed, paths from routes; use wrap_path()
 2026-03-14-4	code	media_internal_folder_path	removed, paths from routes; use wrap_path()
+2026-03-16-1	code	privacy_policy_url	removed, paths from routes; use wrap_path('privacy_policy') or %%% path privacy_policy %%%
