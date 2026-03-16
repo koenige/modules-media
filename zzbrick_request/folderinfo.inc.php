@@ -62,7 +62,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
  */
 function mod_media_folderinfo_import_files($folder) {
 	if (!$folder) return [];
-	if (!wrap_path('media_import', $folder)) return [];
+	if (!wrap_path('media_import', $folder, ['hide_missing' => true])) return [];
 
 	$import_folder = mf_media_import_folder($folder);
 	if (!$import_folder) return [];
