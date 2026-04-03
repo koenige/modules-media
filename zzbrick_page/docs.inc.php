@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2021, 2023 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2021, 2023, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -36,22 +36,23 @@ function page_docs(&$params, $page) {
  * @return array
  */
 function page_docs_remove_used($links) {
-	global $zz_page;
 	$remove = [];
 	$texts = [];
 	$ignore_langs = [wrap_setting('lang')];
 	
 	// original language
-	$texts[] = $zz_page['db']['content'];
+	$texts[] = wrap_page_field('content');
 	// translations
-	if (!empty($zz_page['db']['wrap_source_content']['content'])) {
-		$texts[] = $zz_page['db']['wrap_source_content']['content'];
-		$ignore_langs[] = $zz_page['db']['wrap_source_language']['content'];
+	$wrap_source_content = wrap_page_field('wrap_source_content');
+	$wrap_source_language = wrap_page_field('wrap_source_language');
+	if (!empty($wrap_source_content['content'])) {
+		$texts[] = $wrap_source_content['content'];
+		$ignore_langs[] = $wrap_source_language['content'];
 	}
 	if ($languages = wrap_setting('languages_allowed')) {
 		foreach ($languages as $lang) {
 			if (in_array($lang, $ignore_langs)) continue;
-			$translation = wrap_translate($zz_page['db'], 'webpages', 'page_id', true, $lang);
+			$translation = wrap_translate(wrap_page_field(), 'webpages', 'page_id', true, $lang);
 			$texts[] = $translation['content'];
 		}
 	}
