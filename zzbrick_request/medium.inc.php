@@ -34,7 +34,7 @@ function mod_media_medium($params) {
 	if ($redirect = strpos($extension, '%3Fv=')) {
 		$extension = substr($extension, 0, $redirect);
 		$filename = substr($filename, 0, strpos($filename, '%3Fv='));
-		$new_url = explode('%3Fv=', $zz_page['url']['full']['path']);
+		$new_url = explode('%3Fv=', wrap_url('path'));
 		$new_url = implode('?v=', $new_url);
 	}
 
