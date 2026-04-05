@@ -210,8 +210,6 @@ if (!empty($view['tag'])) {
  * @return array
  */
 function mf_media_mediapool_view($vars, $parameter) {
-	global $zz_page;
-
 	// get base path for media folders
 	$view['base_path'] = wrap_page_field('identifier');
 	$view['base_path'] = rtrim($view['base_path'], '*');

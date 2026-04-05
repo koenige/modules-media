@@ -23,8 +23,6 @@
  * @return void (file will be sent)
  */
 function mod_media_medium($params) {
-	global $zz_page;
-
 	if (!$params) return false;
 	$filename = $identifier = implode('/', $params);
 	$identifier = explode('.', $identifier);
