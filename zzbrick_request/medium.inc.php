@@ -75,7 +75,7 @@ function mod_media_medium($params) {
 
 	// Check access rights
 	$file = wrap_db_fetch($sql);
-	if (!$file) return false;
+	if (!$file) return mod_media_medium_fallback($params);
 	// If no public access, require login
 	if (!$file['published']) {
 		wrap_include('auth', 'zzwrap');
@@ -132,4 +132,24 @@ function mod_media_medium($params) {
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
 	}
 	wrap_send_file($file);
+}
+
+/**
+ * serve a file from disk when it has no record in the media DB table
+ * tries sendfile* hooks
+ *
+ * @param array $params URL path segments
+ * @return mixed
+ */
+function mod_media_medium_fallback($params) {
+	if (empty($params[1])) return false;
+
+	$files = wrap_include('file');
+	$functions = wrap_functions($files, 'sendfile*');
+	foreach ($functions as $function) {
+		if ($function['suffix'] !== $params[0]) continue;
+		return $function['function']($params);
+	}
+
+	return false;
 }
