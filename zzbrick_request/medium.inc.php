@@ -29,6 +29,7 @@ function mod_media_medium($params) {
 	$extension = count($identifier) > 1 ? array_pop($identifier) : '';
 	$identifier = implode('.', $identifier);
 	// sometimes, browsers coming from search engines interpret ? wrong as %3F
+	$new_url = '';
 	if ($redirect = strpos($extension, '%3Fv=')) {
 		$extension = substr($extension, 0, $redirect);
 		$filename = substr($filename, 0, strpos($filename, '%3Fv='));
@@ -51,11 +52,31 @@ function mod_media_medium($params) {
 			break;
 		}
 	}
-	$variants = wrap_setting('media_file_variants');
-	foreach ($variants as $variant) {
+	foreach (wrap_setting('media_file_variants') as $variant) {
 		if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
 			$identifier = substr($identifier, 0, - strlen($variant) - 1);
 			break;
+		}
+	}
+	if (!$media_size AND $pos = strrpos($identifier, '.')) {
+		// get a possible old media size
+		$old_media_size = substr($identifier, $pos + 1);
+		if (array_key_exists($old_media_size, wrap_setting('media_sizes_redirect'))) {
+			$identifier = substr($identifier, 0, $pos);
+			$old_filename = $filename;
+			$parts = explode('.', $filename);
+			$key = $extension ? count($parts) - 2 : count($parts) - 1;
+			$media_size = wrap_setting('media_sizes_redirect')[$old_media_size];
+			if (!in_array($media_size, array_column($media_sizes, 'path')))
+				wrap_error(wrap_text(
+					'Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent destination: %s',
+					['values' => [$media_size]]
+				), E_USER_NOTICE);
+			$parts[$key] = str_replace($old_media_size, $media_size, $parts[$key]);
+			$filename = implode('.', $parts);
+			// overwrite $new_url if set before, but this does not matter
+			// since we ignore the ?v= path completely here
+			$new_url = str_replace($old_filename, $filename, wrap_url('path'));
 		}
 	}
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
@@ -121,7 +142,7 @@ function mod_media_medium($params) {
 		if (!file_exists($file['name'])) return false;
 	}
 	if (is_dir($file['name'])) return false;
-	if ($redirect) {
+	if ($new_url) {
 		return wrap_redirect($new_url, 303);
 	}
 	$file['etag'] = md5_file($file['name']);
