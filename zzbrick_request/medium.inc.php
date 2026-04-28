@@ -20,14 +20,18 @@
  *		[0]: Type
  *		[1]...: folder
  *		[n]: filename .tn.typ
- * @return void (file will be sent)
+ * @return mixed (standard: file will be sent, or array $page, or redirect)
  */
 function mod_media_medium($params) {
 	if (!$params) return false;
-	$filename = $identifier = implode('/', $params);
-	$identifier = explode('.', $identifier);
-	$extension = count($identifier) > 1 ? array_pop($identifier) : '';
-	$identifier = implode('.', $identifier);
+	$filename = implode('/', $params);
+	$parsed = pathinfo($filename);
+	$extension = $parsed['extension'] ?? '';
+	if (!empty($parsed['dirname']) && $parsed['dirname'] !== '.') {
+		$identifier = $parsed['dirname'].'/'.$parsed['filename'];
+	} else {
+		$identifier = $parsed['filename'];
+	}
 	// sometimes, browsers coming from search engines interpret ? wrong as %3F
 	$new_url = '';
 	if ($redirect = strpos($extension, '%3Fv=')) {
