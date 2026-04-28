@@ -71,16 +71,11 @@ function mod_media_mediuminfo($params, $setting) {
 	
 	$medium['backlink'] = $backlink;
 	$medium['sizes'] = [];
-	$original_filename = sprintf('%s%s.%s'
-		, $medium['filename']
-		, wrap_setting('media_original_filename_extension') ? '.'.wrap_setting('media_original_filename_extension') : ''
-		, $medium['extension']
-	);
 	$medium['sizes'][] = [
 		'type' => wrap_text('Original file'),
 		'version' => $medium['version'],
-		'filename' => $original_filename,
-		'file_exists' => file_exists(wrap_setting('media_folder').'/'.$original_filename) ? true : false,
+		'filename' => mf_media_filename($medium, 'original'),
+		'file_exists' => file_exists(mf_media_filename($medium, 'original', true)) ? true : false,
 		'width' => $medium['width_px'],
 		'height' => $medium['height_px']
 	];
@@ -92,8 +87,8 @@ function mod_media_mediuminfo($params, $setting) {
 		foreach ($media_sizes as $type => $size) {
 			$size['type'] = wrap_text(ucfirst($size['action']).' file').', '.$type;
 			$size['version'] = $medium['version'];
-			$size['filename'] = sprintf('%s.%s.%s', $medium['filename'], $size['path'], $medium['thumb_extension']);
-			$size['file_exists'] = file_exists(wrap_setting('media_folder').'/'.$size['filename']) ? true : false;
+			$size['filename'] = mf_media_filename($medium, $size['path']);
+			$size['file_exists'] = file_exists(mf_media_filename($medium, $size['path'], true)) ? true : false;
 			$medium['sizes'][] = $size;
 			if (empty($medium['preview_image']) AND $size['action'] === 'thumbnail') {
 				$medium['preview_image'] = $size['filename'];
@@ -103,7 +98,7 @@ function mod_media_mediuminfo($params, $setting) {
 				$medium['crop'] = true;
 		}
 	} elseif (!empty($medium['filetype_details']['webimage'])) {
-		$medium['preview_image'] = sprintf('%s.%s.%s', $medium['filename'], wrap_setting('media_original_filename_extension'), $medium['extension']);
+		$medium['preview_image'] = mf_media_filename($medium, 'original');
 		$medium['preview_title'] = wrap_text('Original file');
 	}
 	if ($medium['parameters']) {

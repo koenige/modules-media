@@ -9,7 +9,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2014-2015, 2020-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2014-2015, 2020-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -247,7 +247,6 @@ function mf_media_media_from_folder($folder) {
 function mf_media_mail_attachments(&$data, $image_size = 'media_standard_image_size') {
 	$files = [];
 	$keys = ['images', 'links'];
-	$of = wrap_setting('media_original_filename_extension') ? sprintf('.%s', wrap_setting('media_original_filename_extension')) : '';
 	foreach ($keys as $key) {
 		if (!array_key_exists($key, $data)) continue;
 		foreach ($data[$key] as $medium_id => &$file) {
@@ -256,22 +255,59 @@ function mf_media_mail_attachments(&$data, $image_size = 'media_standard_image_s
 			case 'images':
 				if (!$file['thumb_extension']) {
 					if (!wrap_webimage($file['filetype'])) continue 2; // no image possible
-					$file['path'] = sprintf('%s%s.%s', $file['filename'], $of, $file['extension']);
+					$file['path'] = mf_media_filename($file, 'original');
+					$file['path_local'] = mf_media_filename($file, 'original', true);
 				} else {
-					$file['path'] = sprintf('%s.%s.%s', $file['filename'], wrap_setting($image_size), $file['thumb_extension']);
+					$file['path'] = mf_media_filename($file, wrap_setting($image_size));
+					$file['path_local'] = mf_media_filename($file, wrap_setting($image_size), true);
 				}
 				$file['disposition'] = 'inline';
 				break;
 			case 'links':
-				$file['path'] = sprintf('%s%s.%s', $file['filename'], $of, $file['extension']);
+				$file['path'] = mf_media_filename($file, 'original');
+				$file['path_local'] = mf_media_filename($file, 'original', true);
 				$file['disposition'] = 'attachment';
 				break;
 			}
-			$file['path_local'] = wrap_setting('media_folder').'/'.$file['path'];
 			$file['cid'] = sprintf('%s@%s', $file['path'], wrap_setting('hostname'));
 			$file['medium_description'] = $file['description']; // to avoid descriptions in loops to be taken from articles
 			$files[] = $file;
 		}
 	}
 	return $files;
+}
+
+/**
+ * create a full filename out of medium data
+ *
+ * @param array $medium record from database (filename, extension, thumb_extension)
+ * @param string $size size of image, use 'original' for original file
+ * @param bool $use_root if true, prepend root folder
+ * @return string
+ */
+function mf_media_filename($medium, $size, $use_root = false) {
+	$parts = [];
+	$root_folder = '';
+
+	switch ($size) {
+	case 'original':
+		if ($use_root) $root_folder = wrap_setting('media_folder_original');
+		$parts[] = $medium['filename'];
+		if (wrap_setting('media_original_filename_extension'))
+			$parts[] = wrap_setting('media_original_filename_extension');
+		$parts[] = $medium['extension'];
+		break;
+	
+	default:
+		if ($use_root) $root_folder = wrap_setting('media_folder');
+		$parts[] = $medium['filename'];
+		$parts[] = $size;
+		$parts[] = $medium['thumb_extension'];
+		break;
+	}
+
+	$filename = implode('.', $parts);
+	if ($root_folder)
+		$filename = sprintf('%s/%s', $root_folder, $filename);
+	return $filename;
 }

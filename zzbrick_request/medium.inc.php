@@ -38,53 +38,60 @@ function mod_media_medium($params) {
 	}
 
 	$media_sizes = wrap_setting('media_sizes');
-	$media_sizes['original'] = ['path' => wrap_setting('media_original_filename_extension')];
+	$media_sizes['original'] = [
+		'path' => wrap_setting('media_original_filename_extension')
+	];
 	$media_size = '';
-	foreach ($media_sizes as $size) {
-		if (!$size['path']) {
-			if (!strstr($identifier, '.')) {
-				$media_size = $size['path'];
-				break;
-			}
-		} elseif (substr($identifier, - (strlen($size['path']) + 1)) === '.'.$size['path']) {
+	if (($pos = strrpos($identifier, '.')) === false) {
+		$media_size = 'original';
+	} else {
+		foreach ($media_sizes as $size) {
+			if (!str_ends_with($identifier, '.'.$size['path'])) continue;
 			$identifier = substr($identifier, 0, - strlen($size['path']) - 1);
 			$media_size = $size['path'];
 			break;
 		}
+		if (!$media_size) {
+			// get a possible old media size
+			$old_media_size = substr($identifier, $pos + 1);
+			if (array_key_exists($old_media_size, wrap_setting('media_sizes_redirect'))) {
+				$identifier = substr($identifier, 0, $pos);
+				$old_filename = $filename;
+				$parts = explode('.', $filename);
+				$key = $extension ? count($parts) - 2 : count($parts) - 1;
+				$media_size = wrap_setting('media_sizes_redirect')[$old_media_size];
+				if (!in_array($media_size, array_column($media_sizes, 'path')))
+					wrap_error(wrap_text(
+						'Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent destination: %s',
+						['values' => [$media_size]]
+					), E_USER_NOTICE);
+				$parts[$key] = str_replace($old_media_size, $media_size, $parts[$key]);
+				$filename = implode('.', $parts);
+				// overwrite $new_url if set before, but this does not matter
+				// since we ignore the ?v= path completely here
+				$new_url = str_replace($old_filename, $filename, wrap_url('path'));
+			} else {
+				return false;
+			}
+		}
 	}
+
 	foreach (wrap_setting('media_file_variants') as $variant) {
 		if (substr($identifier, - (strlen($variant) + 1)) === '-'.$variant) {
 			$identifier = substr($identifier, 0, - strlen($variant) - 1);
 			break;
 		}
 	}
-	if (!$media_size AND $pos = strrpos($identifier, '.')) {
-		// get a possible old media size
-		$old_media_size = substr($identifier, $pos + 1);
-		if (array_key_exists($old_media_size, wrap_setting('media_sizes_redirect'))) {
-			$identifier = substr($identifier, 0, $pos);
-			$old_filename = $filename;
-			$parts = explode('.', $filename);
-			$key = $extension ? count($parts) - 2 : count($parts) - 1;
-			$media_size = wrap_setting('media_sizes_redirect')[$old_media_size];
-			if (!in_array($media_size, array_column($media_sizes, 'path')))
-				wrap_error(wrap_text(
-					'Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent destination: %s',
-					['values' => [$media_size]]
-				), E_USER_NOTICE);
-			$parts[$key] = str_replace($old_media_size, $media_size, $parts[$key]);
-			$filename = implode('.', $parts);
-			// overwrite $new_url if set before, but this does not matter
-			// since we ignore the ?v= path completely here
-			$new_url = str_replace($old_filename, $filename, wrap_url('path'));
-		}
-	}
+
 	$sql = 'SELECT medium_id, IF(published = "yes", 1, NULL) AS published
 			, title AS send_as
 			, description
 			, filetypes.filetype_id
 			, filetypes.filetype
 			, filetypes.filetype_description
+			, filename
+			, filetypes.extension AS extension
+			, thumb_filetypes.extension AS thumb_extension
 		FROM /*_PREFIX_*/media media
 		LEFT JOIN /*_PREFIX_*/filetypes thumb_filetypes
 			ON thumb_filetypes.filetype_id = media.thumb_filetype_id
@@ -105,20 +112,16 @@ function mod_media_medium($params) {
 
 	$embed_page = mod_media_medium_embed($file, $identifier);
 	if ($embed_page !== null) return $embed_page;
-	$file['name'] = sprintf('%s/%s', wrap_setting('media_folder'), $filename);
+
+	$file['name'] = mf_media_filename($file, $media_size, true);
 	// Check if file exists
-	if (!file_exists($file['name'])) {
-		if ($media_size) return false;
-		$pos = strrpos($file['name'], '.');
-		$file['name'] = substr($file['name'], 0, $pos).'.'.wrap_setting('media_original_filename_extension').substr($file['name'], $pos);
-		if (!file_exists($file['name'])) return false;
-	}
+	if (!file_exists($file['name'])) return false;
 	if (is_dir($file['name'])) return false;
 	if ($new_url) {
 		return wrap_redirect($new_url, 303);
 	}
 	$file['etag'] = md5_file($file['name']);
-	if ($media_size)
+	if ($media_size !== 'original')
 		$file['send_as'] .= ' '.$media_size;
 	if (!empty($_GET['v'])) {
 		if (!is_numeric($_GET['v'])) wrap_setting('cache', false);

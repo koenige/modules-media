@@ -42,7 +42,7 @@ if (empty($values['no_publish'])) {
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
 $zz['fields'][14]['unless'][2]['link'] = [
-	'root' => wrap_setting('media_folder'),
+	'root' => wrap_setting('media_folder_original'),
 	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
 	'field1' => 'filename',
@@ -82,6 +82,7 @@ $zz['fields'][14]['link_record'] = true;
 $zz['fields'][14]['image'][0]['title'] = 'original';
 $zz['fields'][14]['image'][0]['field_name'] = 'original';
 $zz['fields'][14]['image'][0]['path'] = $zz['fields'][14]['path'];
+$zz['fields'][14]['image'][0]['path']['root'] = wrap_setting('media_folder_original');
 $zz['fields'][14]['image'][0]['path']['string3'] = wrap_setting('media_original_filename_extension');
 $zz['fields'][14]['image'][0]['path']['extension'] = 'original_extension';
 $zz['fields'][14]['image'][0]['required'] = true;

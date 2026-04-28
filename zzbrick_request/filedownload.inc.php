@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2023-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2023-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -32,7 +32,7 @@ function mod_media_filedownload($params, $settings) {
 	$page['query_strings'] = ['mode', 'size', 'q', 'scope'];
 	// downloading different sizes than original file
 	if (!empty($_GET['size']) AND in_array($_GET['size'], array_keys(wrap_setting('media_sizes'))))
-		$settings['size'] = $_GET['size'];
+		$settings['size'] = wrap_setting('media_sizes')[$_GET['size']]['path'];
 	// flat mode, i. e. all folder names are incorporated into filenames
 	if (!empty($_GET['mode'])) $settings['mode'] = $_GET['mode'];
 
@@ -50,11 +50,7 @@ function mod_media_filedownload($params, $settings) {
 			unset($files[$file_id]);
 			continue;
 		}
-		$filename = sprintf('%s/%s%s.%s'
-			, wrap_setting('media_folder'), $file['filename']
-			, $settings['size'] ?? (wrap_setting('media_original_filename_extension') ? '.'.wrap_setting('media_original_filename_extension') : '')
-			, $file['extension']
-		);
+		$filename = mf_media_filename($file, $settings['size'] ?? 'original', true);
 		if (!file_exists($filename)) {
 			wrap_error(sprintf('Download: File %s does not exist', $filename), E_USER_NOTICE);
 			unset($files[$file_id]);
