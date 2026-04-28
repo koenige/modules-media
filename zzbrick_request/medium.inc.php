@@ -103,36 +103,8 @@ function mod_media_medium($params) {
 		wrap_auth(1);
 	}
 
-	// is it an embedded medium?
-	if (wrap_setting('embed')) {
-		$embeds = [];
-		foreach (wrap_setting('embed') as $key => $value)
-			$embeds[strtolower($key)] = $value;
-		if (array_key_exists($file['filetype'], $embeds)) {
-			$code = explode('/', $identifier);
-			$code = array_pop($code);
-			$url = sprintf($embeds[$file['filetype']], $code);
-			if (!empty($_GET['inactive'])) {
-				if (is_array($_GET['inactive'])) return false;
-				if ($_GET['inactive'].'' !== '1') return false;
-				$file['url'] = $url;
-				$page['query_strings'] = ['inactive', 'lang'];
-				if (!empty($_GET['lang']) AND wrap_setting('languages_allowed')
-					AND in_array($_GET['lang'], wrap_setting('languages_allowed'))) {
-					wrap_setting('lang', $_GET['lang']);
-				}
-				// different language? translate filetypes if set for translation
-				$file = wrap_translate($file, 'filetypes', 'filetype_id');
-				$page['title'] = $file['filetype_description'].': '.$file['send_as'];
-				$page['template'] = 'embed';
-				$page['url_ending'] = 'none';
-				$page['text'] = wrap_template('embed', $file);
-				return $page;
-			} else {
-				return wrap_redirect($url);
-			}
-		}
-	}
+	$embed_page = mod_media_medium_embed($file, $identifier);
+	if ($embed_page !== null) return $embed_page;
 	$file['name'] = sprintf('%s/%s', wrap_setting('media_folder'), $filename);
 	// Check if file exists
 	if (!file_exists($file['name'])) {
@@ -153,4 +125,44 @@ function mod_media_medium($params) {
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
 	}
 	wrap_send_file($file);
+}
+
+/**
+ * Embedded medium (iframe, etc.): inactive preview page or redirect to provider URL.
+ *
+ * @param array $file Medium row including filetype, send_as, …
+ * @param string $identifier Canonical filename without thumbnail suffix variant
+ * @return array|bool|null Embed page (`array`), blocked request (`false`),
+ * 		redirect, or `null` when this request is ordinary file delivery
+ */
+function mod_media_medium_embed($file, $identifier) {
+	if (!wrap_setting('embed')) return null;
+
+	$embeds = [];
+	foreach (wrap_setting('embed') as $key => $value)
+		$embeds[strtolower($key)] = $value;
+
+	if (!array_key_exists($file['filetype'], $embeds)) return null;
+
+	$code = explode('/', $identifier);
+	$code = array_pop($code);
+	$url = sprintf($embeds[$file['filetype']], $code);
+	if (!empty($_GET['inactive'])) {
+		if (is_array($_GET['inactive'])) return false;
+		if ($_GET['inactive'].'' !== '1') return false;
+		$file['url'] = $url;
+		$page['query_strings'] = ['inactive', 'lang'];
+		if (!empty($_GET['lang']) AND wrap_setting('languages_allowed')
+			AND in_array($_GET['lang'], wrap_setting('languages_allowed'))) {
+			wrap_setting('lang', $_GET['lang']);
+		}
+		// different language? translate filetypes if set for translation
+		$file = wrap_translate($file, 'filetypes', 'filetype_id');
+		$page['title'] = $file['filetype_description'].': '.$file['send_as'];
+		$page['template'] = 'embed';
+		$page['url_ending'] = 'none';
+		$page['text'] = wrap_template('embed', $file);
+		return $page;
+	}
+	return wrap_redirect($url);
 }
