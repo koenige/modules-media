@@ -83,6 +83,7 @@ $zz['fields'][14]['image'][0]['title'] = 'original';
 $zz['fields'][14]['image'][0]['field_name'] = 'original';
 $zz['fields'][14]['image'][0]['path'] = $zz['fields'][14]['path'];
 $zz['fields'][14]['image'][0]['path']['root'] = wrap_setting('media_folder_original');
+$zz['fields'][14]['image'][0]['path']['string2'] = wrap_setting('media_original_filename_extension') ? '.' : '';
 $zz['fields'][14]['image'][0]['path']['string3'] = wrap_setting('media_original_filename_extension');
 $zz['fields'][14]['image'][0]['path']['extension'] = 'original_extension';
 $zz['fields'][14]['image'][0]['required'] = true;
