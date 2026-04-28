@@ -291,6 +291,7 @@ function mf_media_filename($medium, $size, $use_root = false) {
 
 	switch ($size) {
 	case 'original':
+	case wrap_setting('media_original_filename_extension'):
 		if ($use_root) $root_folder = wrap_setting('media_folder_original');
 		$parts[] = $medium['filename'];
 		if (wrap_setting('media_original_filename_extension'))
