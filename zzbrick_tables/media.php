@@ -41,7 +41,7 @@ if (empty($values['no_publish'])) {
 	$zz['fields'][14]['class'] = 'medium published';
 	$zz['fields'][14]['if'][1]['class'] = 'medium unpublished';
 }
-$zz['fields'][14]['unless'][2]['link'] = [
+$zz['fields'][14]['unless'][2]['path_web'] = [
 	'root' => wrap_setting('media_folder_original'),
 	'webroot' => wrap_setting('files_path'),
 	'string1' => '/',
