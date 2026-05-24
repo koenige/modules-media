@@ -42,7 +42,7 @@ function mod_media_folderinfo($params, $setting, $ops) {
 		$sql = sprintf($sql, wrap_db_escape($folder));
 	}
 	$medium = wrap_db_fetch($sql);
-	if ($medium)
+	if ($medium AND !$data['nolist'])
 		$page['link'] = mf_media_page_links($medium, $setting['vars']['view']);
 	
 	$page['text'] = wrap_template('folderinfo', $data);
