@@ -13,7 +13,7 @@
  */
 
 
-require_once __DIR__.'/../zzbrick_rights/access.inc.php';
+wrap_include('zzbrick_rights/access', 'media');
 
 /* how to display media? */
 $view = mf_media_mediapool_view($brick['vars'], $brick['parameter']);
