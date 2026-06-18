@@ -49,6 +49,7 @@ function mf_media_embeds() {
  */
 function mf_media_get_embed_youtube($video) {
 	static $meta = [];
+	$video = mf_media_youtube_video_id($video);
 	if (!empty($meta[$video])) return $meta[$video];
 	wrap_include('syndication', 'zzwrap');
 
@@ -76,6 +77,50 @@ function mf_media_get_embed_youtube($video) {
 
 	$meta[$video]['video'] = $video;
 	return $meta[$video];
+}
+
+/**
+ * extract YouTube video ID from URL or bare identifier
+ *
+ * Supports watch, youtu.be, Shorts, embed and youtube-nocookie.com URLs.
+ *
+ * @param string $input
+ * @return string
+ */
+function mf_media_youtube_video_id($input) {
+	if (!$input) return $input;
+	if (!is_string($input)) return $input;
+	if (!str_starts_with($input, 'http')) return $input;
+
+	$url = parse_url($input);
+	if (empty($url['host'])) {
+		wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+	}
+	$host = preg_replace('/^www\./', '', strtolower($url['host']));
+	if ($host === 'youtu.be') {
+		if (empty($url['path'])) {
+			wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+		}
+		return ltrim($url['path'], '/');
+	}
+	if (!preg_match('/(?:^|\.)youtube(?:-nocookie)?\.com$/', $host)) {
+		wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+	}
+
+	if (!empty($url['query'])) {
+		parse_str($url['query'], $query);
+		if (!empty($query['v'])) {
+			return $query['v'];
+		}
+	}
+
+	if (!empty($url['path'])
+		AND preg_match('#/(?:shorts|embed|v)/([a-zA-Z0-9_-]{11})(?:/|$)#', $url['path'], $matches)
+	) {
+		return $matches[1];
+	}
+
+	wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
 }
 
 /**

@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2020-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -19,6 +19,7 @@
  * @param array $params
  */
 function mod_media_make_youtube($params, $settings = []) {
+	$params[0] = mf_media_youtube_video_id($params[0]);
 	$meta = mf_media_get_embed_youtube($params[0]);
 	if (!$meta) return false;
 
