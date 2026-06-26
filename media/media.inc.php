@@ -134,6 +134,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 
 	// WHERE condition
 	$where[] = sprintf('detail_media.%s_id IN (%s)', $id_field, $id);
+	$where[] = 'media.filetype_id != /*_ID filetypes folder _*/';
 	if (empty($settings['include_unpublished']) AND !wrap_access('media_preview'))
 		// not logged in: show only published media
 		$where[] = 'media.published = "yes"';
