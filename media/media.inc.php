@@ -100,22 +100,22 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	if (!empty($settings['folder_contents']))
 		$join = 'ON detail_media.medium_id = media.main_medium_id';
 
-	$sql = 'SELECT %s_id, medium_id, detail_media.sequence
+	$sql = 'SELECT detail_media.%s_id, media.medium_id, detail_media.sequence
 			, media.sequence AS media_sequence
 			, IF(ISNULL(description), media.title, description) AS title
-			, description
-			, source, filename, version
+			, media.description
+			, media.source, media.filename, media.version
 			, thumb_filetypes.extension AS thumb_extension
 			, media.date, media.time
 			, filetypes.extension AS extension
 			, filetypes.mime_content_type
 			, filetypes.mime_subtype
 			, filetypes.filetype
-			, filesize
+			, media.filesize
 			, filetypes.filetype_description
-			, width_px, height_px
-			, clipping
-			, IF(height_px > width_px, "portrait", "panorama") AS orientation
+			, media.width_px, media.height_px
+			, media.clipping
+			, IF(media.height_px > media.width_px, "portrait", "panorama") AS orientation
 			, CASE filetypes.mime_content_type
 				WHEN "image" THEN "images"
 				WHEN "video" THEN "videos"
@@ -133,10 +133,10 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	';
 
 	// WHERE condition
-	$where[] = sprintf('%s_id IN (%s)', $id_field, $id);
+	$where[] = sprintf('detail_media.%s_id IN (%s)', $id_field, $id);
 	if (empty($settings['include_unpublished']) AND !wrap_access('media_preview'))
 		// not logged in: show only published media
-		$where[] = 'published = "yes"';
+		$where[] = 'media.published = "yes"';
 	if (!empty($settings['main_medium_id']))
 		$where[] = sprintf('media.main_medium_id = %d', $settings['main_medium_id']);
 	$where = implode(') AND (', $where);
