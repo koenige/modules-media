@@ -14,17 +14,33 @@
 
 
 /**
- * Read media from database depending on ID
+ * Read media linked to one or more records
  *
- * @param int $id ID
- * @param string $table name of table, optional
- * @param string $id_field name of id field
+ * Loads media linked to a table. Results are grouped by mime category and prepared
+ * for output (embeds, overview images, translation, etc.).
+ *
+ * Use wrap_media() in application code; it derives `$id_field` from the
+ * table’s primary key automatically.
+ *
+ * Additional SELECT fields per table can be defined in
+ * `configuration/media.sql` (`{table}_media__fields`).
+ *
+ * @param int|int[] $id One record ID, or a list of IDs
+ * @param string $table Table name of the parent records (e.g. `events`, `articles`)
+ * @param string $id_field Field prefix used in the relation table (e.g. `event` → `event_id`)
  * @param array $settings {
- *     Optional. Array of settings.
+ *     Optional settings.
  *
- *     @type int  $main_medium_id      ID of parent medium to filter by folder. Default empty.
+ *     @type bool $folder_contents     If true, linked media is treated as folder(s):
+ *                                     return files inside them (`media.main_medium_id`
+ *                                     = linked `medium_id`) instead of the linked media
+ *                                     records themselves. Default false.
+ *     @type int  $main_medium_id      Restrict results to files stored in this folder
+ *                                     (`WHERE media.main_medium_id = …`). Does not change
+ *                                     the join; use with directly linked media. Default empty.
  *     @type bool $include_unpublished Whether to include unpublished media without 
  *                                     checking user rights. Default false.
+ *     @type int  $limit      		   Limit no. of records
  * }
  * @return array {
  *     Media files grouped by category
@@ -36,10 +52,20 @@
  *     @type array $images_overview Image(s) marked as overview or first image
  *     @type array $images_detail   Remaining images after overview extraction
  * }
+ *
+ * @example Direct attachments
+ *     mf_media_get($event_id, 'events', 'event');
+ * @example Files inside linked event folder
+ *     mf_media_get($event_id, 'events', 'event', ['folder_contents' => true]);
+ * @example Tagged media, scoped to one folder
+ *     mf_media_get($category_id, 'categories', 'category', ['main_medium_id' => $folder_id]);
+ *
+ * @see wrap_media()
  */
 function mf_media_get($id, $table, $id_field, $settings = []) {
 	if (!wrap_setting('mod_media_install_date')) return [];
 	$multiple_ids = false;
+	if (!$id) return [];
 	if (is_array($id)) {
 		$id = implode(',', $id);
 		$multiple_ids = true;
@@ -70,6 +96,10 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	else
 		$detail_media_table = sprintf('%s_media', $table);
 
+	$join = 'USING (medium_id)';
+	if (!empty($settings['folder_contents']))
+		$join = 'ON detail_media.medium_id = media.main_medium_id';
+
 	$sql = 'SELECT %s_id, medium_id, detail_media.sequence
 			, media.sequence AS media_sequence
 			, IF(ISNULL(description), media.title, description) AS title
@@ -93,7 +123,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 			AS filecategory
 			%s
 		FROM %s detail_media
-		LEFT JOIN media USING (medium_id)
+		LEFT JOIN media %s
 		LEFT JOIN filetypes thumb_filetypes
 			ON media.thumb_filetype_id = thumb_filetypes.filetype_id
 		LEFT JOIN filetypes
@@ -114,7 +144,7 @@ function mf_media_get($id, $table, $id_field, $settings = []) {
 	// LIMIT
 	$limit = !empty($settings['limit']) ? sprintf('LIMIT %d', $settings['limit']) : '';
 
-	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, $where, $limit);
+	$sql = sprintf($sql, $id_field, $extra_fields, $detail_media_table, $join, $where, $limit);
 	if (!$multiple_ids) {
 		$media = wrap_db_fetch($sql, ['filecategory', 'medium_id']);
 		$media = mf_media_separate_embeds($media);
