@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project – Media Module\n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2026-07-04 07:11+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -21,118 +21,153 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.9\n"
 
-#: behaviour/croppr.js
+#: behaviour/croppr.js:53
 msgid "Medium was cropped."
 msgstr "Das Medium wurde beschnitten."
 
-#: templates/fileimport.template.txt
+#: templates/embed.template.txt:13
+msgid "Yes, I’d like this content to be embedded directly on this website."
+msgstr ""
+"Ja, ich möchte, dass dieser Inhalt direkt auf dieser Website angezeigt wird."
+
+#: templates/embed.template.txt:14
+msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
+msgstr ""
+"Ich akzeptiere die <a href='%s' target='_new'>Datenschutzerklärung.</a>"
+
+#: templates/embed.template.txt:16
+msgid "Watch it on the original website:"
+msgstr "Ansehen auf der Original-Website:"
+
+#: templates/embed-privacy.template.txt:12
+msgid "There is currently no embedded content."
+msgstr "Derzeit sind keine Inhalte eingebettet."
+
+#: templates/embed-privacy.template.txt:15
+msgid ""
+"Here, you can decide whether you’d like to have embedded content displayed "
+"inline on our website or not:"
+msgstr ""
+"Hier können Sie entscheiden, ob eingebettete Inhalte direkt auf unserer "
+"Website angezeigt werden sollen oder nicht:"
+
+#: templates/embed-privacy.template.txt:26
+msgid "Google’s Privacy Policy"
+msgstr "Googles Datenschutzerklärung"
+
+#: templates/embed-privacy.template.txt:26
+msgid "Some personal data (e. g. your IP address) is transmitted to Google."
+msgstr ""
+"Einige personenbezogene Daten (z. B. Ihre IP-Adresse) werden an Google "
+"übertragen."
+
+#: templates/embed-privacy.template.txt:26
+msgid ""
+"Watch a YouTube video in privacy-enhanced mode on our website (no tracking "
+"cookies will be sent to Google)."
+msgstr ""
+"Sehen Sie sich auf unserer Website ein YouTube-Video im erweiterten "
+"Datenschutzmodus an (es werden keine Tracking-Cookies an Google gesendet)."
+
+#: templates/embed-privacy.template.txt:28
+msgid ""
+"Some personal data (e. g. your IP address) is transmitted to Twitch, "
+"tracking and other cookies may be set."
+msgstr ""
+"Einige persönliche Daten (z. B. Ihre IP-Adresse) werden an Twitch "
+"übertragen. Tracking- und andere Cookies können gesetzt werden."
+
+#: templates/embed-privacy.template.txt:28
+msgid "Twitch’s Privacy Policy"
+msgstr "Twitchs Datenschutzrichtlinie"
+
+#: templates/embed-privacy.template.txt:28
+msgid "Watch a Twitch video on our website."
+msgstr "Sehen Sie sich ein Twitch-Video auf unserer Website an."
+
+#: templates/embed-privacy.template.txt:35
+msgid "Change privacy settings"
+msgstr "Datenschutzeinstellungen ändern"
+
+#: templates/embed-privacy.template.txt:35
+msgid "Your settings were saved"
+msgstr "Die Einstellungen wurden gespeichert"
+
+#: templates/fileimport.template.txt:12
 msgid "A thumbnail was created for medium ID %d."
 msgstr "Für das Medium mit der ID %d wurde ein Vorschaubild erstellt."
 
-#: templates/fileimport.template.txt
+#: templates/fileimport.template.txt:15
 msgid "Failed to create thumbnail for medium ID %d."
 msgstr ""
 "Es konnte kein Vorschaubild für das Medium mit der ID %d erstellt werden."
 
-#: templates/fileimport.template.txt
+#: templates/fileimport.template.txt:18
 msgid "Import of file %s into folder %s was successful."
 msgstr "Der Import der Datei %s in den Ordner %s war erfolgreich."
 
-#: templates/fileimport.template.txt
+#: templates/fileimport.template.txt:22
 msgid "Failed to import file %s into folder %s."
 msgstr "Die Datei %s konnte nicht in den Ordner %s importiert werden."
 
-#: templates/fileimport.template.txt
+#: templates/fileimport.template.txt:26
 msgid "Import file %s into folder %s"
 msgstr "Datei %s in den Ordner %s importieren"
 
-#: templates/fileimport.template.txt
+#: templates/fileimport.template.txt:31
 msgid "Back to folder <strong>%s</strong>"
 msgstr "Zurück zum Ordner <strong>%s</strong>"
 
-#: templates/folderinfo.template.txt
+#: templates/folderinfo.template.txt:12
 msgid "%d file was imported in the background."
 msgid_plural "%d files were imported in the background."
 msgstr[0] "%d Datei wurde im Hintergrund importiert."
 msgstr[1] "%d Dateien wurden im Hintergrund importiert."
 
-#: templates/folderinfo.template.txt
+#: templates/folderinfo.template.txt:20
 msgid "Import?"
 msgstr "importieren?"
 
-#: templates/folderinfo.template.txt
+#: templates/folderinfo.template.txt:21
 msgid "Filename"
 msgstr "Dateiname"
 
-#: templates/folderinfo.template.txt
+#: templates/folderinfo.template.txt:22 templates/mediuminfo.template.txt:58
+#: zzbrick_tables/media.php
+msgid "Filetype"
+msgstr "Dateityp"
+
+#: templates/folderinfo.template.txt:23 templates/mediuminfo.template.txt:56
+#: zzbrick_tables/media.php
+msgid "Filesize"
+msgstr "Dateigröße"
+
+#: templates/folderinfo.template.txt:38
 msgid "Import %d files"
 msgstr "%d Dateien importieren"
 
-#: templates/folderinfo.template.txt
+#: templates/folderinfo.template.txt:44
 msgid "You can import %d file into this folder."
 msgid_plural "You can import %d files into this folder."
 msgstr[0] "Sie können %d Datei in diesen Ordner importieren."
 msgstr[1] "Sie können %d Dateien in diesen Ordner importieren."
 
-#: templates/mediatags.template.txt
+#: templates/images.template.txt:13
+msgid "Image"
+msgstr "Bild"
+
+#: templates/mediatags.template.txt:18
 msgid "Add new tags …"
 msgstr "Neue Schlagwörter ergänzen …"
 
 #: templates/mediuminfo.template.txt
-msgid "Meta data"
-msgstr "Metadaten"
+msgid "Crop file"
+msgstr "Zugeschnittene Vorschau"
 
-#: templates/mediuminfo.template.txt
-msgid "Tags"
-msgstr "Schlagwörter"
-
-#: templates/mediuminfo.template.txt
-msgid "Date/Time"
-msgstr "Datum/Zeit"
-
-#: templates/mediuminfo.template.txt
-msgid "File info"
-msgstr "Datei-Informationen"
-
-#: templates/mediuminfo.template.txt
-msgid "Hash (MD5)"
-msgstr "Hash (MD5)"
-
-#: templates/mediuminfo.template.txt
-msgid "Extension:"
-msgstr "Dateierweiterung:"
-
-#: templates/mediuminfo.template.txt
-msgid "Files"
-msgstr "Dateien"
-
-#: templates/mediuminfo.template.txt
-msgid "pixels"
-msgstr "Pixel"
-
-#: templates/mediuminfo.template.txt
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: templates/mediuminfo.template.txt
-msgid "Edit medium"
-msgstr "Medium bearbeiten"
-
-#: templates/mediuminfo.template.txt
-msgid "Delete medium"
-msgstr "Medium löschen"
-
-#: templates/mediuminfo.template.txt
-msgid "Crop image (custom)"
-msgstr "Bild zuschneiden (eigene Größe)"
-
-#: templates/mediuminfo.template.txt
-msgid "Save image section"
-msgstr "Bildausschnitt speichern"
-
-#: templates/mediuminfo.template.txt
+#: templates/mediuminfo.template.txt zzbrick_request/mediuminfo.inc.php:75
+#: zzbrick_request/mediuminfo.inc.php:102
 msgid "Original file"
 msgstr "Originaldatei"
 
@@ -140,61 +175,191 @@ msgstr "Originaldatei"
 msgid "Thumbnail file"
 msgstr "Vorschau"
 
-#: templates/mediuminfo.template.txt
-msgid "Crop file"
-msgstr "Zugeschnittene Vorschau"
+#: templates/mediuminfo.template.txt:21
+msgid "Crop image (custom)"
+msgstr "Bild zuschneiden (eigene Größe)"
 
-#: zzbrick_forms/media.php
-msgid "Display as Table"
-msgstr "Darstellung als Tabelle"
+#: templates/mediuminfo.template.txt:22
+msgid "Save image section"
+msgstr "Bildausschnitt speichern"
 
-#: zzbrick_forms/media.php
-msgid "Table"
-msgstr "Tabelle"
+#: templates/mediuminfo.template.txt:34
+msgid "Meta data"
+msgstr "Metadaten"
+
+#: templates/mediuminfo.template.txt:37
+msgid "Date/Time"
+msgstr "Datum/Zeit"
+
+#: templates/mediuminfo.template.txt:38
+msgid "(OpenGraph)"
+msgstr "(OpenGraph)"
+
+#: templates/mediuminfo.template.txt:38 zzbrick_request/filedownload.inc.php:77
+#: zzbrick_tables/media.php
+msgid "Description"
+msgstr "Beschreibung"
+
+#: templates/mediuminfo.template.txt:39 templates/mediuminfo.template.txt
+#: zzbrick_tables/media.php zzbrick_request/filedownload.inc.php:78
+msgid "Source"
+msgstr "Quelle"
+
+#: templates/mediuminfo.template.txt:40 zzbrick_tables/media.php
+msgid "Alternative text"
+msgstr "Alternativtext"
+
+#: templates/mediuminfo.template.txt:45 zzbrick_forms/media.php:317
+#: zzbrick_forms/media.php:331 zzbrick_request/mediatags.inc.php:53
+msgid "Tags"
+msgstr "Schlagwörter"
+
+#: templates/mediuminfo.template.txt:53
+msgid "File info"
+msgstr "Datei-Informationen"
+
+#: templates/mediuminfo.template.txt:57
+msgid "Hash (MD5)"
+msgstr "Hash (MD5)"
+
+#: templates/mediuminfo.template.txt:58
+msgid "Extension:"
+msgstr "Dateierweiterung:"
+
+#: templates/mediuminfo.template.txt:61
+msgid "Files"
+msgstr "Dateien"
+
+#: templates/mediuminfo.template.txt:66
+msgid "pixels"
+msgstr "Pixel"
+
+#: templates/mediuminfo.template.txt:73
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/mediuminfo.template.txt:76
+msgid "Edit medium"
+msgstr "Medium bearbeiten"
+
+#: templates/mediuminfo.template.txt:77
+msgid "Delete medium"
+msgstr "Medium löschen"
 
 #: zzbrick_forms/media.php
 msgid "Display as Gallery"
 msgstr "Darstellung als Galerie"
 
 #: zzbrick_forms/media.php
-msgid "Gallery"
-msgstr "Galerie"
+msgid "Display as Table"
+msgstr "Darstellung als Tabelle"
+
+#: zzbrick_forms/media.php
+msgid "Download"
+msgstr "Herunterladen"
 
 #: zzbrick_forms/media.php
 msgid "Download files in ZIP archive"
 msgstr "Dateien im ZIP-Archiv herunterladen"
 
 #: zzbrick_forms/media.php
-msgid "Download"
-msgstr "Herunterladen"
+msgid "Gallery"
+msgstr "Galerie"
 
-#: zzbrick_tables/media.php
-msgid "File"
-msgstr "Datei"
+#: zzbrick_forms/media.php
+msgid "Table"
+msgstr "Tabelle"
 
-#: zzbrick_tables/media.php
+#: zzbrick_forms/media.php:39 zzbrick_tables/media.php
+msgid ""
+"Coloured border: medium is published; gray border: medium is not published."
+msgstr ""
+"Farbiger Rahmen: Medium ist veröffentlicht; grauer Rahmen: Medium ist nicht "
+"veröffentlicht."
+
+#: zzbrick_forms/media.php:188 zzbrick_request/filedownload.inc.php:75
+#: zzbrick_tables/media.php:478
 msgid "Folder"
 msgstr "Ordner"
+
+#: zzbrick_forms/media.php:322 zzbrick_forms/media.php:327
+#: zzbrick_request/mediatags.inc.php:53
+msgid "TOP"
+msgstr "TOP"
+
+#: zzbrick_request/filedownload.inc.php:76 zzbrick_tables/media.php
+msgid "Title"
+msgstr "Titel"
+
+#: zzbrick_request/filedownload.inc.php:79
+msgid "Date"
+msgstr "Datum"
+
+#: zzbrick_request/filedownload.inc.php:80 zzbrick_tables/media.php
+msgid "Time"
+msgstr "Uhrzeit"
+
+#: zzbrick_request/filedownload.inc.php:81
+msgid "MD5 Hash"
+msgstr "MD5 Hash"
+
+#: zzbrick_request/mediatags.inc.php:53 zzbrick_tables/media.php:470
+msgid "Media Pool"
+msgstr "Medienpool"
+
+#: zzbrick_request/medium.inc.php:69
+msgid ""
+"Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent "
+"destination: %s"
+msgstr ""
+"Die Konfiguration von `media_sizes_redirect` ist falsch und verweist auf ein "
+"nicht vorhandenes Ziel: %s"
+
+#: zzbrick_tables/media.php
+msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
+
+#: zzbrick_tables/media.php
+msgid "Clipping"
+msgstr "Ausschnitt"
+
+#: zzbrick_tables/media.php
+msgid ""
+"Digital photography: If nothing is entered, date and time will be read from "
+"file."
+msgstr ""
+"Digitalphotos: Falls nichts eingegeben wird, werden Datum und Zeit aus der "
+"Datei ausgelesen."
+
+#: zzbrick_tables/media.php
+msgid "Height"
+msgstr "Höhe"
+
+#: zzbrick_tables/media.php
+msgid ""
+"If it’s not a medium created by yourself, who created it, where did you find "
+"it?"
+msgstr "Falls es kein selbst erstelltes Medium ist: Urheberrechtsvermerk"
+
+#: zzbrick_tables/media.php
+msgid "Language"
+msgstr "Sprache"
+
+#: zzbrick_tables/media.php
+msgid "MD5"
+msgstr "MD5"
 
 #: zzbrick_tables/media.php
 msgid "Medium"
 msgstr "Medium"
 
 #: zzbrick_tables/media.php
-msgid "Thumbnail"
-msgstr "Vorschau"
+msgid "Position of clipping of cropped image"
+msgstr "Position des Ausschnitts des beschnittenen Bilds"
 
 #: zzbrick_tables/media.php
 msgid "Published?"
 msgstr "Öffentlich?"
-
-#: zzbrick_tables/media.php
-msgid "Title"
-msgstr "Titel"
-
-#: zzbrick_tables/media.php
-msgid "Description"
-msgstr "Beschreibung"
 
 #: zzbrick_tables/media.php
 msgid "Seq."
@@ -204,58 +369,37 @@ msgstr "Folge"
 msgid "Sequence"
 msgstr "Reihenfolge"
 
-#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
 #: zzbrick_tables/media.php
-msgid "Filetype"
-msgstr "Dateityp"
-
-#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
-#: zzbrick_tables/media.php
-msgid "Filesize"
-msgstr "Dateigröße"
-
-#: zzbrick_forms/media.php
-msgid "TOP"
-msgstr "TOP"
+msgid "The filename will be used as a default if nothing is entered."
+msgstr "Der Dateiname wird verwendet, falls nichts eingegeben wird."
 
 #: zzbrick_tables/media.php
-msgid "MD5"
-msgstr "MD5"
-
-#: zzbrick_tables/media.php
-msgid "Version"
-msgstr "Version"
+msgid "Thumbnail"
+msgstr "Vorschau"
 
 #: zzbrick_tables/media.php
 msgid "Updated"
 msgstr "Stand"
 
 #: zzbrick_tables/media.php
-msgid ""
-"Coloured border: medium is published; gray border: medium is not published."
-msgstr ""
-"Farbiger Rahmen: Medium ist veröffentlicht; grauer Rahmen: Medium ist nicht "
-"veröffentlicht."
+msgid "Version"
+msgstr "Version"
 
 #: zzbrick_tables/media.php
-msgid "Media Pool"
-msgstr "Medienpool"
+msgid "Width"
+msgstr "Breite"
 
 #: zzbrick_tables/media.php
-msgid "The filename will be used as a default if nothing is entered."
-msgstr "Der Dateiname wird verwendet, falls nichts eingegeben wird."
+msgid "bottom"
+msgstr "unten"
 
 #: zzbrick_tables/media.php
-msgid "yes"
-msgstr "ja"
+msgid "center"
+msgstr "mittig"
 
 #: zzbrick_tables/media.php
-msgid "no"
-msgstr "nein"
-
-#: zzbrick_tables/media.php
-msgid "good for photos"
-msgstr "passend für Photos"
+msgid "custom"
+msgstr "individuell"
 
 #: zzbrick_tables/media.php
 msgid "good for drawings & texts / transparency"
@@ -266,86 +410,16 @@ msgid "good for drawings & texts / transparency (deprecated)"
 msgstr "passend für Zeichnungen und Text, Transparenz (veraltet)"
 
 #: zzbrick_tables/media.php
-msgid "Time"
-msgstr "Uhrzeit"
-
-#: zzbrick_tables/media.php
-msgid "at"
-msgstr "um"
-
-#: zzbrick_tables/media.php
-msgid "h"
-msgstr "Uhr"
-
-#: zzbrick_tables/media.php
-msgid ""
-"Digital photography: If nothing is entered, date and time will be read from "
-"file."
-msgstr ""
-"Digitalphotos: Falls nichts eingegeben wird, werden Datum und Zeit aus der "
-"Datei ausgelesen."
-
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
-msgid "Source"
-msgstr "Quelle"
-
-#: zzbrick_tables/media.php
-msgid ""
-"If it’s not a medium created by yourself, who created it, where did you find "
-"it?"
-msgstr "Falls es kein selbst erstelltes Medium ist: Urheberrechtsvermerk"
-
-#: zzbrick_tables/media.php
-msgid "Clipping"
-msgstr "Ausschnitt"
-
-#: zzbrick_tables/media.php
-msgid "Position of clipping of cropped image"
-msgstr "Position des Ausschnitts des beschnittenen Bilds"
-
-#: zzbrick_tables/media.php
-msgid "center"
-msgstr "mittig"
-
-#: zzbrick_tables/media.php
-msgid "top"
-msgstr "oben"
+msgid "good for photos"
+msgstr "passend für Photos"
 
 #: zzbrick_tables/media.php
 msgid "left"
 msgstr "links"
 
 #: zzbrick_tables/media.php
-msgid "custom"
-msgstr "individuell"
-
-#: zzbrick_tables/media.php
-msgid "bottom"
-msgstr "unten"
-
-#: zzbrick_tables/media.php
-msgid "right"
-msgstr "rechts"
-
-#: zzbrick_tables/media.php
-msgid "Width"
-msgstr "Breite"
-
-#: zzbrick_tables/media.php
-msgid "Height"
-msgstr "Höhe"
-
-#: zzbrick_tables/media.php
-msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
-msgstr "<abbr title=\"Auf Website veröffentlichen?\">Web?</abbr>"
-
-#: zzbrick_tables/media.php
-msgid "Language"
-msgstr "Sprache"
-
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
-msgid "Alternative text"
-msgstr "Alternativtext"
+msgid "no"
+msgstr "nein"
 
 #: zzbrick_tables/media.php
 msgid ""
@@ -353,86 +427,46 @@ msgid ""
 msgstr ""
 "optionaler Inhalt des `alt`-Attributs für Bilder, für Screenreader-Software"
 
-#: zzbrick_tables/media-access.php
-msgid "Media Access Rights"
-msgstr "Zugriffsrechte für Medien"
+#: zzbrick_tables/media.php
+msgid "right"
+msgstr "rechts"
+
+#: zzbrick_tables/media.php
+msgid "top"
+msgstr "oben"
+
+#: zzbrick_tables/media.php
+msgid "yes"
+msgstr "ja"
+
+#: zzbrick_tables/media.php:277
+msgid "at"
+msgstr "um"
+
+#: zzbrick_tables/media.php:278
+msgid "h"
+msgstr "Uhr"
+
+#: zzbrick_tables/media.php:473
+msgid "File"
+msgstr "Datei"
 
 #: zzbrick_tables/media-access.php
 msgid "Access"
 msgstr "Zugriff"
 
+#: zzbrick_tables/media-access.php
+msgid "Media Access Rights"
+msgstr "Zugriffsrechte für Medien"
+
 #: zzbrick_tables/media-tags.php
 msgid "Media Tags"
 msgstr "Medien-Tags"
 
-#: templates/embed.template.txt
-msgid "Yes, I’d like this content to be embedded directly on this website."
-msgstr ""
-"Ja, ich möchte, dass dieser Inhalt direkt auf dieser Website angezeigt wird."
+#: zzbrick_xhr/crop.inc.php:49
+msgid "Unable to set crop coordinates"
+msgstr "Die Schnittkoordinaten können nicht festgelegt werden"
 
-#: templates/embed.template.txt
-msgid "Watch it on the original website:"
-msgstr "Ansehen auf der Original-Website:"
-
-#: templates/embed.template.txt
-msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
-msgstr ""
-"Ich akzeptiere die <a href='%s' target='_new'>Datenschutzerklärung.</a>"
-
-#: templates/embed-privacy.template.txt
-msgid "Change privacy settings"
-msgstr "Datenschutzeinstellungen ändern"
-
-#: templates/embed-privacy.template.txt
-msgid "Your settings were saved"
-msgstr "Die Einstellungen wurden gespeichert"
-
-#: templates/embed-privacy.template.txt
-msgid "There is currently no embedded content."
-msgstr "Derzeit sind keine Inhalte eingebettet."
-
-#: templates/embed-privacy.template.txt
-msgid ""
-"Here, you can decide whether you’d like to have embedded content displayed "
-"inline on our website or not:"
-msgstr ""
-"Hier können Sie entscheiden, ob eingebettete Inhalte direkt auf unserer "
-"Website angezeigt werden sollen oder nicht:"
-
-#: templates/embed-privacy.template.txt
-msgid ""
-"Watch a YouTube video in privacy-enhanced mode on our website (no tracking "
-"cookies will be sent to Google)."
-msgstr ""
-"Sehen Sie sich auf unserer Website ein YouTube-Video im erweiterten "
-"Datenschutzmodus an (es werden keine Tracking-Cookies an Google gesendet)."
-
-#: templates/embed-privacy.template.txt
-msgid "Some personal data (e. g. your IP address) is transmitted to Google."
-msgstr ""
-"Einige personenbezogene Daten (z. B. Ihre IP-Adresse) werden an Google "
-"übertragen."
-
-#: templates/embed-privacy.template.txt
-msgid "Google’s Privacy Policy"
-msgstr "Googles Datenschutzerklärung"
-
-#: templates/embed-privacy.template.txt
-msgid "Watch a Twitch video on our website."
-msgstr "Sehen Sie sich ein Twitch-Video auf unserer Website an."
-
-#: templates/embed-privacy.template.txt
-msgid ""
-"Some personal data (e. g. your IP address) is transmitted to Twitch, "
-"tracking and other cookies may be set."
-msgstr ""
-"Einige persönliche Daten (z. B. Ihre IP-Adresse) werden an Twitch "
-"übertragen. Tracking- und andere Cookies können gesetzt werden."
-
-#: templates/embed-privacy.template.txt
-msgid "Twitch’s Privacy Policy"
-msgstr "Twitchs Datenschutzrichtlinie"
-
-#: templates/images.template.txt
-msgid "Image"
-msgstr "Bild"
+#: zzform/hooks.inc.php:30
+msgid "There’s no YouTube video with this code"
+msgstr "Zu diesem Code gibt es kein YouTube-Video."

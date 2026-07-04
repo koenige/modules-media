@@ -1,0 +1,221 @@
+# media module
+# Translations, admin
+#
+# Part of »Zugzwang Project«
+# https://www.zugzwang.org/modules/media
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Zugzwang Project -- media module\n"
+"POT-Creation-Date: 2026-07-04 07:11+0000\n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: configuration/access.cfg:20
+msgid "Allow to edit media"
+msgstr ""
+
+#: configuration/access.cfg:24
+msgid "Show unpublished medium for preview"
+msgstr ""
+
+#: configuration/package.cfg:15
+msgid "Uploads, media library, thumbnails, previews, and embedded players"
+msgstr ""
+
+#: configuration/routes.cfg:13
+msgid "Privacy policy page"
+msgstr ""
+
+#: configuration/routes.cfg:18
+msgid "Download files"
+msgstr ""
+
+#: configuration/routes.cfg:23
+msgid "Import files"
+msgstr ""
+
+#: configuration/routes.cfg:29
+msgid "Internal media folders on website"
+msgstr ""
+
+#: configuration/routes.cfg:34
+msgid "Internal media folders on website, specific folder"
+msgstr ""
+
+#: configuration/settings.cfg:20
+msgid "If there is no size given for a medium, use this as the default size"
+msgstr ""
+
+#: configuration/settings.cfg:24
+msgid "Show document links not as links but as text only"
+msgstr ""
+
+#: configuration/settings.cfg:28
+msgid "List of embedded media types"
+msgstr ""
+
+#: configuration/settings.cfg:32
+msgid "URL to embed Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg:37
+msgid "URL to embed YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg:42
+msgid "Path for twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg:47
+msgid "Path for youtube videos"
+msgstr ""
+
+#: configuration/settings.cfg:52
+msgid "Custom text in privacy settings for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg:55
+msgid "Custom text in privacy settings for YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg:58
+msgid "Large size of images on page, is linked to preview image (e. g. for a gallery)"
+msgstr ""
+
+#: configuration/settings.cfg:61
+msgid "Use field media_categories.property to set values for categories"
+msgstr ""
+
+#: configuration/settings.cfg:66
+msgid "Use croppr.js for images"
+msgstr ""
+
+#: configuration/settings.cfg:70
+msgid "Size of downloads image"
+msgstr ""
+
+#: configuration/settings.cfg:74
+msgid "Suffix variant for database files (multiple uploads)"
+msgstr ""
+
+#: configuration/settings.cfg:78
+msgid "Show date in caption of images"
+msgstr ""
+
+#: configuration/settings.cfg:83
+msgid "Folder where media files are saved"
+msgstr ""
+
+#: configuration/settings.cfg:88
+msgid "Maximum value for sequence of folder, for batch creation"
+msgstr ""
+
+#: configuration/settings.cfg:93
+msgid "Folder where original media files are saved (optional, default is all files in same folder)"
+msgstr ""
+
+#: configuration/settings.cfg:98
+msgid "Size of images for gallery on page"
+msgstr ""
+
+#: configuration/settings.cfg:101
+msgid "2x size of images for gallery on page for higher resolution screens"
+msgstr ""
+
+#: configuration/settings.cfg:104
+msgid "Folder from where files can be imported"
+msgstr ""
+
+#: configuration/settings.cfg:109
+msgid "Link big image in all single image templates if bigger size available"
+msgstr ""
+
+#: configuration/settings.cfg:114
+msgid "Size of preview image for news module and others"
+msgstr ""
+
+#: configuration/settings.cfg:119
+msgid "Extension for original file"
+msgstr ""
+
+#: configuration/settings.cfg:123
+msgid "Standard position of top image on page"
+msgstr ""
+
+#: configuration/settings.cfg:127
+msgid "Standard size of images on page"
+msgstr ""
+
+#: configuration/settings.cfg:130
+msgid "2x standard size of images on page for higher resolution screens"
+msgstr ""
+
+#: configuration/settings.cfg:133
+msgid "Preview image for media module"
+msgstr ""
+
+#: configuration/settings.cfg:139
+msgid "Preview image for news module"
+msgstr ""
+
+#: configuration/settings.cfg:145
+msgid "Small image"
+msgstr ""
+
+#: configuration/settings.cfg:151
+msgid "Medium image"
+msgstr ""
+
+#: configuration/settings.cfg:157
+msgid "Large image"
+msgstr ""
+
+#: configuration/settings.cfg:163
+msgid "Extra large image"
+msgstr ""
+
+#: configuration/settings.cfg:169
+msgid "Media size paths that were removed and now redirect to a file of a different size, for old crawlers"
+msgstr ""
+
+#: configuration/settings.cfg:174
+msgid "Standard position of media elements on website (left, center, right, etc.)"
+msgstr ""
+
+#: configuration/settings.cfg:177
+msgid "Allow to tag a medium"
+msgstr ""
+
+#: configuration/settings.cfg:181
+msgid "Show top image on webpage"
+msgstr ""
+
+#: configuration/settings.cfg:187
+msgid "ID of webpage that holds top image for error pages"
+msgstr ""
+
+#: configuration/settings.cfg:191
+msgid "Initial installation date of media module (for updates)"
+msgstr ""
+
+#: configuration/settings.cfg:195
+msgid "Linked URL with placeholder for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg:199
+msgid "Embed URL with placeholder for Twitch videos"
+msgstr ""
+
+#: configuration/settings.cfg:205
+msgid "Linked URL with placeholder for YouTube videos"
+msgstr ""
+
+#: configuration/settings.cfg:210
+msgid "Embed URL with placeholder for YouTube videos"
+msgstr ""
