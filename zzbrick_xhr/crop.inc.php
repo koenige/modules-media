@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2021-2024 Gustaf Mossakowski
+ * @copyright Copyright © 2021-2024, 2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -46,6 +46,6 @@ function mod_media_xhr_crop($data) {
 		'parameters' => http_build_query($medium['parameters']),
 		'clipping' => 'custom'
 	];
-	$ops = zzform_update('media', $line, E_USER_ERROR, ['msg' => 'Unable to set crop coordinates']);
+	$ops = zzform_update('media', $line, E_USER_ERROR, ['_msg' => 'Unable to set crop coordinates']);
 	return 'success';
 }
