@@ -230,3 +230,33 @@ msgstr ""
 #: configuration/settings.cfg:210
 msgid "Embed URL with placeholder for YouTube videos"
 msgstr ""
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "Filetypes"
+msgstr "Dateitypen"
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "MIME Content Type"
+msgstr "MIME Inhaltstyp"
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "MIME Subtype"
+msgstr "MIME Untertyp"
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "Extension"
+msgstr "Dateierweiterung"
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "Ext."
+msgstr "Ext."
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php
+msgid "Count"
+msgstr "Anzahl"

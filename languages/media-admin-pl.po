@@ -9,12 +9,15 @@ msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
 "POT-Creation-Date: 2026-07-04 07:11+0000\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
 
 #: configuration/access.cfg:20
 msgid "Allow to edit media"
@@ -85,7 +88,9 @@ msgid "Custom text in privacy settings for YouTube videos"
 msgstr ""
 
 #: configuration/settings.cfg:58
-msgid "Large size of images on page, is linked to preview image (e. g. for a gallery)"
+msgid ""
+"Large size of images on page, is linked to preview image (e. g. for a "
+"gallery)"
 msgstr ""
 
 #: configuration/settings.cfg:61
@@ -117,7 +122,9 @@ msgid "Maximum value for sequence of folder, for batch creation"
 msgstr ""
 
 #: configuration/settings.cfg:93
-msgid "Folder where original media files are saved (optional, default is all files in same folder)"
+msgid ""
+"Folder where original media files are saved (optional, default is all files "
+"in same folder)"
 msgstr ""
 
 #: configuration/settings.cfg:98
@@ -181,11 +188,14 @@ msgid "Extra large image"
 msgstr ""
 
 #: configuration/settings.cfg:169
-msgid "Media size paths that were removed and now redirect to a file of a different size, for old crawlers"
+msgid ""
+"Media size paths that were removed and now redirect to a file of a different "
+"size, for old crawlers"
 msgstr ""
 
 #: configuration/settings.cfg:174
-msgid "Standard position of media elements on website (left, center, right, etc.)"
+msgid ""
+"Standard position of media elements on website (left, center, right, etc.)"
 msgstr ""
 
 #: configuration/settings.cfg:177
@@ -223,22 +233,22 @@ msgstr ""
 # Modules: Upload (Table filetypes)
 #: zzbrick_tables/filetypes.php
 msgid "Filetypes"
-msgstr ""
+msgstr "Typy plików"
 
 # Modules: Upload (Table filetypes)
 #: zzbrick_tables/filetypes.php
 msgid "MIME Content Type"
-msgstr ""
+msgstr "Typ danych MIME"
 
 # Modules: Upload (Table filetypes)
 #: zzbrick_tables/filetypes.php
 msgid "MIME Subtype"
-msgstr ""
+msgstr "Podtyp MIME"
 
 # Modules: Upload (Table filetypes)
 #: zzbrick_tables/filetypes.php
 msgid "Extension"
-msgstr ""
+msgstr "Rozszerzenie"
 
 # Modules: Upload (Table filetypes)
 #: zzbrick_tables/filetypes.php
