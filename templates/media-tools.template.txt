@@ -11,7 +11,7 @@
 <span class="mediatools">%%% loop start %%%
 %%% if link %%%
 <a href="%%% item link %%%" class="icon">%%% endif %%%
-<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% translate item alt %%%" title="%%% translate item title %%%" class="icon">%%% if link %%%
+<img src="%%% setting layout_path %%%/media/%%% item img %%%.png" alt="%%% item alt %%%" title="%%% item title %%%" class="icon">%%% if link %%%
 </a>%%% endif %%%
 %%% loop end %%%
 </span>
