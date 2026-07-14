@@ -85,7 +85,16 @@ function mod_media_mediuminfo($params, $setting) {
 		$width = array_column($media_sizes, 'width');
 		array_multisort($width, SORT_DESC, $media_sizes);
 		foreach ($media_sizes as $type => $size) {
-			$size['type'] = wrap_text(ucfirst($size['action']).' file').', '.$type;
+			switch ($size['action']) {
+				case 'crop': $size['type'] = wrap_text('Crop file'); break;
+				case 'custom': $size['type'] = wrap_text('Custom file'); break;
+				case 'exif_thumbnail': $size['type'] = wrap_text('EXIF thumbnail file'); break;
+				case 'gray': $size['type'] = wrap_text('Gray file'); break;
+				case 'thumbnail': $size['type'] = wrap_text('Thumbnail file'); break;
+				case 'webimage': $size['type'] = wrap_text('Web image'); break;
+				default: $size['type'] = wrap_text(ucfirst($size['action']).' file');
+			}
+			$size['type'] .= ', '.$type;
 			$size['version'] = $medium['version'];
 			$size['filename'] = mf_media_filename($medium, $size['path']);
 			$size['file_exists'] = file_exists(mf_media_filename($medium, $size['path'], true)) ? true : false;
