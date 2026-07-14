@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-07-04 07:11+0000\n"
+"POT-Creation-Date: 2026-07-14 16:17+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -232,31 +232,43 @@ msgid "Embed URL with placeholder for YouTube videos"
 msgstr ""
 
 # Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
+#: zzbrick_tables/filetypes.php:19
 msgid "Filetypes"
 msgstr "Dateitypen"
 
+#: zzbrick_tables/filetypes.php:22
+msgid "ID"
+msgstr "ID"
+
+#: zzbrick_tables/filetypes.php:26
+msgid "Filetype"
+msgstr "Dateityp"
+
+#: zzbrick_tables/filetypes.php:35
+msgid "Description"
+msgstr "Beschreibung"
+
 # Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
+#: zzbrick_tables/filetypes.php:41
 msgid "MIME Content Type"
 msgstr "MIME Inhaltstyp"
 
 # Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
+#: zzbrick_tables/filetypes.php:48
 msgid "MIME Subtype"
 msgstr "MIME Untertyp"
 
 # Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
-msgid "Extension"
-msgstr "Dateierweiterung"
-
-# Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
+#: zzbrick_tables/filetypes.php:53
 msgid "Ext."
 msgstr "Ext."
 
 # Modules: Upload (Table filetypes)
-#: zzbrick_tables/filetypes.php
+#: zzbrick_tables/filetypes.php:54
+msgid "Extension"
+msgstr "Dateierweiterung"
+
+# Modules: Upload (Table filetypes)
+#: zzbrick_tables/filetypes.php:61
 msgid "Count"
 msgstr "Anzahl"

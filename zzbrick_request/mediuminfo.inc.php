@@ -89,7 +89,7 @@ function mod_media_mediuminfo($params, $setting) {
 				case 'crop': $size['type'] = wrap_text('Crop file'); break;
 				case 'custom': $size['type'] = wrap_text('Custom file'); break;
 				case 'exif_thumbnail': $size['type'] = wrap_text('EXIF thumbnail file'); break;
-				case 'gray': $size['type'] = wrap_text('Gray file'); break;
+				case 'gray': $size['type'] = wrap_text('Grayscale file'); break;
 				case 'thumbnail': $size['type'] = wrap_text('Thumbnail file'); break;
 				case 'webimage': $size['type'] = wrap_text('Web image'); break;
 				default: $size['type'] = wrap_text(ucfirst($size['action']).' file');

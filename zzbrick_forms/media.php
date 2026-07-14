@@ -71,7 +71,7 @@ if ($view['type'] === 'gallery') {
 
 /* title */
 if (!empty($brick['local_settings']['title']))
-	$zz['title'] = wrap_text($brick['local_settings']['title']);
+	$zz['title'] = $brick['local_settings']['title'];
 $zz['vars']['title'] = $zz['title'];
 if (!empty($folder['titles'])) {
 	$title_paths = [];

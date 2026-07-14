@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project – Media Module\n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2026-07-14 17:06+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -21,573 +21,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
-#: behaviour/croppr.js
+#: behaviour/croppr.js:53
 msgid "Medium was cropped."
 msgstr "Orta boy kırpılmıştı."
 
-#: configuration/access.cfg
-msgid "download files"
-msgstr "dosyaları indir"
-
-#: configuration/access.cfg
-msgid "allow to edit media"
-msgstr "medyayı düzenlemeye izin ver"
-
-#: configuration/access.cfg
-msgid "import files"
-msgstr "dosyaları içe aktar"
-
-#: configuration/access.cfg
-msgid "internal access to media"
-msgstr "medyaya dahili erişim"
-
-#: configuration/settings.cfg
-msgid "if there is no size given for a medium, use this as the default size"
-msgstr ""
-"bir ortam için boyut belirtilmemişse, bunu varsayılan boyut olarak kullanın"
-
-#: configuration/settings.cfg
-msgid "show document links not as links but as text only"
-msgstr ""
-"belge bağlantılarını bağlantı olarak değil, yalnızca metin olarak gösterme"
-
-#: configuration/settings.cfg
-msgid "list of embedded media types"
-msgstr "gömülü medya türleri listesi"
-
-#: configuration/settings.cfg
-msgid "URL to embed Twitch videos"
-msgstr "Twitch videolarını yerleştirmek için URL"
-
-#: configuration/settings.cfg
-msgid "URL to embed YouTube videos"
-msgstr "YouTube videolarını yerleştirmek için URL"
-
-#: configuration/settings.cfg
-msgid "path for twitch videos"
-msgstr "twitch videoları için yol"
-
-#: configuration/settings.cfg
-msgid "path for youtube videos"
-msgstr "youtube videoları için yol"
-
-#: configuration/settings.cfg
-msgid "custom text in privacy settings for Twitch videos"
-msgstr "twitch videoları için gizlilik ayarlarında özel metin"
-
-#: configuration/settings.cfg
-msgid "custom text in privacy settings for YouTube videos"
-msgstr "youTube videoları için gizlilik ayarlarında özel metin"
-
-#: configuration/settings.cfg
-msgid ""
-"large size of images on page, is linked to preview image (e. g. for a "
-"gallery)"
-msgstr ""
-"sayfadaki resimlerin büyük boyutu, önizleme resmine bağlanır (örn. bir "
-"galeri için)"
-
-#: configuration/settings.cfg
-msgid "use field media_categories.property to set values for categories"
-msgstr ""
-"kategoriler için değerleri ayarlamak üzere media_categories.property alanını "
-"kullanın"
-
-#: configuration/settings.cfg
-msgid "use croppr.js for images"
-msgstr "görüntüler için croppr.js kullanın"
-
-#: configuration/settings.cfg
-msgid "download files path"
-msgstr "dosya indirme yolu"
-
-#: configuration/settings.cfg
-msgid "size of downloads image"
-msgstr "indirilen görüntünün boyutu"
-
-#: configuration/settings.cfg
-msgid "suffix variant for database files (multiple uploads)"
-msgstr "veritabanı dosyaları için sonek değişkeni (çoklu yüklemeler)"
-
-#: configuration/settings.cfg
-msgid "show date in caption of images"
-msgstr "resimlerin başlığında tarihi göster"
-
-#: configuration/settings.cfg
-msgid "folder where media files are saved"
-msgstr "medya dosyalarının kaydedildiği klasör"
-
-#: configuration/settings.cfg
-msgid "size of images for gallery on page"
-msgstr "sayfadaki galeri için resimlerin boyutu"
-
-#: configuration/settings.cfg
-msgid "2x size of images for gallery on page for higher resolution screens"
-msgstr ""
-"yüksek çözünürlüklü ekranlar için sayfadaki galeri resimlerinin boyutu 2 "
-"katına çıkarıldı"
-
-#: configuration/settings.cfg
-msgid "folder from where files can be imported"
-msgstr "dosyaların içe aktarılabileceği klasör"
-
-#: configuration/settings.cfg
-msgid "path for importing media"
-msgstr "medya içe aktarma yolu"
-
-#: configuration/settings.cfg
-msgid "internal path to media folders on website"
-msgstr "web sitesindeki medya klasörlerine giden dahili yol"
-
-#: configuration/settings.cfg
-msgid "size of preview image for news module and others"
-msgstr "haber modülü ve diğerleri için önizleme görüntüsünün boyutu"
-
-#: configuration/settings.cfg
-msgid "extension for original file"
-msgstr "orijinal dosya için uzantı"
-
-#: configuration/settings.cfg
-msgid ""
-"standard position of media elements on website (left, center, right, etc.)"
-msgstr "medya öğelerinin web sitesindeki standart konumu (sol, orta, sağ, vb.)"
-
-#: configuration/settings.cfg
-msgid "standard size of images on page"
-msgstr "sayfadaki görüntülerin standart boyutu"
-
-#: configuration/settings.cfg
-msgid "2x standard size of images on page for higher resolution screens"
-msgstr ""
-"daha yüksek çözünürlüklü ekranlar için sayfadaki görsellerin standart "
-"boyutunun 2 katı"
-
-#: configuration/settings.cfg
-msgid "preview image for media module"
-msgstr "medya modülü için önizleme görüntüsü"
-
-#: configuration/settings.cfg
-msgid "preview image for news module"
-msgstr "haber modülü için önizleme görüntüsü"
-
-#: configuration/settings.cfg
-msgid "small image"
-msgstr "küçük resim"
-
-#: configuration/settings.cfg
-msgid "medium image"
-msgstr "orta boy görüntü"
-
-#: configuration/settings.cfg
-msgid "large image"
-msgstr "büyük resim"
-
-#: configuration/settings.cfg
-msgid "extra large image"
-msgstr "ekstra büyük görsel"
-
-#: configuration/settings.cfg
-msgid "allow to tag a medium"
-msgstr "bir aracı etiketlemeye izin ver"
-
-#: configuration/settings.cfg
-msgid "show top image on webpage"
-msgstr "web sayfasında üstteki resmi göster"
-
-#: configuration/settings.cfg
-msgid "ID of webpage that holds top image for error pages"
-msgstr "Hata sayfaları için üst resmi tutan web sayfasının kimliği"
-
-#: configuration/settings.cfg
-msgid "initial installation date of media module (for updates)"
-msgstr "medya modülünün ilk kurulum tarihi (güncellemeler için)"
-
-#: configuration/settings.cfg
-msgid "URL where your privacy policy is found."
-msgstr "Gizlilik politikanızın bulunduğu URL."
-
-#: configuration/settings.cfg
-msgid "Linked URL with placeholder for Twitch videos"
-msgstr "Twitch videoları için yer tutucu ile bağlantılı URL"
-
-#: configuration/settings.cfg
-msgid "Embed URL with placeholder for Twitch videos"
-msgstr "Twitch videoları için yer tutuculu URL yerleştirme"
-
-#: configuration/settings.cfg
-msgid "Linked URL with placeholder for YouTube videos"
-msgstr "YouTube videoları için yer tutuculu bağlantılı URL"
-
-#: configuration/settings.cfg
-msgid "Embed URL with placeholder for YouTube videos"
-msgstr "YouTube videoları için yer tutuculu URL yerleştirme"
-
-#: templates/fileimport.template.txt
-msgid "A thumbnail was created for medium ID %d."
-msgstr "Ortam kimliği %d için bir küçük resim oluşturuldu."
-
-#: templates/fileimport.template.txt
-msgid "Failed to create thumbnail for medium ID %d."
-msgstr "Ortam kimliği %d için küçük resim oluşturulamadı."
-
-#: templates/fileimport.template.txt
-msgid "Import of file %s into folder %s was successful."
-msgstr "0] dosyasının %s klasörüne içe aktarılması başarılı oldu."
-
-#: templates/fileimport.template.txt
-msgid "Failed to import file %s into folder %s."
-msgstr "0] dosyası %s klasörüne aktarılamadı."
-
-#: templates/fileimport.template.txt
-msgid "Import file %s into folder %s"
-msgstr "0] dosyasını %s klasörüne aktarın"
-
-#: templates/fileimport.template.txt
-msgid "Back to folder <strong>%s</strong>"
-msgstr "Klasöre geri dön <strong>%s</strong>"
-
-#: templates/folderinfo.template.txt
-msgid "%d file was imported in the background."
-msgid_plural "%d files were imported in the background."
-msgstr[0] "%d dosyası arka planda içe aktarıldı."
-msgstr[1] "%d dosyaları arka planda içe aktarıldı."
-
-#: templates/folderinfo.template.txt
-msgid "Import?"
-msgstr "İthalat mı?"
-
-#: templates/folderinfo.template.txt
-msgid "Filename"
-msgstr "Dosya Adı"
-
-#: templates/folderinfo.template.txt
-msgid "Import %d files"
-msgstr "0] dosyayı içe aktar"
-
-#: templates/folderinfo.template.txt
-msgid "You can import %d file into this folder."
-msgid_plural "You can import %d files into this folder."
-msgstr[0] "0] dosyasını bu klasöre aktarabilirsiniz."
-msgstr[1] "0] dosyalarını bu klasöre aktarabilirsiniz."
-
-#: templates/mediatags.template.txt
-msgid "Add new tags …"
-msgstr "Yeni etiketler ekleyin .."
-
-#: templates/mediuminfo.template.txt
-msgid "Meta data"
-msgstr "Meta veri"
-
-#: templates/mediuminfo.template.txt
-msgid "Tags"
-msgstr "Etiketler"
-
-#: templates/mediuminfo.template.txt
-msgid "Date/Time"
-msgstr "Tarih/Saat"
-
-#: templates/mediuminfo.template.txt
-msgid "File info"
-msgstr "Dosya bilgisi"
-
-#: templates/mediuminfo.template.txt
-msgid "Hash (MD5)"
-msgstr "Hash (MD5)"
-
-#: templates/mediuminfo.template.txt
-msgid "Extension:"
-msgstr "Uzantı:"
-
-#: templates/mediuminfo.template.txt
-msgid "Files"
-msgstr "Dosyalar"
-
-#: templates/mediuminfo.template.txt
-msgid "pixels"
-msgstr "piksel"
-
-#: templates/mediuminfo.template.txt
-msgid "Edit"
-msgstr "Düzenle"
-
-#: templates/mediuminfo.template.txt
-msgid "Edit medium"
-msgstr "Ortamı düzenle"
-
-#: templates/mediuminfo.template.txt
-msgid "Delete medium"
-msgstr "Ortamı sil"
-
-#: templates/mediuminfo.template.txt
-msgid "Crop image (custom)"
-msgstr "Görüntüyü kırp (özel)"
-
-#: templates/mediuminfo.template.txt
-msgid "Save image section"
-msgstr "Görüntü bölümünü kaydet"
-
-#: templates/mediuminfo.template.txt
-msgid "Original file"
-msgstr "Orijinal dosya"
-
-#: templates/mediuminfo.template.txt
-msgid "Thumbnail file"
-msgstr "Küçük resim dosyası"
-
-#: templates/mediuminfo.template.txt
-msgid "Crop file"
-msgstr "Kırpma dosyası"
-
-#: zzbrick_forms/media.php
-msgid "Display as Table"
-msgstr "Tablo Olarak Göster"
-
-#: zzbrick_forms/media.php
-msgid "Table"
-msgstr "Tablo"
-
-#: zzbrick_forms/media.php
-msgid "Display as Gallery"
-msgstr "Galeri Olarak Göster"
-
-#: zzbrick_forms/media.php
-msgid "Gallery"
-msgstr "Galeri"
-
-#: zzbrick_forms/media.php
-msgid "Download files in ZIP archive"
-msgstr "ZIP arşivindeki dosyaları indirin"
-
-#: zzbrick_forms/media.php
-msgid "Download"
-msgstr "İndir"
-
-#: zzbrick_tables/media.php
-msgid "File"
-msgstr "Dosya"
-
-#: zzbrick_tables/media.php
-msgid "Folder"
-msgstr "Klasör"
-
-#: zzbrick_tables/media.php
-msgid "Medium"
-msgstr "Orta"
-
-#: zzbrick_tables/media.php
-msgid "Thumbnail"
-msgstr "Küçük Resim"
-
-#: zzbrick_tables/media.php
-msgid "Published?"
-msgstr "Yayınlandı mı?"
-
-#: zzbrick_tables/media.php
-msgid "Title"
-msgstr "Başlık"
-
-#: zzbrick_tables/media.php
-msgid "Description"
-msgstr "Açıklama"
-
-#: zzbrick_tables/media.php
-msgid "Seq."
-msgstr "Seq."
-
-#: zzbrick_tables/media.php
-msgid "Sequence"
-msgstr "Sekans"
-
-#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
-#: zzbrick_tables/media.php
-msgid "Filetype"
-msgstr "Dosya Tipi"
-
-#: templates/mediuminfo.template.txt templates/folderinfo.template.txt
-#: zzbrick_tables/media.php
-msgid "Filesize"
-msgstr "Dosya boyutu"
-
-#: zzbrick_forms/media.php
-msgid "TOP"
-msgstr "ÜST"
-
-#: zzbrick_tables/media.php
-msgid "MD5"
-msgstr "MD5"
-
-#: zzbrick_tables/media.php
-msgid "Version"
-msgstr "Versiyon"
-
-#: zzbrick_tables/media.php
-msgid "Updated"
-msgstr "Güncellendi"
-
-#: zzbrick_tables/media.php
-msgid ""
-"Coloured border: medium is published; gray border: medium is not published."
-msgstr ""
-"Renkli kenarlık: ortam yayınlanmıştır; gri kenarlık: ortam yayınlanmamıştır."
-
-#: zzbrick_tables/media.php
-msgid "Media Pool"
-msgstr "Medya Havuzu"
-
-#: zzbrick_tables/media.php
-msgid "The filename will be used as a default if nothing is entered."
-msgstr "Hiçbir şey girilmezse dosya adı varsayılan olarak kullanılacaktır."
-
-#: zzbrick_tables/media.php
-msgid "yes"
-msgstr "evet"
-
-#: zzbrick_tables/media.php
-msgid "no"
-msgstr "hayır"
-
-#: zzbrick_tables/media.php
-msgid "good for photos"
-msgstr "fotoğraflar için iyi"
-
-#: zzbrick_tables/media.php
-msgid "good for drawings & texts / transparency"
-msgstr "çizimler ve metinler için iyi / şeffaflık"
-
-#: zzbrick_tables/media.php
-msgid "good for drawings & texts / transparency (deprecated)"
-msgstr "çizimler ve metinler için iyi / şeffaflık (kullanımdan kaldırıldı)"
-
-#: zzbrick_tables/media.php
-msgid "Time"
-msgstr "Zaman"
-
-#: zzbrick_tables/media.php
-msgid "at"
-msgstr "tarihinde"
-
-#: zzbrick_tables/media.php
-msgid "h"
-msgstr "h"
-
-#: zzbrick_tables/media.php
-msgid ""
-"Digital photography: If nothing is entered, date and time will be read from "
-"file."
-msgstr ""
-"Dijital fotoğrafçılık: Hiçbir şey girilmezse, tarih ve saat dosyadan "
-"okunacaktır."
-
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
-msgid "Source"
-msgstr "Kaynak"
-
-#: zzbrick_tables/media.php
-msgid ""
-"If it’s not a medium created by yourself, who created it, where did you find "
-"it?"
-msgstr ""
-"Eğer sizin yarattığınız bir araç değilse, kim yarattı, nereden buldunuz?"
-
-#: zzbrick_tables/media.php
-msgid "Clipping"
-msgstr "Kırpma"
-
-#: zzbrick_tables/media.php
-msgid "Position of clipping of cropped image"
-msgstr "Kırpılmış görüntünün kırpılma konumu"
-
-#: zzbrick_tables/media.php
-msgid "center"
-msgstr "merkez"
-
-#: zzbrick_tables/media.php
-msgid "top"
-msgstr "üst"
-
-#: zzbrick_tables/media.php
-msgid "left"
-msgstr "sol"
-
-#: zzbrick_tables/media.php
-msgid "custom"
-msgstr "özel"
-
-#: zzbrick_tables/media.php
-msgid "bottom"
-msgstr "alt"
-
-#: zzbrick_tables/media.php
-msgid "right"
-msgstr "sağ"
-
-#: zzbrick_tables/media.php
-msgid "Width"
-msgstr "Genişlik"
-
-#: zzbrick_tables/media.php
-msgid "Height"
-msgstr "Yükseklik"
-
-#: zzbrick_tables/media.php
-msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
-msgstr "<abbr title=\"Publish on Website?\">Web mi?</abbr>"
-
-#: zzbrick_tables/media.php
-msgid "Language"
-msgstr "Dil"
-
-#: templates/mediuminfo.template.txt zzbrick_tables/media.php
-msgid "Alternative text"
-msgstr "Alternatif metin"
-
-#: zzbrick_tables/media.php
-msgid ""
-"optional content of `alt`-attribute for images, for screen reader software"
-msgstr ""
-"ekran okuyucu yazılımlar için resimler için `alt` özelliğinin isteğe bağlı "
-"içeriği"
-
-#: zzbrick_tables/media-access.php
-msgid "Media Access Rights"
-msgstr "Medya Erişim Hakları"
-
-#: zzbrick_tables/media-access.php
-msgid "Access"
-msgstr "Erişim"
-
-#: zzbrick_tables/media-tags.php
-msgid "Media Tags"
-msgstr "Medya Etiketleri"
-
-#: templates/embed.template.txt
+#: templates/embed.template.txt:13
 msgid "Yes, I’d like this content to be embedded directly on this website."
 msgstr ""
 "Evet, bu içeriğin doğrudan bu web sitesine yerleştirilmesini istiyorum."
 
-#: templates/embed.template.txt
-msgid "Watch it on the original website:"
-msgstr "Orijinal web sitesinden izleyin:"
-
-#: templates/embed.template.txt
+#: templates/embed.template.txt:14
 msgid "I accept the <a href='%s' target='_new'>Privacy Policy.</a>"
 msgstr "<a href='%s' target='_new'>Gizlilik Politikasını</a> kabul ediyorum."
 
-#: templates/embed-privacy.template.txt
-msgid "Change privacy settings"
-msgstr "Gizlilik ayarlarını değiştirme"
+#: templates/embed.template.txt:16
+msgid "Watch it on the original website:"
+msgstr "Orijinal web sitesinden izleyin:"
 
-#: templates/embed-privacy.template.txt
-msgid "Your settings were saved"
-msgstr "Ayarlarınız kaydedildi"
-
-#: templates/embed-privacy.template.txt
+#: templates/embed-privacy.template.txt:12
 msgid "There is currently no embedded content."
 msgstr "Şu anda gömülü içerik bulunmamaktadır."
 
-#: templates/embed-privacy.template.txt
+#: templates/embed-privacy.template.txt:15
 msgid ""
 "Here, you can decide whether you’d like to have embedded content displayed "
 "inline on our website or not:"
@@ -595,7 +52,15 @@ msgstr ""
 "Burada, gömülü içeriğin web sitemizde satır içi olarak görüntülenmesini "
 "isteyip istemediğinize karar verebilirsiniz:"
 
-#: templates/embed-privacy.template.txt
+#: templates/embed-privacy.template.txt:26
+msgid "Google’s Privacy Policy"
+msgstr "Google'ın Gizlilik Politikası"
+
+#: templates/embed-privacy.template.txt:26
+msgid "Some personal data (e. g. your IP address) is transmitted to Google."
+msgstr "Bazı kişisel veriler (örn. IP adresiniz) Google'a iletilir."
+
+#: templates/embed-privacy.template.txt:26
 msgid ""
 "Watch a YouTube video in privacy-enhanced mode on our website (no tracking "
 "cookies will be sent to Google)."
@@ -603,19 +68,7 @@ msgstr ""
 "Web sitemizde gizliliği artırılmış modda bir YouTube videosu izleyin "
 "(Google'a hiçbir izleme çerezi gönderilmeyecektir)."
 
-#: templates/embed-privacy.template.txt
-msgid "Some personal data (e. g. your IP address) is transmitted to Google."
-msgstr "Bazı kişisel veriler (örn. IP adresiniz) Google'a iletilir."
-
-#: templates/embed-privacy.template.txt
-msgid "Google’s Privacy Policy"
-msgstr "Google'ın Gizlilik Politikası"
-
-#: templates/embed-privacy.template.txt
-msgid "Watch a Twitch video on our website."
-msgstr "Web sitemizden bir Twitch videosu izleyin."
-
-#: templates/embed-privacy.template.txt
+#: templates/embed-privacy.template.txt:28
 msgid ""
 "Some personal data (e. g. your IP address) is transmitted to Twitch, "
 "tracking and other cookies may be set."
@@ -623,10 +76,451 @@ msgstr ""
 "Bazı kişisel veriler (örn. IP adresiniz) Twitch'e iletilir, izleme ve diğer "
 "çerezler ayarlanabilir."
 
-#: templates/embed-privacy.template.txt
+#: templates/embed-privacy.template.txt:28
 msgid "Twitch’s Privacy Policy"
 msgstr "Twitch'in Gizlilik Politikası"
 
-#: templates/images.template.txt
+#: templates/embed-privacy.template.txt:28
+msgid "Watch a Twitch video on our website."
+msgstr "Web sitemizden bir Twitch videosu izleyin."
+
+#: templates/embed-privacy.template.txt:35
+msgid "Change privacy settings"
+msgstr "Gizlilik ayarlarını değiştirme"
+
+#: templates/embed-privacy.template.txt:35
+msgid "Your settings were saved"
+msgstr "Ayarlarınız kaydedildi"
+
+#: templates/fileimport.template.txt:12
+msgid "A thumbnail was created for medium ID %d."
+msgstr "Ortam kimliği %d için bir küçük resim oluşturuldu."
+
+#: templates/fileimport.template.txt:15
+msgid "Failed to create thumbnail for medium ID %d."
+msgstr "Ortam kimliği %d için küçük resim oluşturulamadı."
+
+#: templates/fileimport.template.txt:18
+msgid "Import of file %s into folder %s was successful."
+msgstr "0] dosyasının %s klasörüne içe aktarılması başarılı oldu."
+
+#: templates/fileimport.template.txt:22
+msgid "Failed to import file %s into folder %s."
+msgstr "0] dosyası %s klasörüne aktarılamadı."
+
+#: templates/fileimport.template.txt:26
+msgid "Import file %s into folder %s"
+msgstr "0] dosyasını %s klasörüne aktarın"
+
+#: templates/fileimport.template.txt:31
+msgid "Back to folder <strong>%s</strong>"
+msgstr "Klasöre geri dön <strong>%s</strong>"
+
+#: templates/folderinfo.template.txt:12
+msgid "%d file was imported in the background."
+msgid_plural "%d files were imported in the background."
+msgstr[0] "%d dosyası arka planda içe aktarıldı."
+msgstr[1] "%d dosyaları arka planda içe aktarıldı."
+
+#: templates/folderinfo.template.txt:20
+msgid "Import?"
+msgstr "İthalat mı?"
+
+#: templates/folderinfo.template.txt:21 zzbrick_tables/media.php:299
+msgid "Filename"
+msgstr "Dosya Adı"
+
+#: templates/folderinfo.template.txt:22 templates/mediuminfo.template.txt:58
+#: zzbrick_tables/media.php:309
+msgid "Filetype"
+msgstr "Dosya Tipi"
+
+#: templates/folderinfo.template.txt:23 templates/mediuminfo.template.txt:56
+#: zzbrick_tables/media.php:331
+msgid "Filesize"
+msgstr "Dosya boyutu"
+
+#: templates/folderinfo.template.txt:38
+msgid "Import %d files"
+msgstr "0] dosyayı içe aktar"
+
+#: templates/folderinfo.template.txt:44
+msgid "You can import %d file into this folder."
+msgid_plural "You can import %d files into this folder."
+msgstr[0] "0] dosyasını bu klasöre aktarabilirsiniz."
+msgstr[1] "0] dosyalarını bu klasöre aktarabilirsiniz."
+
+#: templates/images.template.txt:13
 msgid "Image"
 msgstr "Resim"
+
+#: templates/mediatags.template.txt:18
+msgid "Add new tags …"
+msgstr "Yeni etiketler ekleyin .."
+
+#: templates/mediuminfo.template.txt:21
+msgid "Crop image (custom)"
+msgstr "Görüntüyü kırp (özel)"
+
+#: templates/mediuminfo.template.txt:22
+msgid "Save image section"
+msgstr "Görüntü bölümünü kaydet"
+
+#: templates/mediuminfo.template.txt:34
+msgid "Meta data"
+msgstr "Meta veri"
+
+#: templates/mediuminfo.template.txt:37
+msgid "Date/Time"
+msgstr "Tarih/Saat"
+
+#: templates/mediuminfo.template.txt:38
+msgid "(OpenGraph)"
+msgstr ""
+
+#: templates/mediuminfo.template.txt:38 zzbrick_request/filedownload.inc.php:77
+#: zzbrick_tables/media.php:181
+msgid "Description"
+msgstr "Açıklama"
+
+#: templates/mediuminfo.template.txt:39 templates/mediuminfo.template.txt
+#: zzbrick_tables/media.php zzbrick_request/filedownload.inc.php:78
+#: zzbrick_tables/media.php:286
+msgid "Source"
+msgstr "Kaynak"
+
+#: templates/mediuminfo.template.txt:40 zzbrick_tables/media.php:187
+msgid "Alternative text"
+msgstr "Alternatif metin"
+
+#: templates/mediuminfo.template.txt:45 zzbrick_forms/media.php:317
+#: zzbrick_forms/media.php:331 zzbrick_request/mediatags.inc.php:53
+#: zzbrick_tables/media.php:196
+msgid "Tags"
+msgstr "Etiketler"
+
+#: templates/mediuminfo.template.txt:53
+msgid "File info"
+msgstr "Dosya bilgisi"
+
+#: templates/mediuminfo.template.txt:57
+msgid "Hash (MD5)"
+msgstr "Hash (MD5)"
+
+#: templates/mediuminfo.template.txt:58
+msgid "Extension:"
+msgstr "Uzantı:"
+
+#: templates/mediuminfo.template.txt:61
+msgid "Files"
+msgstr "Dosyalar"
+
+#: templates/mediuminfo.template.txt:66
+msgid "pixels"
+msgstr "piksel"
+
+#: templates/mediuminfo.template.txt:73
+msgid "Edit"
+msgstr "Düzenle"
+
+#: templates/mediuminfo.template.txt:76
+msgid "Edit medium"
+msgstr "Ortamı düzenle"
+
+#: templates/mediuminfo.template.txt:77
+msgid "Delete medium"
+msgstr "Ortamı sil"
+
+#: zzbrick_forms/media.php:39
+msgid ""
+"Coloured border: medium is published; gray border: medium is not published."
+msgstr ""
+"Renkli kenarlık: ortam yayınlanmıştır; gri kenarlık: ortam yayınlanmamıştır."
+
+#: zzbrick_forms/media.php:149
+msgid "Type"
+msgstr ""
+
+#: zzbrick_forms/media.php:188 zzbrick_request/filedownload.inc.php:75
+#: zzbrick_tables/media.php:22 zzbrick_tables/media.php:478
+#: zzbrick_tables/media-access.php:23
+msgid "Folder"
+msgstr "Klasör"
+
+#: zzbrick_forms/media.php:322 zzbrick_forms/media.php:327
+#: zzbrick_request/mediatags.inc.php:53
+msgid "TOP"
+msgstr "ÜST"
+
+#: zzbrick_forms/media.php:384
+msgid "Gallery"
+msgstr "Galeri"
+
+#: zzbrick_forms/media.php:385
+msgid "Display as Gallery"
+msgstr "Galeri Olarak Göster"
+
+#: zzbrick_forms/media.php:390
+msgid "Table"
+msgstr "Tablo"
+
+#: zzbrick_forms/media.php:391
+msgid "Display as Table"
+msgstr "Tablo Olarak Göster"
+
+#: zzbrick_forms/media.php:399
+msgid "Download"
+msgstr "İndir"
+
+#: zzbrick_forms/media.php:400
+msgid "Download files in ZIP archive"
+msgstr "ZIP arşivindeki dosyaları indirin"
+
+#: zzbrick_request/filedownload.inc.php:76 zzbrick_tables/media.php:169
+msgid "Title"
+msgstr "Başlık"
+
+#: zzbrick_request/filedownload.inc.php:79 zzbrick_tables/media.php:263
+msgid "Date"
+msgstr ""
+
+#: zzbrick_request/filedownload.inc.php:80 zzbrick_tables/media.php:275
+msgid "Time"
+msgstr "Zaman"
+
+#: zzbrick_request/filedownload.inc.php:81
+msgid "MD5 Hash"
+msgstr ""
+
+#: zzbrick_request/mediatags.inc.php:53 zzbrick_tables/media.php:470
+msgid "Media Pool"
+msgstr "Medya Havuzu"
+
+#: zzbrick_request/medium.inc.php:69
+msgid ""
+"Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent "
+"destination: %s"
+msgstr ""
+
+#: zzbrick_request/mediuminfo.inc.php:75 zzbrick_request/mediuminfo.inc.php:111
+msgid "Original file"
+msgstr "Orijinal dosya"
+
+#: zzbrick_request/mediuminfo.inc.php:89
+msgid "Crop file"
+msgstr "Kırpma dosyası"
+
+#: zzbrick_request/mediuminfo.inc.php:90
+msgid "Custom file"
+msgstr ""
+
+#: zzbrick_request/mediuminfo.inc.php:91
+msgid "EXIF thumbnail file"
+msgstr ""
+
+#: zzbrick_request/mediuminfo.inc.php:92
+msgid "Grayscale file"
+msgstr ""
+
+#: zzbrick_request/mediuminfo.inc.php:93
+msgid "Thumbnail file"
+msgstr "Küçük resim dosyası"
+
+#: zzbrick_request/mediuminfo.inc.php:94
+msgid "Web image"
+msgstr ""
+
+#: zzbrick_tables/media.php:18 zzbrick_tables/media-access.php:19
+#: zzbrick_tables/media-categories.php:19
+msgid "ID"
+msgstr ""
+
+#: zzbrick_tables/media.php:36 zzbrick_tables/media-categories.php:28
+msgid "Medium"
+msgstr "Orta"
+
+#: zzbrick_tables/media.php:128
+msgid "Thumbnail"
+msgstr "Küçük Resim"
+
+#: zzbrick_tables/media.php:133
+msgid "good for photos"
+msgstr "fotoğraflar için iyi"
+
+#: zzbrick_tables/media.php:134
+msgid "good for drawings & texts / transparency"
+msgstr "çizimler ve metinler için iyi / şeffaflık"
+
+#: zzbrick_tables/media.php:135
+msgid "good for drawings & texts / transparency (deprecated)"
+msgstr "çizimler ve metinler için iyi / şeffaflık (kullanımdan kaldırıldı)"
+
+#: zzbrick_tables/media.php:155
+msgid "Published?"
+msgstr "Yayınlandı mı?"
+
+#: zzbrick_tables/media.php:156
+msgid "<abbr title=\"Publish on Website?\">Web?</abbr>"
+msgstr "<abbr title=\"Publish on Website?\">Web mi?</abbr>"
+
+#: zzbrick_tables/media.php:159
+msgid "no"
+msgstr "hayır"
+
+#: zzbrick_tables/media.php:159
+msgid "yes"
+msgstr "evet"
+
+#: zzbrick_tables/media.php:172
+msgid "The filename will be used as a default if nothing is entered."
+msgstr "Hiçbir şey girilmezse dosya adı varsayılan olarak kullanılacaktır."
+
+#: zzbrick_tables/media.php:189
+msgid ""
+"optional content of `alt`-attribute for images, for screen reader software"
+msgstr ""
+"ekran okuyucu yazılımlar için resimler için `alt` özelliğinin isteğe bağlı "
+"içeriği"
+
+#: zzbrick_tables/media.php:218
+msgid "Clipping"
+msgstr "Kırpma"
+
+#: zzbrick_tables/media.php:219
+msgid "Position of clipping of cropped image"
+msgstr "Kırpılmış görüntünün kırpılma konumu"
+
+#: zzbrick_tables/media.php:221
+msgid "bottom"
+msgstr "alt"
+
+#: zzbrick_tables/media.php:221
+msgid "center"
+msgstr "merkez"
+
+#: zzbrick_tables/media.php:221
+msgid "custom"
+msgstr "özel"
+
+#: zzbrick_tables/media.php:221
+msgid "left"
+msgstr "sol"
+
+#: zzbrick_tables/media.php:221
+msgid "right"
+msgstr "sağ"
+
+#: zzbrick_tables/media.php:221
+msgid "top"
+msgstr "üst"
+
+#: zzbrick_tables/media.php:238
+msgid "Seq."
+msgstr "Seq."
+
+#: zzbrick_tables/media.php:239
+msgid "Sequence"
+msgstr "Sekans"
+
+#: zzbrick_tables/media.php:251
+msgid "Language"
+msgstr "Dil"
+
+#: zzbrick_tables/media.php:267
+msgid ""
+"Digital photography: If nothing is entered, date and time will be read from "
+"file."
+msgstr ""
+"Dijital fotoğrafçılık: Hiçbir şey girilmezse, tarih ve saat dosyadan "
+"okunacaktır."
+
+#: zzbrick_tables/media.php:277
+msgid "at"
+msgstr "tarihinde"
+
+#: zzbrick_tables/media.php:278
+msgid "h"
+msgstr "h"
+
+#: zzbrick_tables/media.php:289
+msgid ""
+"If it’s not a medium created by yourself, who created it, where did you find "
+"it?"
+msgstr ""
+"Eğer sizin yarattığınız bir araç değilse, kim yarattı, nereden buldunuz?"
+
+#: zzbrick_tables/media.php:310 zzbrick_tables/media.php:473
+msgid "File"
+msgstr "Dosya"
+
+#: zzbrick_tables/media.php:346
+msgid "MD5"
+msgstr "MD5"
+
+#: zzbrick_tables/media.php:357 zzbrick_tables/media.php:358
+msgid "Size"
+msgstr ""
+
+#: zzbrick_tables/media.php:359
+msgid "Width"
+msgstr "Genişlik"
+
+#: zzbrick_tables/media.php:387
+msgid "Height"
+msgstr "Yükseklik"
+
+#: zzbrick_tables/media.php:409
+msgid "Version"
+msgstr "Versiyon"
+
+#: zzbrick_tables/media.php:419
+msgid "Parameters"
+msgstr ""
+
+#: zzbrick_tables/media.php:428
+msgid "Updated"
+msgstr "Güncellendi"
+
+#: zzbrick_tables/media-access.php:16
+msgid "Media Access Rights"
+msgstr "Medya Erişim Hakları"
+
+#: zzbrick_tables/media-access.php:36
+msgid "Usergroup"
+msgstr ""
+
+#: zzbrick_tables/media-access.php:44
+msgid "Access"
+msgstr "Erişim"
+
+#: zzbrick_tables/media-access.php:56 zzbrick_tables/media-categories.php:64
+msgid "Last update"
+msgstr ""
+
+#: zzbrick_tables/media-categories.php:16 zzbrick_tables/media-tags.php
+msgid "Media Tags"
+msgstr "Medya Etiketleri"
+
+#: zzbrick_tables/media-categories.php:23
+msgid "No."
+msgstr ""
+
+#: zzbrick_tables/media-categories.php:39
+msgid "Category"
+msgstr ""
+
+#: zzbrick_tables/media-categories.php:50
+msgid "Type category"
+msgstr ""
+
+#: zzbrick_tables/media-categories.php:60
+msgid "Property"
+msgstr ""
+
+#: zzbrick_xhr/crop.inc.php:49
+msgid "Unable to set crop coordinates"
+msgstr ""
+
+#: zzform/hooks.inc.php:30
+msgid "There’s no YouTube video with this code"
+msgstr ""

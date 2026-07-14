@@ -467,7 +467,7 @@ $zz['conditions'][3]['add']['sql'] = 'SELECT filetype_id
 	WHERE filetype_id = ';
 $zz['conditions'][3]['add']['key_field_name'] = 'filetype_id';
 
-$zz['title'] = wrap_text('Media Pool');
+$zz['title'] = 'Media Pool';
 
 $zz['add'][] = [
 	'type' => wrap_text('File'),
