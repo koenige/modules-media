@@ -193,7 +193,8 @@ function mf_media_separate_embeds($media) {
  * Prepare media data for output
  *
  * Translates media data, processes markdown in source field, sets filecategory 
- * flags, and adds PDF files and videos with thumbnails to the 'images' category.
+ * flags, and adds PDF files and videos (with thumbnails, or without if
+ * media_gallery_videos_without_thumbnail is enabled) to the 'images' category.
  * Sorts images by sequence, date, time, title, and filename.
  *
  * @param array $media {
@@ -217,7 +218,10 @@ function mf_media_prepare($media) {
 			$files[$medium_id]['filecategory_'.$medium['filecategory']] 
 				= $medium['filecategory_'.$medium['filecategory']] = true;
 			if ($medium['filetype'] !== 'pdf' AND $filecategory !== 'videos') continue;
-			if (!$medium['thumb_extension']) continue;
+			if (!$medium['thumb_extension']) {
+				if ($filecategory !== 'videos') continue;
+				if (!wrap_setting('media_gallery_videos_without_thumbnail')) continue;
+			}
 			$media['images'][$medium_id] = $medium;
 		}
 	}
