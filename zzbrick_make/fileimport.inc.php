@@ -39,10 +39,10 @@ function mod_media_make_fileimport($params) {
 			$data['thumbnail_created'] = true;
 		} else {
 			$data['thumbnail_failed'] = true;
-			wrap_error(sprintf(
-				'Creation of thumbnail for medium ID %s failed. (Reason: %s)'
-				, $_GET['thumbs'], json_encode($ops['error'])
-			));
+			wrap_error([
+				'Creation of thumbnail for medium ID %s failed.',
+				['values' => [$_GET['thumbs']], 'data' => $ops['error']]
+			]);
 			$page['status'] = 503;
 		}
 		$page['query_strings'][] = 'thumbs';
@@ -87,9 +87,7 @@ function mod_media_make_fileimport($params) {
 			$page['text'] = wrap_template('fileimport', $data);
 			return $page;
 		}
-		wrap_error(sprintf(
-			'Import of file %s into folder %s failed.', $data['file'], $data['folder']
-		), E_USER_WARNING);
+		wrap_error(['Import of file %s into folder %s failed.', ['values' => [$data['file'], $data['folder']]]], E_USER_WARNING);
 		$data['import_failed'] = true;
 		$page['status'] = 503;
 	}

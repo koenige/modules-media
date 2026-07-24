@@ -71,7 +71,12 @@ function mf_media_get_embed_youtube($video) {
 		if (empty($meta[$video])) $status = 404;
 	}
 	if (!in_array($status, [200, 429])) {
-		wrap_error(sprintf('YouTube Video %s was not found. Status: %d. Headers: %s. Response: %s', $video, $status, json_encode($headers), json_encode($data)));
+		wrap_error([
+			'YouTube Video %s was not found. Status: %d', [
+				'values' => [$video, $status],
+				'data' => ['Headers' => $headers, 'Response' => $data]
+			]
+		]);
 		return [];
 	}
 
@@ -94,17 +99,17 @@ function mf_media_youtube_video_id($input) {
 
 	$url = parse_url($input);
 	if (empty($url['host'])) {
-		wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+		wrap_error(['Unknown YouTube Video %s', ['values' => [$input]]], E_USER_ERROR);
 	}
 	$host = preg_replace('/^www\./', '', strtolower($url['host']));
 	if ($host === 'youtu.be') {
 		if (empty($url['path'])) {
-			wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+			wrap_error(['Unknown YouTube Video %s', ['values' => [$input]]], E_USER_ERROR);
 		}
 		return ltrim($url['path'], '/');
 	}
 	if (!preg_match('/(?:^|\.)youtube(?:-nocookie)?\.com$/', $host)) {
-		wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+		wrap_error(['Unknown YouTube Video %s', ['values' => [$input]]], E_USER_ERROR);
 	}
 
 	if (!empty($url['query'])) {
@@ -120,7 +125,7 @@ function mf_media_youtube_video_id($input) {
 		return $matches[1];
 	}
 
-	wrap_error(sprintf('Unknown YouTube Video %s', $input), E_USER_ERROR);
+	wrap_error(['Unknown YouTube Video %s', ['values' => [$input]]], E_USER_ERROR);
 }
 
 /**

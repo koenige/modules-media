@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project – Media Module\n"
-"POT-Creation-Date: 2026-07-14 17:06+0000\n"
+"POT-Creation-Date: 2026-07-24 16:01+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -301,14 +301,6 @@ msgstr "MD5 Hash"
 msgid "Media Pool"
 msgstr "Medienpool"
 
-#: zzbrick_request/medium.inc.php:69
-msgid ""
-"Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent "
-"destination: %s"
-msgstr ""
-"Die Konfiguration von `media_sizes_redirect` ist falsch und verweist auf ein "
-"nicht vorhandenes Ziel: %s"
-
 #: zzbrick_request/mediuminfo.inc.php:75 zzbrick_request/mediuminfo.inc.php:111
 msgid "Original file"
 msgstr "Originaldatei"
@@ -388,6 +380,10 @@ msgid ""
 msgstr ""
 "optionaler Inhalt des `alt`-Attributs für Bilder, für Screenreader-Software"
 
+#: zzbrick_tables/media.php:201 zzbrick_tables/media.php:238
+msgid "Seq."
+msgstr "Folge"
+
 #: zzbrick_tables/media.php:218
 msgid "Clipping"
 msgstr "Ausschnitt"
@@ -419,10 +415,6 @@ msgstr "rechts"
 #: zzbrick_tables/media.php:221
 msgid "top"
 msgstr "oben"
-
-#: zzbrick_tables/media.php:238
-msgid "Seq."
-msgstr "Folge"
 
 #: zzbrick_tables/media.php:239
 msgid "Sequence"

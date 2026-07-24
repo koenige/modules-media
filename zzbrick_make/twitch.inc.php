@@ -24,7 +24,7 @@ function mod_media_make_twitch($params, $settings = []) {
 	$url = sprintf(wrap_setting('twitch_url'), $params[0]);
 	list($status, $headers, $data) = wrap_syndication_http_request($url);
 	if ($status !== 200) {
-		wrap_error(sprintf('Twitch Video %s was not found. Status: %d', $params[0], $status));
+		wrap_error(['Twitch Video %s was not found. Status: %d', ['values' => [$params[0], $status]]]);
 		return '';
 	}
 	

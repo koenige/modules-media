@@ -65,10 +65,10 @@ function mod_media_medium($params) {
 				$key = $extension ? count($parts) - 2 : count($parts) - 1;
 				$media_size = wrap_setting('media_sizes_redirect')[$old_media_size];
 				if (!in_array($media_size, array_column($media_sizes, 'path')))
-					wrap_error(wrap_text(
+					wrap_error([
 						'Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent destination: %s',
 						['values' => [$media_size]]
-					), E_USER_NOTICE);
+					], E_USER_NOTICE);
 				$parts[$key] = str_replace($old_media_size, $media_size, $parts[$key]);
 				$filename = implode('.', $parts);
 				// overwrite $new_url if set before, but this does not matter

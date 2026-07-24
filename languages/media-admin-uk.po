@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-07-14 16:17+0000\n"
+"POT-Creation-Date: 2026-07-24 16:01+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -25,6 +25,10 @@ msgstr ""
 
 #: configuration/access.cfg:24
 msgid "Show unpublished medium for preview"
+msgstr ""
+
+#: configuration/package.cfg:13
+msgid "media module"
 msgstr ""
 
 #: configuration/package.cfg:15
@@ -136,98 +140,135 @@ msgid "2x size of images for gallery on page for higher resolution screens"
 msgstr ""
 
 #: configuration/settings.cfg:104
+msgid ""
+"Include videos in the images list (e.g. for galleries) even when no preview "
+"thumbnail exists"
+msgstr ""
+
+#: configuration/settings.cfg:108
 msgid "Folder from where files can be imported"
 msgstr ""
 
-#: configuration/settings.cfg:109
+#: configuration/settings.cfg:113
 msgid "Link big image in all single image templates if bigger size available"
 msgstr ""
 
-#: configuration/settings.cfg:114
+#: configuration/settings.cfg:118
 msgid "Size of preview image for news module and others"
 msgstr ""
 
-#: configuration/settings.cfg:119
+#: configuration/settings.cfg:123
 msgid "Extension for original file"
 msgstr ""
 
-#: configuration/settings.cfg:123
+#: configuration/settings.cfg:127
 msgid "Standard position of top image on page"
 msgstr ""
 
-#: configuration/settings.cfg:127
+#: configuration/settings.cfg:131
 msgid "Standard size of images on page"
 msgstr ""
 
-#: configuration/settings.cfg:130
+#: configuration/settings.cfg:134
 msgid "2x standard size of images on page for higher resolution screens"
 msgstr ""
 
-#: configuration/settings.cfg:133
+#: configuration/settings.cfg:137
 msgid "Preview image for media module"
 msgstr ""
 
-#: configuration/settings.cfg:139
+#: configuration/settings.cfg:143
 msgid "Preview image for news module"
 msgstr ""
 
-#: configuration/settings.cfg:145
+#: configuration/settings.cfg:149
 msgid "Small image"
 msgstr ""
 
-#: configuration/settings.cfg:151
+#: configuration/settings.cfg:155
 msgid "Medium image"
 msgstr ""
 
-#: configuration/settings.cfg:157
+#: configuration/settings.cfg:161
 msgid "Large image"
 msgstr ""
 
-#: configuration/settings.cfg:163
+#: configuration/settings.cfg:167
 msgid "Extra large image"
 msgstr ""
 
-#: configuration/settings.cfg:169
+#: configuration/settings.cfg:173
 msgid ""
 "Media size paths that were removed and now redirect to a file of a different "
 "size, for old crawlers"
 msgstr ""
 
-#: configuration/settings.cfg:174
+#: configuration/settings.cfg:178
 msgid ""
 "Standard position of media elements on website (left, center, right, etc.)"
 msgstr ""
 
-#: configuration/settings.cfg:177
+#: configuration/settings.cfg:181
 msgid "Allow to tag a medium"
 msgstr ""
 
-#: configuration/settings.cfg:181
+#: configuration/settings.cfg:185
 msgid "Show top image on webpage"
 msgstr ""
 
-#: configuration/settings.cfg:187
+#: configuration/settings.cfg:191
 msgid "ID of webpage that holds top image for error pages"
 msgstr ""
 
-#: configuration/settings.cfg:191
+#: configuration/settings.cfg:195
 msgid "Initial installation date of media module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:195
+#: configuration/settings.cfg:199
 msgid "Linked URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:199
+#: configuration/settings.cfg:203
 msgid "Embed URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:205
+#: configuration/settings.cfg:209
 msgid "Linked URL with placeholder for YouTube videos"
 msgstr ""
 
-#: configuration/settings.cfg:210
+#: configuration/settings.cfg:214
 msgid "Embed URL with placeholder for YouTube videos"
+msgstr ""
+
+#: media/_functions.inc.php:75
+msgid "YouTube Video %s was not found. Status: %d"
+msgstr ""
+
+#: media/_functions.inc.php:102 media/_functions.inc.php:107
+#: media/_functions.inc.php:112 media/_functions.inc.php:128
+msgid "Unknown YouTube Video %s"
+msgstr ""
+
+#: zzbrick_make/fileimport.inc.php:43
+msgid "Creation of thumbnail for medium ID %s failed."
+msgstr ""
+
+#: zzbrick_make/fileimport.inc.php:90
+msgid "Import of file %s into folder %s failed."
+msgstr ""
+
+#: zzbrick_make/twitch.inc.php:27
+msgid "Twitch Video %s was not found. Status: %d"
+msgstr ""
+
+#: zzbrick_request/filedownload.inc.php:55
+msgid "Download: File %s does not exist"
+msgstr ""
+
+#: zzbrick_request/medium.inc.php:69
+msgid ""
+"Configuration of `media_sizes_redirect` is wrong, pointing to a non-existent "
+"destination: %s"
 msgstr ""
 
 # Modules: Upload (Table filetypes)

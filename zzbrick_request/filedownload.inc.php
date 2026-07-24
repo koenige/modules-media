@@ -52,7 +52,7 @@ function mod_media_filedownload($params, $settings) {
 		}
 		$filename = mf_media_filename($file, $settings['size'] ?? 'original', true);
 		if (!file_exists($filename)) {
-			wrap_error(sprintf('Download: File %s does not exist', $filename), E_USER_NOTICE);
+			wrap_error(['Download: File %s does not exist', ['values' => [$filename]]], E_USER_NOTICE);
 			unset($files[$file_id]);
 			continue;
 		}
