@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project – Media Module\n"
-"POT-Creation-Date: 2026-07-24 16:01+0000\n"
+"POT-Creation-Date: 2026-07-27 13:59+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gustaf Mossakowski <gustaf@koenige.org>\n"
 "Language-Team: \n"
@@ -237,7 +237,7 @@ msgid ""
 msgstr ""
 "Renkli kenarlık: ortam yayınlanmıştır; gri kenarlık: ortam yayınlanmamıştır."
 
-#: zzbrick_forms/media.php:149
+#: zzbrick_forms/media.php:149 zzbrick_tables/media-categories.php:50
 msgid "Type"
 msgstr ""
 
@@ -487,7 +487,7 @@ msgstr ""
 msgid "Access"
 msgstr "Erişim"
 
-#: zzbrick_tables/media-access.php:56 zzbrick_tables/media-categories.php:64
+#: zzbrick_tables/media-access.php:56 zzbrick_tables/media-categories.php:65
 msgid "Last update"
 msgstr ""
 
@@ -503,11 +503,7 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: zzbrick_tables/media-categories.php:50
-msgid "Type category"
-msgstr ""
-
-#: zzbrick_tables/media-categories.php:60
+#: zzbrick_tables/media-categories.php:61
 msgid "Property"
 msgstr ""
 
