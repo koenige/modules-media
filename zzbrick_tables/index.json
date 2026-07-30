@@ -1,0 +1,18 @@
+{
+    "filetypes": {
+        "title": "Filetypes"
+    },
+    "media": {
+        "title": "Media Pool",
+        "parameter_field": "parameters",
+        "audience": [
+            "editor"
+        ]
+    },
+    "media_access": {
+        "title": "Media Access Rights"
+    },
+    "media_categories": {
+        "title": "Media Tags"
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "privacy-for-embedded-content": [
+        {
+            "title": "Datenschutz für eingebettete Inhalte",
+            "language": "de",
+            "package": "media",
+            "filename": "help/Privacy for Embedded Content-de.md",
+            "identifier": "privacy-for-embedded-content",
+            "type": "md",
+            "audience": [
+                "admin",
+                "editor"
+            ]
+        },
+        {
+            "title": "Privacy for Embedded Content",
+            "language": "en",
+            "package": "media",
+            "filename": "help/Privacy for Embedded Content.md",
+            "identifier": "privacy-for-embedded-content",
+            "type": "md",
+            "audience": [
+                "admin",
+                "editor"
+            ]
+        }
+    ],
+    "media-parameters": [
+        {
+            "title": "Media Pool parameters",
+            "language": "en",
+            "package": "media",
+            "identifier": "media-parameters",
+            "type": "parameters",
+            "audience": [
+                "editor"
+            ],
+            "table": "media",
+            "parameter_field": "parameters"
+        },
+        {
+            "title": "Medienpool-Parameter",
+            "language": "de",
+            "package": "media",
+            "identifier": "media-parameters",
+            "type": "parameters",
+            "audience": [
+                "editor"
+            ],
+            "table": "media",
+            "parameter_field": "parameters"
+        }
+    ]
+}
