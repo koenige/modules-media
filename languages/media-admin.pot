@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-07-24 16:01+0000\n"
+"POT-Creation-Date: 2026-07-30 17:10+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -204,27 +204,27 @@ msgstr ""
 msgid "Show top image on webpage"
 msgstr ""
 
-#: configuration/settings.cfg:191
+#: configuration/settings.cfg:193
 msgid "ID of webpage that holds top image for error pages"
 msgstr ""
 
-#: configuration/settings.cfg:195
+#: configuration/settings.cfg:197
 msgid "Initial installation date of media module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:199
+#: configuration/settings.cfg:201
 msgid "Linked URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:203
+#: configuration/settings.cfg:205
 msgid "Embed URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:209
+#: configuration/settings.cfg:211
 msgid "Linked URL with placeholder for YouTube videos"
 msgstr ""
 
-#: configuration/settings.cfg:214
+#: configuration/settings.cfg:216
 msgid "Embed URL with placeholder for YouTube videos"
 msgstr ""
 
