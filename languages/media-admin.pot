@@ -48,7 +48,15 @@ msgstr ""
 msgid "Internal media folders on website"
 msgstr ""
 
+#: configuration/routes.cfg:33
+msgid "Media"
+msgstr ""
+
 #: configuration/routes.cfg:34
+msgid "All images, documents, and videos"
+msgstr ""
+
+#: configuration/routes.cfg:38
 msgid "Internal media folders on website, specific folder"
 msgstr ""
 
