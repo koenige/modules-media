@@ -21,7 +21,6 @@ function mf_media_hook_embed($ops) {
 		if ($ops['record_new'][$index]['filetype_id'] === wrap_filetype_id('youtube')) {
 			$video = mf_media_youtube_video_id($ops['record_new'][$index]['title']);
 			$change['record_replace'][$index]['title'] = $video;
-			$change['record_replace'][$index]['filename'] = $video;
 			$meta = mf_media_get_embed_youtube($video);
 			if (!$meta) {
 				$change['no_validation'] = true;

@@ -8,7 +8,7 @@
  * https://www.zugzwang.org/modules/media
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2020, 2022-2025 Gustaf Mossakowski
+ * @copyright Copyright © 2020, 2022-2026 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -35,7 +35,6 @@ function mod_media_make_twitch($params, $settings = []) {
 		'title' => $params[0],
 		'source' => 'Twitch',
 		'published' => 'yes',
-		'filename' => $params[0]
 	];
 	$id = zzform_insert('media', $line);
 	if ($id) {

@@ -30,7 +30,6 @@ function mod_media_make_youtube($params, $settings = []) {
 		'title' => $params[0],
 		'source' => 'YouTube',
 		'published' => 'yes',
-		'filename' => $params[0]
 	];
 	$id = zzform_insert('media', $line);
 	if ($id) {
