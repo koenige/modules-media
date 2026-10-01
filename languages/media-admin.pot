@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-07-30 17:10+0000\n"
+"POT-Creation-Date: 2026-10-01 13:47+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -61,178 +61,194 @@ msgid "Internal media folders on website, specific folder"
 msgstr ""
 
 #: configuration/settings.cfg:20
-msgid "If there is no size given for a medium, use this as the default size"
+msgid "Custom crop rectangle on a medium (left, top, right, bottom)"
 msgstr ""
 
 #: configuration/settings.cfg:24
-msgid "Show document links not as links but as text only"
+msgid "If there is no size given for a medium, use this as the default size"
 msgstr ""
 
 #: configuration/settings.cfg:28
-msgid "List of embedded media types"
+msgid "Show document links not as links but as text only"
 msgstr ""
 
 #: configuration/settings.cfg:32
+msgid "List of embedded media types"
+msgstr ""
+
+#: configuration/settings.cfg:36
 msgid "URL to embed Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:37
+#: configuration/settings.cfg:41
 msgid "URL to embed YouTube videos"
 msgstr ""
 
-#: configuration/settings.cfg:42
+#: configuration/settings.cfg:46
 msgid "Path for twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:47
+#: configuration/settings.cfg:51
 msgid "Path for youtube videos"
 msgstr ""
 
-#: configuration/settings.cfg:52
+#: configuration/settings.cfg:56
 msgid "Custom text in privacy settings for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:55
+#: configuration/settings.cfg:59
 msgid "Custom text in privacy settings for YouTube videos"
 msgstr ""
 
-#: configuration/settings.cfg:58
+#: configuration/settings.cfg:62
 msgid "Large size of images on page, is linked to preview image (e. g. for a gallery)"
 msgstr ""
 
-#: configuration/settings.cfg:61
+#: configuration/settings.cfg:65
 msgid "Use field media_categories.property to set values for categories"
 msgstr ""
 
-#: configuration/settings.cfg:66
+#: configuration/settings.cfg:70
 msgid "Use croppr.js for images"
 msgstr ""
 
-#: configuration/settings.cfg:70
+#: configuration/settings.cfg:74
 msgid "Size of downloads image"
 msgstr ""
 
-#: configuration/settings.cfg:74
+#: configuration/settings.cfg:78
 msgid "Suffix variant for database files (multiple uploads)"
 msgstr ""
 
-#: configuration/settings.cfg:78
+#: configuration/settings.cfg:82
 msgid "Show date in caption of images"
 msgstr ""
 
-#: configuration/settings.cfg:83
+#: configuration/settings.cfg:87
 msgid "Folder where media files are saved"
 msgstr ""
 
-#: configuration/settings.cfg:88
+#: configuration/settings.cfg:92
 msgid "Maximum value for sequence of folder, for batch creation"
 msgstr ""
 
-#: configuration/settings.cfg:93
+#: configuration/settings.cfg:97
 msgid "Folder where original media files are saved (optional, default is all files in same folder)"
 msgstr ""
 
-#: configuration/settings.cfg:98
+#: configuration/settings.cfg:102
 msgid "Size of images for gallery on page"
 msgstr ""
 
-#: configuration/settings.cfg:101
+#: configuration/settings.cfg:105
 msgid "2x size of images for gallery on page for higher resolution screens"
 msgstr ""
 
-#: configuration/settings.cfg:104
+#: configuration/settings.cfg:108
 msgid "Include videos in the images list (e.g. for galleries) even when no preview thumbnail exists"
 msgstr ""
 
-#: configuration/settings.cfg:108
+#: configuration/settings.cfg:112
 msgid "Folder from where files can be imported"
 msgstr ""
 
-#: configuration/settings.cfg:113
+#: configuration/settings.cfg:117
 msgid "Link big image in all single image templates if bigger size available"
 msgstr ""
 
-#: configuration/settings.cfg:118
+#: configuration/settings.cfg:122
 msgid "Size of preview image for news module and others"
 msgstr ""
 
-#: configuration/settings.cfg:123
+#: configuration/settings.cfg:127
 msgid "Extension for original file"
 msgstr ""
 
-#: configuration/settings.cfg:127
+#: configuration/settings.cfg:131
 msgid "Standard position of top image on page"
 msgstr ""
 
-#: configuration/settings.cfg:131
+#: configuration/settings.cfg:135
 msgid "Standard size of images on page"
 msgstr ""
 
-#: configuration/settings.cfg:134
+#: configuration/settings.cfg:138
 msgid "2x standard size of images on page for higher resolution screens"
 msgstr ""
 
-#: configuration/settings.cfg:137
+#: configuration/settings.cfg:141
 msgid "Preview image for media module"
 msgstr ""
 
-#: configuration/settings.cfg:143
+#: configuration/settings.cfg:147
 msgid "Preview image for news module"
 msgstr ""
 
-#: configuration/settings.cfg:149
+#: configuration/settings.cfg:153
 msgid "Small image"
 msgstr ""
 
-#: configuration/settings.cfg:155
+#: configuration/settings.cfg:159
 msgid "Medium image"
 msgstr ""
 
-#: configuration/settings.cfg:161
+#: configuration/settings.cfg:165
 msgid "Large image"
 msgstr ""
 
-#: configuration/settings.cfg:167
+#: configuration/settings.cfg:171
 msgid "Extra large image"
 msgstr ""
 
-#: configuration/settings.cfg:173
+#: configuration/settings.cfg:177
 msgid "Media size paths that were removed and now redirect to a file of a different size, for old crawlers"
 msgstr ""
 
-#: configuration/settings.cfg:178
+#: configuration/settings.cfg:182
 msgid "Standard position of media elements on website (left, center, right, etc.)"
 msgstr ""
 
-#: configuration/settings.cfg:181
+#: configuration/settings.cfg:185
 msgid "Allow to tag a medium"
 msgstr ""
 
-#: configuration/settings.cfg:185
+#: configuration/settings.cfg:189
 msgid "Show top image on webpage"
 msgstr ""
 
-#: configuration/settings.cfg:193
+#: configuration/settings.cfg:197
 msgid "ID of webpage that holds top image for error pages"
 msgstr ""
 
-#: configuration/settings.cfg:197
+#: configuration/settings.cfg:201
 msgid "Initial installation date of media module (for updates)"
 msgstr ""
 
-#: configuration/settings.cfg:201
+#: configuration/settings.cfg:205
+msgid "OpenGraph description on a medium (e. g. from YouTube metadata)"
+msgstr ""
+
+#: configuration/settings.cfg:209
+msgid "OpenGraph preview image URL on a medium"
+msgstr ""
+
+#: configuration/settings.cfg:214
+msgid "OpenGraph video tags on a medium"
+msgstr ""
+
+#: configuration/settings.cfg:218
 msgid "Linked URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:205
+#: configuration/settings.cfg:222
 msgid "Embed URL with placeholder for Twitch videos"
 msgstr ""
 
-#: configuration/settings.cfg:211
+#: configuration/settings.cfg:228
 msgid "Linked URL with placeholder for YouTube videos"
 msgstr ""
 
-#: configuration/settings.cfg:216
+#: configuration/settings.cfg:233
 msgid "Embed URL with placeholder for YouTube videos"
 msgstr ""
 
