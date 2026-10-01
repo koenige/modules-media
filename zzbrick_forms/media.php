@@ -114,6 +114,7 @@ if ($view['type'] === 'gallery') {
 	];
 	
 	$zz['setting']['zzform_search_form_always'] = true;
+	$zz['setting']['zzform_action_icons_hide_labels'] = true;
 	if (!empty($zz['fields'][33])) {
 		$zz['fields'][33]['hide_in_list'] = true;
 	}
