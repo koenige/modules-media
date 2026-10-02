@@ -18,34 +18,30 @@ function mf_media_hook_embed($ops) {
 	foreach ($ops['planned'] as $index => $table) {
 		if ($table['table'] !== 'media') continue;
 		if ($table['action'] !== 'insert') continue;
-		if ($ops['record_new'][$index]['filetype_id'] === wrap_filetype_id('youtube')) {
-			$video = mf_media_youtube_video_id($ops['record_new'][$index]['title']);
-			$change['record_replace'][$index]['title'] = $video;
-			$meta = mf_media_get_embed_youtube($video);
-			if (!$meta) {
-				$change['no_validation'] = true;
-				$change['validation_fields'][$index]['title']['class'] = 'error';
-				$change['validation_fields'][$index]['title']['explanation']
-					= wrap_text('There’s no YouTube video with this code');
-			} else {
-				if (!empty($meta['og:title']) AND !$ops['record_new'][$index]['description'])
-					$change['record_replace'][$index]['description'] = $meta['og:title'];
-				if (!$ops['record_new'][$index]['source'])
-					$change['record_replace'][$index]['source'] = 'YouTube';
-				if (!empty($meta['og:image:width']) AND !$ops['record_new'][$index]['width_px'])
-					$change['record_replace'][$index]['width_px'] = $meta['og:image:width'];
-				if (!empty($meta['og:image:height']) AND !$ops['record_new'][$index]['height_px'])
-					$change['record_replace'][$index]['height_px'] = $meta['og:image:height'];
-				if (!empty($meta['og:image']) AND empty($change['record_replace'][$index]['parameters'])) {
-					if (empty($meta['og:video:tag'])) $meta['og:video:tag'] = '';
-					$change['record_replace'][$index]['parameters'] = sprintf('og:image=%s&og:video:tag=%s&og:description=%s'
-						, $meta['og:image']
-						, is_array($meta['og:video:tag']) ? sprintf('[%s]', implode(',', $meta['og:video:tag'])) : $meta['og:video:tag']
-						, $meta['og:description']
-					);
-				}
-			}
+		if ($ops['record_new'][$index]['filetype_id'] !== wrap_filetype_id('youtube')) continue;
+
+		$video = mf_media_youtube_video_id($ops['record_new'][$index]['title']);
+		$change['record_replace'][$index]['title'] = $video;
+		$meta = mf_media_get_embed_youtube($video);
+		if (!$meta) {
+			$change['no_validation'] = true;
+			$change['validation_fields'][$index]['title']['class'] = 'error';
+			$change['validation_fields'][$index]['title']['explanation']
+				= wrap_text('There’s no YouTube video with this code');
+			continue;
 		}
+
+		if (!empty($meta['og:title']) AND !$ops['record_new'][$index]['description'])
+			$change['record_replace'][$index]['description'] = $meta['og:title'];
+		if (!$ops['record_new'][$index]['source'])
+			$change['record_replace'][$index]['source'] = 'YouTube';
+		if (!empty($meta['og:image:width']) AND !$ops['record_new'][$index]['width_px'])
+			$change['record_replace'][$index]['width_px'] = $meta['og:image:width'];
+		if (!empty($meta['og:image:height']) AND !$ops['record_new'][$index]['height_px'])
+			$change['record_replace'][$index]['height_px'] = $meta['og:image:height'];
+		$parameters = mf_media_opengraph_parameters($meta);
+		if ($parameters)
+			$change['record_replace'][$index]['parameters'] = $parameters;
 	}
 	return $change;
 }

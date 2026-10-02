@@ -61,11 +61,12 @@ function mf_media_get_embed_youtube($video) {
 	if ($status === 200) {
 		preg_match_all('/<meta property=["\'](.+?)["\'] content=["\'](.+?)["\']>/', $data, $matches);
 		foreach ($matches[1] as $index => $key) {
+			$value = html_entity_decode($matches[2][$index], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 			if (!empty($meta[$video][$key])) {
 				if (!is_array($meta[$video][$key])) $meta[$video][$key] = [$meta[$video][$key]];
-				$meta[$video][$key][] = $matches[2][$index];
+				$meta[$video][$key][] = $value;
 			} else {
-				$meta[$video][$key] = $matches[2][$index];
+				$meta[$video][$key] = $value;
 			}
 		}
 		if (empty($meta[$video])) $status = 404;
@@ -82,6 +83,40 @@ function mf_media_get_embed_youtube($video) {
 
 	$meta[$video]['video'] = $video;
 	return $meta[$video];
+}
+
+/**
+ * build media.parameters string from OpenGraph fields (YouTube embed)
+ *
+ * @param array $meta
+ * @return string|null
+ */
+function mf_media_opengraph_parameters($meta) {
+	$query = [];
+	$image = trim($meta['og:image'] ?? '');
+	if ($image)
+		$query['og:image'] = $image;
+
+	$description = trim($meta['og:description'] ?? '');
+	if ($description)
+		$query['og:description'] = $description;
+
+	$tags = $meta['og:video:tag'] ?? '';
+	if (is_array($tags)) {
+		$tags = array_filter(array_map('trim', $tags));
+		$tags = $tags ? sprintf('[%s]', implode(',', $tags)) : '';
+	} else {
+		$tags = trim($tags);
+	}
+	if ($tags)
+		$query['og:video:tag'] = $tags;
+
+	if (!$query) return null;
+
+	$parts = [];
+	foreach ($query as $key => $value)
+		$parts[] = sprintf('%s=%s', $key, str_replace('&', '%26', $value));
+	return implode('&', $parts);
 }
 
 /**
