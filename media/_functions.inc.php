@@ -95,7 +95,7 @@ function mf_media_opengraph_parameters($meta) {
 	$query = [];
 	$image = trim($meta['og:image'] ?? '');
 	if ($image)
-		$query['og:image'] = $image;
+		$query['og:image'] = mf_media_youtube_thumbnail_url($image);
 
 	$description = trim($meta['og:description'] ?? '');
 	if ($description)
@@ -117,6 +117,26 @@ function mf_media_opengraph_parameters($meta) {
 	foreach ($query as $key => $value)
 		$parts[] = sprintf('%s=%s', $key, str_replace('&', '%26', $value));
 	return implode('&', $parts);
+}
+
+/**
+ * drop CDN query string from canonical YouTube thumbnail URLs
+ *
+ * @param string $url
+ * @return string
+ */
+function mf_media_youtube_thumbnail_url($url) {
+	if (!$url) return $url;
+
+	$parts = parse_url($url);
+	if (empty($parts['host']) || empty($parts['path'])) return $url;
+
+	$host = strtolower($parts['host']);
+	if ($host !== 'img.youtube.com' && !preg_match('#\.ytimg\.com$#', $host)) return $url;
+	if (!preg_match('#^/vi/[^/]+/(?:maxres|hq|sd|mq)default\.jpg$#i', $parts['path'])) return $url;
+
+	$scheme = $parts['scheme'] ?? 'https';
+	return sprintf('%s://%s%s', $scheme, $parts['host'], $parts['path']);
 }
 
 /**
