@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-10-01 13:47+0000\n"
+"POT-Creation-Date: 2026-10-03 21:21+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -252,14 +252,14 @@ msgstr ""
 msgid "Embed URL with placeholder for YouTube videos"
 msgstr ""
 
-#: media/_functions.inc.php:75
+#: media/_functions.inc.php:76
 msgid "YouTube Video %s was not found. Status: %d"
 msgstr ""
 
-#: media/_functions.inc.php:102
-#: media/_functions.inc.php:107
-#: media/_functions.inc.php:112
-#: media/_functions.inc.php:128
+#: media/_functions.inc.php:157
+#: media/_functions.inc.php:162
+#: media/_functions.inc.php:167
+#: media/_functions.inc.php:183
 msgid "Unknown YouTube Video %s"
 msgstr ""
 

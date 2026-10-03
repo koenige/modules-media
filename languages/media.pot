@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-07-27 13:59+0000\n"
+"POT-Creation-Date: 2026-10-03 21:21+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -107,19 +107,19 @@ msgid "Import?"
 msgstr ""
 
 #: templates/folderinfo.template.txt:21
-#: zzbrick_tables/media.php:299
+#: zzbrick_tables/media.php:300
 msgid "Filename"
 msgstr ""
 
 #: templates/folderinfo.template.txt:22
 #: templates/mediuminfo.template.txt:58
-#: zzbrick_tables/media.php:309
+#: zzbrick_tables/media.php:310
 msgid "Filetype"
 msgstr ""
 
 #: templates/folderinfo.template.txt:23
 #: templates/mediuminfo.template.txt:56
-#: zzbrick_tables/media.php:331
+#: zzbrick_tables/media.php:332
 msgid "Filesize"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr ""
 #: templates/mediuminfo.template.txt:39
 #: templates/mediuminfo.template.txt zzbrick_tables/media.php
 #: zzbrick_request/filedownload.inc.php:78
-#: zzbrick_tables/media.php:286
+#: zzbrick_tables/media.php:287
 msgid "Source"
 msgstr ""
 
@@ -180,8 +180,8 @@ msgid "Alternative text"
 msgstr ""
 
 #: templates/mediuminfo.template.txt:45
-#: zzbrick_forms/media.php:317
-#: zzbrick_forms/media.php:331
+#: zzbrick_forms/media.php:318
+#: zzbrick_forms/media.php:332
 #: zzbrick_request/mediatags.inc.php:53
 #: zzbrick_tables/media.php:196
 msgid "Tags"
@@ -223,46 +223,46 @@ msgstr ""
 msgid "Coloured border: medium is published; gray border: medium is not published."
 msgstr ""
 
-#: zzbrick_forms/media.php:149
+#: zzbrick_forms/media.php:150
 #: zzbrick_tables/media-categories.php:50
 msgid "Type"
 msgstr ""
 
-#: zzbrick_forms/media.php:188
+#: zzbrick_forms/media.php:189
 #: zzbrick_request/filedownload.inc.php:75
 #: zzbrick_tables/media.php:22
-#: zzbrick_tables/media.php:478
+#: zzbrick_tables/media.php:487
 #: zzbrick_tables/media-access.php:23
 msgid "Folder"
 msgstr ""
 
-#: zzbrick_forms/media.php:322
-#: zzbrick_forms/media.php:327
+#: zzbrick_forms/media.php:323
+#: zzbrick_forms/media.php:328
 #: zzbrick_request/mediatags.inc.php:53
 msgid "TOP"
 msgstr ""
 
-#: zzbrick_forms/media.php:384
+#: zzbrick_forms/media.php:385
 msgid "Gallery"
 msgstr ""
 
-#: zzbrick_forms/media.php:385
+#: zzbrick_forms/media.php:386
 msgid "Display as Gallery"
 msgstr ""
 
-#: zzbrick_forms/media.php:390
+#: zzbrick_forms/media.php:391
 msgid "Table"
 msgstr ""
 
-#: zzbrick_forms/media.php:391
+#: zzbrick_forms/media.php:392
 msgid "Display as Table"
 msgstr ""
 
-#: zzbrick_forms/media.php:399
+#: zzbrick_forms/media.php:400
 msgid "Download"
 msgstr ""
 
-#: zzbrick_forms/media.php:400
+#: zzbrick_forms/media.php:401
 msgid "Download files in ZIP archive"
 msgstr ""
 
@@ -272,12 +272,12 @@ msgid "Title"
 msgstr ""
 
 #: zzbrick_request/filedownload.inc.php:79
-#: zzbrick_tables/media.php:263
+#: zzbrick_tables/media.php:264
 msgid "Date"
 msgstr ""
 
 #: zzbrick_request/filedownload.inc.php:80
-#: zzbrick_tables/media.php:275
+#: zzbrick_tables/media.php:276
 msgid "Time"
 msgstr ""
 
@@ -286,7 +286,7 @@ msgid "MD5 Hash"
 msgstr ""
 
 #: zzbrick_request/mediatags.inc.php:53
-#: zzbrick_tables/media.php:470
+#: zzbrick_tables/media.php:479
 msgid "Media Pool"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgid "optional content of `alt`-attribute for images, for screen reader softwar
 msgstr ""
 
 #: zzbrick_tables/media.php:201
-#: zzbrick_tables/media.php:238
+#: zzbrick_tables/media.php:239
 msgid "Seq."
 msgstr ""
 
@@ -407,61 +407,61 @@ msgstr ""
 msgid "top"
 msgstr ""
 
-#: zzbrick_tables/media.php:239
+#: zzbrick_tables/media.php:240
 msgid "Sequence"
 msgstr ""
 
-#: zzbrick_tables/media.php:251
+#: zzbrick_tables/media.php:252
 msgid "Language"
 msgstr ""
 
-#: zzbrick_tables/media.php:267
+#: zzbrick_tables/media.php:268
 msgid "Digital photography: If nothing is entered, date and time will be read from file."
 msgstr ""
 
-#: zzbrick_tables/media.php:277
+#: zzbrick_tables/media.php:278
 msgid "at"
 msgstr ""
 
-#: zzbrick_tables/media.php:278
+#: zzbrick_tables/media.php:279
 msgid "h"
 msgstr ""
 
-#: zzbrick_tables/media.php:289
+#: zzbrick_tables/media.php:290
 msgid "If it’s not a medium created by yourself, who created it, where did you find it?"
 msgstr ""
 
-#: zzbrick_tables/media.php:310
-#: zzbrick_tables/media.php:473
+#: zzbrick_tables/media.php:311
+#: zzbrick_tables/media.php:482
 msgid "File"
 msgstr ""
 
-#: zzbrick_tables/media.php:346
+#: zzbrick_tables/media.php:347
 msgid "MD5"
 msgstr ""
 
-#: zzbrick_tables/media.php:357
 #: zzbrick_tables/media.php:358
+#: zzbrick_tables/media.php:359
 msgid "Size"
 msgstr ""
 
-#: zzbrick_tables/media.php:359
+#: zzbrick_tables/media.php:360
 msgid "Width"
 msgstr ""
 
-#: zzbrick_tables/media.php:387
+#: zzbrick_tables/media.php:388
 msgid "Height"
 msgstr ""
 
-#: zzbrick_tables/media.php:409
+#: zzbrick_tables/media.php:410
 msgid "Version"
 msgstr ""
 
-#: zzbrick_tables/media.php:419
+#: zzbrick_tables/media.php:420
 msgid "Parameters"
 msgstr ""
 
-#: zzbrick_tables/media.php:428
+#: zzbrick_tables/media.php:427
 msgid "Updated"
 msgstr ""
 

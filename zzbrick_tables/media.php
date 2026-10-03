@@ -231,7 +231,8 @@ if ($crop) {
 		'left' => ['action' => 'crop_left'],
 		'custom' => ['action' => 'crop_custom']
 	];
-	$zz['fields'][36]['unless'][2]['dependent_fields'][40]['if_selected'] = 'custom';
+	// uploaded files only: parameters holds custom crop data when clipping is "custom"
+	$zz['fields'][36]['if'][4]['dependent_fields'][40]['if_selected'] = 'custom';
 }
 
 if (empty($values['no_sequence'])) {
@@ -419,11 +420,9 @@ $zz['fields'][35]['if'][3] = [];
 $zz['fields'][40]['field_name'] = 'parameters';
 $zz['fields'][40]['type'] = 'parameter';
 $zz['fields'][40]['hide_in_list'] = true;
+$zz['fields'][40]['hide_in_form'] = true;
 $zz['fields'][40]['if'][2]['hide_in_form'] = false;
 $zz['fields'][40]['if'][3]['hide_in_form'] = false;
-if (!$crop) {
-	$zz['fields'][40]['hide_in_form'] = true;
-}
 
 $zz['fields'][20]['title'] = 'Updated';
 $zz['fields'][20]['field_name'] = 'last_update';
@@ -453,6 +452,7 @@ if (empty($values['no_publish'])) {
 	$zz['conditions'][1]['where'] = '/*_PREFIX_*/media.published = "no"';
 }
 
+// condition: it is a folder
 $zz['conditions'][2]['scope'] = 'record';
 $zz['conditions'][2]['where'] = 'o_mime.filetype_id = /*_ID filetypes folder _*/';
 $zz['conditions'][2]['add']['sql'] = 'SELECT filetype_id
@@ -460,12 +460,21 @@ $zz['conditions'][2]['add']['sql'] = 'SELECT filetype_id
 	WHERE filetype_id = ';
 $zz['conditions'][2]['add']['key_field_name'] = 'filetype_id';
 
+// condition: embed (no file extension on MIME type, not a folder)
 $zz['conditions'][3]['scope'] = 'record';
 $zz['conditions'][3]['where'] = 'o_mime.extension = "" AND o_mime.filetype_id != /*_ID filetypes folder _*/';
 $zz['conditions'][3]['add']['sql'] = 'SELECT filetype_id
 	FROM /*_PREFIX_*/filetypes o_mime
 	WHERE filetype_id = ';
 $zz['conditions'][3]['add']['key_field_name'] = 'filetype_id';
+
+// condition: uploaded file (MIME type with extension, not a folder)
+$zz['conditions'][4]['scope'] = 'record';
+$zz['conditions'][4]['where'] = 'o_mime.extension != "" AND o_mime.filetype_id != /*_ID filetypes folder _*/';
+$zz['conditions'][4]['add']['sql'] = 'SELECT filetype_id
+	FROM /*_PREFIX_*/filetypes o_mime
+	WHERE filetype_id = ';
+$zz['conditions'][4]['add']['key_field_name'] = 'filetype_id';
 
 $zz['title'] = 'Media Pool';
 
