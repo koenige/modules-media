@@ -37,6 +37,7 @@
 
 <p><input type="submit" name="zz_import" value="%%% text "Import %d files" import_count %%%"></p>
 </form>
+%%% script default/form-submit-once.js %%%
 </div>
 %%% elseif import_count %%%
 %%% unless nolist %%%

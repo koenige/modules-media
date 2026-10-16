@@ -25,6 +25,7 @@
 <form method="POST" action="">
 <input type="submit" value="%%% text "Import file %s into folder %s" file folder %%%">
 </form>
+%%% script default/form-submit-once.js %%%
 %%% endif %%%
 
 %%% if folder_path & folder %%%
