@@ -127,10 +127,8 @@ function mod_media_medium($params) {
 	$file['etag'] = md5_file($file['name']);
 	if ($media_size !== 'original')
 		$file['send_as'] .= ' '.$media_size;
-	if (!empty($_GET['v'])) {
-		if (!is_numeric($_GET['v'])) wrap_setting('cache', false);
+	if (wrap_url_qs('media.medium.v'))
 		wrap_cache_header_default('Cache-Control: max-age=31536000'); // 1 year
-	}
 	wrap_send_file($file);
 }
 

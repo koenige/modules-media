@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-10-03 21:21+0000\n"
+"POT-Creation-Date: 2026-10-18 21:02+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -30,6 +30,10 @@ msgstr ""
 
 #: configuration/package.cfg:15
 msgid "Uploads, media library, thumbnails, previews, and embedded players"
+msgstr ""
+
+#: configuration/query-strings.cfg:12
+msgid "Version of a medium, allows to cache the file for a long time"
 msgstr ""
 
 #: configuration/routes.cfg:13
