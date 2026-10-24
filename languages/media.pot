@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zugzwang Project -- media module\n"
-"POT-Creation-Date: 2026-10-16 12:13+0000\n"
+"POT-Creation-Date: 2026-10-24 10:21+0000\n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -224,7 +224,7 @@ msgid "Coloured border: medium is published; gray border: medium is not publishe
 msgstr ""
 
 #: zzbrick_forms/media.php:150
-#: zzbrick_tables/media-categories.php:50
+#: zzbrick_tables/media-categories.php:48
 msgid "Type"
 msgstr ""
 
@@ -469,16 +469,16 @@ msgstr ""
 msgid "Media Access Rights"
 msgstr ""
 
-#: zzbrick_tables/media-access.php:36
+#: zzbrick_tables/media-access.php:34
 msgid "Usergroup"
 msgstr ""
 
-#: zzbrick_tables/media-access.php:44
+#: zzbrick_tables/media-access.php:42
 msgid "Access"
 msgstr ""
 
-#: zzbrick_tables/media-access.php:56
-#: zzbrick_tables/media-categories.php:65
+#: zzbrick_tables/media-access.php:54
+#: zzbrick_tables/media-categories.php:63
 msgid "Last update"
 msgstr ""
 
@@ -491,11 +491,11 @@ msgstr ""
 msgid "No."
 msgstr ""
 
-#: zzbrick_tables/media-categories.php:39
+#: zzbrick_tables/media-categories.php:37
 msgid "Category"
 msgstr ""
 
-#: zzbrick_tables/media-categories.php:61
+#: zzbrick_tables/media-categories.php:59
 msgid "Property"
 msgstr ""
 

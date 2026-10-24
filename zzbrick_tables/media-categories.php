@@ -31,8 +31,6 @@ $zz['fields'][2]['sql'] = 'SELECT /*_PREFIX_*/media.medium_id
 		, /*_PREFIX_*/media.filename
 	FROM /*_PREFIX_*/media 
 	ORDER BY /*_PREFIX_*/media.filename';
-$zz['fields'][2]['sql_character_set'][1] = 'utf8';
-$zz['fields'][2]['sql_character_set'][2] = 'utf8';
 $zz['fields'][2]['display_field'] = 'filename';
 $zz['fields'][2]['exclude_from_search'] = true;
 
